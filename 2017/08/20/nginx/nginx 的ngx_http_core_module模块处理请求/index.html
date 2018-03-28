@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Nginx 的ngx_http_core_module模块 | CatalpaFlat&#39;s Blogs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Nginx 的ngx_http_core_module模块ngx_http_core_module模块处理请求时，会有大量的变量，这些变量可以通过访问日志来记录，也可以用于其他nginx模块接收。在对请求做策略入改写等到都会使用到一些变量。以下为ngx_http_core_module模块提供的变量总结：12345678910111213141516171819202122232425262728">
+<meta name="keywords" content="Nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx 的ngx_http_core_module模块">
+<meta property="og:url" content="https://catalpaflat.github.io/2017/08/20/nginx/nginx 的ngx_http_core_module模块处理请求/index.html">
+<meta property="og:site_name" content="CatalpaFlat&#39;s Blogs">
+<meta property="og:description" content="Nginx 的ngx_http_core_module模块ngx_http_core_module模块处理请求时，会有大量的变量，这些变量可以通过访问日志来记录，也可以用于其他nginx模块接收。在对请求做策略入改写等到都会使用到一些变量。以下为ngx_http_core_module模块提供的变量总结：12345678910111213141516171819202122232425262728">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-28T13:06:19.781Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nginx 的ngx_http_core_module模块">
+<meta name="twitter:description" content="Nginx 的ngx_http_core_module模块ngx_http_core_module模块处理请求时，会有大量的变量，这些变量可以通过访问日志来记录，也可以用于其他nginx模块接收。在对请求做策略入改写等到都会使用到一些变量。以下为ngx_http_core_module模块提供的变量总结：12345678910111213141516171819202122232425262728">
+    
+
+    
+        <link rel="alternate" href="/" title="CatalpaFlat&#39;s Blogs" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">CatalpaFlat&#39;s Blogs</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.jpeg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.jpeg" />
+            <h2 id="name">CatalpaFlat</h2>
+            <h3 id="title">A good DEMO is a good brick wall.</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>ShenZhen, China</span>
+            <a id="follow" target="_blank" href="https://github.com/CatalpaFlat">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                20
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                5
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/CatalpaFlat" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-nginx/nginx 的ngx_http_core_module模块处理请求" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Nginx 的ngx_http_core_module模块
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/20/nginx/nginx 的ngx_http_core_module模块处理请求/">
+            <time datetime="2017-08-20T02:40:56.000Z" itemprop="datePublished">2017-08-20</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Nginx/">Nginx</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="Nginx-的ngx-http-core-module模块"><a href="#Nginx-的ngx-http-core-module模块" class="headerlink" title="Nginx 的ngx_http_core_module模块"></a>Nginx 的ngx_http_core_module模块</h1><p>ngx_http_core_module模块处理请求时，会有大量的变量，这些变量可以通过访问日志来记录，也可以用于其他nginx模块接收。在对请求做策略入改写等到都会使用到一些变量。以下为ngx_http_core_module模块提供的变量总结：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">$arg_PARAMETER  </span><br><span class="line">```           </span><br><span class="line">- HTTP 请求中某个参数的值，如/get?value=a.chen.com，可以用$arg_site取得a.chen.com这个值.</span><br><span class="line">```      </span><br><span class="line"> $args   </span><br><span class="line">```                    </span><br><span class="line">- HTTP 多个请求参数，请求中的完整参数。例如，在请求/get?a=1&amp;b=2 中，$args表示字符串a=1&amp;b=2.  </span><br><span class="line">```      </span><br><span class="line"> $binary_remote_addr</span><br><span class="line">```      </span><br><span class="line">- 二进制格式的客户端地址。例如：\x0B\xE0C\x0A</span><br><span class="line"></span><br><span class="line">```      </span><br><span class="line">$body_bytes_sent</span><br><span class="line">```      </span><br><span class="line">- 表示在向客户端发送的http响应中，包体部分的字节数  </span><br><span class="line">```  </span><br><span class="line">$content_length</span><br><span class="line">```  </span><br><span class="line">- 表示客户端请求头部中的Content-Length 字段的内容</span><br><span class="line">```  </span><br><span class="line">$content_type</span><br><span class="line">```  </span><br><span class="line">- 表示客户端请求头部中的Content-Type 字段的类型</span><br><span class="line">```  </span><br><span class="line">$cookie_COOKIE</span><br><span class="line">```  </span><br><span class="line">- 表示在客户端请求头部中的cookie 字段的内容  </span><br><span class="line">```  </span><br><span class="line">$document_root </span><br><span class="line">``` </span><br><span class="line">- 表示当前请求所使用的root 配置项的值  </span><br><span class="line">``` </span><br><span class="line">$uri</span><br><span class="line">```  </span><br><span class="line">- 表示当前请求的URI，不带任何参数</span><br></pre></td></tr></table></figure></p>
+<p>$document_uri<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 与$uri 含义相同</span><br></pre></td></tr></table></figure></p>
+<p>$request_uri<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 表示客户端发来的原始请求URI，带完整的参数。$uri和$document_uri未必是用户的原始请求，在内部重定向后可能是重定向后的URI，而$request_uri 永远不会改变，始终是客户端的原始URI.  </span><br><span class="line">```   </span><br><span class="line">$http_HEADER</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>表示当前 HTTP请求中相应头部的值。HEADER名称全小写。例如，示请求中 Host头部对应的值 用 $http_host表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$host</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表示客户端请求头部中的Host字段。如果Host字段不存在，则以实际处理的server（虚拟主机）名称代替。如果Host字段中带有端口，如IP:PORT，那么$host是去掉端口的，它的值为IP。$host 是全小写的。这些特性与http_HEADER中的http_host不同，http_host只取出Host头部对应的值。   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$hostname</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表示 Nginx所在机器的名称，与 gethostbyname调用返回的值相同   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sent_http_HEADER</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表示返回客户端的 HTTP响应中相应头部的值。HEADER名称全小写。例如，用 $sent_http_content_type表示响应中 Content-Type头部对应的值   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$is_args</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表示请求中的 URI 是否带参数，如果带参数，$is_args值为 ?，如果不带参数，则是空字符串,可以用于条件判断  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$limit_rate</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表示当前连接的限速是多少，0表示无限速   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$nginx_version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表示当前 Nginx的版本号   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$query_string</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>请求 URI中的参数，与 $args相同，然而 $query_string是只读的不会改变   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$remote_addr</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表示客户端的地址   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$remote_port</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表示客户端连接使用的端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$remote_user</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表示使用 Auth Basic Module时定义的用户名   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$request_filename</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表示用户请求中的 URI 经过 root或 alias转换后的文件路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$request_body</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表示 HTTP请求中的包体，该参数只在 proxy_pass 或 fastcgi_pass 中有意义   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$request_body_file</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表示 HTTP请求中的包体存储的临时文件名   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$request_completion</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当请求已经全部完成时，其值为 “ok”。若没有完成，就要返回客户端，则其值为空字符串；或者在断点续传等情况下使用 HTTP range 访问的并不是文件的最后一块，那么其值也是空字符串。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$request_method</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表示 HTTP 请求的方法名，如 GET、PUT、POST等   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$scheme</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表示 HTTP scheme，如在请求 <a href="https://nginx.com/中表示" target="_blank" rel="noopener">https://nginx.com/中表示</a> https</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$server_addr</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表示服务器地址   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$server_name</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表示服务器名称   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$server_port</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表示服务器端口   </p>
+<pre><code>$server_protocol
+</code></pre></li>
+<li>表示服务器向客户端发送响应的协议，如 HTTP/1.1或 HTTP/1.0  </li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/08/20/nginx/nginx 的ngx_http_core_module模块处理请求/" data-id="cjfb3thf6001yrk5l7f1qd31i" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/11/11/Java 自定义超实用Redis工具类（满足对象，list，map等类型）/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Java 自定义超实用Redis工具类（满足对象，list，map等类型）
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/07/23/消息中间件/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">分布式之消息中间件</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/28/hello-world/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/03/28/hello-world/" class="title">Hello World</a></p>
+                            <p class="item-date"><time datetime="2018-03-28T02:05:56.000Z" itemprop="datePublished">2018-03-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/23/Java 内存详解/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/03/23/Java 内存详解/" class="title">Java JVM 内存详解</a></p>
+                            <p class="item-date"><time datetime="2018-03-23T07:53:56.000Z" itemprop="datePublished">2018-03-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/23/JavaEE 使用Gradle发布jar包到远程中央仓库/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
+                            <p class="item-title"><a href="/2018/03/23/JavaEE 使用Gradle发布jar包到远程中央仓库/" class="title">JavaEE 使用Gradle发布jar包到远程中央仓库</a></p>
+                            <p class="item-date"><time datetime="2018-03-23T07:53:56.000Z" itemprop="datePublished">2018-03-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/23/JavaEE 使用Maven发布jar包到远程中央仓库/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
+                            <p class="item-title"><a href="/2018/03/23/JavaEE 使用Maven发布jar包到远程中央仓库/" class="title">JavaEE 使用Maven发布jar包到远程中央仓库</a></p>
+                            <p class="item-date"><time datetime="2018-03-23T07:00:56.000Z" itemprop="datePublished">2018-03-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/22/JavaEE 发布jar包到远程maven中央仓库/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
+                            <p class="item-title"><a href="/2018/03/22/JavaEE 发布jar包到远程maven中央仓库/" class="title">JavaEE 发布jar包到远程maven中央仓库</a></p>
+                            <p class="item-date"><time datetime="2018-03-22T03:33:56.000Z" itemprop="datePublished">2018-03-22</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 16.67px;">JavaEE</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/服务器/" style="font-size: 13.33px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 16.67px;">消息队列</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 CatalpaFlat<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

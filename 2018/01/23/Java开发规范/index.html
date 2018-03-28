@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Java 编码规范 | CatalpaFlat&#39;s Blogs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Java 编码规范 编写时间：2018.01.20编写人：CatalpaFlat  第1章    序言&amp;emsp;&amp;emsp;本规范的目的在于：建立一个可行可操作的编程标准、约定和指南，以规范公司java代码研发工作。&amp;emsp;&amp;emsp;为了提高公司研发能力，该规范的制定是为了规范java代码开发，提高java开发质量，从代码的层面规范并提高java项目的研发水平。该规范由Java技术小组制定">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 编码规范">
+<meta property="og:url" content="https://catalpaflat.github.io/2018/01/23/Java开发规范/index.html">
+<meta property="og:site_name" content="CatalpaFlat&#39;s Blogs">
+<meta property="og:description" content="Java 编码规范 编写时间：2018.01.20编写人：CatalpaFlat  第1章    序言&amp;emsp;&amp;emsp;本规范的目的在于：建立一个可行可操作的编程标准、约定和指南，以规范公司java代码研发工作。&amp;emsp;&amp;emsp;为了提高公司研发能力，该规范的制定是为了规范java代码开发，提高java开发质量，从代码的层面规范并提高java项目的研发水平。该规范由Java技术小组制定">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-28T12:57:49.869Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java 编码规范">
+<meta name="twitter:description" content="Java 编码规范 编写时间：2018.01.20编写人：CatalpaFlat  第1章    序言&amp;emsp;&amp;emsp;本规范的目的在于：建立一个可行可操作的编程标准、约定和指南，以规范公司java代码研发工作。&amp;emsp;&amp;emsp;为了提高公司研发能力，该规范的制定是为了规范java代码开发，提高java开发质量，从代码的层面规范并提高java项目的研发水平。该规范由Java技术小组制定">
+    
+
+    
+        <link rel="alternate" href="/" title="CatalpaFlat&#39;s Blogs" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">CatalpaFlat&#39;s Blogs</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.jpeg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.jpeg" />
+            <h2 id="name">CatalpaFlat</h2>
+            <h3 id="title">A good DEMO is a good brick wall.</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>ShenZhen, China</span>
+            <a id="follow" target="_blank" href="https://github.com/CatalpaFlat">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                20
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                5
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/CatalpaFlat" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Java开发规范" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Java 编码规范
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/01/23/Java开发规范/">
+            <time datetime="2018-01-23T05:20:56.000Z" itemprop="datePublished">2018-01-23</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Java/">Java</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="Java-编码规范"><a href="#Java-编码规范" class="headerlink" title="Java 编码规范"></a>Java 编码规范</h1><blockquote>
+<p>编写时间：2018.01.20<br>编写人：CatalpaFlat</p>
+</blockquote>
+<h2 id="第1章-序言"><a href="#第1章-序言" class="headerlink" title="第1章    序言"></a>第1章    序言</h2><p>&emsp;&emsp;本规范的目的在于：建立一个可行可操作的编程标准、约定和指南，以规范公司java代码研发工作。<br>&emsp;&emsp;为了提高公司研发能力，该规范的制定是为了规范java代码开发，提高java开发质量，从代码的层面规范并提高java项目的研发水平。该规范由Java技术小组制定，组织技术人员对重点项目以及新的java项目定期检查，对代码质量进行评估，对代码质量较差限期整改，并报Java技术小组组长备案作为项目考核依据。<br>&emsp;&emsp;本规范的内容包括两个方面：编程规约、异常日志、单元测试、安全规约、工程结构、MySQL数据库六个维度。再根据内容特征，细分成若干二级子目录。<br>&emsp;&emsp;为了开发者针对违规代码进行调整，根据约束力强弱及故障敏感性：  </p>
+<ul>
+<li>规约级别：强制、推荐、参考三大类；<ul>
+<li>“说明”：对内容做了适当扩展和解释，对于规约条目的延伸信息中；</li>
+<li>“正例”：提倡什么样的编码和实现方式；</li>
+<li>“反例”：说明需要提防的雷区，以及真实的错误案例。  </li>
+</ul>
+</li>
+</ul>
+<p>&emsp;&emsp;本规范解释权归Java技术小组，属于Java技术小组为了提供公司研发水平以及质量的一系列措施中的一部分，在后续的版本中将根据具体需要进行修改以及调整。技术小组审核后给出相应的整改意见，对于有争议的问题，可直接与Java技术小组组长沟通。   </p>
+<h2 id="第2章-编程规约"><a href="#第2章-编程规约" class="headerlink" title="第2章    编程规约"></a>第2章    编程规约</h2><h3 id="2-1-命名规范"><a href="#2-1-命名规范" class="headerlink" title="2.1    命名规范"></a>2.1    命名规范</h3><p>1.【强制】代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束。<br>&emsp;反例：<em>name/__name/$Object/name</em>/name$/Object$<br>2.【强制】代码中的命名严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。<br>&emsp;说明：正确的英文拼写和语法可以让阅读者易于理解，避免歧义。注意，即使纯拼音命名方式也要避免采用。<br>&emsp;正例：alibaba / taobao / youku / hangzhou 等国际通用的名称，可视同英文。<br>&emsp;反例：DaZhePromotion [打折] / getPingfenByName() [评分] / int 某变量 = 3<br>3.【强制】类名使用UpperCamelCase风格，必须遵从驼峰形式，但以下情形例外：DO / BO / DTO / VO / AO / TO<br>&emsp;正例：MarcoPolo / UserDO / XmlService / TcpUdpDeal / TaPromotion<br>&emsp;反例：macroPolo / UserDo / XMLService / TCPUDPDeal / TAPromotion<br>4.【强制】方法名、参数名、成员变量、局部变量都统一使用lowerCamelCase风格，必须遵从驼峰形式。<br>&emsp;正例： localValue / getHttpMessage() / inputUserId<br>5.【强制】常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长。<br>&emsp;正例：MAX_STOCK_COUNT<br>&emsp;反例：MAX_COUNT<br>6.【强制】抽象类命名使用Abstract或Base开头；异常类命名使用Exception结尾；测试类命名以它要测试的类的名称开始，以Test结尾。<br>7.【强制】中括号是数组类型的一部分，<br>&emsp;正例：数组定义如下：String[] args;<br>&emsp;反例：使用String args[]的方式来定义。<br>8.【强制】POJO类中布尔类型的变量，都不要加is，否则部分框架解析会引起序列化错误。<br>&emsp;反例：定义为基本数据类型Boolean isDeleted；的属性，它的方法也是isDeleted()，RPC框架在反向解析的时候，“以为”对应的属性名称是deleted，导致属性获取不到，进而抛出异常。<br>9.【强制】包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。包名统一使用单数形式，但是类名如果有复数含义，类名可以使用复数形式。<br>&emsp;正例： 应用工具类包名为com.alibaba.open.util、类名为MessageUtils（此规则参考spring的框架结构）<br>10.【强制】杜绝完全不规范的缩写，避免望文不知义。<br>&emsp;反例：AbstractClass“缩写”命名成AbsClass；condition“缩写”命名成 condi，此类随意缩写严重降低了代码的可阅读性。<br>11.【推荐】为了达到代码自解释的目标，任何自定义编程元素在命名时，使用尽量完整的单词组合来表达其意。<br>&emsp;正例：从远程仓库拉取代码的类命名为PullCodeFromRemoteRepository。<br>&emsp;反例：变量int a; 的随意命名方式。<br>12.【推荐】如果模块、接口、类、方法使用了设计模式，在命名时体现出具体模式。<br>&emsp;说明：将设计模式体现在名字中，有利于阅读者快速理解架构设计理念。<br>&emsp;正例：public class OrderFactory; public class LoginProxy; public class ResourceObserver;<br>13.【推荐】接口类中的方法和属性不要加任何修饰符号（public 也不要加），保持代码的简洁性，并加上有效的Javadoc注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量。<br>&emsp;正例：接口方法签名：void f(); 接口基础常量表示：String COMPANY = “alibaba”;<br>&emsp;反例：接口方法定义：public abstract void f();<br>&emsp;说明：JDK8中接口允许有默认实现，那么这个default方法，是对所有实现类都有价值的默认实现。<br>14.接口和实现类的命名有两套规则：<br> &emsp;1）【强制】对于Service和DAO类，基于SOA的理念，暴露出来的服务一定是接口，内部的实现类用Impl的后缀与接口区别。<br>&emsp;&emsp;正例：CacheServiceImpl实现CacheService接口。<br>&emsp; 2）【推荐】如果是形容能力的接口名称，取对应的形容词做接口名（通常是–able的形式）。<br>&emsp;&emsp;正例：AbstractTranslator实现 Translatable。<br>15.【参考】枚举类名建议带上Enum后缀，枚举成员名称需要全大写，单词间用下划线隔开。<br>&emsp;说明：枚举其实就是特殊的常量类，且构造方法被默认强制是私有。<br>&emsp;正例：枚举名字为ProcessStatusEnum的成员名称：SUCCESS / UNKOWN_REASON。<br>16.【参考】各层命名规约：<br>&emsp;A) Service/DAO层方法命名规约:<br>&emsp;&emsp;1） 获取单个对象的方法用get做前缀。<br>&emsp;&emsp;2） 获取多个对象的方法用list做前缀。<br>&emsp;&emsp;3） 获取统计值的方法用count做前缀。<br>&emsp;&emsp;4） 插入的方法用save/insert做前缀。<br>&emsp;&emsp;5） 删除的方法用remove/delete做前缀。<br>&emsp;&emsp;6） 修改的方法用update做前缀。<br>&emsp;B) 领域模型命名规约:<br>&emsp;&emsp;1） 数据对象：xxxDO，xxx即为数据表名。<br>&emsp;&emsp;2） 数据传输对象：xxxDTO，xxx为业务领域相关的名称。<br>&emsp;&emsp;3） 展示对象：xxxVO，xxx一般为网页名称。<br>&emsp;&emsp;4） POJO是DO/DTO/BO/VO的统称，禁止命名成xxxPOJO。  </p>
+<h3 id="2-2-常量定义"><a href="#2-2-常量定义" class="headerlink" title="2.2    常量定义"></a>2.2    常量定义</h3><p>1.【强制】不允许任何魔法值（即未经定义的常量）直接出现在代码中。<br>&emsp;反例：String key = “Id#taobao_” + tradeId; cache.put(key, value);<br>2.【强制】long或者Long初始赋值时，使用大写的L，不能是小写的l，小写容易跟数字1混淆，造成误解。<br>&emsp;说明：Long a = 2l; 写的是数字的21，还是Long型的2?<br>3.【推荐】不要使用一个常量类维护所有常量，按常量功能进行归类，分开维护。<br>&emsp;说明：大而全的常量类，非得使用查找功能才能定位到修改的常量，不利于理解和维护。<br>&emsp;正例：缓存相关常量放在类CacheConsts下；系统配置相关常量放在类ConfigConsts下。<br>4.【推荐】常量的复用层次有五层：跨应用共享常量、应用内共享常量、子工程内共享常量、包内共享常量、类内共享常量。<br>&emsp;1） 跨应用共享常量：放置在二方库中，通常是client.jar中的constant目录下。<br>&emsp;2） 应用内共享常量：放置在一方库中，通常是modules中的constant目录下。<br>&emsp;反例：易懂变量也要统一定义成应用内共享常量，两位攻城师在两个类中分别定义了表示“是”的变量：   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//类A中：</span><br><span class="line">public static final String YES = &quot;yes&quot;;</span><br><span class="line">//类B中：</span><br><span class="line">public static final String YES = &quot;y&quot;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">		A.YES.equals(B.YES);//预期是true，但实际返回为false，导致线上问题。  </span><br><span class="line">```   </span><br><span class="line"></span><br><span class="line">&amp;emsp;3） 子工程内部共享常量：即在当前子工程的constant目录下。  </span><br><span class="line">&amp;emsp;4） 包内共享常量：即在当前包下单独的constant目录下。  </span><br><span class="line">&amp;emsp;5） 类内共享常量：直接在类内部private static final定义。  </span><br><span class="line"></span><br><span class="line">5.【推荐】如果变量值仅在一个范围内变化，且带有名称之外的延伸属性，定义为枚举类。下面正例中的数字就是延伸信息，表示星期几。  </span><br><span class="line">正例：</span><br></pre></td></tr></table></figure>
+<pre><code>public Enum {
+    MONDAY(1),
+    TUESDAY(2),
+    WEDNESDAY(3),
+    THURSDAY(4),
+    FRIDAY(5),
+    SATURDAY(6),
+    SUNDAY(7);
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 2.3	代码格式</span><br><span class="line">1.【强制】大括号的使用约定。如果是大括号内为空，则简洁地写成&#123;&#125;即可，不需要换行；如果是非空代码块则：  </span><br><span class="line">&amp;emsp;1） 左大括号前不换行。  </span><br><span class="line">&amp;emsp;2） 左大括号后换行。  </span><br><span class="line">&amp;emsp;3） 右大括号前换行。  </span><br><span class="line">&amp;emsp;4） 右大括号后还有else等代码则不换行；表示终止的右大括号后必须换行。   </span><br><span class="line">2.【强制】 左小括号和字符之间不出现空格；同样，右小括号和字符之间也不出现空格。详见第5条下方正例提示。  </span><br><span class="line">&amp;emsp;反例：if (空格a == b空格)  </span><br><span class="line">3.【强制】if/for/while/switch/do等保留字与括号之间都必须加空格。  </span><br><span class="line">4.【强制】任何二目、三目运算符的左右两边都需要加一个空格。   </span><br><span class="line">&amp;emsp;说明：运算符包括赋值运算符=、逻辑运算符&amp;&amp;、加减乘除符号等。   </span><br><span class="line">5.【强制】采用4个空格缩进，禁止使用tab字符。  </span><br><span class="line">&amp;emsp;说明：如果使用tab缩进，必须设置1个tab为4个空格。IDEA设置tab为4个空格时，请勿勾选Use tab character；而在eclipse中，必须勾选insert spaces for tabs。    </span><br><span class="line">&amp;emsp;正例： （涉及1-5点）</span><br></pre></td></tr></table></figure>
+<pre><code>public static void main(String[] args) {
+    // 缩进4个空格
+    String say = &quot;hello&quot;;
+    // 运算符的左右必须有一个空格
+    int flag = 0;
+    // 关键词if与括号之间必须有一个空格，括号内的f与左括号，0与右括号不需要空格
+    if (flag == 0) {
+      System.out.println(say);
+    }
+    // 左大括号前加空格且不换行；左大括号后换行
+    if (flag == 1) {
+      System.out.println(&quot;world&quot;);
+      // 右大括号前换行，右大括号后有else，不用换行
+    } else {
+      System.out.println(&quot;ok&quot;);
+      // 在右大括号后直接结束，则必须换行
+    }
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">6.【强制】注释的双斜线与注释内容之间有且仅有一个空格。    </span><br><span class="line">&amp;emsp;正例：// 注释内容，注意在//和注释内容之间有一个空格。  </span><br><span class="line">7.【强制】单行字符数限制不超过120个，超出需要换行，换行时遵循如下原则：    </span><br><span class="line">&amp;emsp;1） 第二行相对第一行缩进4个空格，从第三行开始，不再继续缩进，参考示例。    </span><br><span class="line">&amp;emsp;2） 运算符与下文一起换行。  </span><br><span class="line">&amp;emsp;3） 方法调用的点符号与下文一起换行。  </span><br><span class="line">&amp;emsp;4） 方法调用时，多个参数，需要换行时，在逗号后进行。  </span><br><span class="line">&amp;emsp;5） 在括号前不要换行，见反例。  </span><br><span class="line">&amp;emsp;正例：</span><br></pre></td></tr></table></figure>
+<pre><code>StringBuffer sb = new StringBuffer();
+// 超过120个字符的情况下，换行缩进4个空格，点号和方法名称一起换行
+sb.append(&quot;zi&quot;).append(&quot;xin&quot;)...
+.append(&quot;huang&quot;)...
+.append(&quot;huang&quot;)...
+.append(&quot;huang&quot;);
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;emsp;反例：</span><br></pre></td></tr></table></figure>
+<pre><code>StringBuffer sb = new StringBuffer();
+// 超过120个字符的情况下，不要在括号前换行
+sb.append(&quot;zi&quot;).append(&quot;xin&quot;)...append
+(&quot;huang&quot;);
+// 参数很多的方法调用可能超过120个字符，不要在逗号前换行
+method(args1, args2, args3, ...
+, argsX);  
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">8.【强制】方法参数在定义和传入时，多个参数逗号后边必须加空格。  </span><br><span class="line">&amp;emsp;正例：下例中实参的&quot;a&quot;,后边必须要有一个空格。</span><br></pre></td></tr></table></figure>
+<pre><code>method(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;);
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">9.【强制】IDE的text file encoding设置为UTF-8; IDE中文件的换行符使用Unix格式，不要使用Windows格式。  </span><br><span class="line">10.【推荐】没有必要增加若干空格来使某一行的字符与上一行对应位置的字符对齐。  </span><br><span class="line">&amp;emsp;正例：</span><br></pre></td></tr></table></figure>
+<pre><code>int a = 3;
+long b = 4L;
+float c = 5F;
+StringBuffer sb = new StringBuffer();
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&amp;emsp;说明：增加sb这个变量，如果需要对齐，则给a、b、c都要增加几个空格，在变量比较多的情况下，是一种累赘的事情。  </span><br><span class="line">11.【推荐】方法体内的执行语句组、变量的定义语句组、不同的业务逻辑之间或者不同的语义之间插入一个空行。相同业务逻辑和语义之间不需要插入空行。  </span><br><span class="line">&amp;emsp;说明：没有必要插入多个空行进行隔开。      </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 2.4	OOP规约</span><br><span class="line">1.【强制】避免通过一个类的对象引用访问此类的静态变量或静态方法，无谓增加编译器解析成本，直接用类名来访问即可。    </span><br><span class="line">2.【强制】所有的覆写方法，必须加@Override注解。  </span><br><span class="line">&amp;emsp;说明：getObject()与get0bject()的问题。一个是字母的O，一个是数字的0，加@Override可以准确判断是否覆盖成功。另外，如果在抽象类中对方法签名进行修改，其实现类会马上编译报错。  </span><br><span class="line">3.【强制】相同参数类型，相同业务含义，才可以使用Java的可变参数，避免使用Object。  </span><br><span class="line">&amp;emsp;说明：可变参数必须放置在参数列表的最后。（提倡同学们尽量不用可变参数编程）  </span><br><span class="line">正例：</span><br></pre></td></tr></table></figure>
+<pre><code>public User getUsers(String type, Integer... ids) {...}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">4.【强制】外部正在调用或者二方库依赖的接口，不允许修改方法签名，避免对接口调用方产生影响。接口过时必须加@Deprecated注解，并清晰地说明采用的新接口或者新服务是什么。    </span><br><span class="line">5.【强制】不能使用过时的类或方法。  </span><br><span class="line">&amp;emsp;说明：java.net.URLDecoder 中的方法decode(String encodeStr) 这个方法已经过时，应该使用双参数decode(String source, String encode)。接口提供方既然明确是过时接口，那么有义务同时提供新的接口；作为调用方来说，有义务去考证过时方法的新实现是什么。  </span><br><span class="line">6.【强制】Object的equals方法容易抛空指针异常，应使用常量或确定有值的对象来调用equals。  </span><br><span class="line">&amp;emsp;正例：&quot;test&quot;.equals(object);  </span><br><span class="line">&amp;emsp;反例：object.equals(&quot;test&quot;);  </span><br><span class="line">&amp;emsp;说明：推荐使用java.util.Objects#equals（JDK7引入的工具类）  </span><br><span class="line">7.【强制】所有的相同类型的包装类对象之间值的比较，全部使用equals方法比较。  </span><br><span class="line">&amp;emsp;说明：对于Integer var = ? 在-128至127范围内的赋值，Integer对象是在IntegerCache.cache产生，会复用已有对象，这个区间内的Integer值可以直接使用==进行判断，但是这个区间之外的所有数据，都会在堆上产生，并不会复用已有对象，这是一个大坑，推荐使用equals方法进行判断。  </span><br><span class="line">8.关于基本数据类型与包装数据类型的使用标准如下：  </span><br><span class="line">&amp;emsp;1） 【强制】所有的POJO类属性必须使用包装数据类型。  </span><br><span class="line">&amp;emsp;2） 【强制】RPC方法的返回值和参数必须使用包装数据类型。  </span><br><span class="line">&amp;emsp;3） 【推荐】所有的局部变量使用基本数据类型。  </span><br><span class="line">&amp;emsp;说明：POJO类属性没有初值是提醒使用者在需要使用时，必须自己显式地进行赋值，任何NPE问题，或者入库检查，都由使用者来保证。  </span><br><span class="line">&amp;emsp;正例：数据库的查询结果可能是null，因为自动拆箱，用基本数据类型接收有NPE风险。  </span><br><span class="line">&amp;emsp;反例：比如显示成交总额涨跌情况，即正负x%，x为基本数据类型，调用的RPC服务，调用不成功时，返回的是默认值，页面显示为0%，这是不合理的，应该显示成中划线。所以包装数据类型的null值，能够表示额外的信息，如：远程调用失败，异常退出。  </span><br><span class="line">9.【强制】定义DO/DTO/VO等POJO类时，不要设定任何属性默认值。  </span><br><span class="line">&amp;emsp;反例：POJO类的gmtCreate默认值为new Date();但是这个属性在数据提取时并没有置入具体值，在更新其它字段时又附带更新了此字段，导致创建时间被修改成当前时间。   </span><br><span class="line">10.【强制】序列化类新增属性时，请不要修改serialVersionUID字段，避免反序列失败；如果完全不兼容升级，避免反序列化混乱，那么请修改serialVersionUID值。  </span><br><span class="line">&amp;emsp;说明：注意serialVersionUID不一致会抛出序列化运行时异常。    </span><br><span class="line">11.【强制】构造方法里面禁止加入任何业务逻辑，如果有初始化逻辑，请放在init方法中。   </span><br><span class="line">12.【强制】POJO类必须写toString方法。使用IDE的中工具：source&gt; generate toString时，如果继承了另一个POJO类，注意在前面加一下super.toString。   </span><br><span class="line">&amp;emsp;说明：在方法执行抛出异常时，可以直接调用POJO的toString()方法打印其属性值，便于排查问题。  </span><br><span class="line">13.【推荐】使用索引访问用String的split方法得到的数组时，需做最后一个分隔符后有无内容的检查，否则会有抛IndexOutOfBoundsException的风险。   </span><br><span class="line">&amp;emsp;说明：</span><br></pre></td></tr></table></figure>
+<pre><code>String str = &quot;a,b,c,,&quot;;
+String[] ary = str.split(&quot;,&quot;);
+// 预期大于3，结果是3
+System.out.println(ary.length);
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">14.【推荐】当一个类有多个构造方法，或者多个同名方法，这些方法应该按顺序放置在一起，便于阅读，此条规则优先于第15条规则。  </span><br><span class="line">15.【推荐】 类内方法定义顺序依次是：公有方法或保护方法 &gt; 私有方法 &gt; getter/setter方法。  </span><br><span class="line">&amp;emsp;说明：公有方法是类的调用者和维护者最关心的方法，首屏展示最好；保护方法虽然只是子类关心，也可能是“模板设计模式”下的核心方法；而私有方法外部一般不需要特别关心，是一个黑盒实现；因为承载的信息价值较低，所有Service和DAO的getter/setter方法放在类体最后。     </span><br><span class="line">16.【推荐】setter方法中，参数名称与类成员变量名称一致，this.成员名 = 参数名。在getter/setter方法中，不要增加业务逻辑，增加排查问题的难度。  </span><br><span class="line">&amp;emsp;反例：</span><br></pre></td></tr></table></figure>
+<pre><code>public Integer getData() {
+    if (true) {
+        return this.data + 100;
+    } else {
+        return this.data - 100;
+    }
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">17.【推荐】循环体内，字符串的连接方式，使用StringBuilder的append方法进行扩展。  </span><br><span class="line">&amp;emsp;说明：反编译出的字节码文件显示每次循环都会new出一个StringBuilder对象，然后进行append操作，最后通过toString方法返回String对象，造成内存资源浪费。   </span><br><span class="line">&amp;emsp;反例：</span><br></pre></td></tr></table></figure>
+<pre><code>String str = &quot;start&quot;;
+for (int i = 0; i &lt; 100; i++) {
+str = str + &quot;hello&quot;;
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">18.【推荐】final可以声明类、成员变量、方法、以及本地变量，下列情况使用final关键字：  </span><br><span class="line">&amp;emsp;1） 不允许被继承的类，如：String类。  </span><br><span class="line">&amp;emsp;2） 不允许修改引用的域对象，如：POJO类的域变量。  </span><br><span class="line">&amp;emsp;3） 不允许被重写的方法，如：POJO类的setter方法。  </span><br><span class="line">&amp;emsp;4） 不允许运行过程中重新赋值的局部变量。  </span><br><span class="line">&amp;emsp;5） 避免上下文重复使用一个变量，使用final描述可以强制重新定义一个变量，方便更好地进行重构。   </span><br><span class="line">19.【推荐】慎用Object的clone方法来拷贝对象。  </span><br><span class="line">&amp;emsp;说明：对象的clone方法默认是浅拷贝，若想实现深拷贝需要重写clone方法实现属性对象的拷贝。   </span><br><span class="line">20.【推荐】类成员与方法访问控制从严：   </span><br><span class="line">&amp;emsp;1） 如果不允许外部直接通过new来创建对象，那么构造方法必须是private。  </span><br><span class="line">&amp;emsp;2） 工具类不允许有public或default构造方法。  </span><br><span class="line">&amp;emsp;3） 类非static成员变量并且与子类共享，必须是protected。  </span><br><span class="line">&amp;emsp;4） 类非static成员变量并且仅在本类使用，必须是private。  </span><br><span class="line">&amp;emsp;5） 类static成员变量如果仅在本类使用，必须是private。  </span><br><span class="line">&amp;emsp;6） 若是static成员变量，必须考虑是否为final。  </span><br><span class="line">&amp;emsp;7） 类成员方法只供类内部调用，必须是private。  </span><br><span class="line">&amp;emsp;8） 类成员方法只对继承类公开，那么限制为protected。  </span><br><span class="line">&amp;emsp;说明：任何类、方法、参数、变量，严控访问范围。过于宽泛的访问范围，不利于模块解耦。思考：如果是一个private的方法，想删除就删除，可是一个public的service方法，或者一个public的成员变量，删除一下，不得手心冒点汗吗？变量像自己的小孩，尽量在自己的视线内，变量作用域太大，无限制的到处跑，那么你会担心的。   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 2.5	集合规约  </span><br><span class="line">1.【强制】关于hashCode和equals的处理，遵循如下规则：  </span><br><span class="line">&amp;emsp;1） 只要重写equals，就必须重写hashCode。  </span><br><span class="line">&amp;emsp;2） 因为Set存储的是不重复的对象，依据hashCode和equals进行判断，所以Set存储的对象必须重写这两个方法。  </span><br><span class="line">&amp;emsp;3） 如果自定义对象做为Map的键，那么必须重写hashCode和equals。</span><br><span class="line">说明：String重写了hashCode和equals方法，所以我们可以非常愉快地使用String对象作为key来使用。  </span><br><span class="line">2.【强制】 ArrayList的subList结果不可强转成ArrayList，否则会抛出ClassCastException异常，即java.util.RandomAccessSubList cannot be cast to java.util.ArrayList.   </span><br><span class="line">&amp;emsp;说明：subList 返回的是 ArrayList 的内部类 SubList，并不是 ArrayList ，而是 ArrayList 的一个视图，对于SubList子列表的所有操作最终会反映到原列表上。  </span><br><span class="line">3.【强制】在subList场景中，高度注意对原集合元素个数的修改，会导致子列表的遍历、增加、删除均会产生ConcurrentModificationException 异常。  </span><br><span class="line">4.【强制】使用集合转数组的方法，必须使用集合的toArray(T[] array)，传入的是类型完全一样的数组，大小就是list.size()。  </span><br><span class="line">&amp;emsp;说明：使用toArray带参方法，入参分配的数组空间不够大时，toArray方法内部将重新分配内存空间，并返回新数组地址；如果数组元素大于实际所需，下标为[ list.size() ]的数组元素将被置为null，其它数组元素保持原值，因此最好将方法入参数组大小定义与集合元素个数一致。  </span><br><span class="line">&amp;emsp;正例：</span><br></pre></td></tr></table></figure>
+<pre><code>List&lt;String&gt; list = new ArrayList&lt;String&gt;(2);
+list.add(&quot;guan&quot;);
+list.add(&quot;bao&quot;);
+String[] array = new String[list.size()];
+array = list.toArray(array);
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&amp;emsp;反例：直接使用toArray无参方法存在问题，此方法返回值只能是Object[]类，若强转其它类型数组将出现ClassCastException错误。  </span><br><span class="line">5.【强制】使用工具类Arrays.asList()把数组转换成集合时，不能使用其修改集合相关的方法，它的add/remove/clear方法会抛出 UnsupportedOperationException异常。  </span><br><span class="line">&amp;emsp;说明：asList的返回对象是一个Arrays内部类，并没有实现集合的修改方法。Arrays.asList体现的是适配器模式，只是转换接口，后台的数据仍是数组。</span><br></pre></td></tr></table></figure>
+<pre><code>String[] str = new String[] { &quot;you&quot;, &quot;wu&quot; };
+List list = Arrays.asList(str);
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&amp;emsp;&amp;emsp;第一种情况：list.add(&quot;yangguanbao&quot;); 运行时异常。  </span><br><span class="line">&amp;emsp;&amp;emsp;第二种情况：str[0] = &quot;gujin&quot;; 那么list.get(0)也会随之修改。  </span><br><span class="line">6.【强制】泛型通配符&lt;? extends T&gt;来接收返回的数据，此写法的泛型集合不能使用add方法，而&lt;? super T&gt;不能使用get方法，做为接口调用赋值时易出错。  </span><br><span class="line">&amp;emsp;说明：扩展说一下PECS(Producer Extends Consumer Super)原则：  </span><br><span class="line">&amp;emsp;&amp;emsp;第一、频繁往外读取内容的，适合用&lt;? extends T&gt;。  </span><br><span class="line">&amp;emsp;&amp;emsp;第二、经常往里插入的，适合用&lt;? super T&gt;。  </span><br><span class="line">7.【强制】不要在foreach循环里进行元素的remove/add操作。remove元素请使用Iterator方式，如果并发操作，需要对Iterator对象加锁。  </span><br><span class="line">&amp;emsp;正例：</span><br></pre></td></tr></table></figure>
+<p>  Iterator<string> iterator = list.iterator();<br>    while (iterator.hasNext()) {<br>      String item = iterator.next();<br>      if (删除元素的条件) {<br>        iterator.remove();<br>      }<br>  }<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&amp;emsp;反例：</span><br></pre></td></tr></table></figure></string></p>
+<pre><code>List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+list.add(&quot;1&quot;);
+list.add(&quot;2&quot;);
+for (String item : list) {
+  if (&quot;1&quot;.equals(item)) {
+     list.remove(item);
+  }
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&amp;emsp;说明：以上代码的执行结果肯定会出乎大家的意料，那么试一下把“1”换成“2”，会是同样的结果吗？  </span><br><span class="line">8.【强制】 在JDK7版本及以上，Comparator要满足如下三个条件，不然Arrays.sort，Collections.sort会报IllegalArgumentException异常。  </span><br><span class="line">&amp;emsp;说明：三个条件如下  </span><br><span class="line">&amp;emsp;&amp;emsp;1） x，y的比较结果和y，x的比较结果相反。  </span><br><span class="line">&amp;emsp;&amp;emsp;2） x&gt;y，y&gt;z，则x&gt;z。  </span><br><span class="line">&amp;emsp;&amp;emsp;3） x=y，则x，z比较结果和y，z比较结果相同。  </span><br><span class="line">&amp;emsp;反例：下例中没有处理相等的情况，实际使用中可能会出现异常：</span><br></pre></td></tr></table></figure>
+<pre><code>new Comparator&lt;Student&gt;() {
+    @Override
+    public int compare(Student o1, Student o2) {
+        return o1.getId() &gt; o2.getId() ? 1 : -1;
+    }
+};
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">9.【推荐】集合初始化时，指定集合初始值大小。  </span><br><span class="line">&amp;emsp;说明：HashMap使用HashMap(int initialCapacity) 初始化，  </span><br><span class="line">&amp;emsp;正例：initialCapacity =(需要存储的元素个数 / 负载因子) + 1。注意负载因子（即loader factor）默认为0.75，如果暂时无法确定初始值大小，请设置为16（即默认值）。  </span><br><span class="line">&amp;emsp;反例：HashMap需要放置1024个元素，由于没有设置容量初始大小，随着元素不断增加，容量7次被迫扩大，resize需要重建hash表，严重影响性能。  </span><br><span class="line">10.【推荐】使用entrySet遍历Map类集合KV，而不是keySet方式进行遍历。  </span><br><span class="line">&amp;emsp;说明：keySet其实是遍历了2次，一次是转为Iterator对象，另一次是从hashMap中取出key所对应的value。而entrySet只是遍历了一次就把key和value都放到了entry中，效率更高。如果是JDK8，使用Map.foreach方法。</span><br><span class="line">&amp;emsp;正例：values()返回的是V值集合，是一个list集合对象；keySet()返回的是K值集合，是一个Set集合对象；entrySet()返回的是K-V值组合集合。  </span><br><span class="line">11.【推荐】高度注意Map类集合K/V能不能存储null值的情况，如下表格：  </span><br><span class="line"></span><br><span class="line">| 集合类 | Key |	Value |	Super |	说明</span><br><span class="line">|----|----|----|----|----|</span><br><span class="line">|Hashtable |	不允许为null|	不允许为null |	Dictionary| 	线程安全</span><br><span class="line">|ConcurrentHashMap 	|不允许为null 	|不允许为null 	|AbstractMap |	锁分段技术（JDK8:CAS）</span><br><span class="line">|TreeMap 	|不允许为null| 	允许为null |	AbstractMap |	线程不安全</span><br><span class="line">|HashMap |	允许为null |	允许为null |	AbstractMap |	线程不安全</span><br><span class="line">&amp;emsp;反例： 由于HashMap的干扰，很多人认为ConcurrentHashMap是可以置入null值，而事实上，存储null值时会抛出NPE异常。  </span><br><span class="line">12.【参考】合理利用好集合的有序性(sort)和稳定性(order)，避免集合的无序性(unsort)和不稳定性(unorder)带来的负面影响。   </span><br><span class="line">&amp;emsp;说明：有序性是指遍历的结果是按某种比较规则依次排列的。稳定性指集合每次遍历的元素次序是一定的。如：ArrayList是order/unsort；HashMap是unorder/unsort；TreeSet是order/sort。  </span><br><span class="line">13.【参考】利用Set元素唯一的特性，可以快速对一个集合进行去重操作，避免使用List的contains方法进行遍历、对比、去重操作。   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 2.6 并发规约</span><br><span class="line">1.【强制】获取单例对象需要保证线程安全，其中的方法也要保证线程安全。  </span><br><span class="line">&amp;emsp;说明：资源驱动类、工具类、单例工厂类都需要注意。  </span><br><span class="line">2.【强制】创建线程或线程池时请指定有意义的线程名称，方便出错时回溯。  </span><br><span class="line">&amp;emsp;正例：</span><br></pre></td></tr></table></figure>
+<pre><code>public class TimerTaskThread extends Thread {  
+  public TimerTaskThread() {  
+    super.setName(&quot;TimerTaskThread&quot;);  
+    ...  
+  }
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3.【强制】线程资源必须通过线程池提供，不允许在应用中自行显式创建线程。  </span><br><span class="line">&amp;emsp;说明：使用线程池的好处是减少在创建和销毁线程上所花的时间以及系统资源的开销，解决资源不足的问题。如果不使用线程池，有可能造成系统创建大量同类线程而导致消耗完内存或者“过度切换”的问题。  </span><br><span class="line"></span><br><span class="line">4.【强制】线程池不允许使用Executors去创建，而是通过ThreadPoolExecutor的方式，这样的处理方式让写的同学更加明确线程池的运行规则，规避资源耗尽的风险。  </span><br><span class="line">&amp;emsp;说明：Executors返回的线程池对象的弊端如下：  </span><br><span class="line">&amp;emsp;&amp;emsp;1）FixedThreadPool和SingleThreadPool:允许的请求队列长度为Integer.MAX_VALUE，可能会堆积大量的请求，从而导致OOM。  </span><br><span class="line">&amp;emsp;&amp;emsp;2）CachedThreadPool和ScheduledThreadPool:允许的创建线程数量为Integer.MAX_VALUE，可能会创建大量的线程，从而导致OOM。</span><br><span class="line"></span><br><span class="line">5.【强制】SimpleDateFormat 是线程不安全的类，一般不要定义为static变量，如果定义为static，必须加锁，或者使用DateUtils工具类。  </span><br><span class="line">&amp;emsp;正例：注意线程安全，使用DateUtils。亦推荐如下处理：</span><br></pre></td></tr></table></figure>
+<pre><code>private static final ThreadLocal&lt;DateFormat&gt; df = new ThreadLocal&lt;DateFormat&gt;() {  
+  @Override  
+  protected DateFormat initialValue() {  
+    return new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);  
+  }  
+};  
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&amp;emsp;说明：如果是JDK8的应用，可以使用Instant代替Date，LocalDateTime代替Calendar，DateTimeFormatter代替SimpleDateFormat，官方给出的解释：simple beautiful strong immutable thread-safe。  </span><br><span class="line">6.【强制】高并发时，同步调用应该去考量锁的性能损耗。能用无锁数据结构，就不要用锁；能锁区块，就不要锁整个方法体；能用对象锁，就不要用类锁。  </span><br><span class="line">&amp;emsp;说明：尽可能使加锁的代码块工作量尽可能的小，避免在锁代码块中调用RPC方法。  </span><br><span class="line">7.【强制】对多个资源、数据库表、对象同时加锁时，需要保持一致的加锁顺序，否则可能会造成死锁。  </span><br><span class="line">&amp;emsp;说明：线程一需要对表A、B、C依次全部加锁后才可以进行更新操作，那么线程二的加锁顺序也必须是A、B、C，否则可能出现死锁。  </span><br><span class="line">8.【强制】并发修改同一记录时，避免更新丢失，需要加锁。要么在应用层加锁，要么在缓存加锁，要么在数据库层使用乐观锁，使用version作为更新依据。  </span><br><span class="line">&amp;emsp;说明：如果每次访问冲突概率小于20%，推荐使用乐观锁，否则使用悲观锁。乐观锁的重试次数不得小于3次。  </span><br><span class="line">9.【强制】多线程并行处理定时任务时，Timer运行多个TimeTask时，只要其中之一没有捕获抛出的异常，其它任务便会自动终止运行，使用ScheduledExecutorService则没有这个问题。  </span><br><span class="line">10.【推荐】使用CountDownLatch进行异步转同步操作，每个线程退出前必须调用countDown方法，线程执行代码注意catch异常，确保countDown方法被执行到，避免主线程无法执行至await方法，直到超时才返回结果。   </span><br><span class="line">&amp;emsp;说明：注意，子线程抛出异常堆栈，不能在主线程try-catch到。   </span><br><span class="line">11.【推荐】避免Random实例被多线程使用，虽然共享该实例是线程安全的，但会因竞争同一seed 导致的性能下降。  </span><br><span class="line">&amp;emsp;说明：Random实例包括java.util.Random 的实例或者 Math.random()的方式。  </span><br><span class="line">&amp;emsp;正例：在JDK7之后，可以直接使用API ThreadLocalRandom，而在 JDK7之前，需要编码保证每个线程持有一个实例。  </span><br><span class="line">12.【推荐】在并发场景下，通过双重检查锁（double-checked locking）实现延迟初始化的优化问题隐患(可参考 The &quot;Double-Checked Locking is Broken&quot; Declaration)，推荐解决方案中较为简单一种（适用于JDK5及以上版本），将目标属性声明为 volatile型。  </span><br><span class="line">&amp;emsp;反例：</span><br></pre></td></tr></table></figure>
+<pre><code>class Singleton {
+  private Helper helper = null;
+  public Helper getHelper() {
+    if (helper == null) synchronized(this) {
+      if (helper == null)
+      helper = new Helper();
+    }
+      return helper;
+  }
+  // other methods and fields...
+}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">13.【参考】volatile解决多线程内存不可见问题。对于一写多读，是可以解决变量同步问题，但是如果多写，同样无法解决线程安全问题。如果是count++操作，使用如下类实现：AtomicInteger count = new AtomicInteger(); count.addAndGet(1); 如果是JDK8，推荐使用LongAdder对象，比AtomicLong性能更好（减少乐观锁的重试次数）。  </span><br><span class="line">14.【参考】HashMap在容量不够进行resize时由于高并发可能出现死链，导致CPU飙升，在开发过程中可以使用其它数据结构或加锁来规避此风险。  </span><br><span class="line">15.【参考】ThreadLocal无法解决共享对象的更新问题，ThreadLocal对象建议使用static修饰。这个变量是针对一个线程内所有操作共享的，所以设置为静态变量，所有此类实例共享此静态变量 ，也就是说在类第一次被使用时装载，只分配一块存储空间，所有此类的对象(只要是这个线程内定义的)都可以操控这个变量。  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 2.7 控制语句</span><br><span class="line">1.【强制】在一个switch块内，每个case要么通过break/return等来终止，要么注释说明程序将继续执行到哪一个case为止；在一个switch块内，都必须包含一个default语句并且放在最后，即使它什么代码也没有。  </span><br><span class="line">2.【强制】在if/else/for/while/do语句中必须使用大括号。即使只有一行代码，避免采用单行的编码方式：if (condition) statements;   </span><br><span class="line">3.【推荐】表达异常的分支时，少用if-else方式，这种方式可以改写成：</span><br></pre></td></tr></table></figure>
+<p>  if (condition) {<br>  …<br>  return obj;<br>  }<br>  // 接着写else的业务逻辑代码;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&amp;emsp;说明：如果非得使用if()...else if()...else...方式表达逻辑，【强制】避免后续代码维护困难，请勿超过3层。  </span><br><span class="line">&amp;emsp;正例：超过3层的 if-else 的逻辑判断代码可以使用卫语句、策略模式、状态模式等来实现，其中卫语句示例如下：</span><br></pre></td></tr></table></figure></p>
+<p>public void today() {<br>  if (isBusy()) {<br>    System.out.println(“change time.”);<br>    return;<br>  }<br>  if (isFree()) {<br>    System.out.println(“go to travel.”);<br>    retur<br>  }<br>  System.out.println(“stay at home to learn Alibaba Java Coding Guidelines.”);<br>  return;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">4.【推荐】除常用方法（如getXxx/isXxx）等外，不要在条件判断中执行其它复杂的语句，将复杂逻辑判断的结果赋值给一个有意义的布尔变量名，以提高可读性。    </span><br><span class="line">&amp;emsp;说明：很多if语句内的逻辑相当复杂，阅读者需要分析条件表达式的最终结果，才能明确什么样的条件执行什么样的语句，那么，如果阅读者分析逻辑表达式错误呢？  </span><br><span class="line">&amp;emsp;正例：</span><br></pre></td></tr></table></figure></p>
+<p>// 伪代码如下<br>final boolean existed = (file.open(fileName, “w”) != null) &amp;&amp; (…) || (…);<br>if (existed) {<br>…<br>}<br>反例： if ((file.open(fileName, “w”) != null) &amp;&amp; (…) || (…)) {<br>…<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">5.【推荐】循环体中的语句要考量性能，以下操作尽量移至循环体外处理，如定义对象、变量、获取数据库连接，进行不必要的try-catch操作（这个try-catch是否可以移至循环体外）。  </span><br><span class="line">6.【推荐】接口入参保护，这种场景常见的是用于做批量操作的接口。   </span><br><span class="line">7.【参考】下列情形，需要进行参数校验：  </span><br><span class="line">&amp;emsp;1） 调用频次低的方法。   </span><br><span class="line">&amp;emsp;2） 执行时间开销很大的方法。此情形中，参数校验时间几乎可以忽略不计，但如果因为参数错误导致中间执行回退，或者错误，那得不偿失。  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&amp;emsp;3） 需要极高稳定性和可用性的方法。   </span><br><span class="line">&amp;emsp;4） 对外提供的开放接口，不管是RPC/API/HTTP接口。  </span><br><span class="line">&amp;emsp;5） 敏感权限入口。  </span><br><span class="line">8.【参考】下列情形，不需要进行参数校验：   </span><br><span class="line">&amp;emsp;1） 极有可能被循环调用的方法。但在方法说明里必须注明外部参数检查要求。  </span><br><span class="line">&amp;emsp;2） 底层调用频度比较高的方法。毕竟是像纯净水过滤的最后一道，参数错误不太可能到底层才会暴露问题。一般DAO层与Service层都在同一个应用中，部署在同一台服务器中，所以DAO的参数校验，可以省略。  </span><br><span class="line">&amp;emsp;3） 被声明成private只会被自己代码所调用的方法，如果能够确定调用方法的代码传入参数已经做过检查或者肯定不会有问题，此时可以不校验参数。   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 2.8 注释规约</span><br><span class="line">1.【强制】类、类属性、类方法的注释必须使用Javadoc规范，使用/** 内容*/格式，不得使用// xxx方式。   </span><br><span class="line">&amp;emsp;说明：在IDE编辑窗口中，Javadoc方式会提示相关注释，生成Javadoc可以正确输出相应注释；在IDE中，工程调用方法时，不进入方法即可悬浮提示方法、参数、返回值的意义，提高阅读效率。  </span><br><span class="line">2.【强制】所有的抽象方法（包括接口中的方法）必须要用Javadoc注释、除了返回值、参数、异常说明外，还必须指出该方法做什么事情，实现什么功能。 说明：对子类的实现要求，或者调用注意事项，请一并说明。  </span><br><span class="line">3.【强制】所有的类都必须添加创建者和创建日期。  </span><br><span class="line">4.【强制】方法内部单行注释，在被注释语句上方另起一行，使用//注释。方法内部多行注释使用&apos;/*&apos; &apos;*/&apos;注释，注意与代码对齐。  </span><br><span class="line">5.【强制】所有的枚举类型字段必须要有注释，说明每个数据项的用途。  </span><br><span class="line">6.【推荐】与其“半吊子”英文来注释，不如用中文注释把问题说清楚。专有名词与关键字保持英文原文即可。  </span><br><span class="line">&amp;emsp;反例：“TCP连接超时”解释成“传输控制协议连接超时”，理解反而费脑筋。  </span><br><span class="line">7.【推荐】代码修改的同时，注释也要进行相应的修改，尤其是参数、返回值、异常、核心逻辑等的修改。  </span><br><span class="line">&amp;emsp;说明：代码与注释更新不同步，就像路网与导航软件更新不同步一样，如果导航软件严重滞后，就失去了导航的意义。  </span><br><span class="line">8.【参考】谨慎注释掉代码。在上方详细说明，而不是简单地注释掉。如果无用，则删除。  </span><br><span class="line">&amp;emsp;说明：代码被注释掉有两种可能性：  </span><br><span class="line">&amp;emsp;&amp;emsp;1）后续会恢复此段代码逻辑。  </span><br><span class="line">&amp;emsp;&amp;emsp;2）永久不用。前者如果没有备注信息，难以知晓注释动机。后者建议直接删掉（代码仓库保存了历史代码）。  </span><br><span class="line">9.【参考】对于注释的要求：  </span><br><span class="line">&amp;emsp;第一、能够准确反应设计思想和代码逻辑；  </span><br><span class="line">&amp;emsp;第二、能够描述业务含义，使别的程序员能够迅速了解到代码背后的信息。完全没有注释的大段代码对于阅读者形同天书，注释是给自己看的，即使隔很长时间，也能清晰理解当时的思路；注释也是给继任者看的，使其能够快速接替自己的工作。  </span><br><span class="line">10.【参考】好的命名、代码结构是自解释的，注释力求精简准确、表达到位。避免出现注释的一个极端：过多过滥的注释，代码的逻辑一旦修改，修改注释是相当大的负担。    </span><br><span class="line">反例：</span><br></pre></td></tr></table></figure></p>
+<p>// put elephant into fridge<br>put(elephant, fridge);<br><code>`</code><br>方法名put，加上两个有意义的变量名elephant和fridge，已经说明了这是在干什么，语义清晰的代码不需要额外的注释。   </p>
+<p>11.【参考】特殊注释标记，请注明标记人与标记时间。注意及时处理这些标记，通过标记扫描，经常清理此类标记。线上故障有时候就是来源于这些标记处的代码。<br>&emsp;1） 待办事宜（TODO）:（ 标记人，标记时间，[预计处理时间]） 表示需要实现，但目前还未实现的功能。这实际上是一个Javadoc的标签，目前的Javadoc还没有实现，但已经被广泛使用。只能应用于类，接口和方法（因为它是一个Javadoc标签）。<br>&emsp;2） 错误，不能工作（FIXME）:（标记人，标记时间，[预计处理时间]） 在注释中用FIXME标记某代码是错误的，而且不能工作，需要及时纠正的情况。   </p>
+<h2 id="第3章-异常日志"><a href="#第3章-异常日志" class="headerlink" title="第3章    异常日志"></a>第3章    异常日志</h2><h3 id="3-1-异常处理"><a href="#3-1-异常处理" class="headerlink" title="3.1 异常处理"></a>3.1 异常处理</h3>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2018/01/23/Java开发规范/" data-id="cjfb3thdc000lrk5ly55rq1mm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/03/22/JavaEE 发布jar包到远程maven中央仓库/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    JavaEE 发布jar包到远程maven中央仓库
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/12/16/Java 实现中文-拼音转换/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Java 实现中文-拼音转换</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/28/hello-world/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/03/28/hello-world/" class="title">Hello World</a></p>
+                            <p class="item-date"><time datetime="2018-03-28T02:05:56.000Z" itemprop="datePublished">2018-03-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/23/Java 内存详解/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/03/23/Java 内存详解/" class="title">Java JVM 内存详解</a></p>
+                            <p class="item-date"><time datetime="2018-03-23T07:53:56.000Z" itemprop="datePublished">2018-03-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/23/JavaEE 使用Gradle发布jar包到远程中央仓库/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
+                            <p class="item-title"><a href="/2018/03/23/JavaEE 使用Gradle发布jar包到远程中央仓库/" class="title">JavaEE 使用Gradle发布jar包到远程中央仓库</a></p>
+                            <p class="item-date"><time datetime="2018-03-23T07:53:56.000Z" itemprop="datePublished">2018-03-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/23/JavaEE 使用Maven发布jar包到远程中央仓库/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
+                            <p class="item-title"><a href="/2018/03/23/JavaEE 使用Maven发布jar包到远程中央仓库/" class="title">JavaEE 使用Maven发布jar包到远程中央仓库</a></p>
+                            <p class="item-date"><time datetime="2018-03-23T07:00:56.000Z" itemprop="datePublished">2018-03-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/22/JavaEE 发布jar包到远程maven中央仓库/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
+                            <p class="item-title"><a href="/2018/03/22/JavaEE 发布jar包到远程maven中央仓库/" class="title">JavaEE 发布jar包到远程maven中央仓库</a></p>
+                            <p class="item-date"><time datetime="2018-03-22T03:33:56.000Z" itemprop="datePublished">2018-03-22</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 16.67px;">JavaEE</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/服务器/" style="font-size: 13.33px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 16.67px;">消息队列</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 CatalpaFlat<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
