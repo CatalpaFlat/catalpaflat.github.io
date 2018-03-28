@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>JavaEE 使用Maven发布jar包到远程中央仓库 | CatalpaFlat&#39;s Blogs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="JavaEE 使用Maven发布jar包到远程中央仓库0. 前提准备GitHub 上 New Repository 项目（若没有则注册）.   1. Sonatype OSSRH 简介Sonatype OSSRH 使用Nexus 为开源项目提供仓库管理服务，该仓库就是所谓maven的中央仓库，OSSRH允许我们向Maven中央仓库提交二进制文件。使用Sonatype OSSRH可以做以下操作：">
+<meta name="keywords" content="JavaEE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaEE 使用Maven发布jar包到远程中央仓库">
+<meta property="og:url" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/index.html">
+<meta property="og:site_name" content="CatalpaFlat&#39;s Blogs">
+<meta property="og:description" content="JavaEE 使用Maven发布jar包到远程中央仓库0. 前提准备GitHub 上 New Repository 项目（若没有则注册）.   1. Sonatype OSSRH 简介Sonatype OSSRH 使用Nexus 为开源项目提供仓库管理服务，该仓库就是所谓maven的中央仓库，OSSRH允许我们向Maven中央仓库提交二进制文件。使用Sonatype OSSRH可以做以下操作：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG4.jpeg">
+<meta property="og:image" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG32.jpeg">
+<meta property="og:image" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG12.jpeg">
+<meta property="og:image" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG5.jpeg">
+<meta property="og:image" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG7.jpeg">
+<meta property="og:image" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG8.jpeg">
+<meta property="og:image" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG9.jpeg">
+<meta property="og:image" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG13.jpeg">
+<meta property="og:image" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG14.jpeg">
+<meta property="og:image" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG15.jpeg">
+<meta property="og:updated_time" content="2018-03-28T10:04:50.994Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaEE 使用Maven发布jar包到远程中央仓库">
+<meta name="twitter:description" content="JavaEE 使用Maven发布jar包到远程中央仓库0. 前提准备GitHub 上 New Repository 项目（若没有则注册）.   1. Sonatype OSSRH 简介Sonatype OSSRH 使用Nexus 为开源项目提供仓库管理服务，该仓库就是所谓maven的中央仓库，OSSRH允许我们向Maven中央仓库提交二进制文件。使用Sonatype OSSRH可以做以下操作：">
+<meta name="twitter:image" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG4.jpeg">
+    
+
+    
+        <link rel="alternate" href="/" title="CatalpaFlat&#39;s Blogs" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">CatalpaFlat&#39;s Blogs</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.jpeg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.jpeg" />
+            <h2 id="name">CatalpaFlat</h2>
+            <h3 id="title">A good DEMO is a good brick wall.</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>ShenZhen, China</span>
+            <a id="follow" target="_blank" href="https://github.com/CatalpaFlat">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                21
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                5
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/CatalpaFlat" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            JavaEE 使用Maven发布jar包到远程中央仓库
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/">
+            <time datetime="2018-03-23T07:00:56.000Z" itemprop="datePublished">2018-03-23</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JavaEE/">JavaEE</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/JavaEE/">JavaEE</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="JavaEE-使用Maven发布jar包到远程中央仓库"><a href="#JavaEE-使用Maven发布jar包到远程中央仓库" class="headerlink" title="JavaEE 使用Maven发布jar包到远程中央仓库"></a>JavaEE 使用Maven发布jar包到远程中央仓库</h1><h3 id="0-前提准备"><a href="#0-前提准备" class="headerlink" title="0. 前提准备"></a>0. 前提准备</h3><p><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a> 上 New Repository 项目<br>（若没有则注册）. </p>
+<p><img src="img/WechatIMG4.jpeg" alt=""></p>
+<h3 id="1-Sonatype-OSSRH-简介"><a href="#1-Sonatype-OSSRH-简介" class="headerlink" title="1. Sonatype OSSRH 简介"></a>1. Sonatype OSSRH 简介</h3><p>Sonatype OSSRH 使用Nexus 为开源项目提供仓库管理服务，该仓库就是所谓maven的中央仓库，OSSRH允许我们向Maven中央仓库提交二进制文件。<br>使用Sonatype OSSRH可以做以下操作：  </p>
+<ul>
+<li>提交(deploy)开发版本的二进制文件（snapshorts)</li>
+<li>阶段性的发布版本</li>
+<li>发布一个release,同步到Sonatype OSSRH 中央仓库。</li>
+</ul>
+<p>总共就两种版本：snapshorts版本（开发版本）和release（发布版本）</p>
+<h3 id="2-注册JIRA账号"><a href="#2-注册JIRA账号" class="headerlink" title="2. 注册JIRA账号"></a>2. 注册JIRA账号</h3><p><a href="https://issues.sonatype.org/secure/Dashboard.jspa" target="_blank" rel="noopener">注册链接</a><br>注册之后请妥善保管好账号密码，后续登录相关Nexus链接需要用到。</p>
+<h3 id="3-创建issue"><a href="#3-创建issue" class="headerlink" title="3. 创建issue"></a>3. 创建issue</h3><p>注册完之后创建ISSUE<br><img src="img/WechatIMG32.jpeg" alt=""></p>
+<blockquote>
+<p><strong>注：</strong> 当创建完之后，issue的status为open状态，此时还不能进行上传jar，若group id为com.github开头的话，基本秒过（管理员审核较快，即从OPEN -&gt; RESOLVED）,当为RESOLVED时，即上传jar。</p>
+<p>当ISSUA转为RESOLVED时，会有附带相关链接,其中只需记录这两个链接：   </p>
+<ul>
+<li>Deploy snapshot artifacts into repository</li>
+<li>Deploy release artifacts into the staging repository</li>
+</ul>
+<p>后续配置项目pom.xml时需要</p>
+</blockquote>
+<p><img src="img/WechatIMG12.jpeg" alt=""></p>
+<h3 id="4-下载GPG"><a href="#4-下载GPG" class="headerlink" title="4. 下载GPG"></a>4. 下载GPG</h3><p>1.下载安装。 </p>
+<p>(1) Mac操作系统：  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install gnupg</span><br></pre></td></tr></table></figure>
+<p>(2) Windows操作系统<br>下载地址：<a href="https://www.gpg4win.org/" target="_blank" rel="noopener">https://www.gpg4win.org/</a></p>
+<p>2.校验  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --version</span><br></pre></td></tr></table></figure>
+<p><img src="img/WechatIMG5.jpeg" alt=""></p>
+<h3 id="5-配置GPG生成对称签名"><a href="#5-配置GPG生成对称签名" class="headerlink" title="5. 配置GPG生成对称签名"></a>5. 配置GPG生成对称签名</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --gen-key</span><br></pre></td></tr></table></figure>
+<p>1.输入姓名和邮箱<br><img src="img/WechatIMG7.jpeg" alt=""><br>2.输入passphrase密码<br><img src="img/WechatIMG8.jpeg" alt=""><br>3.记住密钥，用于上传<br><img src="img/WechatIMG9.jpeg" alt="">   </p>
+<h3 id="6-上传GPG签名"><a href="#6-上传GPG签名" class="headerlink" title="6. 上传GPG签名"></a>6. 上传GPG签名</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">gpg --keyserver hkp://keys.gnupg.net --send-keys 上图圈出来的密钥</span><br><span class="line">```    </span><br><span class="line">![](img/WechatIMG11.jpeg)   </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>## 7. IDEA 创建maven项目</span><br><span class="line">此处无图</span><br><span class="line"><span class="meta">#</span>## 8. 配置maven下config的setting.xml</span><br><span class="line">配置JIRA账号，用于发布snapshorts版本。   </span><br><span class="line"></span><br><span class="line">```xml</span><br><span class="line">&lt;server&gt;</span><br><span class="line">    &lt;id&gt;sonatype-nexus-snapshots&lt;/id&gt;</span><br><span class="line">    &lt;username&gt; account &lt;/username&gt;</span><br><span class="line">    &lt;password&gt; password &lt;/password&gt;</span><br><span class="line">&lt;/server&gt;</span><br><span class="line">&lt;server&gt;</span><br><span class="line">    &lt;id&gt;sonatype-nexus-staging&lt;/id&gt;</span><br><span class="line">    &lt;username&gt; account &lt;/username&gt;</span><br><span class="line">    &lt;password&gt; password d&lt;/password&gt;</span><br><span class="line">&lt;/server&gt;</span><br><span class="line">&lt;/servers&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="9-配置项目pom-xml"><a href="#9-配置项目pom-xml" class="headerlink" title="9.配置项目pom.xml"></a>9.配置项目pom.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.youname<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>XXXX<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 若发布snapshorts版本，则需添加版本后缀 '-SNAPSHOT' --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">	<span class="comment">&lt;!-- org.sonatype.oss依赖--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.sonatype.oss<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>oss-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">	<span class="comment">&lt;!-- 默认许可证 --&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">licenses</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">license</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">name</span>&gt;</span>Apache 2<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://www.apache.org/licenses/LICENSE-2.0.txt<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">distribution</span>&gt;</span>repo<span class="tag">&lt;/<span class="name">distribution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">comments</span>&gt;</span>A business-friendly OSS license<span class="tag">&lt;/<span class="name">comments</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">license</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">licenses</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">	<span class="comment">&lt;!-- GitHub项目地址 --&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">scm</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://github.com/CatalpaFlat/XXX<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">connection</span>&gt;</span>https://github.com/CatalpaFlat/XXX.git<span class="tag">&lt;/<span class="name">connection</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">scm</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- 开源项目作者信息 --&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">developers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">developer</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">name</span>&gt;</span>CatalpaFlat<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">email</span>&gt;</span>youemail<span class="tag">&lt;/<span class="name">email</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://github.com/CatalpaFlat/XXX<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">developer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">developers</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 部署release版本要用到 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>release<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.sonatype.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>nexus-staging-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.6.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">extensions</span>&gt;</span>true<span class="tag">&lt;/<span class="name">extensions</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">serverId</span>&gt;</span>ossrh<span class="tag">&lt;/<span class="name">serverId</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">nexusUrl</span>&gt;</span>https://oss.sonatype.org/<span class="tag">&lt;/<span class="name">nexusUrl</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">autoReleaseAfterClose</span>&gt;</span>true<span class="tag">&lt;/<span class="name">autoReleaseAfterClose</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-release-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">autoVersionSubmodules</span>&gt;</span>true<span class="tag">&lt;/<span class="name">autoVersionSubmodules</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">useReleaseProfile</span>&gt;</span>false<span class="tag">&lt;/<span class="name">useReleaseProfile</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">releaseProfiles</span>&gt;</span>release<span class="tag">&lt;/<span class="name">releaseProfiles</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">goals</span>&gt;</span>deploy<span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">source</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">target</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-gpg-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">id</span>&gt;</span>sign-artifacts<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">phase</span>&gt;</span>verify<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>sign<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-source-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">id</span>&gt;</span>attach-sources<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>jar-no-fork<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-javadoc-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">id</span>&gt;</span>attach-javadocs<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">distributionManagement</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">snapshotRepository</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 这个id需要在setting.xml中设置对应  --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>sonatype-nexus-snapshots<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">name</span>&gt;</span>OSS Snapshots Repository<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 这里的url就是Issue中回复的snapshots 的repo地址--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://oss.sonatype.org/content/repositories/snapshots<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">snapshotRepository</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>sonatype-nexus-staging<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">name</span>&gt;</span>OSS Staging Repository<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 这里的url就是Issue中回复的staging 的repo地址--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://oss.sonatype.org/service/local/staging/deploy/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">distributionManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="10-发布snapshorts版本"><a href="#10-发布snapshorts版本" class="headerlink" title="10. 发布snapshorts版本"></a>10. 发布snapshorts版本</h3><p>修改version加一个-SNAPSHOT.  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean deploy</span><br></pre></td></tr></table></figure>
+<h3 id="11-发布release版本"><a href="#11-发布release版本" class="headerlink" title="11. 发布release版本"></a>11. 发布release版本</h3><p>修改version 不要加-SNAPSHOT.  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean deploy -P release</span><br></pre></td></tr></table></figure>
+<h3 id="12-close-项目-release-项目"><a href="#12-close-项目-release-项目" class="headerlink" title="12. close 项目/release 项目"></a>12. close 项目/release 项目</h3><p>使用注册的账号登录:<br><a href="https://oss.sonatype.org" target="_blank" rel="noopener">Nexus Repository Manager</a><br><img src="img/WechatIMG13.jpeg" alt="">   </p>
+<blockquote>
+<p><strong>注：</strong>查看自己的(你定义的版本号不能带SNAPSHOT要不然看不到)<br>a）构件准备好之后，在命令行上传构建；<br>b）在<a href="https://oss.sonatype.org/" target="_blank" rel="noopener">https://oss.sonatype.org/</a> 先“close”后“release”构件；<br>c) 等待同步好（大约2小时多）之后，就可以使用了。   </p>
+</blockquote>
+<h3 id="13-设置上传中央仓库"><a href="#13-设置上传中央仓库" class="headerlink" title="13. 设置上传中央仓库"></a>13. 设置上传中央仓库</h3><p>Already Synced to Central设置为Yes<br><img src="img/WechatIMG14.jpeg" alt="">   </p>
+<h3 id="14-查询发布结果"><a href="#14-查询发布结果" class="headerlink" title="14. 查询发布结果"></a>14. 查询发布结果</h3><p><a href="https://search.maven.org" target="_blank" rel="noopener">Central Repositiry</a><br><img src="img/WechatIMG15.jpeg" alt="">    </p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/" data-id="cjfb43oo2002bsp5l520boo51" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/03/23/java/Java 内存详解/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    Java JVM 内存详解
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">JavaEE 发布jar包到远程maven中央仓库</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Recientes</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
+                            <p class="item-title"><a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/" class="title">JavaEE 使用Gradle发布jar包到远程中央仓库</a></p>
+                            <p class="item-date"><time datetime="2018-03-23T07:53:56.000Z" itemprop="datePublished">2018-03-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/23/java/Java 内存详解/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/03/23/java/Java 内存详解/" class="title">Java JVM 内存详解</a></p>
+                            <p class="item-date"><time datetime="2018-03-23T07:53:56.000Z" itemprop="datePublished">2018-03-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
+                            <p class="item-title"><a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/" class="title">JavaEE 使用Maven发布jar包到远程中央仓库</a></p>
+                            <p class="item-date"><time datetime="2018-03-23T07:00:56.000Z" itemprop="datePublished">2018-03-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
+                            <p class="item-title"><a href="/2018/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/" class="title">JavaEE 发布jar包到远程maven中央仓库</a></p>
+                            <p class="item-date"><time datetime="2018-03-22T03:33:56.000Z" itemprop="datePublished">2018-03-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/01/23/java/Java开发规范/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/01/23/java/Java开发规范/" class="title">Java 编码规范</a></p>
+                            <p class="item-date"><time datetime="2018-01-23T05:20:56.000Z" itemprop="datePublished">2018-01-23</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Categorias</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Archivos</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Etiquetas</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Nube de etiquetas</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 13.33px;">JavaEE</a> <a href="/tags/Nginx/" style="font-size: 20px;">Nginx</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 13.33px;">消息队列</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">Links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 CatalpaFlat<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

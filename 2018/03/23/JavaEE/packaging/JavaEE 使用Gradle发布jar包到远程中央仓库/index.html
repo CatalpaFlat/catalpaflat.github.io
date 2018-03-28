@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>JavaEE 使用Gradle发布jar包到远程中央仓库 | CatalpaFlat&#39;s Blogs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="JavaEE 使用Gradle发布jar包到远程中央仓库0. 前提准备GitHub 上 New Repository 项目（若没有则注册）.   1. 创建Bintray账号前往 Bintray ，右上角点击 Sign In 跳转到登录页面，可以选择通过第三方账号登录或者自己注册一个，方便起见我直接用了Github账号。 .    2. Bintray上创建maven仓库登录后点击左侧的 Add">
+<meta name="keywords" content="JavaEE">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaEE 使用Gradle发布jar包到远程中央仓库">
+<meta property="og:url" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/index.html">
+<meta property="og:site_name" content="CatalpaFlat&#39;s Blogs">
+<meta property="og:description" content="JavaEE 使用Gradle发布jar包到远程中央仓库0. 前提准备GitHub 上 New Repository 项目（若没有则注册）.   1. 创建Bintray账号前往 Bintray ，右上角点击 Sign In 跳转到登录页面，可以选择通过第三方账号登录或者自己注册一个，方便起见我直接用了Github账号。 .    2. Bintray上创建maven仓库登录后点击左侧的 Add">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG4.jpeg">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4675459-77f14e1f0192a478.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4675459-b213b5021b9e9e2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4675459-53e8dc28d2686af6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
+<meta property="og:image" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG32.jpeg">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4675459-663cb5fb4f34e8cb.png?imageMogr2/auto-orient/">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4675459-03cd07c8394d4eab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
+<meta property="og:image" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG5.jpeg">
+<meta property="og:image" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG7.jpeg">
+<meta property="og:image" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG8.jpeg">
+<meta property="og:image" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG9.jpeg">
+<meta property="og:image" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG16.jpeg">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4675459-68f2f3ffd84f3338.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4675459-659a224e69c8a44e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4675459-ba18abc6ded76889.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
+<meta property="og:updated_time" content="2018-03-28T10:04:58.123Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaEE 使用Gradle发布jar包到远程中央仓库">
+<meta name="twitter:description" content="JavaEE 使用Gradle发布jar包到远程中央仓库0. 前提准备GitHub 上 New Repository 项目（若没有则注册）.   1. 创建Bintray账号前往 Bintray ，右上角点击 Sign In 跳转到登录页面，可以选择通过第三方账号登录或者自己注册一个，方便起见我直接用了Github账号。 .    2. Bintray上创建maven仓库登录后点击左侧的 Add">
+<meta name="twitter:image" content="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG4.jpeg">
+    
+
+    
+        <link rel="alternate" href="/" title="CatalpaFlat&#39;s Blogs" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">CatalpaFlat&#39;s Blogs</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.jpeg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.jpeg" />
+            <h2 id="name">CatalpaFlat</h2>
+            <h3 id="title">A good DEMO is a good brick wall.</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>ShenZhen, China</span>
+            <a id="follow" target="_blank" href="https://github.com/CatalpaFlat">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                21
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                5
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/CatalpaFlat" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            JavaEE 使用Gradle发布jar包到远程中央仓库
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/">
+            <time datetime="2018-03-23T07:53:56.000Z" itemprop="datePublished">2018-03-23</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/JavaEE/">JavaEE</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/JavaEE/">JavaEE</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="JavaEE-使用Gradle发布jar包到远程中央仓库"><a href="#JavaEE-使用Gradle发布jar包到远程中央仓库" class="headerlink" title="JavaEE 使用Gradle发布jar包到远程中央仓库"></a>JavaEE 使用Gradle发布jar包到远程中央仓库</h1><h2 id="0-前提准备"><a href="#0-前提准备" class="headerlink" title="0. 前提准备"></a>0. 前提准备</h2><p><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a> 上 New Repository 项目<br>（若没有则注册）. </p>
+<p><img src="img/WechatIMG4.jpeg" alt=""></p>
+<h2 id="1-创建Bintray账号"><a href="#1-创建Bintray账号" class="headerlink" title="1. 创建Bintray账号"></a>1. 创建Bintray账号</h2><p>前往 <a href="https://bintray.com" target="_blank" rel="noopener">Bintray</a> ，右上角点击 Sign In 跳转到登录页面，可以选择通过第三方账号登录或者自己注册一个，方便起见我直接用了Github账号。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4675459-77f14e1f0192a478.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="">.   </p>
+<h2 id="2-Bintray上创建maven仓库"><a href="#2-Bintray上创建maven仓库" class="headerlink" title="2. Bintray上创建maven仓库"></a>2. Bintray上创建maven仓库</h2><p>登录后点击左侧的 Add new Repository按钮 跳转到创建仓库的页面，Name一栏填写仓库的名字，这里我写的是maven，仓库类型选 Maven ，创建完成后仓库就可以使用了。   </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4675459-b213b5021b9e9e2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p>
+<h2 id="3-获取BINTRAY-KEY"><a href="#3-获取BINTRAY-KEY" class="headerlink" title="3. 获取BINTRAY_KEY"></a>3. 获取BINTRAY_KEY</h2><p>其中 BINTRAY_KEY 的值设为Api key，从下图所示位置获取:   </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4675459-53e8dc28d2686af6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p>
+<h3 id="4-注册JIRA账号"><a href="#4-注册JIRA账号" class="headerlink" title="4. 注册JIRA账号"></a>4. 注册JIRA账号</h3><p><a href="https://issues.sonatype.org/secure/Dashboard.jspa" target="_blank" rel="noopener">注册链接</a><br>注册之后请妥善保管好账号密码，后续登录相关Nexus链接需要用到。  </p>
+<h3 id="5-创建issue"><a href="#5-创建issue" class="headerlink" title="5. 创建issue"></a>5. 创建issue</h3><p>注册完之后创建ISSUE<br><img src="img/WechatIMG32.jpeg" alt="">.  </p>
+<h2 id="6-GPG签名"><a href="#6-GPG签名" class="headerlink" title="6. GPG签名"></a>6. GPG签名</h2><p>GPG(GnuPG)是一款非对称加密软件，上传的Jar包需要用GPG生成签名文件，否则是不能同步到MavenCentral的，使用GPG给文件签名需要有公钥，可以用Bintray提供的默认的公钥或者使用自己生成的公钥，以下两种方法二选一。</p>
+<h3 id="6-1-较简单方法"><a href="#6-1-较简单方法" class="headerlink" title="6.1 较简单方法"></a>6.1 较简单方法</h3><p>该方法比较便捷，不需要进行生成密钥等繁琐操作。首先进入你创建的仓库页面，点击 Edit ，进入编辑页面</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4675459-663cb5fb4f34e8cb.png?imageMogr2/auto-orient/" alt=""></p>
+<p>然后勾选如图所示的选项，当你上传Jar文件时系统就会自动帮你生成签名文件。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4675459-03cd07c8394d4eab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="">. </p>
+<h3 id="6-2-较复杂方法"><a href="#6-2-较复杂方法" class="headerlink" title="6.2 较复杂方法"></a>6.2 较复杂方法</h3><h4 id="1-下载GPG"><a href="#1-下载GPG" class="headerlink" title="1. 下载GPG"></a>1. 下载GPG</h4><p>1.下载安装。 </p>
+<p>(1) Mac操作系统：  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install gnupg</span><br></pre></td></tr></table></figure>
+<p>(2) Windows操作系统<br>下载地址：<a href="https://www.gpg4win.org/" target="_blank" rel="noopener">https://www.gpg4win.org/</a></p>
+<p>2.校验  </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --version</span><br></pre></td></tr></table></figure>
+<p><img src="img/WechatIMG5.jpeg" alt=""></p>
+<h4 id="2-配置GPG生成对称签名"><a href="#2-配置GPG生成对称签名" class="headerlink" title="2. 配置GPG生成对称签名"></a>2. 配置GPG生成对称签名</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --gen-key</span><br></pre></td></tr></table></figure>
+<p>1.输入姓名和邮箱<br><img src="img/WechatIMG7.jpeg" alt=""><br>2.输入passphrase密码<br><img src="img/WechatIMG8.jpeg" alt=""><br>3.记住密钥，用于上传<br><img src="img/WechatIMG9.jpeg" alt="">   </p>
+<h4 id="3-上传GPG签名"><a href="#3-上传GPG签名" class="headerlink" title="3. 上传GPG签名"></a>3. 上传GPG签名</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">gpg --keyserver hkp://keys.gnupg.net --send-keys 上图圈出来的密钥</span><br><span class="line">```    </span><br><span class="line">![](img/WechatIMG11.jpeg)   </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>### 4. 回Bintray的界面</span><br><span class="line">(1).点击右上角导航栏的头像，点击 Edit Profile。</span><br><span class="line">   </span><br><span class="line">   ![](https://upload-images.jianshu.io/upload_images/4675459-284e0e5a1b672ff1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/232)</span><br><span class="line"> </span><br><span class="line">(2).跳转到以下页面，点击GPG Signing。</span><br><span class="line"></span><br><span class="line">  ![](https://upload-images.jianshu.io/upload_images/4675459-4f8038756be33ed9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/292)</span><br><span class="line">  </span><br><span class="line">(3).把刚才导出的公钥和私钥粘贴进去，包括虚线的两行文本，然后点击 Update。</span><br><span class="line"></span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/4675459-a60a639f88a40cfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/583)  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>### 5. 回到仓库页面，点击Edit</span><br><span class="line"></span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/4675459-627856113530cc2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/627)   </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>### 6.开启自动签名功能，配置就完成了</span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/4675459-cfe3b95c277d369a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700)   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span># 7.获取OSSRH_TOKEN信息</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>## 1.使用Sonatype账号[登录](https://oss.sonatype.org)，点击 Profile    </span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/4675459-dddadef2a64dbab8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/440)</span><br><span class="line"><span class="meta">#</span>## 2.点击 Access User Token 查看你的Token</span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/4675459-075ea8a731642ca6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700).  </span><br><span class="line"></span><br><span class="line">左边输入框是你的username，右边是你的密码，建议把账号有关的信息从环境变量中读取，不要提交到VCS中。   </span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/4675459-c04e5d7025d05998.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span># 8. 配置项目bulid.gradle</span><br><span class="line"><span class="meta">#</span>## 1. gradle.properties.</span><br></pre></td></tr></table></figure>
+<p>DEVELOPER_ID=CatalpaFlat<br>DEVELOPER_NAME=CatalpaFlat<br><a href="mailto:DEVELOPER_EMAIL=catalpaflat@outlook.com" target="_blank" rel="noopener">DEVELOPER_EMAIL=catalpaflat@outlook.com</a></p>
+<p>PROJ_NAME=xxx<br>PROJ_GROUP=com.github.catalpaflat<br>PROJ_ARTIFACTID=xxx<br>PROJ_DESCRIPTION=xxx<br>PROJ_VERSION=1.0.0<br>PROJ_WEBSITEURL=<a href="https://github.com/CatalpaFlat/xxxx" target="_blank" rel="noopener">https://github.com/CatalpaFlat/xxxx</a><br>PROJ_ISSUETRACKERURL=<a href="https://github.com/CatalpaFlat/xxxx/issues" target="_blank" rel="noopener">https://github.com/CatalpaFlat/xxxx/issues</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 2. local.properties.</span><br></pre></td></tr></table></figure></p>
+<p>BINTRAY_USER=catalpaflat<br>BINTRAY_KEY=xxxxx</p>
+<p>OSSRH_USER=xxx<br>OSSRH_PASSWORD=xxxxxxx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 3. bulid.gradle.   </span><br><span class="line"></span><br><span class="line">```gradle</span><br><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">        //使用阿里的maven镜像</span><br><span class="line">        maven &#123; url &apos;http://maven.aliyun.com/nexus/content/groups/public&apos; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        //引入bintray插件</span><br><span class="line">        classpath &apos;com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">group = PROJ_GROUP</span><br><span class="line">version = PROJ_VERSION</span><br><span class="line"></span><br><span class="line">apply plugin: &apos;maven&apos;</span><br><span class="line">apply plugin: &apos;java-library&apos;</span><br><span class="line">apply plugin: &apos;maven-publish&apos;</span><br><span class="line">apply plugin: &apos;com.jfrog.bintray&apos;</span><br><span class="line"></span><br><span class="line">apply plugin: &apos;idea&apos;</span><br><span class="line">apply plugin: &apos;java&apos;</span><br><span class="line"></span><br><span class="line">sourceCompatibility = 1.8</span><br><span class="line">targetCompatibility = 1.8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//生成源文件</span><br><span class="line">task sourcesJar(type: Jar, dependsOn: classes) &#123;</span><br><span class="line">    classifier = &apos;sources&apos;</span><br><span class="line">    from sourceSets.main.allSource</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//文档打包成jar</span><br><span class="line">task javadocJar(type: Jar, dependsOn: javadoc) &#123;</span><br><span class="line">    classifier = &apos;javadoc&apos;</span><br><span class="line">    from javadoc.destinationDir</span><br><span class="line">&#125;</span><br><span class="line">//上传到JCenter所需要的源码文件</span><br><span class="line">artifacts &#123;</span><br><span class="line">    archives javadocJar</span><br><span class="line">    archives sourcesJar</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def pomConfig = &#123;</span><br><span class="line">    licenses &#123;</span><br><span class="line">        license &#123;</span><br><span class="line">            //开源协议</span><br><span class="line">            name &apos;The Apache Software License, Version 2.0&apos;</span><br><span class="line">            url &apos;http://www.apache.org/licenses/LICENSE-2.0.txt&apos;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    developers &#123;</span><br><span class="line">        developer &#123;</span><br><span class="line">            //开发者的个人信息</span><br><span class="line">            id &apos;CatalpaFlat&apos;</span><br><span class="line">            name &apos;CatalpaFlat&apos;</span><br><span class="line">            email &quot;catalpaflat@outlook.com&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    scm &#123;</span><br><span class="line">        connection &quot;https://github.com/CatalpaFlat/xxxx.git&quot;</span><br><span class="line">        developerConnection &quot;https://github.com/CatalpaFlat/xxxx.git&quot;</span><br><span class="line">        //项目网站</span><br><span class="line">        url &quot;https://github.com/CatalpaFlat/xxxx&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">publishing &#123;</span><br><span class="line">    publications &#123;</span><br><span class="line">        MyPublication(MavenPublication) &#123;</span><br><span class="line">            from components.java</span><br><span class="line">            artifact sourcesJar</span><br><span class="line">            artifact javadocJar</span><br><span class="line">            groupId &apos;com.github.catalpaflat&apos;</span><br><span class="line">            artifactId &apos;SMS-modularization&apos;</span><br><span class="line">            version &apos;1.0.1&apos;</span><br><span class="line">            pom.withXml &#123;</span><br><span class="line">                def root = asNode()</span><br><span class="line">                root.appendNode(&apos;description&apos;, &apos;XXXX&apos;)</span><br><span class="line">                root.appendNode(&apos;name&apos;, &apos;XXXX&apos;)</span><br><span class="line">                root.appendNode(&apos;url&apos;, &apos;https://github.com/CatalpaFlat/xxxx&apos;)</span><br><span class="line">                root.children().last() + pomConfig</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">task writeNewPom &lt;&lt; &#123;</span><br><span class="line">    pom &#123;</span><br><span class="line">        project &#123;</span><br><span class="line">            inceptionYear &apos;2018&apos;</span><br><span class="line">            licenses &#123;</span><br><span class="line">                license &#123;</span><br><span class="line">                    name &apos;The Apache Software License, Version 2.0&apos;</span><br><span class="line">                    url &apos;http://www.apache.org/licenses/LICENSE-2.0.txt&apos;</span><br><span class="line">                    distribution &apos;repo&apos;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            developers &#123;</span><br><span class="line">                developer &#123;</span><br><span class="line">                    //开发者的个人信息</span><br><span class="line">                    id &apos;CatalpaFlat&apos;</span><br><span class="line">                    name &apos;CatalpaFlat&apos;</span><br><span class="line">                    email &quot;catalpaflat@outlook.com&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            scm &#123;</span><br><span class="line">                connection &quot;https://github.com/CatalpaFlat/xxxx.git&quot;</span><br><span class="line">                developerConnection &quot;https://github.com/CatalpaFlat/xxxx.git&quot;</span><br><span class="line">                //项目网站</span><br><span class="line">                url &quot;https://github.com/CatalpaFlat/xxxx&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;.writeTo(&quot;pom.xml&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">bintray &#123;</span><br><span class="line"></span><br><span class="line">    Properties properties = new Properties()</span><br><span class="line">    properties.load(project.rootProject.file(&apos;local.properties&apos;).newDataInputStream())</span><br><span class="line">    user = properties.getProperty(&apos;BINTRAY_USER&apos;)</span><br><span class="line">    key = properties.getProperty(&apos;BINTRAY_KEY&apos;)</span><br><span class="line">    configurations = [&apos;archives&apos;]</span><br><span class="line">    publications = [&apos;xxxx&apos;]</span><br><span class="line"></span><br><span class="line">    dryRun = false</span><br><span class="line">    publish = true</span><br><span class="line"></span><br><span class="line">    pkg &#123;</span><br><span class="line">        repo = &apos;maven&apos;</span><br><span class="line">        name = PROJ_NAME</span><br><span class="line">        licenses = [&apos;Apache-2.0&apos;]</span><br><span class="line">        vcsUrl = &apos;https://github.com/CatalpaFlat/xxx.git&apos;</span><br><span class="line">        websiteUrl = &apos;https://github.com/CatalpaFlat/xxx&apos;</span><br><span class="line">        issueTrackerUrl = PROJ_ISSUETRACKERURL</span><br><span class="line">        labels = [&apos;java&apos;, &apos;spring&apos;, &apos;example&apos;]</span><br><span class="line">        version &#123;</span><br><span class="line">            name = PROJ_VERSION</span><br><span class="line">            desc = PROJ_DESCRIPTION</span><br><span class="line">            released = new Date()</span><br><span class="line">            vcsTag = PROJ_VERSION</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="9-release"><a href="#9-release" class="headerlink" title="9. release"></a>9. release</h2><p>1.执行gradle命令进行发布：   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew bintrayUpload</span><br></pre></td></tr></table></figure>
+<p>2.让我们回到Bintray上之前创建的maven仓库，这时你能在仓库的页面看到你刚才上传的包了，类似下图：</p>
+<p><img src="img/WechatIMG16.jpeg" alt="">.    </p>
+<p>3.点击包名，跳转后，在页面的右侧你会找到 Add to JCenter 的按钮，点击它继续跳转.  </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4675459-68f2f3ffd84f3338.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="">.     </p>
+<p>你可以填写一些信息，也可以直接点击Send，过一段时间，系统会发送邮件提示你申请已经通过。   </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4675459-659a224e69c8a44e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="">.  </p>
+<p>4.再回到刚才包的页面，点击 Maven Central，输入你的Sonatype的Token信息点击Sync，就可以完成同步了。第一次同步成功后，Sonatype也会通过邮件告知你 。 </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4675459-ba18abc6ded76889.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p>
+<blockquote>
+<p>注：<br>以后再发布新版本的时候直接执行Gradle命令就行了。同步完成后可以马上在 <a href="https://oss.sonatype.org" target="_blank" rel="noopener">https://oss.sonatype.org</a> 进行搜索，但是 <a href="https://mvnrepository.com/" target="_blank" rel="noopener">https://mvnrepository.com/</a> 的搜索并不是实时的，需要等待一段时间，通常搜索结果第二天就能更新。</p>
+</blockquote>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/" data-id="cjfb43oo0002asp5lmhy7h48z" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/03/23/java/Java 内存详解/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">Java JVM 内存详解</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Recientes</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
+                            <p class="item-title"><a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/" class="title">JavaEE 使用Gradle发布jar包到远程中央仓库</a></p>
+                            <p class="item-date"><time datetime="2018-03-23T07:53:56.000Z" itemprop="datePublished">2018-03-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/23/java/Java 内存详解/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/03/23/java/Java 内存详解/" class="title">Java JVM 内存详解</a></p>
+                            <p class="item-date"><time datetime="2018-03-23T07:53:56.000Z" itemprop="datePublished">2018-03-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
+                            <p class="item-title"><a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/" class="title">JavaEE 使用Maven发布jar包到远程中央仓库</a></p>
+                            <p class="item-date"><time datetime="2018-03-23T07:00:56.000Z" itemprop="datePublished">2018-03-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
+                            <p class="item-title"><a href="/2018/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/" class="title">JavaEE 发布jar包到远程maven中央仓库</a></p>
+                            <p class="item-date"><time datetime="2018-03-22T03:33:56.000Z" itemprop="datePublished">2018-03-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/01/23/java/Java开发规范/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/01/23/java/Java开发规范/" class="title">Java 编码规范</a></p>
+                            <p class="item-date"><time datetime="2018-01-23T05:20:56.000Z" itemprop="datePublished">2018-01-23</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Categorias</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Archivos</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Etiquetas</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Nube de etiquetas</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 13.33px;">JavaEE</a> <a href="/tags/Nginx/" style="font-size: 20px;">Nginx</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 13.33px;">消息队列</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">Links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 CatalpaFlat<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

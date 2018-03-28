@@ -80,7 +80,7 @@
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -99,10 +99,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
+            POSTS: 'Entradas',
             PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
@@ -133,7 +133,7 @@
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
     </div>
 
                 </td>
@@ -153,16 +153,16 @@
             <h2 id="name">CatalpaFlat</h2>
             <h3 id="title">A good DEMO is a good brick wall.</h3>
             <span id="location"><i class="fa fa-map-marker"></i>ShenZhen, China</span>
-            <a id="follow" target="_blank" href="https://github.com/CatalpaFlat">FOLLOW</a>
+            <a id="follow" target="_blank" href="https://github.com/CatalpaFlat">SEGUIR</a>
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                20
-                <span>posts</span>
+                21
+                <span>Entradas</span>
             </div>
             <div class="article-info-block">
                 5
-                <span>tags</span>
+                <span>Etiquetas</span>
             </div>
         </div>
         
@@ -210,116 +210,44 @@
 
             
             <section id="main">
-    <article id="post-nginx/Nginx root&amp;alias文件路径配置解析" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="Nginx-root-amp-alias文件路径配置解析"><a href="#Nginx-root-amp-alias文件路径配置解析" class="headerlink" title="Nginx root&amp;alias文件路径配置解析"></a>Nginx root&amp;alias文件路径配置解析</h1><ul>
-<li>nginx在指定文件路径有两种方式root和alias，这两种的主要区别在于nginx如何解析location后面的uri，这会使两者分别以不同的方式请求映射到服务器的文件上。<h3 id="1-root语法的使用"><a href="#1-root语法的使用" class="headerlink" title="1.root语法的使用"></a>1.root语法的使用</h3>【root】<br>语法： root path<br>默认值： root html<br>配置段： http/server/location/if<br>例子:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location ^~/chen/ &#123;</span><br><span class="line">	root /data/www/www.chen.com;</span><br><span class="line">	autoindex on;</span><br><span class="line">	auto_basic &quot;Restricted&quot;;</span><br><span class="line">	auto_basic_user_file passwd/chen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>例子解析：<br>&emsp;&emsp;如果请求的uri是/chen/httplogs/<a href="http://www.chen.com-access.log时，web服务器将会返回服务器上的“/data/www/www.chen.com”(root的path)+“/chen/httplogs/www.chen.com-access.log”的文件。也就是说root路径配置会根据完整的uri请求来映射，也就是/path/uri" target="_blank" rel="noopener">www.chen.com-access.log时，web服务器将会返回服务器上的“/data/www/www.chen.com”(root的path)+“/chen/httplogs/www.chen.com-access.log”的文件。也就是说root路径配置会根据完整的uri请求来映射，也就是/path/uri</a></p>
-<h3 id="2-alias语法的使用"><a href="#2-alias语法的使用" class="headerlink" title="2.alias语法的使用"></a>2.alias语法的使用</h3><p>【alias】<br>语法：alias path<br>配置段：location<br>例子:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location ^~ /binapp/ &#123;</span><br><span class="line">	limit_conn limit 4;</span><br><span class="line">	limit_rate 200k;</span><br><span class="line">	internal;</span><br><span class="line">	alias /data/statics/bin/apps/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>例子解析：<br>&emsp;&emsp;alias会把location后面配置的路径丢弃，把当前匹配到的目录指向到指定的目录。如果一个请求的uri是/binapp/a.chen.com/favicon时，web服务器将会返回服务器上的“/data/statics/bin/apps/”+“a.chen.com/favicon.html”的文件<br>&emsp;&emsp;alias使用总结：</p>
-<ul>
-<li>使用alias时，目录名后面一定要加“/“</li>
-<li>alias可以指定任何名称</li>
-<li>alias在使用正则表达式时，必须捕捉要匹配到的内容并在指定的内容处使用</li>
-<li>alias只能位于location块中。</li>
-</ul>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/11/11/nginx/Nginx root&alias文件路径配置解析/" data-id="cjfb3thf5001xrk5loaq4syjt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <article id="post-nginx/Nginx rewrite深入解读" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/26/nginx/Nginx rewrite深入解读/">Nginx rewrite深入解读</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/26/nginx/Nginx rewrite深入解读/">
+            <time datetime="2017-08-26T10:23:12.000Z" itemprop="datePublished">2017-08-26</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Nginx/">Nginx</a>
+    </div>
+
+                    </div>
+                
+            </header>
         
         
         <div class="article-entry" itemprop="articleBody">
@@ -471,7 +399,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/11/11/nginx/Nginx rewrite深入解读/" data-id="cjfb3thf3001wrk5llzwbs418" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/26/nginx/Nginx rewrite深入解读/" data-id="cjfb43om9000gsp5l0p9n991h" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -551,6 +479,41 @@
     <div class="article-inner">
         
         
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/24/nginx/Nginx location配置解析/">Nginx location配置解析</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/24/nginx/Nginx location配置解析/">
+            <time datetime="2017-08-24T15:34:12.000Z" itemprop="datePublished">2017-08-24</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Nginx/">Nginx</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
         
         <div class="article-entry" itemprop="articleBody">
         
@@ -609,7 +572,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/11/11/nginx/Nginx location配置解析/" data-id="cjfb3thf80022rk5lcb9vwxxa" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/24/nginx/Nginx location配置解析/" data-id="cjfb43om6000esp5ljzl0mkj7" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -685,7 +648,7 @@
 
 
 
-    <article id="post-Java 自定义超实用Redis工具类（满足对象，list，map等类型）" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-nginx/Nginx 日志配置详情解析" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -693,7 +656,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2017/11/11/Java 自定义超实用Redis工具类（满足对象，list，map等类型）/">Java 自定义超实用Redis工具类（满足对象，list，map等类型）</a>
+            <a class="article-title" href="/2017/08/24/nginx/Nginx 日志配置详情解析/">Nginx 日志配置详情解析</a>
         </h1>
     
 
@@ -702,8 +665,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/11/11/Java 自定义超实用Redis工具类（满足对象，list，map等类型）/">
-            <time datetime="2017-11-11T07:11:22.000Z" itemprop="datePublished">2017-11-11</time>
+        <a href="/2017/08/24/nginx/Nginx 日志配置详情解析/">
+            <time datetime="2017-08-24T13:22:56.000Z" itemprop="datePublished">2017-08-24</time>
         </a>
     </div>
 
@@ -711,13 +674,13 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Java/">Java</a>
+        <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Java/">Java</a>
+        <a class="tag-link" href="/tags/Nginx/">Nginx</a>
     </div>
 
                     </div>
@@ -728,260 +691,94 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <h1 id="自定义超实用Redis工具类（满足对象，list，map等类型）"><a href="#自定义超实用Redis工具类（满足对象，list，map等类型）" class="headerlink" title="自定义超实用Redis工具类（满足对象，list，map等类型）"></a>自定义超实用Redis工具类（满足对象，list，map等类型）</h1><p>该工具类，可以存储对象、list，map等各种数据类型到Redis中，大大有效提高开发效率。</p>
-<h2 id="1-添加maven依赖"><a href="#1-添加maven依赖" class="headerlink" title="1.添加maven依赖"></a>1.添加maven依赖</h2><pre><code>&lt;!--序列化工具--&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;org.objenesis&lt;/groupId&gt;
-    &lt;artifactId&gt;objenesis&lt;/artifactId&gt;
-    &lt;version&gt;${objenesis.version}&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;!-- https://mvnrepository.com/artifact/com.dyuproject.protostuff/protostuff-core --&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;com.dyuproject.protostuff&lt;/groupId&gt;
-    &lt;artifactId&gt;protostuff-core&lt;/artifactId&gt;
-    &lt;version&gt;${dyuproject.version}&lt;/version&gt;
-&lt;/dependency&gt;
-&lt;dependency&gt;
-    &lt;groupId&gt;com.dyuproject.protostuff&lt;/groupId&gt;
-    &lt;artifactId&gt;protostuff-runtime&lt;/artifactId&gt;
-    &lt;version&gt;${dyuproject.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre><p>注：采用序列化工具进行解析。版本如下：</p>
-<pre><code>&lt;dyuproject.version&gt;1.1.3&lt;/dyuproject.version&gt;
-&lt;objenesis.version&gt;2.6&lt;/objenesis.version&gt;
-</code></pre><h2 id="2-序列化工具类"><a href="#2-序列化工具类" class="headerlink" title="2.序列化工具类"></a>2.序列化工具类</h2><pre><code>/**
- * 序列化工具类
- * @Author： CatalpaFlat
- * @Descrition:
- * @Date: Create in 15:04 2017/11/11
- * @Modified BY：
- */
-public class ProtoStuffSerializerUtil {
-    public static &lt;T&gt; byte[] serialize(T obj) {
-        if (obj == null) {
-            throw new RuntimeException(&quot;序列化对象(&quot; + obj + &quot;)!&quot;);
-        }
-        @SuppressWarnings(&quot;unchecked&quot;)
-        Schema&lt;T&gt; schema = (Schema&lt;T&gt;) RuntimeSchema.getSchema(obj.getClass());
-        LinkedBuffer buffer = LinkedBuffer.allocate(1024 * 1024);
-        byte[] protostuff = null;
-        try {
-            protostuff = ProtostuffIOUtil.toByteArray(obj, schema, buffer);
-        } catch (Exception e) {
-            throw new RuntimeException(&quot;序列化(&quot; + obj.getClass() + &quot;)对象(&quot; + obj + &quot;)发生异常!&quot;, e);
-        } finally {
-            buffer.clear();
-        }
-        return protostuff;
-    }
-    public static &lt;T&gt; T deserialize(byte[] paramArrayOfByte, Class&lt;T&gt; targetClass) {
-        if (paramArrayOfByte == null || paramArrayOfByte.length == 0) {
-            throw new RuntimeException(&quot;反序列化对象发生异常,byte序列为空!&quot;);
-        }
-        T instance = null;
-        try {
-            // T message = objenesis.newInstance(cls);
-            instance = targetClass.newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
-            throw new RuntimeException(&quot;反序列化过程中依据类型创建对象失败!&quot;, e);
-        }
-        Schema&lt;T&gt; schema = RuntimeSchema.getSchema(targetClass);
-        ProtostuffIOUtil.mergeFrom(paramArrayOfByte, instance, schema);
-        return instance;
-    }
-    public static &lt;T&gt; byte[] serializeList(List&lt;T&gt; objList) {
-        if (objList == null || objList.isEmpty()) {
-            throw new RuntimeException(&quot;序列化对象列表(&quot; + objList + &quot;)参数异常!&quot;);
-        }
-        @SuppressWarnings(&quot;unchecked&quot;)
-        Schema&lt;T&gt; schema = (Schema&lt;T&gt;) RuntimeSchema.getSchema(objList.get(0).getClass());
-        LinkedBuffer buffer = LinkedBuffer.allocate(1024 * 1024);
-        byte[] protostuff = null;
-        ByteArrayOutputStream bos = null;
-        try {
-            bos = new ByteArrayOutputStream();
-            ProtostuffIOUtil.writeListTo(bos, objList, schema, buffer);
-            protostuff = bos.toByteArray();
-        } catch (Exception e) {
-            throw new RuntimeException(&quot;序列化对象列表(&quot; + objList + &quot;)发生异常!&quot;, e);
-        } finally {
-            buffer.clear();
-            try {
-                if(bos!=null){
-                    bos.close();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return protostuff;
-    }
-    public static &lt;T&gt; List&lt;T&gt; deserializeList(byte[] paramArrayOfByte, Class&lt;T&gt; targetClass) {
-        if (paramArrayOfByte == null || paramArrayOfByte.length == 0) {
-            throw new RuntimeException(&quot;反序列化对象发生异常,byte序列为空!&quot;);
-        }
-
-        Schema&lt;T&gt; schema = RuntimeSchema.getSchema(targetClass);
-        List&lt;T&gt; result = null;
-        try {
-            result = ProtostuffIOUtil.parseListFrom(new ByteArrayInputStream(paramArrayOfByte), schema);
-        } catch (IOException e) {
-            throw new RuntimeException(&quot;反序列化对象列表发生异常!&quot;,e);
-        }
-        return result;
-    }
-    public static class Person{
-        int id;
-        String name;
-
-        public Person(){
-
-        }
-
-        public Person(int id, String name){
-            this.id = id;
-            this.name = name;
-        }
-
-        public int getId() {
-            return id;
-        }
-        public String getName() {
-            return name;
-        }
-
-    }
-}
-</code></pre><h2 id="3-配置redisConfig类进行存储"><a href="#3-配置redisConfig类进行存储" class="headerlink" title="3.配置redisConfig类进行存储"></a>3.配置redisConfig类进行存储</h2><pre><code>/**
- * redis配置类
- * @Author： CatalpaFlat
- * @Descrition:
- * @Date: Create in 15:04 2017/11/11
- * @Modified BY：
- */
-@Component
-public class RedisConfig {
-
-    public final static String CAHCENAME = &quot;CatalpaFlat&quot;;// 缓存名
-    public final static int CAHCETIME = 60;// 默认缓存时间 60S
-    public final static int CAHCEHOUR = 60 * 60;// 默认缓存时间 1hr
-    public final static int CAHCEDAY = 60 * 60 * 24;// 默认缓存时间 1Day
-    public final static int CAHCEWEEK = 60 * 60 * 24 * 7;// 默认缓存时间 1week
-    public final static int CAHCEMONTH = 60 * 60 * 24 * 7 * 30;// 默认缓存时间 1month
-    public final static int CAHCEYEAR = 60 * 60 * 24 * 7 * 30 * 12;// 默认缓存时间 1年
-    @Autowired
-    private RedisTemplate&lt;String, String&gt; redisTemplate;
-
-    public &lt;T&gt; boolean putCache(String key, T obj) {
-        final byte[] bkey = key.getBytes();
-        final byte[] bvalue = ProtoStuffSerializerUtil.serialize(obj);
-        boolean result = redisTemplate.execute((RedisCallback&lt;Boolean&gt;) connection -&gt; connection.setNX(bkey, bvalue));
-        return result;
-    }
-    public &lt;T&gt; void putCacheWithExpireTime(String key, T obj, final long expireTime) {
-        final byte[] bkey = key.getBytes();
-        final byte[] bvalue = ProtoStuffSerializerUtil.serialize(obj);
-        redisTemplate.execute((RedisCallback&lt;Boolean&gt;) connection -&gt; {
-            connection.setEx(bkey, expireTime, bvalue);
-            return true;
-        });
-    }
-    public &lt;T&gt; boolean putListCache(String key, List&lt;T&gt; objList) {
-        final byte[] bkey = key.getBytes();
-        final byte[] bvalue = ProtoStuffSerializerUtil.serializeList(objList);
-        boolean result = redisTemplate.execute((RedisCallback&lt;Boolean&gt;) connection -&gt; connection.setNX(bkey, bvalue));
-        return result;
-    }
-    public &lt;T&gt; boolean putListCacheWithExpireTime(String key, List&lt;T&gt; objList, final long expireTime) {
-        final byte[] bkey = key.getBytes();
-        final byte[] bvalue = ProtoStuffSerializerUtil.serializeList(objList);
-        boolean result = redisTemplate.execute((RedisCallback&lt;Boolean&gt;) connection -&gt; {
-            connection.setEx(bkey, expireTime, bvalue);
-            return true;
-        });
-        return result;
-    }
-    public &lt;T&gt; T getCache(final String key, Class&lt;T&gt; targetClass) {
-        byte[] result = redisTemplate.execute(new RedisCallback&lt;byte[]&gt;() {
-            @Override
-            public byte[] doInRedis(RedisConnection connection) throws DataAccessException {
-                return connection.get(key.getBytes());
-            }
-        });
-        if (result == null) {
-            return null;
-        }
-        return ProtoStuffSerializerUtil.deserialize(result, targetClass);
-    }
-    public &lt;T&gt; List&lt;T&gt; getListCache(final String key, Class&lt;T&gt; targetClass) {
-        byte[] result = redisTemplate.execute(new RedisCallback&lt;byte[]&gt;() {
-            @Override
-            public byte[] doInRedis(RedisConnection connection) throws DataAccessException {
-                return connection.get(key.getBytes());
-            }
-        });
-        if (result == null) {
-            return null;
-        }
-        return ProtoStuffSerializerUtil.deserializeList(result, targetClass);
-    }
-    /**
-     * 精确删除key
-     *
-     * @param key
-     */
-    public void deleteCache(String key) {
-        redisTemplate.delete(key);
-    }
-
-    /**
-     * 模糊删除key
-     *
-     * @param pattern
-     */
-    public void deleteCacheWithPattern(String pattern) {
-        Set&lt;String&gt; keys = redisTemplate.keys(pattern);
-        redisTemplate.delete(keys);
-    }
-
-    /**
-     * 清空所有缓存
-     */
-    public void clearCache() {
-        deleteCacheWithPattern(RedisConfig.CAHCENAME + &quot;|*&quot;);
-    }
-}
-</code></pre><h2 id="4-测试序列化工具类"><a href="#4-测试序列化工具类" class="headerlink" title="4.测试序列化工具类"></a>4.测试序列化工具类</h2><p>注：基于这篇文章<br><a href="http://blog.csdn.net/DuShiWoDeCuo/article/details/78506579" target="_blank" rel="noopener">http://blog.csdn.net/DuShiWoDeCuo/article/details/78506579</a><br>    /**</p>
-<pre><code> * @Author： CatalpaFlat
- * @Descrition:
- * @Date: Create in 10:08 2017/11/8
- * @Modified BY：
- */
-@RunWith(SpringRunner.class)
-@ContextConfiguration({&quot;classpath:spring/*.xml&quot;})
-public class TestRedis {
-
-    @Resource
-    private RedisConfig redisConfig;
-    @Autowired(required=true)
-    private RedisKeyUtil redisKeyUtil;
-    @Autowired
-    private RedisTemplate redisTemplate;
-
-    private static final Logger log  = Logger.getLogger(TestRedis.class.getName());
-
-    @Test
-    public void test(){
-//        redisTemplate.opsForValue().set(&quot;chen&quot;, &quot;陈梓平&quot;);
-//        log.info(&quot;value：&quot;+redisTemplate.opsForValue().get(&quot;chen&quot;));
-        String key = redisKeyUtil.getSystemRedisKeyDistribution(&quot;Test&quot;, this.getClass().getName(), &quot;test&quot;);
-        log.info(&quot;cache-key:&quot;+key);
-        redisConfig.putCache(key,&quot;测试链接&quot;);
-        String cache = redisConfig.getCache(key, String.class);
-        log.info(&quot;cache-value:&quot;+cache);
-    }
-}
-</code></pre><p><img src="https://i.imgur.com/kW8Yn27.png" alt=""></p>
+            <h1 id="Nginx-日志配置详情解析"><a href="#Nginx-日志配置详情解析" class="headerlink" title="Nginx 日志配置详情解析"></a>Nginx 日志配置详情解析</h1><p>&emsp;&emsp;在使用nginx进行服务器管理时候，日志对于统计、审查、排错来说非常有利。<br>&emsp;&emsp;nginx日志相关的配置有：access_log(访问日志)、log_format（日志格式）、open_log_file_cache、log_not_found、log_subrequest、rewrite_log、error_log。<br>&emsp;&emsp;nginx有一个非常灵活的日志记录模式，每个级别的配置可以有各自独立的访问日志。日志格式通过log_format命令来定义。（主要基于ngx_http_log_module:用于定义请求日志格式）</p>
+<h2 id="1-access-log配置解析"><a href="#1-access-log配置解析" class="headerlink" title="1.access_log配置解析"></a>1.access_log配置解析</h2><h3 id="1-1-access-log语法"><a href="#1-1-access-log语法" class="headerlink" title="1.1.access_log语法"></a>1.1.access_log语法</h3><ul>
+<li>access_log path [format [buffer=size [flush=time]]]</li>
+<li>access_log path format gzip[=level] [buffer=size [flush=time]]</li>
+<li>access_log syslog:server=address[,parameter=value][format]</li>
+<li>access_log off<h3 id="1-2-access-log默认值"><a href="#1-2-access-log默认值" class="headerlink" title="1.2.access_log默认值"></a>1.2.access_log默认值</h3></li>
+<li>access_log log/access.log combined<h3 id="1-3-access-log配置段"><a href="#1-3-access-log配置段" class="headerlink" title="1.3.access_log配置段"></a>1.3.access_log配置段</h3></li>
+<li>http</li>
+<li>server</li>
+<li>location</li>
+<li>if in location</li>
+<li>limit_except<h3 id="1-4-access-log语法参数解析"><a href="#1-4-access-log语法参数解析" class="headerlink" title="1.4.access_log语法参数解析"></a>1.4.access_log语法参数解析</h3></li>
+<li>gzip：压缩等级</li>
+<li>buffer：设置所需内容缓存区大小</li>
+<li>flush：保存在缓存区的最长时间</li>
+<li>off：不记录日志</li>
+<li>combined：使用默认的格式记录日志（access_log log/access.log combined或access_log log/access.log）</li>
+</ul>
+<hr>
+<h2 id="2-log-format配置解析"><a href="#2-log-format配置解析" class="headerlink" title="2.log_format配置解析"></a>2.log_format配置解析</h2><h3 id="2-1-log-format语法"><a href="#2-1-log-format语法" class="headerlink" title="2.1.log_format语法"></a>2.1.log_format语法</h3><ul>
+<li>log_format name string …;<h3 id="2-2-log-format默认值"><a href="#2-2-log-format默认值" class="headerlink" title="2.2.log_format默认值"></a>2.2.log_format默认值</h3></li>
+<li>log_format combined “…”;<br>log_format有一个默认的无需设置的combined日志格式，相当于apache的combined日志格式。格式如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_format  combined  &apos;$remote_addr - $remote_user  [$time_local]  &apos;</span><br><span class="line">                                   &apos; &quot;$request&quot;  $status  $body_bytes_sent  &apos;</span><br><span class="line">                                   &apos; &quot;$http_referer&quot;  &quot;$http_user_agent&quot; &apos;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-3-log-format配置段"><a href="#2-3-log-format配置段" class="headerlink" title="2.3.log_format配置段"></a>2.3.log_format配置段</h3><ul>
+<li>http<h3 id="2-4-log-format语法参数解析"><a href="#2-4-log-format语法参数解析" class="headerlink" title="2.4.log_format语法参数解析"></a>2.4.log_format语法参数解析</h3></li>
+<li>name表示格式名称</li>
+<li>string表示等义的格式。<h3 id="2-5-log-format常用的变量参数："><a href="#2-5-log-format常用的变量参数：" class="headerlink" title="2.5.log_format常用的变量参数："></a>2.5.log_format常用的变量参数：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$remote_addr, $http_x_forwarded_for（反向） 记录客户端IP地址</span><br><span class="line">$remote_user 记录客户端用户名称</span><br><span class="line">$request 记录请求的URL和HTTP协议</span><br><span class="line">$status 记录请求状态</span><br><span class="line">$body_bytes_sent 发送给客户端的字节数，不包括响应头的大小； 该变量与Apache模块mod_log_config里的“%B”参数兼容。</span><br><span class="line">$bytes_sent 发送给客户端的总字节数。</span><br><span class="line">$connection 连接的序列号。</span><br><span class="line">$connection_requests 当前通过一个连接获得的请求数量。</span><br><span class="line">$msec 日志写入时间。单位为秒，精度是毫秒。</span><br><span class="line">$pipe 如果请求是通过HTTP流水线(pipelined)发送，pipe值为“p”，否则为“.”。</span><br><span class="line">$http_referer 记录从哪个页面链接访问过来的</span><br><span class="line">$http_user_agent 记录客户端浏览器相关信息</span><br><span class="line">$request_length 请求的长度（包括请求行，请求头和请求正文）。</span><br><span class="line">$request_time 请求处理时间，单位为秒，精度毫秒； 从读入客户端的第一个字节开始，直到把最后一个字符发送给客户端后进行日志写入为止。</span><br><span class="line">$time_iso8601 ISO8601标准格式下的本地时间。</span><br><span class="line">$time_local 通用日志格式下的本地时间。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-6-log-format使用例子"><a href="#2-6-log-format使用例子" class="headerlink" title="2.6.log_format使用例子"></a>2.6.log_format使用例子</h3><h4 id="2-6-1-nginx反向代理时配置log-format"><a href="#2-6-1-nginx反向代理时配置log-format" class="headerlink" title="2.6.1.nginx反向代理时配置log_format"></a>2.6.1.nginx反向代理时配置log_format</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_format  porxy  &apos;$http_x_forwarded_for - $remote_user  [$time_local]  &apos;</span><br><span class="line">                   &apos; &quot;$request&quot;  $status $body_bytes_sent &apos;</span><br><span class="line">                   &apos; &quot;$http_referer&quot;  &quot;$http_user_agent&quot; &apos;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>注：nginx位于负载均衡器，squid，nginx反向代理之后，web服务器无法直接获取到客户端真实的IP地址了。 $remote_addr获取反向代理的IP地址。反向代理服务器在转发请求的http头信息中，可以增加X-Forwarded-For信息，用来记录 客户端IP地址和客户端请求的服务器地址。</p>
+<h4 id="2-6-2-http发送给客户端时配置log-format"><a href="#2-6-2-http发送给客户端时配置log-format" class="headerlink" title="2.6.2.http发送给客户端时配置log_format"></a>2.6.2.http发送给客户端时配置log_format</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line"> log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">                   &apos;&quot;$status&quot; $body_bytes_sent &quot;$http_referer&quot; &apos;</span><br><span class="line">                   &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot; &apos;</span><br><span class="line">                   &apos;&quot;$gzip_ratio&quot; $request_time $bytes_sent $request_length&apos;;</span><br><span class="line"> </span><br><span class="line"> log_format srcache_log &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">                        &apos;&quot;$status&quot; $body_bytes_sent $request_time $bytes_sent $request_length &apos;</span><br><span class="line">                        &apos;[$upstream_response_time] [$srcache_fetch_status] [$srcache_store_status] [$srcache_expire]&apos;;</span><br><span class="line"> </span><br><span class="line"> open_log_file_cache max=1000 inactive=60s;</span><br><span class="line"></span><br><span class="line"> server &#123;</span><br><span class="line"> 	server_name ~^(www\.)?(.+)$;</span><br><span class="line"> 	access_log logs/$2-access.log main;</span><br><span class="line"> 	error_log logs/$2-error.log;</span><br><span class="line">	location /srcache &#123;</span><br><span class="line"> 		access_log logs/access-srcache.log srcache_log;</span><br><span class="line"> 	&#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注：发送给客户端的响应头拥有“sent_http_”前缀。 比如$sent_http_content_range。</p>
+</li>
+<li></li>
+</ul>
+<hr>
+<h2 id="3-open-log-file-cache配置解析"><a href="#3-open-log-file-cache配置解析" class="headerlink" title="3.open_log_file_cache配置解析"></a>3.open_log_file_cache配置解析</h2><h3 id="3-1-open-log-file-cache语法"><a href="#3-1-open-log-file-cache语法" class="headerlink" title="3.1.open_log_file_cache语法"></a>3.1.open_log_file_cache语法</h3><ul>
+<li>open_log_file_cache max=N [inactive=time] [min_uses=N] [valid=time];</li>
+<li>open_log_file_cache off;<h3 id="3-2-open-log-file-cache默认值"><a href="#3-2-open-log-file-cache默认值" class="headerlink" title="3.2.open_log_file_cache默认值"></a>3.2.open_log_file_cache默认值</h3></li>
+<li>open_log_file_cache off;<h3 id="3-3-open-log-file-cache配置段"><a href="#3-3-open-log-file-cache配置段" class="headerlink" title="3.3.open_log_file_cache配置段"></a>3.3.open_log_file_cache配置段</h3></li>
+<li>http</li>
+<li>server</li>
+<li>location<h3 id="3-4-open-log-file-cache语法参数解析"><a href="#3-4-open-log-file-cache语法参数解析" class="headerlink" title="3.4.open_log_file_cache语法参数解析"></a>3.4.open_log_file_cache语法参数解析</h3></li>
+<li>max:设置缓存中的最大文件描述符数量，如果缓存被占满，采用LRU算法将描述符关闭。</li>
+<li>inactive:设置存活时间，默认是10s</li>
+<li>min_uses:设置在inactive时间段内，日志文件最少使用多少次后，该日志文件描述符记入缓存中，默认是1次</li>
+<li>valid:设置检查频率，默认60s</li>
+<li>off：禁用缓存<h3 id="3-5-open-log-file-cache的作用"><a href="#3-5-open-log-file-cache的作用" class="headerlink" title="3.5.open_log_file_cache的作用"></a>3.5.open_log_file_cache的作用</h3>对于每一条日志记录，都将是先打开文件，再写入日志，然后关闭。可以使用open_log_file_cache来设置日志文件缓存(默认是off)<h3 id="3-6-open-log-file-cache使用例子"><a href="#3-6-open-log-file-cache使用例子" class="headerlink" title="3.6.open_log_file_cache使用例子"></a>3.6.open_log_file_cache使用例子</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">open_log_file_cache max=1000 inactive=20s valid=1m min_uses=2;</span><br><span class="line">open_log_file_cache off;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="4-log-not-found配置解析"><a href="#4-log-not-found配置解析" class="headerlink" title="4.log_not_found配置解析"></a>4.log_not_found配置解析</h2><h3 id="4-1-log-not-found语法"><a href="#4-1-log-not-found语法" class="headerlink" title="4.1.log_not_found语法"></a>4.1.log_not_found语法</h3><ul>
+<li>log_not_found on | off;<h3 id="4-2-log-not-found默认值"><a href="#4-2-log-not-found默认值" class="headerlink" title="4.2.log_not_found默认值"></a>4.2.log_not_found默认值</h3></li>
+<li>log_not_found on;<h3 id="4-3-log-not-found配置段"><a href="#4-3-log-not-found配置段" class="headerlink" title="4.3.log_not_found配置段"></a>4.3.log_not_found配置段</h3></li>
+<li>http</li>
+<li>server</li>
+<li>location<h3 id="4-4-log-not-found的作用"><a href="#4-4-log-not-found的作用" class="headerlink" title="4.4.log_not_found的作用"></a>4.4.log_not_found的作用</h3>是否在error_log中记录不存在的错误。默认是。</li>
+</ul>
+<hr>
+<h2 id="5-log-subrequest配置解析"><a href="#5-log-subrequest配置解析" class="headerlink" title="5.log_subrequest配置解析"></a>5.log_subrequest配置解析</h2><h3 id="5-1-log-subrequest语法"><a href="#5-1-log-subrequest语法" class="headerlink" title="5.1.log_subrequest语法"></a>5.1.log_subrequest语法</h3><ul>
+<li>log_subrequest on | off;<h3 id="5-2-log-subrequest默认值"><a href="#5-2-log-subrequest默认值" class="headerlink" title="5.2.log_subrequest默认值"></a>5.2.log_subrequest默认值</h3></li>
+<li>log_subrequest off;<h3 id="5-3-log-subrequest配置段"><a href="#5-3-log-subrequest配置段" class="headerlink" title="5.3.log_subrequest配置段"></a>5.3.log_subrequest配置段</h3></li>
+<li>http</li>
+<li>server</li>
+<li>location<h3 id="5-4-log-subrequest的作用"><a href="#5-4-log-subrequest的作用" class="headerlink" title="5.4.log_subrequest的作用"></a>5.4.log_subrequest的作用</h3>是否在access_log中记录子请求的访问日志。默认不记录。</li>
+</ul>
+<hr>
+<h2 id="6-rewrite-log配置解析"><a href="#6-rewrite-log配置解析" class="headerlink" title="6.rewrite_log配置解析"></a>6.rewrite_log配置解析</h2><h3 id="6-1-rewrite-log语法"><a href="#6-1-rewrite-log语法" class="headerlink" title="6.1.rewrite_log语法"></a>6.1.rewrite_log语法</h3><ul>
+<li>rewrite_log on | off;<h3 id="6-2-rewrite-log默认值"><a href="#6-2-rewrite-log默认值" class="headerlink" title="6.2.rewrite_log默认值"></a>6.2.rewrite_log默认值</h3></li>
+<li>rewrite_log off;<h3 id="6-3-rewrite-log配置段"><a href="#6-3-rewrite-log配置段" class="headerlink" title="6.3.rewrite_log配置段"></a>6.3.rewrite_log配置段</h3></li>
+<li>http</li>
+<li>server</li>
+<li>location</li>
+<li>if<h3 id="6-4-rewrite-log的作用"><a href="#6-4-rewrite-log的作用" class="headerlink" title="6.4.rewrite_log的作用"></a>6.4.rewrite_log的作用</h3>启用时将在error log中记录notice级别的重写日志。<br>基于ngx_http_rewrite_module模块提供的。用来记录重写日志的。对于调试重写规则建议开启。</li>
+</ul>
+<hr>
+<h2 id="7-error-log配置解析"><a href="#7-error-log配置解析" class="headerlink" title="7.error_log配置解析"></a>7.error_log配置解析</h2><h3 id="7-1-error-log语法"><a href="#7-1-error-log语法" class="headerlink" title="7.1.error_log语法"></a>7.1.error_log语法</h3><ul>
+<li>error_log file | stderr | syslog:server=address[,parameter=value] [debug | info | notice | warn | error | crit | alert | emerg];<h3 id="7-2-error-log默认值"><a href="#7-2-error-log默认值" class="headerlink" title="7.2.error_log默认值"></a>7.2.error_log默认值</h3></li>
+<li>error_log logs/error.log error;<h3 id="7-3-error-log配置段"><a href="#7-3-error-log配置段" class="headerlink" title="7.3.error_log配置段"></a>7.3.error_log配置段</h3></li>
+<li>http</li>
+<li>server</li>
+<li>location</li>
+<li>main<h3 id="7-4-error-log的作用"><a href="#7-4-error-log的作用" class="headerlink" title="7.4.error_log的作用"></a>7.4.error_log的作用</h3>配置错误日志。</li>
+</ul>
 
         
         </div>
@@ -992,7 +789,375 @@ public class TestRedis {
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/11/11/Java 自定义超实用Redis工具类（满足对象，list，map等类型）/" data-id="cjfb3thd00006rk5lxl7rxvp6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/24/nginx/Nginx 日志配置详情解析/" data-id="cjfb43omd000tsp5lf0lh3ec7" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-nginx/服务器集成Nginx" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/22/nginx/服务器集成Nginx/">服务器快速集成Nginx</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/22/nginx/服务器集成Nginx/">
+            <time datetime="2017-08-22T07:23:54.000Z" itemprop="datePublished">2017-08-22</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Nginx/">Nginx</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="服务器快速集成Nginx"><a href="#服务器快速集成Nginx" class="headerlink" title="服务器快速集成Nginx"></a>服务器快速集成Nginx</h1><h3 id="1-安装依赖"><a href="#1-安装依赖" class="headerlink" title="1.安装依赖"></a>1.安装依赖</h3><h4 id="1-1-pcre重定向依赖"><a href="#1-1-pcre重定向依赖" class="headerlink" title="1.1.pcre重定向依赖"></a>1.1.pcre重定向依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install pcre*</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>PCRE(Perl Compatible Regular Expressions)是一个Perl库，不止具有http重定向依赖，还包括 perl 兼容的正则表达式库。nginx的http模块使用pcre来解析正则表达式，所以需要在linux上安装pcre库。</p>
+<h4 id="1-2-openssl-http-https支持，如果不需要https可以不安装。"><a href="#1-2-openssl-http-https支持，如果不需要https可以不安装。" class="headerlink" title="1.2.openssl(http/https支持，如果不需要https可以不安装。"></a>1.2.openssl(http/https支持，如果不需要https可以不安装。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install pcre*</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。</p>
+<h4 id="1-3-安装-Tengine-执行配置命令-gcc环境"><a href="#1-3-安装-Tengine-执行配置命令-gcc环境" class="headerlink" title="1.3.安装 Tengine 执行配置命令 gcc环境"></a>1.3.安装 Tengine 执行配置命令 gcc环境</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc gcc-c++ autoconf automake make</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>若是本机上已经安装则可以忽略，主要用于编译Nginx源码</p>
+</li>
+</ul>
+<h4 id="2-下载解压"><a href="#2-下载解压" class="headerlink" title="2.下载解压"></a>2.下载解压</h4><h4 id="2-1-下载"><a href="#2-1-下载" class="headerlink" title="2.1.下载"></a>2.1.下载</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://nginx.org/download/nginx-1.12.2.tar.gz</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-解压"><a href="#2-2-解压" class="headerlink" title="2.2.解压"></a>2.2.解压</h4><p>先创建Nginx存放路径，再进行解压<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir nginxgz</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf nginx-1.7.8.tar.gz -C /usr/local/nginxgz</span><br></pre></td></tr></table></figure>
+<h3 id="3-编译安装Nginx"><a href="#3-编译安装Nginx" class="headerlink" title="3.编译安装Nginx"></a>3.编译安装Nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginxgz/nginx-1.12.2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx --with-http_ssl_module --with-http_v2_module --with-http_stub_status_module --with-pcre</span><br></pre></td></tr></table></figure>
+<ul>
+<li>–with-http_ssl_module ： 支持https</li>
+<li>–with-http_stub_status_module ： 支持nginx状态查询</li>
+<li>–with-http_v2_module ： 支持Google发明的SPDY协议，必须有ssl的支持</li>
+<li>–with-pcre ： 支持rewrite重写功能，必须有pcre<br>注：若是没有安装gcc则会报如下错误：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">checking for OS</span><br><span class="line"> + Linux 2.6.32-431.el6.x86_64 x86_64</span><br><span class="line">checking for C compiler ... not found</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>编译：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure>
+<h3 id="4-操作Nginx"><a href="#4-操作Nginx" class="headerlink" title="4.操作Nginx"></a>4.操作Nginx</h3><ul>
+<li><p>启动：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>关闭：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -s stop</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="5-配置防火墙（iptables）测试"><a href="#5-配置防火墙（iptables）测试" class="headerlink" title="5.配置防火墙（iptables）测试"></a>5.配置防火墙（iptables）测试</h3><h4 id="5-1-关闭防火墙"><a href="#5-1-关闭防火墙" class="headerlink" title="5.1.关闭防火墙"></a>5.1.关闭防火墙</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables stop</span><br></pre></td></tr></table></figure>
+<h4 id="5-2-编辑配置文件"><a href="#5-2-编辑配置文件" class="headerlink" title="5.2.编辑配置文件"></a>5.2.编辑配置文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/iptables</span><br></pre></td></tr></table></figure>
+<h4 id="5-3-开发80端口"><a href="#5-3-开发80端口" class="headerlink" title="5.3.开发80端口"></a>5.3.开发80端口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT</span><br></pre></td></tr></table></figure>
+<h4 id="5-4-重启服务"><a href="#5-4-重启服务" class="headerlink" title="5.4.重启服务"></a>5.4.重启服务</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure>
+<h4 id="测试，浏览器输入服务器地址（如：192-168-1-111）"><a href="#测试，浏览器输入服务器地址（如：192-168-1-111）" class="headerlink" title="测试，浏览器输入服务器地址（如：192.168.1.111）"></a>测试，浏览器输入服务器地址（如：192.168.1.111）</h4><p><img src="https://i.imgur.com/32msO8G.png" alt=""></p>
+<h4 id="6-将Nginx添加到服务（service）中"><a href="#6-将Nginx添加到服务（service）中" class="headerlink" title="6.将Nginx添加到服务（service）中"></a>6.将Nginx添加到服务（service）中</h4><ul>
+<li><p>6.1.切换到启动脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/init.d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>6.2.创建nginx文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch nginx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>6.3.编辑nginx文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/init.d/nginx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>6.4.并且添加以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash  </span><br><span class="line"># nginx Startup script for the Nginx HTTP Server  </span><br><span class="line">#  </span><br><span class="line"># chkconfig: - 85 15  </span><br><span class="line"># description: Nginx is a high-performance web and proxy server.  </span><br><span class="line"># It has a lot of features, but it&apos;s not for everyone.  </span><br><span class="line"># processname: nginx  </span><br><span class="line"># pidfile: /var/run/nginx.pid  </span><br><span class="line"># config: /usr/local/nginx/conf/nginx.conf  </span><br><span class="line">nginxd=/usr/local/nginx/sbin/nginx  </span><br><span class="line">nginx_config=/usr/local/nginx/conf/nginx.conf  </span><br><span class="line">nginx_pid=/usr/local/nginx/nginx.pid  </span><br><span class="line"> </span><br><span class="line">RETVAL=0  </span><br><span class="line">prog=&quot;nginx&quot; </span><br><span class="line"> </span><br><span class="line"># Source function library.  </span><br><span class="line">. /etc/rc.d/init.d/functions  </span><br><span class="line"> </span><br><span class="line"># Source networking configuration.  </span><br><span class="line">. /etc/sysconfig/network  </span><br><span class="line"> </span><br><span class="line"># Check that networking is up.  </span><br><span class="line">[ $&#123;NETWORKING&#125; = &quot;no&quot; ] &amp;&amp; exit 0  </span><br><span class="line"> </span><br><span class="line">[ -x $nginxd ] || exit 0  </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"># Start nginx daemons functions.  </span><br><span class="line">start() &#123;  </span><br><span class="line"> </span><br><span class="line">if [ -e $nginx_pid ];then </span><br><span class="line">   echo &quot;nginx already running....&quot; </span><br><span class="line">   exit 1  </span><br><span class="line">fi  </span><br><span class="line"> </span><br><span class="line">   echo -n $&quot;Starting $prog: &quot; </span><br><span class="line">   daemon $nginxd -c $&#123;nginx_config&#125;  </span><br><span class="line">   RETVAL=$?  </span><br><span class="line">   echo  </span><br><span class="line">   [ $RETVAL = 0 ] &amp;&amp; touch /var/lock/subsys/nginx  </span><br><span class="line">   return $RETVAL  </span><br><span class="line"> </span><br><span class="line">&#125;  </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"># Stop nginx daemons functions.  </span><br><span class="line">stop() &#123;  </span><br><span class="line">        echo -n $&quot;Stopping $prog: &quot; </span><br><span class="line">        killproc $nginxd  </span><br><span class="line">        RETVAL=$?  </span><br><span class="line">        echo  </span><br><span class="line">        [ $RETVAL = 0 ] &amp;&amp; rm -f /var/lock/subsys/nginx /var/run/nginx.pid  </span><br><span class="line">&#125;  </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"># reload nginx service functions.  </span><br><span class="line">reload() &#123;  </span><br><span class="line"> </span><br><span class="line">    echo -n $&quot;Reloading $prog: &quot; </span><br><span class="line"> $nginxd -s reload  </span><br><span class="line">    #if your nginx version is below 0.8, please use this command: &quot;kill -HUP `cat $&#123;nginx_pid&#125;`&quot; </span><br><span class="line">    RETVAL=$?  </span><br><span class="line">    echo  </span><br><span class="line"> </span><br><span class="line">&#125;  </span><br><span class="line"> </span><br><span class="line"># See how we were called.  </span><br><span class="line">case &quot;$1&quot; in </span><br><span class="line">start)  </span><br><span class="line">        start  </span><br><span class="line">        ;;  </span><br><span class="line"> </span><br><span class="line">stop)  </span><br><span class="line">        stop  </span><br><span class="line">        ;;  </span><br><span class="line"> </span><br><span class="line">reload)  </span><br><span class="line">        reload  </span><br><span class="line">        ;;  </span><br><span class="line"> </span><br><span class="line">restart)  </span><br><span class="line">        stop  </span><br><span class="line">        start  </span><br><span class="line">        ;;  </span><br><span class="line"> </span><br><span class="line">status)  </span><br><span class="line">        status $prog  </span><br><span class="line">        RETVAL=$?  </span><br><span class="line">        ;;  </span><br><span class="line">*)  </span><br><span class="line">        echo $&quot;Usage: $prog &#123;start|stop|restart|reload|status|help&#125;&quot; </span><br><span class="line">        exit 1  </span><br><span class="line">esac  </span><br><span class="line"> </span><br><span class="line">exit $RETVAL</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># chkconfig: - 85 15</span><br><span class="line"># description: nginx is a World Wide Web server. It is used to serve</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>脚本中这两个不能去除，不然不能启动，而且会报以下错误，即语法错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx 服务不支持 chkconfig</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>chkconfig语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语　法：chkconfig [--add][--del][--list][系统服务] 或 chkconfig [--level &lt;等级代号&gt;][系统服务][on/off/reset]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>6.5.保存退出后，切换路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/rc.d/init.d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>6.6.设置权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x nginx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>6.7.chkconfig改变nginx运行级别</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/chkconfig --level 345 nginx on</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>到此为止：<br>任何位置都能运行   service nginx start           可选  start | stop | restart | reload | status |  help</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/08/22/nginx/服务器集成Nginx/" data-id="cjfb43omi0012sp5ly17ui11v" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-nginx/Nginx 动态添加模块" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/22/nginx/Nginx 动态添加模块/">Nginx 动态添加模块</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/22/nginx/Nginx 动态添加模块/">
+            <time datetime="2017-08-22T05:23:42.000Z" itemprop="datePublished">2017-08-22</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Nginx/">Nginx</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="Nginx-动态添加模块"><a href="#Nginx-动态添加模块" class="headerlink" title="Nginx 动态添加模块"></a>Nginx 动态添加模块</h1><p>nginx模块依赖：nginx的一些模块需要第三方支持，例如gzip模块需要zlib库，rewrite模块需要pcre库，ssl功能需要openssl库。<br>根据需求添加不同模块<br>例添加echo模块：</p>
+<h2 id="1-下载并安装nginx"><a href="#1-下载并安装nginx" class="headerlink" title="1.下载并安装nginx"></a>1.下载并安装nginx</h2><p>详情请看：<a href="http://blog.csdn.net/dushiwodecuo/article/details/78393454" target="_blank" rel="noopener">http://blog.csdn.net/dushiwodecuo/article/details/78393454</a></p>
+<h2 id="2-查看nginx已安装的模块"><a href="#2-查看nginx已安装的模块" class="headerlink" title="2.查看nginx已安装的模块"></a>2.查看nginx已安装的模块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -V</span><br></pre></td></tr></table></figure>
+<ul>
+<li>旧版本模块<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx --with-http_ssl_module --with-http_v2_module --with-http_stub_status_module --with-pcre</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="3-选择与nginx版本所符合的模块版本"><a href="#3-选择与nginx版本所符合的模块版本" class="headerlink" title="3.选择与nginx版本所符合的模块版本"></a>3.选择与nginx版本所符合的模块版本</h2><p>echo：<a href="https://github.com/openresty/echo-nginx-module/tags" target="_blank" rel="noopener">https://github.com/openresty/echo-nginx-module/tags</a><br>当前nginx版本为：1.12.2，选择echo版本为0.61</p>
+<h2 id="4-下载模块"><a href="#4-下载模块" class="headerlink" title="4.下载模块"></a>4.下载模块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/openresty/echo-nginx-module/archive/v0.61.tar.gz</span><br></pre></td></tr></table></figure>
+<h2 id="5-解压模块"><a href="#5-解压模块" class="headerlink" title="5.解压模块"></a>5.解压模块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf v0.61.tar.gz -C /usr/local/nginxgz</span><br></pre></td></tr></table></figure>
+<h2 id="6-为nginx添加模块"><a href="#6-为nginx添加模块" class="headerlink" title="6.为nginx添加模块"></a>6.为nginx添加模块</h2><h3 id="6-1-切换到nginx的源码目录-即解压后的目录"><a href="#6-1-切换到nginx的源码目录-即解压后的目录" class="headerlink" title="6.1.切换到nginx的源码目录(即解压后的目录)"></a>6.1.切换到nginx的源码目录(即解压后的目录)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginxgz/nginx-1.12.2</span><br></pre></td></tr></table></figure>
+<h3 id="6-2-添加新模块"><a href="#6-2-添加新模块" class="headerlink" title="6.2.添加新模块"></a>6.2.添加新模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx --add-module=/usr/local/nginxgz/echo-nginx-module-0.61 --with-http_ssl_module --with-http_v2_module --with-http_stub_status_module --with-pcre</span><br></pre></td></tr></table></figure>
+<h2 id="7-重新编译"><a href="#7-重新编译" class="headerlink" title="7.重新编译"></a>7.重新编译</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<h2 id="8-测试"><a href="#8-测试" class="headerlink" title="8.测试"></a>8.测试</h2><ul>
+<li>Linux上的测试<h3 id="8-1-修改配置文件"><a href="#8-1-修改配置文件" class="headerlink" title="8.1.修改配置文件"></a>8.1.修改配置文件</h3><h4 id="8-1-1-修改nginx-conf，添加测试域名模块"><a href="#8-1-1-修改nginx-conf，添加测试域名模块" class="headerlink" title="8.1.1.修改nginx.conf，添加测试域名模块"></a>8.1.1.修改nginx.conf，添加测试域名模块</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">        server_name echo.chen.com;</span><br><span class="line">        listen 80;</span><br><span class="line">        location /&#123;</span><br><span class="line">                echo &quot;it is echo module...&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="8-1-2-修改Linux-host文件"><a href="#8-1-2-修改Linux-host文件" class="headerlink" title="8.1.2.修改Linux host文件"></a>8.1.2.修改Linux host文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &apos;192.168.1.111 echo.chen.com&apos; &gt;&gt; /etc/hosts</span><br></pre></td></tr></table></figure>
+<h3 id="8-2-重启nginx"><a href="#8-2-重启nginx" class="headerlink" title="8.2.重启nginx"></a>8.2.重启nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+<ul>
+<li>注：若是重启nginx之后还没能访问到，直接reboot，重启虚拟机等即可<h3 id="8-3-访问测试"><a href="#8-3-访问测试" class="headerlink" title="8.3.访问测试"></a>8.3.访问测试</h3><img src="https://i.imgur.com/so9aerf.png" alt=""></li>
+</ul>
+<hr>
+<ul>
+<li><p>Windows上浏览器测试</p>
+<h3 id="8-1-修改配置文件-1"><a href="#8-1-修改配置文件-1" class="headerlink" title="8.1.修改配置文件"></a>8.1.修改配置文件</h3><h4 id="8-1-1-修改nginx-conf，添加测试域名模块-1"><a href="#8-1-1-修改nginx-conf，添加测试域名模块-1" class="headerlink" title="8.1.1.修改nginx.conf，添加测试域名模块"></a>8.1.1.修改nginx.conf，添加测试域名模块</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">        server_name echo.chen.com;</span><br><span class="line">        listen 80;</span><br><span class="line">        location /&#123;</span><br><span class="line">		default_type &apos;text/html&apos;;  </span><br><span class="line">                echo &quot;it is echo module...&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注： 如果没有这个default_type,浏览器访问则会一直下载文件而不是输出在浏览器上</p>
+<h4 id="8-1-2-修改Windows-host文件"><a href="#8-1-2-修改Windows-host文件" class="headerlink" title="8.1.2.修改Windows host文件"></a>8.1.2.修改Windows host文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.111 echo.chen.com</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="8-2-重启nginx-1"><a href="#8-2-重启nginx-1" class="headerlink" title="8.2.重启nginx"></a>8.2.重启nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+<ul>
+<li>注：若是重启nginx之后还没能访问到，直接reboot，重启虚拟机等即可<h3 id="8-3-测试访问浏览器"><a href="#8-3-测试访问浏览器" class="headerlink" title="8.3.测试访问浏览器"></a>8.3.测试访问浏览器</h3><img src="https://i.imgur.com/5Z5ltto.png" alt=""></li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/08/22/nginx/Nginx 动态添加模块/" data-id="cjfb43omc000osp5lc9qdyqz8" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1187,7 +1352,7 @@ public class TestRedis {
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/08/20/nginx/nginx 的ngx_http_core_module模块处理请求/" data-id="cjfb3thf6001yrk5l7f1qd31i" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/20/nginx/nginx 的ngx_http_core_module模块处理请求/" data-id="cjfb43omg0010sp5lne50vtc5" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1263,7 +1428,7 @@ public class TestRedis {
 
 
 
-    <article id="post-消息中间件" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-消息队列/消息中间件" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -1271,7 +1436,7 @@ public class TestRedis {
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2017/07/23/消息中间件/">分布式之消息中间件</a>
+            <a class="article-title" href="/2017/07/23/消息队列/消息中间件/">分布式之消息中间件</a>
         </h1>
     
 
@@ -1280,7 +1445,7 @@ public class TestRedis {
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/07/23/消息中间件/">
+        <a href="/2017/07/23/消息队列/消息中间件/">
             <time datetime="2017-07-23T07:46:12.000Z" itemprop="datePublished">2017-07-23</time>
         </a>
     </div>
@@ -1342,7 +1507,7 @@ public class TestRedis {
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/07/23/消息中间件/" data-id="cjfb3thdf000srk5lrqk5zt5q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/07/23/消息队列/消息中间件/" data-id="cjfb43omo001isp5ll7qyy4xu" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1418,7 +1583,7 @@ public class TestRedis {
 
 
 
-    <article id="post-消息队列" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-消息队列/消息队列" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -1426,7 +1591,7 @@ public class TestRedis {
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2017/07/23/消息队列/">分布式之消息队列</a>
+            <a class="article-title" href="/2017/07/23/消息队列/消息队列/">分布式之消息队列</a>
         </h1>
     
 
@@ -1435,7 +1600,7 @@ public class TestRedis {
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2017/07/23/消息队列/">
+        <a href="/2017/07/23/消息队列/消息队列/">
             <time datetime="2017-07-23T01:20:56.000Z" itemprop="datePublished">2017-07-23</time>
         </a>
     </div>
@@ -1514,7 +1679,7 @@ public class TestRedis {
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/07/23/消息队列/" data-id="cjfb3thdi000xrk5lakzhx5e1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/07/23/消息队列/消息队列/" data-id="cjfb43omp001nsp5l0rsduqgp" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1590,7 +1755,7 @@ public class TestRedis {
 
 
 
-    <article id="post-虚拟机CentOS6.7 快速安装redis" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-服务器/虚拟机CentOS6.7 快速安装redis" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -1598,7 +1763,7 @@ public class TestRedis {
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2016/11/23/虚拟机CentOS6.7 快速安装redis/">虚拟机CentOS6.7 快速安装redis</a>
+            <a class="article-title" href="/2016/11/23/服务器/虚拟机CentOS6.7 快速安装redis/">虚拟机CentOS6.7 快速安装redis</a>
         </h1>
     
 
@@ -1607,7 +1772,7 @@ public class TestRedis {
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/11/23/虚拟机CentOS6.7 快速安装redis/">
+        <a href="/2016/11/23/服务器/虚拟机CentOS6.7 快速安装redis/">
             <time datetime="2016-11-23T14:13:21.000Z" itemprop="datePublished">2016-11-23</time>
         </a>
     </div>
@@ -1657,7 +1822,7 @@ public class TestRedis {
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2016/11/23/虚拟机CentOS6.7 快速安装redis/" data-id="cjfb3thdl0014rk5ln0tmyygb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2016/11/23/服务器/虚拟机CentOS6.7 快速安装redis/" data-id="cjfb43omj0017sp5lzm7irzyq" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1733,7 +1898,7 @@ public class TestRedis {
 
 
 
-    <article id="post-虚拟机快速搭建CentOS，并解决网络问题" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-服务器/虚拟机快速搭建CentOS，并解决网络问题" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -1741,7 +1906,7 @@ public class TestRedis {
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2016/11/23/虚拟机快速搭建CentOS，并解决网络问题/">虚拟机快速搭建CentOS，并解决网络问题</a>
+            <a class="article-title" href="/2016/11/23/服务器/虚拟机快速搭建CentOS，并解决网络问题/">虚拟机快速搭建CentOS，并解决网络问题</a>
         </h1>
     
 
@@ -1750,7 +1915,7 @@ public class TestRedis {
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2016/11/23/虚拟机快速搭建CentOS，并解决网络问题/">
+        <a href="/2016/11/23/服务器/虚拟机快速搭建CentOS，并解决网络问题/">
             <time datetime="2016-11-23T06:20:56.000Z" itemprop="datePublished">2016-11-23</time>
         </a>
     </div>
@@ -1819,165 +1984,7 @@ DNS1=114.114.114.114
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2016/11/23/虚拟机快速搭建CentOS，并解决网络问题/" data-id="cjfb3thdk0010rk5lzmfw35d3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-Java 实体" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/07/23/Java 实体/">Java中的各种O</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/07/23/Java 实体/">
-            <time datetime="2016-07-23T05:20:56.000Z" itemprop="datePublished">2016-07-23</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Java/">Java</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>展示层 →  接口层 →  服务层  →  数据访问层  →  持久层<br>                      ↓         ↑<br>                       业务逻辑层</p>
-<p>layer：</p>
-<ol>
-<li>IDAL(接口层)</li>
-<li>service(服务层)</li>
-<li>BLL(业务逻辑层)</li>
-<li>DAL(数据访问层)</li>
-<li>Persistent(持久层)</li>
-</ol>
-<p>class：</p>
-<ol>
-<li>VO（View Object）：<br>视图对象，用于展示层，它的作用是把某个指定页面（或组件）的所有数据封装起来。</li>
-<li>DTO（Data Transfer Object）：<br>数据传输对象，这个概念来源于J2EE的设计模式，原来的目的是为了EJB的分布式应用提供粗粒度的数据实体，以减少分布式调用的次数，从而提高分布式调用的性能和降低网络负载.<br>但在Dankal，我们泛指用于展示层与服务层之间的数据传输对象。</li>
-<li>DO（Domain Object）：<br>领域对象，就是从现实世界中抽象出来的有形或无形的业务实体。</li>
-<li>PO（Persistent Object）：<br>持久化对象，它跟持久层（通常是关系型数据库）的数据结构形成一一对应的映射关系，如果持久层是关系型数据库，那么，数据表中的每个字段（或若干个）就对应PO的一个（或若干个）属性。（数据库表的一条记录）</li>
-<li>TO(Transfer Object):<br>数据传输对象,在应用程序不同tie(关系)之间传输的对象.</li>
-<li>BO(business object)：<br>业务对象（BO用来封装多个PO），从业务模型的角度看,见UML元件领域模型中的领域对象。封装业务逻辑的java对象,通过调用DAO方法,结合PO,VO进行业务操作。</li>
-<li>POJO(plain ordinary java object)：<br>简单无规则java对象 纯的传统意义的java对象。最基本的Java Bean，只有属性字段及setter和getter方法！没有其他封装方法。</li>
-</ol>
-<p>frame:</p>
-<ol>
-<li>BOF Business Object Framework 业务对象框架</li>
-<li>EMF Eclipse Model Framework Eclipse 建模框架</li>
-</ol>
-<p>design:</p>
-<ol>
-<li>SOA Service Orient Architecture 面向服务的设计</li>
-</ol>
-<p>DALFactory(类工厂)</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2016/07/23/Java 实体/" data-id="cjfb3thcv0002rk5l5ufyhfye" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2016/11/23/服务器/虚拟机快速搭建CentOS，并解决网络问题/" data-id="cjfb43oml001asp5linxww4pl" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2054,7 +2061,7 @@ DNS1=114.114.114.114
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+        <a class="extend prev" rel="prev" href="/">&laquo; Anterior</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Siguiente  &raquo;</a>
     </nav>
 </section>
             
@@ -2063,52 +2070,14 @@ DNS1=114.114.114.114
    
         
     <div class="widget-wrap">
-        <h3 class="widget-title">recent</h3>
+        <h3 class="widget-title">Recientes</h3>
         <div class="widget">
             <ul id="recent-post" class="">
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/03/28/hello-world/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
-                            <p class="item-title"><a href="/2018/03/28/hello-world/" class="title">Hello World</a></p>
-                            <p class="item-date"><time datetime="2018-03-28T02:05:56.000Z" itemprop="datePublished">2018-03-28</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/03/23/Java 内存详解/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
-                            <p class="item-title"><a href="/2018/03/23/Java 内存详解/" class="title">Java JVM 内存详解</a></p>
-                            <p class="item-date"><time datetime="2018-03-23T07:53:56.000Z" itemprop="datePublished">2018-03-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/03/23/JavaEE 使用Gradle发布jar包到远程中央仓库/" class="thumbnail">
+                            <a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -2119,7 +2088,7 @@ DNS1=114.114.114.114
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
-                            <p class="item-title"><a href="/2018/03/23/JavaEE 使用Gradle发布jar包到远程中央仓库/" class="title">JavaEE 使用Gradle发布jar包到远程中央仓库</a></p>
+                            <p class="item-title"><a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/" class="title">JavaEE 使用Gradle发布jar包到远程中央仓库</a></p>
                             <p class="item-date"><time datetime="2018-03-23T07:53:56.000Z" itemprop="datePublished">2018-03-23</time></p>
                         </div>
                     </li>
@@ -2127,7 +2096,26 @@ DNS1=114.114.114.114
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/03/23/JavaEE 使用Maven发布jar包到远程中央仓库/" class="thumbnail">
+                            <a href="/2018/03/23/java/Java 内存详解/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/03/23/java/Java 内存详解/" class="title">Java JVM 内存详解</a></p>
+                            <p class="item-date"><time datetime="2018-03-23T07:53:56.000Z" itemprop="datePublished">2018-03-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -2138,7 +2126,7 @@ DNS1=114.114.114.114
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
-                            <p class="item-title"><a href="/2018/03/23/JavaEE 使用Maven发布jar包到远程中央仓库/" class="title">JavaEE 使用Maven发布jar包到远程中央仓库</a></p>
+                            <p class="item-title"><a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/" class="title">JavaEE 使用Maven发布jar包到远程中央仓库</a></p>
                             <p class="item-date"><time datetime="2018-03-23T07:00:56.000Z" itemprop="datePublished">2018-03-23</time></p>
                         </div>
                     </li>
@@ -2146,7 +2134,7 @@ DNS1=114.114.114.114
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/03/22/JavaEE 发布jar包到远程maven中央仓库/" class="thumbnail">
+                            <a href="/2018/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -2157,8 +2145,27 @@ DNS1=114.114.114.114
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
-                            <p class="item-title"><a href="/2018/03/22/JavaEE 发布jar包到远程maven中央仓库/" class="title">JavaEE 发布jar包到远程maven中央仓库</a></p>
+                            <p class="item-title"><a href="/2018/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/" class="title">JavaEE 发布jar包到远程maven中央仓库</a></p>
                             <p class="item-date"><time datetime="2018-03-22T03:33:56.000Z" itemprop="datePublished">2018-03-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/01/23/java/Java开发规范/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/01/23/java/Java开发规范/" class="title">Java 编码规范</a></p>
+                            <p class="item-date"><time datetime="2018-01-23T05:20:56.000Z" itemprop="datePublished">2018-01-23</time></p>
                         </div>
                     </li>
                 
@@ -2169,43 +2176,43 @@ DNS1=114.114.114.114
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">categories</h3>
+        <h3 class="widget-title">Categorias</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
         </div>
     </div>
 
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">archives</h3>
+        <h3 class="widget-title">Archivos</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">tags</h3>
+        <h3 class="widget-title">Etiquetas</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
         </div>
     </div>
 
     
         
     <div class="widget-wrap">
-        <h3 class="widget-title">tag cloud</h3>
+        <h3 class="widget-title">Nube de etiquetas</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 16.67px;">JavaEE</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/服务器/" style="font-size: 13.33px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 16.67px;">消息队列</a>
+            <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 13.33px;">JavaEE</a> <a href="/tags/Nginx/" style="font-size: 20px;">Nginx</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 13.33px;">消息队列</a>
         </div>
     </div>
 
     
         
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">links</h3>
+        <h3 class="widget-title">Links</h3>
         <div class="widget">
             <ul>
                 

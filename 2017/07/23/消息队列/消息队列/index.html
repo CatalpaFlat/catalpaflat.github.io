@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>分布式之消息队列 | CatalpaFlat&#39;s Blogs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="分布式之消息队列 目录：  1.消息队列概述 2.消息队列应用场景  2.1应用解耦  2.1.1传统模式  2.1.2使用消息队列   2.2异步处理消息  2.2.1传统模式  2.2.2使用消息队列     2.3流量削锋  2.4日志处理  2.4消息通讯      1.消息队列概述&amp;emsp;&amp;emsp;“消息队列”是在消息的传输过程中保存消息的容器。&amp;emsp;&amp;emsp;消息队列管理">
+<meta name="keywords" content="消息队列">
+<meta property="og:type" content="article">
+<meta property="og:title" content="分布式之消息队列">
+<meta property="og:url" content="https://catalpaflat.github.io/2017/07/23/消息队列/消息队列/index.html">
+<meta property="og:site_name" content="CatalpaFlat&#39;s Blogs">
+<meta property="og:description" content="分布式之消息队列 目录：  1.消息队列概述 2.消息队列应用场景  2.1应用解耦  2.1.1传统模式  2.1.2使用消息队列   2.2异步处理消息  2.2.1传统模式  2.2.2使用消息队列     2.3流量削锋  2.4日志处理  2.4消息通讯      1.消息队列概述&amp;emsp;&amp;emsp;“消息队列”是在消息的传输过程中保存消息的容器。&amp;emsp;&amp;emsp;消息队列管理">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/IHZtlbK.png">
+<meta property="og:image" content="https://i.imgur.com/TrXxkjZ.png">
+<meta property="og:image" content="https://i.imgur.com/m4WdM4y.png">
+<meta property="og:image" content="https://i.imgur.com/n1i6ioZ.png">
+<meta property="og:image" content="https://i.imgur.com/leaO2zv.png">
+<meta property="og:image" content="https://i.imgur.com/zrBf2t8.png">
+<meta property="og:image" content="https://i.imgur.com/TQlAFDy.png">
+<meta property="og:image" content="https://i.imgur.com/SisxtjZ.png">
+<meta property="og:image" content="https://i.imgur.com/L4txxGQ.png">
+<meta property="og:updated_time" content="2018-03-28T13:02:50.035Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="分布式之消息队列">
+<meta name="twitter:description" content="分布式之消息队列 目录：  1.消息队列概述 2.消息队列应用场景  2.1应用解耦  2.1.1传统模式  2.1.2使用消息队列   2.2异步处理消息  2.2.1传统模式  2.2.2使用消息队列     2.3流量削锋  2.4日志处理  2.4消息通讯      1.消息队列概述&amp;emsp;&amp;emsp;“消息队列”是在消息的传输过程中保存消息的容器。&amp;emsp;&amp;emsp;消息队列管理">
+<meta name="twitter:image" content="https://i.imgur.com/IHZtlbK.png">
+    
+
+    
+        <link rel="alternate" href="/" title="CatalpaFlat&#39;s Blogs" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">CatalpaFlat&#39;s Blogs</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.jpeg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.jpeg" />
+            <h2 id="name">CatalpaFlat</h2>
+            <h3 id="title">A good DEMO is a good brick wall.</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>ShenZhen, China</span>
+            <a id="follow" target="_blank" href="https://github.com/CatalpaFlat">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                21
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                5
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/CatalpaFlat" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-消息队列/消息队列" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            分布式之消息队列
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/07/23/消息队列/消息队列/">
+            <time datetime="2017-07-23T01:20:56.000Z" itemprop="datePublished">2017-07-23</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/消息队列/">消息队列</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/消息队列/">消息队列</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="分布式之消息队列"><a href="#分布式之消息队列" class="headerlink" title="分布式之消息队列"></a>分布式之消息队列</h1><blockquote>
+<p>目录：</p>
+<ul>
+<li><a href="#1">1.消息队列概述</a></li>
+<li><a href="#2">2.消息队列应用场景</a> <ul>
+<li><a href="#2.1">2.1应用解耦</a> <ul>
+<li><a href="#2.1.1">2.1.1传统模式</a> </li>
+<li><a href="#2.1.2">2.1.2使用消息队列</a></li>
+</ul>
+</li>
+<li><a href="#2.2">2.2异步处理消息</a> <ul>
+<li><a href="#2.2.1">2.2.1传统模式</a> </li>
+<li><a href="#2.2.2">2.2.2使用消息队列</a>  </li>
+</ul>
+</li>
+<li><a href="#2.3">2.3流量削锋</a> </li>
+<li><a href="#2.4">2.4日志处理</a> </li>
+<li><a href="#2.5">2.4消息通讯</a> </li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="1-消息队列概述"><a href="#1-消息队列概述" class="headerlink" title="1.消息队列概述"></a><h2 id="1">1.消息队列概述</h2></h2><p>&emsp;&emsp;“消息队列”是在消息的传输过程中保存消息的容器。<br>&emsp;&emsp;消息队列管理器在将消息从它的源中继到它的目标时充当中间人。队列的主要目的是提供路由并保证消息的传递；如果发送消息时接收者不可用，消息队列会保留消息，直到可以成功地传递它.<br>&emsp;&emsp;消息队列中间件是分布式系统中重要的组件，主要解决应用耦合、异步消息、流量削锋等问题。实现高性能、高可用、可伸缩和最终一致性架构。是大型分布式系统不可缺少的中间件。<br>目前在生产环境，使用较多的消息队列有ActiveMQ，RabbitMQ，ZeroMQ，Kafka，MetaMQ，RocketMQ等。</p>
+<h2 id="2-消息队列应用场景"><a href="#2-消息队列应用场景" class="headerlink" title=" 2.消息队列应用场景"></a><h2 id="2"> 2.消息队列应用场景</h2></h2><h3 id="2-1应用解耦"><a href="#2-1应用解耦" class="headerlink" title="2.1应用解耦"></a><h3 id="2.1">2.1应用解耦</h3></h3><p>&emsp;&emsp;场景例子：用户下单后，订单系统需要通知库存系统。传统的做法是，订单系统调用库存系统的接口。  </p>
+<h4 id="2-1-1传统模式："><a href="#2-1-1传统模式：" class="headerlink" title="2.1.1传统模式："></a><h4 id="2.1.1">2.1.1传统模式：</h4></h4><p>&emsp;&emsp;<img src="https://i.imgur.com/IHZtlbK.png" alt=""><br>&emsp;&emsp;传统模式的缺点：<br>&emsp;&emsp;1）假如库存系统无法访问，则订单减库存将失败，从而导致订单失败；<br>&emsp;&emsp;2）订单系统和库存系统耦合；  </p>
+<h4 id="2-1-2使用消息队列："><a href="#2-1-2使用消息队列：" class="headerlink" title="2.1.2使用消息队列："></a><h4 id="2.1.2">2.1.2使用消息队列：</h4></h4><p>&emsp;&emsp;<img src="https://i.imgur.com/TrXxkjZ.png" alt=""><br>&emsp;&emsp;1）订单系统：用户下单后，订单系统完成持久化处理，将消息写入消息队列，返回用户订单下单成功。<br>&emsp;&emsp;2）库存系统：订阅下单的消息，采用拉/推的方式，获取下单信息，库存系统根据下单信息，进行库存操作。<br>&emsp;&emsp;3）假如：在下单时库存系统不能正常使用。也不影响正常下单，因为下单后，订单系统写入消息队列就不再关心其他的后续操作了。实现订单系统与库存系统的应用解耦。  </p>
+<hr>
+<h3 id="2-2异步处理消息"><a href="#2-2异步处理消息" class="headerlink" title="2.2异步处理消息"></a><h3 id="2.2">2.2异步处理消息</h3></h3><p>####</p><h4 id="2.2.1"> 2.2.1传统模式</h4> ####<br>&emsp;&emsp;场景例子：用户注册后，需要发注册邮件和短信，传统的做法有两种1.串行的方式；2.并行方式。<br>&emsp;&emsp;1)传统串行方式：将注册信息写入数据库后，接着发送注册邮件，再发送短信，等三步骤完成之后再响应客户端<br>&emsp;&emsp;<img src="https://i.imgur.com/m4WdM4y.png" alt=""><br>&emsp;&emsp;2）传统并行方式：将注册信息写入数据库后，同时发送注册邮件和短信，等三步骤完成之后再响应客户端。与串行的差别是，并行的方式可以提高处理的时间、缩短响应时间。<br>&emsp;&emsp;<img src="https://i.imgur.com/n1i6ioZ.png" alt=""><br>&emsp;&emsp;假设三个业务节点每个使用50毫秒钟，不考虑网络等其他开销，则串行方式的时间是150毫秒，并行的时间可能是100毫秒。<br>&emsp;&emsp;因为CPU在单位时间内处理的请求数是一定的，假设CPU1秒内吞吐量是100次。则串行方式1秒内CPU可处理的请求量是7次（1000/150）。并行方式处理的请求量是10次（1000/100）。<br>&emsp;&emsp;传统的方式系统的性能（并发量，吞吐量，响应时间）会有瓶颈。  <p></p>
+<h4 id="2-2-2使用消息队列"><a href="#2-2-2使用消息队列" class="headerlink" title=" 2.2.2使用消息队列"></a><h4 id="2.2.2"> 2.2.2使用消息队列</h4></h4><p>&emsp;&emsp;<img src="https://i.imgur.com/leaO2zv.png" alt=""><br>&emsp;&emsp;1）引入消息队列，除去不必要的业务逻辑，异步处理<br>&emsp;&emsp;2）客户端响应时间相当于注册信息写入库中的时间（由于写入队列时间几乎可以忽略不计）<br>&emsp;&emsp;3）发送注册邮件和短信写入消息队列后，直接返回<br>&emsp;&emsp;4）因此架构改变后，系统的吞吐量提高到每秒20 QPS。比串行提高了3倍，比并行提高了两倍。</p>
+<hr>
+<h3 id="2-3流量削锋"><a href="#2-3流量削锋" class="headerlink" title="2.3流量削锋"></a><h3 id="2.3">2.3流量削锋</h3></h3><p>&emsp;&emsp;流量削锋也是消息队列中的常用场景，一般在秒杀或团抢活动中使用广泛。<br>&emsp;&emsp;应用场景：秒杀活动，一般会因为流量过大，导致流量暴增，应用挂掉。为解决这个问题，一般需要在应用前端加入消息队列。<br>&emsp;&emsp;1）可以控制活动的人数；<br>&emsp;&emsp;2）可以缓解短时间内高流量压垮应用；<br>&emsp;&emsp;加入消息队列示意图：<br>&emsp;&emsp;<img src="https://i.imgur.com/zrBf2t8.png" alt=""><br>&emsp;&emsp;1）用户的请求，服务器接收后，首先写入消息队列。假如消息队列长度超过最大数量，则直接抛弃用户请求或跳转到错误页面；<br>&emsp;&emsp;2）秒杀业务根据消息队列中的请求信息，再做后续处理。  </p>
+<h3 id="2-4日志处理"><a href="#2-4日志处理" class="headerlink" title="2.4日志处理"></a><h3 id="2.4">2.4日志处理</h3></h3><p>&emsp;&emsp;日志处理是指消息队列应用在日志处理中，比如Kafka的应用（是一种高吞吐量的分布式发布订阅消息系统）解决大量日志传输的问题。架构简化如下：<br>&emsp;&emsp;<img src="https://i.imgur.com/TQlAFDy.png" alt=""><br>&emsp;&emsp;架构解读：  </p>
+<ul>
+<li>日志采集客户端，负责日志数据采集，定时写受写入Kafka队列；  </li>
+</ul>
+<ul>
+<li>Kafka消息队列，负责日志数据的接收，存储和转发；  </li>
+</ul>
+<ul>
+<li>日志处理应用：订阅并消费kafka队列中的日志数据；</li>
+</ul>
+<hr>
+<h3 id="2-5消息通讯"><a href="#2-5消息通讯" class="headerlink" title="2.5消息通讯"></a><h3 id="2.5">2.5消息通讯</h3></h3><p>&emsp;&emsp;消息通讯是指，消息队列一般都内置了高效的通信机制，因此也可以用在纯的消息通讯。比如实现点对点消息队列，或者聊天室等。<br>&emsp;&emsp;1）点对点通讯：<br>&emsp;&emsp;<img src="https://i.imgur.com/SisxtjZ.png" alt=""><br>&emsp;&emsp;客户端A和客户端B使用同一队列，进行消息通讯。<br>&emsp;&emsp;2）聊天室通讯：<br>&emsp;&emsp;<img src="https://i.imgur.com/L4txxGQ.png" alt=""><br>&emsp;&emsp;客户端A，客户端B，客户端N订阅同一主题，进行消息发布和接收。实现类似聊天室效果。<br>&emsp;&emsp;以上实际是消息队列的两种消息模式，点对点或发布订阅模式。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/07/23/消息队列/消息队列/" data-id="cjfb43omp001nsp5l0rsduqgp" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/07/23/消息队列/消息中间件/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    分布式之消息中间件
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2016/11/23/服务器/虚拟机CentOS6.7 快速安装redis/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">虚拟机CentOS6.7 快速安装redis</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Recientes</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
+                            <p class="item-title"><a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/" class="title">JavaEE 使用Gradle发布jar包到远程中央仓库</a></p>
+                            <p class="item-date"><time datetime="2018-03-23T07:53:56.000Z" itemprop="datePublished">2018-03-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/23/java/Java 内存详解/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/03/23/java/Java 内存详解/" class="title">Java JVM 内存详解</a></p>
+                            <p class="item-date"><time datetime="2018-03-23T07:53:56.000Z" itemprop="datePublished">2018-03-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
+                            <p class="item-title"><a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/" class="title">JavaEE 使用Maven发布jar包到远程中央仓库</a></p>
+                            <p class="item-date"><time datetime="2018-03-23T07:00:56.000Z" itemprop="datePublished">2018-03-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
+                            <p class="item-title"><a href="/2018/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/" class="title">JavaEE 发布jar包到远程maven中央仓库</a></p>
+                            <p class="item-date"><time datetime="2018-03-22T03:33:56.000Z" itemprop="datePublished">2018-03-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/01/23/java/Java开发规范/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/01/23/java/Java开发规范/" class="title">Java 编码规范</a></p>
+                            <p class="item-date"><time datetime="2018-01-23T05:20:56.000Z" itemprop="datePublished">2018-01-23</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Categorias</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Archivos</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Etiquetas</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Nube de etiquetas</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 13.33px;">JavaEE</a> <a href="/tags/Nginx/" style="font-size: 20px;">Nginx</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 13.33px;">消息队列</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">Links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 CatalpaFlat<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
