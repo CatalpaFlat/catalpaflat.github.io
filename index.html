@@ -157,11 +157,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                30
+                27
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                6
+                8
                 <span>tags</span>
             </div>
         </div>
@@ -210,491 +210,44 @@
 
             
             <section id="main">
-    <article id="post-docker/install/centos" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull centos:7</span><br><span class="line">docker run --privileged -p 80:80 -p 8287:8287 -p 8888:8888 -p 8011:22 --name dev-centos-7 -itd centos.7.2.1511 /usr/sbin/init</span><br></pre></td></tr></table></figure>
-<p>Dockerfile:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">FROM centos:7.2.1511</span><br><span class="line">MAINTAINER CatalpaFlat</span><br><span class="line">RUN yum -y update</span><br><span class="line">RUN yum install -y openssh-server</span><br><span class="line">RUN sed -i &apos;s/UsePAM yes/UsePAM no/g&apos; /etc/ssh/sshd_config</span><br><span class="line"></span><br><span class="line">ADD sshd/ssh_host_rsa_key /etc/ssh/ssh_host_rsa_key</span><br><span class="line">ADD sshd/ssh_host_rsa_key.pub /etc/ssh/ssh_host_rsa_key.pub</span><br><span class="line">RUN mkdir -p /root/.ssh</span><br><span class="line">ADD sshd/authorized_keys /root/.ssh/authorized_keys</span><br><span class="line">ADD run.sh /usr/local/sbin/run.sh</span><br><span class="line">RUN chmod 755 /usr/local/sbin/run.sh</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">RUN echo &quot;root:147258&quot;|chpasswd</span><br><span class="line">EXPOSE 22</span><br><span class="line">CMD [&quot;/usr/local/sbin/run.sh&quot;]</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">FROM centos:7.2.1511</span><br><span class="line">MAINTAINER CatalpaFlat</span><br><span class="line">RUN yum -y install openssh-server</span><br><span class="line">RUN yum clean all</span><br><span class="line">RUN mkdir /var/run/sshd</span><br><span class="line">RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key</span><br><span class="line">RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key</span><br><span class="line">RUN echo &quot;root:147258&quot;|chpasswd</span><br><span class="line">EXPOSE 22</span><br><span class="line">CMD /usr/sbin/sshd -D</span><br><span class="line">ENTRYPOINT /usr/sbin/init</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t centos.7.2.1511 .</span><br></pre></td></tr></table></figure>
-<p>JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.161-0.b14.el7_4.x86_64<br>PATH=$JAVA_HOME/bin:$PATH<br>export PATH JAVA_HOME</p>
-<p>cp /etc/ssh/ssh_host_rsa_key /etc/ssh/ssh_host_rsa_key.pub /root/docker/centos/sshd</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2018/02/06/docker/install/centos/" data-id="cjfb4hwo40030wj5lqkj9oe4k" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-docker/install/nginx" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull nginx:1.13.8</span><br><span class="line">docker run -p 8001:80 --name Nginx --privileged=true -v $PWD/conf/nginx.conf:/etc/nginx/nginx.conf -v $PWD/www:/opt/nginx/www -v $PWD/logs:/var/logs/nginx -d 3f8a4339aadd</span><br></pre></td></tr></table></figure>
-<p>nginx.conf</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">user www-data;</span><br><span class="line">worker_processes auto;</span><br><span class="line">pid /run/nginx.pid;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections 768;</span><br><span class="line">    # multi_accept on;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line"></span><br><span class="line">    ##</span><br><span class="line">    # Basic Settings</span><br><span class="line">    ##</span><br><span class="line"></span><br><span class="line">    sendfile on;</span><br><span class="line">    tcp_nopush on;</span><br><span class="line">    tcp_nodelay on;</span><br><span class="line">    keepalive_timeout 65;</span><br><span class="line">    types_hash_max_size 2048;</span><br><span class="line">    # server_tokens off;</span><br><span class="line"></span><br><span class="line">    # server_names_hash_bucket_size 64;</span><br><span class="line">    # server_name_in_redirect off;</span><br><span class="line"></span><br><span class="line">    include /etc/nginx/mime.types;</span><br><span class="line">    default_type application/octet-stream;</span><br><span class="line"></span><br><span class="line">    ##</span><br><span class="line">    # SSL Settings</span><br><span class="line">    ##</span><br><span class="line"></span><br><span class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">    ##</span><br><span class="line">    # Logging Settings</span><br><span class="line">    ##</span><br><span class="line"></span><br><span class="line">    access_log /var/logs/nginx/access.log;</span><br><span class="line">    error_log /var/logs/nginx/error.log;</span><br><span class="line"></span><br><span class="line">    ##</span><br><span class="line">    # Gzip Settings</span><br><span class="line">    ##</span><br><span class="line"></span><br><span class="line">    gzip on;</span><br><span class="line">    gzip_disable &quot;msie6&quot;;</span><br><span class="line"></span><br><span class="line">    ##</span><br><span class="line">    # Virtual Host Configs</span><br><span class="line">    ##</span><br><span class="line"></span><br><span class="line">    server &#123;</span><br><span class="line">        listen 80 default_server;</span><br><span class="line">        listen [::]:80 default_server;</span><br><span class="line"></span><br><span class="line">        root /opt/nginx/www;</span><br><span class="line"></span><br><span class="line">        # Add index.php to the list if you are using PHP</span><br><span class="line">        index index.html index.htm index.nginx-debian.html;</span><br><span class="line"></span><br><span class="line">        server_name _;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            # First attempt to serve request as file, then</span><br><span class="line">            # as directory, then fall back to displaying a 404.</span><br><span class="line">            try_files $uri $uri/ =404;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2018/02/06/docker/install/nginx/" data-id="cjfb4hwob003dwj5lwp4mutw1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-docker/install/redis" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull redis:4.0.8</span><br><span class="line">docker run -p 6379:6379 --privileged=true --name dev-redis-4.0.8 -v /docker/redis/data:/data  -d de560ba5403e redis-server --appendonly yes</span><br></pre></td></tr></table></figure>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2018/02/06/docker/install/redis/" data-id="cjfb4hwo80036wj5l37xejv1y" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-docker/install/mysql" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql:5.7</span><br><span class="line">docker run -p 3306:3306 --name dev-mysql-5.7-01 -v /docker/mysql/conf:/etc/mysql/conf.d -v /docker/mysql/logs:/logs -v /docker/mysql/data:/mysql_data -e MYSQL_ROOT_PASSWORD=123456 -d f008d8ff927d</span><br><span class="line">docker exec -it dev-mysql-5.7-01 bash</span><br><span class="line">mysql -uroot -p</span><br><span class="line">select version();</span><br></pre></td></tr></table></figure>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2018/02/06/docker/install/mysql/" data-id="cjfb4hwo60034wj5lavb1zhp7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-docker/dockerfile/dockerFile" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>eg:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>image      centos</span><br><span class="line"><span class="meta">#</span>version    7.o</span><br><span class="line">FROM centos:7</span><br><span class="line"><span class="meta">#</span> MAINTAINER</span><br><span class="line">MAINTAINER catalpaflat@docker.cn</span><br></pre></td></tr></table></figure></p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2018/02/06/docker/dockerfile/dockerFile/" data-id="cjfb4hwo0002ywj5lkp535tph" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <article id="post-docker/命令/run" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/02/05/docker/命令/run/">Docker run 命令</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/02/05/docker/命令/run/">
+            <time datetime="2018-02-05T14:33:12.000Z" itemprop="datePublished">2018-02-05</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/docker/">docker</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/docker/">docker</a>
+    </div>
+
+                    </div>
+                
+            </header>
         
         
         <div class="article-entry" itemprop="articleBody">
@@ -732,117 +285,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2018/02/06/docker/命令/run/" data-id="cjfb4hwo90039wj5l8v6lyebt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-docker/安装/docker安装" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="CentOS-Docker-安装"><a href="#CentOS-Docker-安装" class="headerlink" title="CentOS Docker 安装"></a>CentOS Docker 安装</h1><blockquote>
-<p>Docker支持以下的CentOS版本：</p>
-<ul>
-<li>CentOS 7 (64-bit)</li>
-<li>CentOS 6.5 (64-bit) 或更高的版本</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>前提条件:<br>目前，CentOS 仅发行版本中的内核支持 Docker。<br>Docker 运行在 CentOS 7 上，要求系统为64位、系统内核版本为 3.10 以上。<br>Docker 运行在 CentOS-6.5 或更高的版本的 CentOS 上，要求系统为64位、系统内核版本为 2.6.32-431 或者更高版本。<br>使用 yum 安装（CentOS 7下）</p>
-</blockquote>
-<h2 id="1-检测版本"><a href="#1-检测版本" class="headerlink" title="1. 检测版本"></a>1. 检测版本</h2><p>Docker 要求 CentOS 系统的内核版本高于 3.10 ，查看本页面的前提条件来验证你的CentOS 版本是否支持 Docker 。<br>通过 uname -r 命令查看你当前的内核版本<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure></p>
-<h2 id="2-安装-Docker"><a href="#2-安装-Docker" class="headerlink" title="2. 安装 Docker"></a>2. 安装 Docker</h2><p>Docker 软件包和依赖包已经包含在默认的 CentOS-Extras 软件源里，安装命令如下：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install docker</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://www.runoob.com/wp-content/uploads/2016/05/docker09.png" alt=""></p>
-<h2 id="3-启动-Docker-后台服务"><a href="#3-启动-Docker-后台服务" class="headerlink" title="3. 启动 Docker 后台服务"></a>3. 启动 Docker 后台服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service docker start</span><br></pre></td></tr></table></figure>
-<p><img src="http://www.runoob.com/wp-content/uploads/2016/05/docker11.png" alt=""></p>
-<h2 id="4-镜像加速"><a href="#4-镜像加速" class="headerlink" title="4.镜像加速"></a>4.镜像加速</h2><p>鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，我们可以需要配置加速器来解决，我使用的是网易的镜像地址：<a href="http://hub-mirror.c.163.com。" target="_blank" rel="noopener">http://hub-mirror.c.163.com。</a><br>新版的 Docker 使用 /etc/docker/daemon.json（Linux） 或者 %programdata%\docker\config\daemon.json（Windows） 来配置 Daemon。<br>请在该配置文件中加入（没有该文件的话，请先建一个）：<br>{<br>  “registry-mirrors”: [“<a href="http://hub-mirror.c.163.com&quot;]" target="_blank" rel="noopener">http://hub-mirror.c.163.com&quot;]</a><br>}</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2018/02/05/docker/安装/docker安装/" data-id="cjfb4hwoa003bwj5lpshc83iz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2018/02/05/docker/命令/run/" data-id="cjfb4t8z8003byk5ljxpk88j0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1116,7 +559,152 @@ for (String item : list) {
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2018/01/23/java/Java开发规范/" data-id="cjfb4hwm6000rwj5l3qdrlsud" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2018/01/23/java/Java开发规范/" data-id="cjfb4t8x4000pyk5loj30ucw7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-docker/安装/docker安装" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/01/05/docker/安装/docker安装/">CentOS Docker 安装</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/01/05/docker/安装/docker安装/">
+            <time datetime="2018-01-05T08:33:56.000Z" itemprop="datePublished">2018-01-05</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/docker/">docker</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/docker/">docker</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="CentOS-Docker-安装"><a href="#CentOS-Docker-安装" class="headerlink" title="CentOS Docker 安装"></a>CentOS Docker 安装</h1><blockquote>
+<p>Docker支持以下的CentOS版本：</p>
+<ul>
+<li>CentOS 7 (64-bit)</li>
+<li>CentOS 6.5 (64-bit) 或更高的版本</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>前提条件:<br>目前，CentOS 仅发行版本中的内核支持 Docker。<br>Docker 运行在 CentOS 7 上，要求系统为64位、系统内核版本为 3.10 以上。<br>Docker 运行在 CentOS-6.5 或更高的版本的 CentOS 上，要求系统为64位、系统内核版本为 2.6.32-431 或者更高版本。<br>使用 yum 安装（CentOS 7下）</p>
+</blockquote>
+<h2 id="1-检测版本"><a href="#1-检测版本" class="headerlink" title="1. 检测版本"></a>1. 检测版本</h2><p>Docker 要求 CentOS 系统的内核版本高于 3.10 ，查看本页面的前提条件来验证你的CentOS 版本是否支持 Docker 。<br>通过 uname -r 命令查看你当前的内核版本<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-安装-Docker"><a href="#2-安装-Docker" class="headerlink" title="2. 安装 Docker"></a>2. 安装 Docker</h2><p>Docker 软件包和依赖包已经包含在默认的 CentOS-Extras 软件源里，安装命令如下：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install docker</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/05/docker09.png" alt=""></p>
+<h2 id="3-启动-Docker-后台服务"><a href="#3-启动-Docker-后台服务" class="headerlink" title="3. 启动 Docker 后台服务"></a>3. 启动 Docker 后台服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service docker start</span><br></pre></td></tr></table></figure>
+<p><img src="http://www.runoob.com/wp-content/uploads/2016/05/docker11.png" alt=""></p>
+<h2 id="4-镜像加速"><a href="#4-镜像加速" class="headerlink" title="4.镜像加速"></a>4.镜像加速</h2><p>鉴于国内网络问题，后续拉取 Docker 镜像十分缓慢，我们可以需要配置加速器来解决，我使用的是网易的镜像地址：<a href="http://hub-mirror.c.163.com。" target="_blank" rel="noopener">http://hub-mirror.c.163.com。</a><br>新版的 Docker 使用 /etc/docker/daemon.json（Linux） 或者 %programdata%\docker\config\daemon.json（Windows） 来配置 Daemon。<br>请在该配置文件中加入（没有该文件的话，请先建一个）：<br>{<br>  “registry-mirrors”: [“<a href="http://hub-mirror.c.163.com&quot;]" target="_blank" rel="noopener">http://hub-mirror.c.163.com&quot;]</a><br>}</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2018/01/05/docker/安装/docker安装/" data-id="cjfb4t8z9003cyk5l0j6jibug" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1388,7 +976,7 @@ public class ChineseToPinyinUtil {
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/12/16/java/Java 实现中文-拼音转换/" data-id="cjfb4hwlv000awj5logvxull3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/12/16/java/Java 实现中文-拼音转换/" data-id="cjfb4t8wz000fyk5lt0mfw556" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1880,7 +1468,1197 @@ public class QuartzUtil {
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/11/17/Quartz/自定义Quartz超实用工具类/" data-id="cjfb4hwlo0005wj5lba83dxy6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/11/17/Quartz/自定义Quartz超实用工具类/" data-id="cjfb4t8wt0009yk5lrw1suf6q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-Quartz/深入解读Quartz任务调度器" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/11/15/Quartz/深入解读Quartz任务调度器/">深入解读Quartz任务调度器</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/11/15/Quartz/深入解读Quartz任务调度器/">
+            <time datetime="2017-11-15T09:24:17.000Z" itemprop="datePublished">2017-11-15</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Quartz/">Quartz</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Quartz/">Quartz</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="深入解读Quartz任务调度器"><a href="#深入解读Quartz任务调度器" class="headerlink" title="深入解读Quartz任务调度器"></a>深入解读Quartz任务调度器</h1><h2 id="1-Quartz简介"><a href="#1-Quartz简介" class="headerlink" title="1.Quartz简介"></a>1.Quartz简介</h2><h3 id="1-1-概要"><a href="#1-1-概要" class="headerlink" title="1.1.概要"></a>1.1.概要</h3><p>　　Quartz是OpenSymphony提供的强大的开源任务调度框架。　　<br>　　官网：<a href="http://www.quartz-scheduler.org" target="_blank" rel="noopener">http://www.quartz-scheduler.org</a><br>　　纯Java实现，精细控制排程。<br><img src="https://i.imgur.com/MB8dnAN.png" alt=""></p>
+<h3 id="1-2-Quartz特点"><a href="#1-2-Quartz特点" class="headerlink" title="1.2.Quartz特点"></a>1.2.Quartz特点</h3><ol>
+<li>强大的调度能力</li>
+<li>灵活的应用方式</li>
+<li>强大的分布式和集群能力<h3 id="1-3-Quartz设计模式"><a href="#1-3-Quartz设计模式" class="headerlink" title="1.3.Quartz设计模式"></a>1.3.Quartz设计模式</h3></li>
+</ol>
+<ul>
+<li>Builder模式</li>
+<li>组件模式</li>
+<li>Factory模式</li>
+<li>链式写法<h3 id="1-4-Quartz体系结构"><a href="#1-4-Quartz体系结构" class="headerlink" title="1.4.Quartz体系结构"></a>1.4.Quartz体系结构</h3><h4 id="1-4-1-三大核心"><a href="#1-4-1-三大核心" class="headerlink" title="1.4.1.三大核心"></a>1.4.1.三大核心</h4></li>
+<li>调度器</li>
+<li>任务</li>
+<li>触发器 </li>
+</ul>
+<p><img src="https://i.imgur.com/mAHuNjM.jpg" alt=""></p>
+<h4 id="1-4-2-重要组成"><a href="#1-4-2-重要组成" class="headerlink" title="1.4.2.重要组成"></a>1.4.2.重要组成</h4><p>1）任务： </p>
+<ul>
+<li><p>Job：表示一个工作，要执行的具体内容。此接口中只有一个方法。要创建一个任务，必须得实现这个接口。该接口只有一个execute方法，任务每次被调用的时候都会执行这个execute方法的逻辑，类似TimerTask的run方法，在里面编写业务逻辑。 </p>
+<pre><code>public class TestJob implements Job {
+    /**把要执行的操作，写在execute方法中  */
+    @Override
+    public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+        SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd hh:mm:ss&quot;);
+        System.out.println(&quot;I can do something...&quot;);
+        System.out.println(sdf.format(new Date()));
+    }
+}
+</code></pre></li>
+</ul>
+<p>生命周期：在每次调度器执行job时，它在调用execute方法前会创建一个新的job实例，当调用完成之后，关联的job对象实例会被释放，释放的实例会被垃圾回收机制回收。</p>
+<ul>
+<li><p>JobBuilder：可向任务传递数据,通常情况下,我们使用它就可向任务类发送数据了，如有特别复杂的传递参数,它提供了一个传递递:JobDataMap对象的方法　　</p>
+<pre><code>JobDetail jobDetail =  JobBuilder.newJob(TestJob.class).withIdentity(&quot;testJob&quot;,&quot;group1&quot;).build();
+</code></pre></li>
+<li><p>JobDetail：用来保存我们任务的详细信息。一个JobDetail可以有多个Trigger，但是一个Trigger只能对应一个JobDetail。下面是JobDetail的一些常用的属性和含义：　　</p>
+</li>
+</ul>
+<p>　　<img src="https://i.imgur.com/aid7mV3.png" alt=""></p>
+<ul>
+<li><p>JobStore：负责跟踪所有你给scheduler的“工作数据”：jobs, triggers, calendars, 等。</p>
+<ul>
+<li><p>RAMJobStore：是使用最简单的也是最高效(依据CPU时间)的JobStore 。RAMJobStore 正如它名字描述的一样，它保存数据在RAM。缺点是你的应用结束之后所有的数据也丢失了–这意味着RAMJobStore 不具有保持job和trigger持久的能力。对于一些程序是可以接受的，甚至是期望的，但对于其他的程序可能是灾难性的。使用RAMJobStore配置Quartz：配置如下</p>
+<pre><code>org.quartz.jobStore.class = org.quartz.simpl.RAMJobStore 
+</code></pre></li>
+<li><p>JDBCJobStore：以JDBC的方式保存数据在数据库中。它比RAMJobStore的配置复杂一点，也没有RAMJobStore快。然而,性能缺点不是糟透了,特别是如果你在数据库表主键上建立了索引。在机器之间的LAN(在scheduler 和数据库之间)合理的情况下，检索和更新一个被触发的Trigger花费的时间少于10毫秒。几乎适用于所有的数据库，广泛用于 Oracle。PostgreSQL, MySQL, MS SQLServer, HSQLDB, 和DB2。使用JDBCJobStore之前你必须首先创建一系列Quartz要使用的表。你可以发现表创建语句在Quartz发布目录的 “docs/dbTables”下面。你需要确定你的应用要使用的事务类型。如果你不想绑定调度命令(例如增加和移除Trigger)到其他的事务，你可以使用JobStoreTX (最常用的选择)作为你的Jobstore。如果你需要Quartz和其他的事务(例如在J2EE应用服务器中)一起工作，你应该使用JobStoreCMT ，Quartz 将让应用服务器容器管理这个事务。使用JobStoreTx配置Quartz：</p>
+<pre><code>org.quartz.jobStore.class = org.quartz.impl.jdbcjobstore.JobStoreTX  
+org.quartz.jobStore.driverDelegateClass = org.quartz.impl.jdbcjobstore.StdJDBCDelegate  
+#配置表的前缀  
+org.quartz.jobStore.tablePrefix = QRTZ_  
+#使用JNDI数据源的时候，数据源的名字  
+org.quartz.jobStore.dataSource = myDS      
+</code></pre></li>
+<li><p>TerracottaJobStore：提供了一个方法：在不使用数据库的情况下使它具有收缩性和强壮性。可以是集群的也可以是非集群的，在这两种情况下为你的job数据提供了一个存储机制用于应用程序重启之间持久,因为数据是存储在Terracotta服务器。它的性能比使用数据库访问JDBCJobStore好一点儿(大约是一个数量级)，但是明显比RAMJobStore慢。使用TerracottaJobStore配置Quartz：</p>
+<pre><code>org.quartz.jobStore.class = org.terracotta.quartz.TerracottaJobStore  
+org.quartz.jobStore.tcConfigUrl = localhost:9510  
+</code></pre></li>
+</ul>
+</li>
+<li><p>JobDataMap：中可以包含不限量的（序列化的）数据对象，在job实例执行的时候，可以使用其中的数据；JobDataMap是Java Map接口的一个实现，额外增加了一些便于存取基本类型的数据的方法。</p>
+<ul>
+<li><p>存：</p>
+<pre><code>JobDetail jobDetail =  JobBuilder.newJob(TestJob.class).withIdentity(&quot;testJob&quot;,&quot;group1&quot;).usingJobData(&quot;date1&quot;,&quot;存内容&quot;).build(); 
+</code></pre></li>
+<li><p>取：</p>
+<pre><code>public class TestJob implements Job {
+    /**把要执行的操作，写在execute方法中  */
+    @Override
+    public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+        JobKey key = jobExecutionContext.getJobDetail().getKey();
+        JobDataMap jobDataMap = jobExecutionContext.getJobDetail().getJobDataMap();
+        String date1 = jobDataMap.getString(&quot;date1&quot;);
+    }
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>2）触发器：用来触发执行Job<br><img src="https://i.imgur.com/Bg3Bxud.png" alt="">  </p>
+<p>2.1）触发器通用属性： </p>
+<ul>
+<li>Jobkey：表示job实例的标识，触发器被触发时，该指定的job实例会被执行</li>
+<li>StartTime：表示触发器的时间表首次被触发的时间，它的值类型为：java.util.Date</li>
+<li>EndTime：指定触发器的不再被触发的时间，它的值类型为：java.util.Date</li>
+</ul>
+<p>2.2）触发器类型：</p>
+<ul>
+<li><p>SimpleTrigger： 主要是针对一些相对简单的时间触发进行配置使用，比如在指定的时间开始然后在一定的时间间隔之内重复执行一个Job，同时可以任意指定重复的次数。下面就是使用一个SimpleTrigger的例子:  </p>
+<pre><code>//创建触发器 每3秒钟执行一次(无开始时间和结束时间)
+Trigger trigger = TriggerBuilder.newTrigger()
+            .withIdentity(&quot;trigger1&quot;, &quot;group3&quot;)
+            .withSchedule(
+            SimpleScheduleBuilder.simpleSchedule()
+            .withIntervalInSeconds(3).repeatForever()).build();
+//创建触发器 每3秒钟执行一次(有开始时间和结束时间)
+ long now = new Date().getTime();
+Date start = new Date(now+6000);
+Date end = new Date(now+12000);
+//创建触发器 每3秒钟执行一次
+Trigger trigger = TriggerBuilder.newTrigger()
+                  .withIdentity(&quot;trigger1&quot;, &quot;group3&quot;)
+                  .startAt(start)
+                  .endAt(end)
+                  .withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(3).repeatForever()).build();
+</code></pre><p>SimpleTrigger具有丰富的构造函数，根据业务需求构造不同的构造函数。</p>
+</li>
+<li><p>CronTrigger： 可以配置更复杂的触发时刻表，基于日历的作业触发器，而不像SimpleTrigger那样精确指定间隔时间，比SimpleTrigger更加常用。  </p>
+</li>
+</ul>
+<p>　　Cron表达式：用于配置CronTrigger实例，是由7个表达式组成的字符串，描述了时间表的详细信息。<br>　　格式为：[秒][分][时][日][月][周][年]<br>　　Cron表达式特殊字符意义对应表：<br>　　<img src="https://i.imgur.com/spUTIoo.png" alt=""><br>　　通配符说明：<br>　　<img src="https://i.imgur.com/lkq9yso.png" alt=""><br>　　Cron表达式例子：<br>　　<img src="https://i.imgur.com/SOh7Ujr.png" alt=""></p>
+<pre><code>TriggerBuilder.newTrigger().withIdentity(&quot;trigger2&quot;,&quot;group2&quot;)
+            .withSchedule(CronScheduleBuilder.cronSchedule(&quot;0 0 9 ? * 6L *&quot;)).build();
+</code></pre><p>　　Cron表达式小技巧：<br>　　1. ‘L’和‘W’可以一起组合使用<br>　　2. 周字段英文字母不区分大小写即MOM与mom相同<br>　　3. 利用工具，在线生成cron表达式：<a href="http://cron.qqe2.com/" target="_blank" rel="noopener">http://cron.qqe2.com/</a>  </p>
+<ul>
+<li><p>NthIncludedDayTrigger：是 Quartz 开发团队最新加入到框架中的一个 Trigger。它设计用于在每一间隔类型的第几天执行 Job。例如，你要在每个月的 15 号执行开票的 Job，用 NthIncludedDayTrigger就再合适不过了。</p>
+<pre><code>NthIncludedDayTrigger trigger = new NthIncludedDayTrigger(&quot;NthIncludedDayTrigger&quot;,Scheduler.DEFAULT_GROUP);
+            trigger.setN(15);
+            trigger.setIntervalType(NthIncludedDayTrigger.INTERVAL_TYPE_MONTHLY);
+</code></pre></li>
+</ul>
+<hr>
+<p>3）调度器Scheduler<br>　　代表一个Quartz的独立运行容器，Trigger和JobDetail可以注册到Scheduler中，两者在Scheduler中拥有各自的组及名称，组及名称是Scheduler查找定位容器中某一对象的依据，Trigger的组及名称必须唯一，JobDetail的组和名称也必须唯一（但可以和Trigger的组和名称相同，因为它们是不同类型的）。Scheduler定义了多个接口方法，允许外部通过组及名称访问和控制容器中Trigger和JobDetail。<br>　　Scheduler可以将Trigger绑定到某一JobDetail中，这样当Trigger触发时，对应的Job就被执行。一个Job可以对应多个Trigger，但一个Trigger只能对应一个Job。<br>　　可以通过SchedulerFactory创建一个Scheduler实例。Scheduler拥有一个SchedulerContext，它类似于ServletContext，保存着Scheduler上下文信息，Job和Trigger都可以访问SchedulerContext内的信息。SchedulerContext内部通过一个Map，以键值对的方式维护这些上下文数据，SchedulerContext为保存和获取数据提供了多个put()和getXxx()的方法。可以通过Scheduler# getContext()获取对应的SchedulerContext实例；  </p>
+<pre><code>SchedulerFactory schedulerfactory=new StdSchedulerFactory();
+Scheduler scheduler = schedulerfactory.getScheduler();
+
+ DirectSchedulerFactory factory = DirectSchedulerFactory.getInstance();
+try {
+    Scheduler scheduler = factory.getScheduler();
+} catch (SchedulerException e) {
+    e.printStackTrace();
+}
+</code></pre><hr>
+<p>4)SchedulerFactory:  </p>
+<ul>
+<li>使用一组参数（java.util.Properties）来创建和出书啊Quartz调度器</li>
+<li>配置参数一般存储在quartz.properties中</li>
+<li>调用getScheduler方法就能创建和初始化调度器</li>
+</ul>
+<hr>
+<p>5)quartz.properties:<br>Quartz-Job的quartz.properties配置文件说明，此文件在quartz的jar包有，可直接拿过来使用不过只有基本的几个配置 自己可根据需要进行扩充；另外如果项目中没有对该配置文件重写，则Quartz会加载自己jar包中的quartz.properties文件。  </p>
+<pre><code># Default Properties file for use by StdSchedulerFactory  
+# to create a Quartz Scheduler Instance, if a different  
+# properties file is not explicitly specified.  
+#  
+# ===========================================================================  
+# Configure Main Scheduler Properties 调度器属性  
+# ===========================================================================  
+org.quartz.scheduler.instanceName: DefaultQuartzScheduler  
+#org.quartz.scheduler.instanceid:AUTO  
+org.quartz.scheduler.rmi.export: false  
+org.quartz.scheduler.rmi.proxy: false  
+org.quartz.scheduler.wrapJobExecutionInUserTransaction: false  
+# ===========================================================================    
+# Configure ThreadPool 线程池属性    
+# ===========================================================================  
+#线程池的实现类（一般使用SimpleThreadPool即可满足几乎所有用户的需求）  
+org.quartz.threadPool.class: org.quartz.simpl.SimpleThreadPool  
+#指定线程数，至少为1（无默认值）(一般设置为1-100直接的整数合适)  
+org.quartz.threadPool.threadCount: 10  
+#设置线程的优先级（最大为java.lang.Thread.MAX_PRIORITY 10，最小为Thread.MIN_PRIORITY 1，默认为5）  
+org.quartz.threadPool.threadPriority: 5  
+#设置SimpleThreadPool的一些属性  
+#设置是否为守护线程  
+#org.quartz.threadpool.makethreadsdaemons = false  
+#org.quartz.threadPool.threadsInheritContextClassLoaderOfInitializingThread: true  
+#org.quartz.threadpool.threadsinheritgroupofinitializingthread=false  
+#线程前缀默认值是：[Scheduler Name]_Worker  
+#org.quartz.threadpool.threadnameprefix=swhJobThead;  
+# 配置全局监听(TriggerListener,JobListener) 则应用程序可以接收和执行 预定的事件通知  
+# ===========================================================================  
+# Configuring a Global TriggerListener 配置全局的Trigger监听器  
+# MyTriggerListenerClass 类必须有一个无参数的构造函数，和 属性的set方法，目前2.2.x只支持原始数据类型的值（包括字符串）  
+# ===========================================================================  
+#org.quartz.triggerListener.NAME.class = com.swh.MyTriggerListenerClass  
+#org.quartz.triggerListener.NAME.propName = propValue  
+#org.quartz.triggerListener.NAME.prop2Name = prop2Value  
+# ===========================================================================  
+# Configuring a Global JobListener 配置全局的Job监听器  
+# MyJobListenerClass 类必须有一个无参数的构造函数，和 属性的set方法，目前2.2.x只支持原始数据类型的值（包括字符串）  
+# ===========================================================================  
+#org.quartz.jobListener.NAME.class = com.swh.MyJobListenerClass  
+#org.quartz.jobListener.NAME.propName = propValue  
+#org.quartz.jobListener.NAME.prop2Name = prop2Value  
+# ===========================================================================    
+# Configure JobStore 存储调度信息（工作，触发器和日历等）  
+# ===========================================================================  
+# 信息保存时间 默认值60秒  
+org.quartz.jobStore.misfireThreshold: 60000  
+#保存job和Trigger的状态信息到内存中的类  
+org.quartz.jobStore.class: org.quartz.simpl.RAMJobStore  
+# ===========================================================================    
+# Configure SchedulerPlugins 插件属性 配置  
+# ===========================================================================  
+# 自定义插件    
+#org.quartz.plugin.NAME.class = com.swh.MyPluginClass  
+#org.quartz.plugin.NAME.propName = propValue  
+#org.quartz.plugin.NAME.prop2Name = prop2Value  
+#配置trigger执行历史日志（可以看到类的文档和参数列表）  
+org.quartz.plugin.triggHistory.class = org.quartz.plugins.history.LoggingTriggerHistoryPlugin    
+org.quartz.plugin.triggHistory.triggerFiredMessage = Trigger {1}.{0} fired job {6}.{5} at: {4, date, HH:mm:ss MM/dd/yyyy}    
+org.quartz.plugin.triggHistory.triggerCompleteMessage = Trigger {1}.{0} completed firing job {6}.{5} at {4, date, HH:mm:ss MM/dd/yyyy} with resulting trigger instruction code: {9}    
+#配置job调度插件  quartz_jobs(jobs and triggers内容)的XML文档    
+#加载 Job 和 Trigger 信息的类   （1.8之前用：org.quartz.plugins.xml.JobInitializationPlugin）  
+org.quartz.plugin.jobInitializer.class = org.quartz.plugins.xml.XMLSchedulingDataProcessorPlugin  
+#指定存放调度器(Job 和 Trigger)信息的xml文件，默认是classpath下quartz_jobs.xml  
+org.quartz.plugin.jobInitializer.fileNames = my_quartz_job2.xml    
+#org.quartz.plugin.jobInitializer.overWriteExistingJobs = false    
+org.quartz.plugin.jobInitializer.failOnFileNotFound = true    
+#自动扫描任务单并发现改动的时间间隔,单位为秒  
+org.quartz.plugin.jobInitializer.scanInterval = 10  
+#覆盖任务调度器中同名的jobDetail,避免只修改了CronExpression所造成的不能重新生效情况  
+org.quartz.plugin.jobInitializer.wrapInUserTransaction = false  
+# ===========================================================================    
+# Sample configuration of ShutdownHookPlugin  ShutdownHookPlugin插件的配置样例  
+# ===========================================================================  
+#org.quartz.plugin.shutdownhook.class = \org.quartz.plugins.management.ShutdownHookPlugin  
+#org.quartz.plugin.shutdownhook.cleanShutdown = true  
+#  
+# Configure RMI Settings 远程服务调用配置  
+#  
+#如果你想quartz-scheduler出口本身通过RMI作为服务器，然后设置“出口”标志true(默认值为false)。  
+#org.quartz.scheduler.rmi.export = false  
+#主机上rmi注册表(默认值localhost)  
+#org.quartz.scheduler.rmi.registryhost = localhost  
+#注册监听端口号（默认值1099）  
+#org.quartz.scheduler.rmi.registryport = 1099  
+#创建rmi注册，false/never：如果你已经有一个在运行或不想进行创建注册  
+# true/as_needed:第一次尝试使用现有的注册，然后再回来进行创建  
+# always:先进行创建一个注册，然后再使用回来使用注册  
+#org.quartz.scheduler.rmi.createregistry = never  
+#Quartz Scheduler服务端端口，默认是随机分配RMI注册表  
+#org.quartz.scheduler.rmi.serverport = 1098  
+#true:链接远程服务调度(客户端),这个也要指定registryhost和registryport，默认为false  
+# 如果export和proxy同时指定为true，则export的设置将被忽略  
+#org.quartz.scheduler.rmi.proxy = false  
+</code></pre>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/11/15/Quartz/深入解读Quartz任务调度器/" data-id="cjfb4t8wr0008yk5l9qyhf5et" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-消息队列/RabbitMQ" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/11/11/消息队列/RabbitMQ/">消息队列之RabbitMQ</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/11/11/消息队列/RabbitMQ/">
+            <time datetime="2017-11-11T08:08:34.000Z" itemprop="datePublished">2017-11-11</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/消息队列/">消息队列</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/消息队列/">消息队列</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h1><h3 id="1-RabbitMQ概述"><a href="#1-RabbitMQ概述" class="headerlink" title="1.RabbitMQ概述"></a>1.RabbitMQ概述</h3><p>&emsp;&emsp;MQ全称为Message Queue, 消息队列（MQ）是一种应用程序对应用程序的通信方法。应用程序通过读写出入队列的消息（针对应用程序的数据）来通信，而无需专用连接来链接它们。消息传递指的是程序之间通过在消息中发送数据进行通信，而不是通过直接调用彼此来通信，直接调用通常是用于诸如远程过程调用的技术。排队指的是应用程序通过 队列来通信。队列的使用除去了接收和发送应用程序同时执行的要求。其中较为成熟的MQ产品有IBM WEBSPHERE MQ等等。</p>
+<h3 id="2-RabbitMQ安装"><a href="#2-RabbitMQ安装" class="headerlink" title="2.RabbitMQ安装"></a>2.RabbitMQ安装</h3><p>Windows环境下：<br>RabbitMQ基于erlang，因此先安装erlang<br>2.1 安装erlang<br>2.1.1 下载并安装erlang<br>erlang下载地址：<a href="http://www.erlang.org/downloads" target="_blank" rel="noopener">http://www.erlang.org/downloads</a><br>erlang安装过程直接一直next到底<br>2.1.2 设置erlang环境变量<br><img src="https://i.imgur.com/IsFZU83.png" alt=""><br>将;%ERLANG_HOME%\bin添加到Path<br>2.1.3 测试erlang是否安装成功<br><img src="https://i.imgur.com/qJAIMRT.png" alt=""><br>2.2 安装RabbitMQ<br>2.2.1 下载并安装RabbitMQ<br>RabbitMQ下载地址：<a href="http://www.rabbitmq.com/install-windows.html" target="_blank" rel="noopener">http://www.rabbitmq.com/install-windows.html</a><br>RabbitMQ安装过程也一直next到底<br>2.2.2 激活 RabbitMQ’s Management Plugin<br>到RabbitMQ的安装目录找到<br>E:\RabbitMQServer\rabbitmq_server-3.6.5\sbin\<br>运行rabbitmq-plugins enable rabbitmq_management<br><img src="https://i.imgur.com/S8Q6YoD.png" alt=""><br>接着直接重启服务<br>rabbitmq-service stop<br><img src="https://i.imgur.com/TgZPpm6.png" alt=""><br>rabbitmq-service start<br><img src="https://i.imgur.com/Qe0CTzI.png" alt=""><br>2.2.3 浏览器访问<a href="http://localhost:15672/#/" target="_blank" rel="noopener">http://localhost:15672/#/</a><br>使用账号：guest密码：guest登录即可<br><img src="https://i.imgur.com/FbJtEqA.png" alt=""><br>自此RabbitMQ安装完毕</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/11/11/消息队列/RabbitMQ/" data-id="cjfb4t8xh001jyk5l0ms8ywbw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-java/Java 自定义超实用Redis工具类（满足对象，list，map等类型）" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/11/11/java/Java 自定义超实用Redis工具类（满足对象，list，map等类型）/">Java 自定义超实用Redis工具类（满足对象，list，map等类型）</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/11/11/java/Java 自定义超实用Redis工具类（满足对象，list，map等类型）/">
+            <time datetime="2017-11-11T07:11:22.000Z" itemprop="datePublished">2017-11-11</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Java/">Java</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Java/">Java</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="自定义超实用Redis工具类（满足对象，list，map等类型）"><a href="#自定义超实用Redis工具类（满足对象，list，map等类型）" class="headerlink" title="自定义超实用Redis工具类（满足对象，list，map等类型）"></a>自定义超实用Redis工具类（满足对象，list，map等类型）</h1><p>该工具类，可以存储对象、list，map等各种数据类型到Redis中，大大有效提高开发效率。</p>
+<h2 id="1-添加maven依赖"><a href="#1-添加maven依赖" class="headerlink" title="1.添加maven依赖"></a>1.添加maven依赖</h2><pre><code>&lt;!--序列化工具--&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.objenesis&lt;/groupId&gt;
+    &lt;artifactId&gt;objenesis&lt;/artifactId&gt;
+    &lt;version&gt;${objenesis.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;!-- https://mvnrepository.com/artifact/com.dyuproject.protostuff/protostuff-core --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.dyuproject.protostuff&lt;/groupId&gt;
+    &lt;artifactId&gt;protostuff-core&lt;/artifactId&gt;
+    &lt;version&gt;${dyuproject.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;com.dyuproject.protostuff&lt;/groupId&gt;
+    &lt;artifactId&gt;protostuff-runtime&lt;/artifactId&gt;
+    &lt;version&gt;${dyuproject.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><p>注：采用序列化工具进行解析。版本如下：</p>
+<pre><code>&lt;dyuproject.version&gt;1.1.3&lt;/dyuproject.version&gt;
+&lt;objenesis.version&gt;2.6&lt;/objenesis.version&gt;
+</code></pre><h2 id="2-序列化工具类"><a href="#2-序列化工具类" class="headerlink" title="2.序列化工具类"></a>2.序列化工具类</h2><pre><code>/**
+ * 序列化工具类
+ * @Author： CatalpaFlat
+ * @Descrition:
+ * @Date: Create in 15:04 2017/11/11
+ * @Modified BY：
+ */
+public class ProtoStuffSerializerUtil {
+    public static &lt;T&gt; byte[] serialize(T obj) {
+        if (obj == null) {
+            throw new RuntimeException(&quot;序列化对象(&quot; + obj + &quot;)!&quot;);
+        }
+        @SuppressWarnings(&quot;unchecked&quot;)
+        Schema&lt;T&gt; schema = (Schema&lt;T&gt;) RuntimeSchema.getSchema(obj.getClass());
+        LinkedBuffer buffer = LinkedBuffer.allocate(1024 * 1024);
+        byte[] protostuff = null;
+        try {
+            protostuff = ProtostuffIOUtil.toByteArray(obj, schema, buffer);
+        } catch (Exception e) {
+            throw new RuntimeException(&quot;序列化(&quot; + obj.getClass() + &quot;)对象(&quot; + obj + &quot;)发生异常!&quot;, e);
+        } finally {
+            buffer.clear();
+        }
+        return protostuff;
+    }
+    public static &lt;T&gt; T deserialize(byte[] paramArrayOfByte, Class&lt;T&gt; targetClass) {
+        if (paramArrayOfByte == null || paramArrayOfByte.length == 0) {
+            throw new RuntimeException(&quot;反序列化对象发生异常,byte序列为空!&quot;);
+        }
+        T instance = null;
+        try {
+            // T message = objenesis.newInstance(cls);
+            instance = targetClass.newInstance();
+        } catch (InstantiationException | IllegalAccessException e) {
+            throw new RuntimeException(&quot;反序列化过程中依据类型创建对象失败!&quot;, e);
+        }
+        Schema&lt;T&gt; schema = RuntimeSchema.getSchema(targetClass);
+        ProtostuffIOUtil.mergeFrom(paramArrayOfByte, instance, schema);
+        return instance;
+    }
+    public static &lt;T&gt; byte[] serializeList(List&lt;T&gt; objList) {
+        if (objList == null || objList.isEmpty()) {
+            throw new RuntimeException(&quot;序列化对象列表(&quot; + objList + &quot;)参数异常!&quot;);
+        }
+        @SuppressWarnings(&quot;unchecked&quot;)
+        Schema&lt;T&gt; schema = (Schema&lt;T&gt;) RuntimeSchema.getSchema(objList.get(0).getClass());
+        LinkedBuffer buffer = LinkedBuffer.allocate(1024 * 1024);
+        byte[] protostuff = null;
+        ByteArrayOutputStream bos = null;
+        try {
+            bos = new ByteArrayOutputStream();
+            ProtostuffIOUtil.writeListTo(bos, objList, schema, buffer);
+            protostuff = bos.toByteArray();
+        } catch (Exception e) {
+            throw new RuntimeException(&quot;序列化对象列表(&quot; + objList + &quot;)发生异常!&quot;, e);
+        } finally {
+            buffer.clear();
+            try {
+                if(bos!=null){
+                    bos.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return protostuff;
+    }
+    public static &lt;T&gt; List&lt;T&gt; deserializeList(byte[] paramArrayOfByte, Class&lt;T&gt; targetClass) {
+        if (paramArrayOfByte == null || paramArrayOfByte.length == 0) {
+            throw new RuntimeException(&quot;反序列化对象发生异常,byte序列为空!&quot;);
+        }
+
+        Schema&lt;T&gt; schema = RuntimeSchema.getSchema(targetClass);
+        List&lt;T&gt; result = null;
+        try {
+            result = ProtostuffIOUtil.parseListFrom(new ByteArrayInputStream(paramArrayOfByte), schema);
+        } catch (IOException e) {
+            throw new RuntimeException(&quot;反序列化对象列表发生异常!&quot;,e);
+        }
+        return result;
+    }
+    public static class Person{
+        int id;
+        String name;
+
+        public Person(){
+
+        }
+
+        public Person(int id, String name){
+            this.id = id;
+            this.name = name;
+        }
+
+        public int getId() {
+            return id;
+        }
+        public String getName() {
+            return name;
+        }
+
+    }
+}
+</code></pre><h2 id="3-配置redisConfig类进行存储"><a href="#3-配置redisConfig类进行存储" class="headerlink" title="3.配置redisConfig类进行存储"></a>3.配置redisConfig类进行存储</h2><pre><code>/**
+ * redis配置类
+ * @Author： CatalpaFlat
+ * @Descrition:
+ * @Date: Create in 15:04 2017/11/11
+ * @Modified BY：
+ */
+@Component
+public class RedisConfig {
+
+    public final static String CAHCENAME = &quot;CatalpaFlat&quot;;// 缓存名
+    public final static int CAHCETIME = 60;// 默认缓存时间 60S
+    public final static int CAHCEHOUR = 60 * 60;// 默认缓存时间 1hr
+    public final static int CAHCEDAY = 60 * 60 * 24;// 默认缓存时间 1Day
+    public final static int CAHCEWEEK = 60 * 60 * 24 * 7;// 默认缓存时间 1week
+    public final static int CAHCEMONTH = 60 * 60 * 24 * 7 * 30;// 默认缓存时间 1month
+    public final static int CAHCEYEAR = 60 * 60 * 24 * 7 * 30 * 12;// 默认缓存时间 1年
+    @Autowired
+    private RedisTemplate&lt;String, String&gt; redisTemplate;
+
+    public &lt;T&gt; boolean putCache(String key, T obj) {
+        final byte[] bkey = key.getBytes();
+        final byte[] bvalue = ProtoStuffSerializerUtil.serialize(obj);
+        boolean result = redisTemplate.execute((RedisCallback&lt;Boolean&gt;) connection -&gt; connection.setNX(bkey, bvalue));
+        return result;
+    }
+    public &lt;T&gt; void putCacheWithExpireTime(String key, T obj, final long expireTime) {
+        final byte[] bkey = key.getBytes();
+        final byte[] bvalue = ProtoStuffSerializerUtil.serialize(obj);
+        redisTemplate.execute((RedisCallback&lt;Boolean&gt;) connection -&gt; {
+            connection.setEx(bkey, expireTime, bvalue);
+            return true;
+        });
+    }
+    public &lt;T&gt; boolean putListCache(String key, List&lt;T&gt; objList) {
+        final byte[] bkey = key.getBytes();
+        final byte[] bvalue = ProtoStuffSerializerUtil.serializeList(objList);
+        boolean result = redisTemplate.execute((RedisCallback&lt;Boolean&gt;) connection -&gt; connection.setNX(bkey, bvalue));
+        return result;
+    }
+    public &lt;T&gt; boolean putListCacheWithExpireTime(String key, List&lt;T&gt; objList, final long expireTime) {
+        final byte[] bkey = key.getBytes();
+        final byte[] bvalue = ProtoStuffSerializerUtil.serializeList(objList);
+        boolean result = redisTemplate.execute((RedisCallback&lt;Boolean&gt;) connection -&gt; {
+            connection.setEx(bkey, expireTime, bvalue);
+            return true;
+        });
+        return result;
+    }
+    public &lt;T&gt; T getCache(final String key, Class&lt;T&gt; targetClass) {
+        byte[] result = redisTemplate.execute(new RedisCallback&lt;byte[]&gt;() {
+            @Override
+            public byte[] doInRedis(RedisConnection connection) throws DataAccessException {
+                return connection.get(key.getBytes());
+            }
+        });
+        if (result == null) {
+            return null;
+        }
+        return ProtoStuffSerializerUtil.deserialize(result, targetClass);
+    }
+    public &lt;T&gt; List&lt;T&gt; getListCache(final String key, Class&lt;T&gt; targetClass) {
+        byte[] result = redisTemplate.execute(new RedisCallback&lt;byte[]&gt;() {
+            @Override
+            public byte[] doInRedis(RedisConnection connection) throws DataAccessException {
+                return connection.get(key.getBytes());
+            }
+        });
+        if (result == null) {
+            return null;
+        }
+        return ProtoStuffSerializerUtil.deserializeList(result, targetClass);
+    }
+    /**
+     * 精确删除key
+     *
+     * @param key
+     */
+    public void deleteCache(String key) {
+        redisTemplate.delete(key);
+    }
+
+    /**
+     * 模糊删除key
+     *
+     * @param pattern
+     */
+    public void deleteCacheWithPattern(String pattern) {
+        Set&lt;String&gt; keys = redisTemplate.keys(pattern);
+        redisTemplate.delete(keys);
+    }
+
+    /**
+     * 清空所有缓存
+     */
+    public void clearCache() {
+        deleteCacheWithPattern(RedisConfig.CAHCENAME + &quot;|*&quot;);
+    }
+}
+</code></pre><h2 id="4-测试序列化工具类"><a href="#4-测试序列化工具类" class="headerlink" title="4.测试序列化工具类"></a>4.测试序列化工具类</h2><p>注：基于这篇文章<br><a href="http://blog.csdn.net/DuShiWoDeCuo/article/details/78506579" target="_blank" rel="noopener">http://blog.csdn.net/DuShiWoDeCuo/article/details/78506579</a><br>    /**</p>
+<pre><code> * @Author： CatalpaFlat
+ * @Descrition:
+ * @Date: Create in 10:08 2017/11/8
+ * @Modified BY：
+ */
+@RunWith(SpringRunner.class)
+@ContextConfiguration({&quot;classpath:spring/*.xml&quot;})
+public class TestRedis {
+
+    @Resource
+    private RedisConfig redisConfig;
+    @Autowired(required=true)
+    private RedisKeyUtil redisKeyUtil;
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+    private static final Logger log  = Logger.getLogger(TestRedis.class.getName());
+
+    @Test
+    public void test(){
+//        redisTemplate.opsForValue().set(&quot;chen&quot;, &quot;陈梓平&quot;);
+//        log.info(&quot;value：&quot;+redisTemplate.opsForValue().get(&quot;chen&quot;));
+        String key = redisKeyUtil.getSystemRedisKeyDistribution(&quot;Test&quot;, this.getClass().getName(), &quot;test&quot;);
+        log.info(&quot;cache-key:&quot;+key);
+        redisConfig.putCache(key,&quot;测试链接&quot;);
+        String cache = redisConfig.getCache(key, String.class);
+        log.info(&quot;cache-value:&quot;+cache);
+    }
+}
+</code></pre><p><img src="https://i.imgur.com/kW8Yn27.png" alt=""></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/11/11/java/Java 自定义超实用Redis工具类（满足对象，list，map等类型）/" data-id="cjfb4t8x1000kyk5lzq4407c6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-nginx/Nginx配置多虚拟主机（即配置域名）" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/27/nginx/Nginx配置多虚拟主机（即配置域名）/">Nginx配置多虚拟主机（即配置域名）</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/27/nginx/Nginx配置多虚拟主机（即配置域名）/">
+            <time datetime="2017-08-27T13:33:54.000Z" itemprop="datePublished">2017-08-27</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Nginx/">Nginx</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="Nginx配置多虚拟主机（即配置域名）"><a href="#Nginx配置多虚拟主机（即配置域名）" class="headerlink" title="Nginx配置多虚拟主机（即配置域名）"></a>Nginx配置多虚拟主机（即配置域名）</h1><h2 id="1-存放站点（即项目）"><a href="#1-存放站点（即项目）" class="headerlink" title="1.存放站点（即项目）"></a>1.存放站点（即项目）</h2><p>站点的根目录和域名相同</p>
+<h3 id="1-1-创建a域名存放地址"><a href="#1-1-创建a域名存放地址" class="headerlink" title="1.1.创建a域名存放地址"></a>1.1.创建a域名存放地址</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data/site/a.chen.com</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-创建a域名的首页"><a href="#1-2-创建a域名的首页" class="headerlink" title="1.2.创建a域名的首页"></a>1.2.创建a域名的首页</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /data/site/a.chen.com</span><br><span class="line">touch inde.html</span><br><span class="line">echo &apos;this is a from chen com...&apos; &gt; /data/site/a.chen.com/inde.html</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-创建b域名存放地址"><a href="#1-3-创建b域名存放地址" class="headerlink" title="1.3.创建b域名存放地址"></a>1.3.创建b域名存放地址</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data/site/b.chen.com</span><br></pre></td></tr></table></figure>
+<h3 id="1-4-创建b域名的首页"><a href="#1-4-创建b域名的首页" class="headerlink" title="1.4.创建b域名的首页"></a>1.4.创建b域名的首页</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /data/site/b.chen.com</span><br><span class="line">touch inde.html</span><br><span class="line">echo &apos;this is b from chen com...&apos; &gt; /data/site/b.chen.com/inde.html</span><br></pre></td></tr></table></figure>
+<h3 id="1-5-添加日志存放目录"><a href="#1-5-添加日志存放目录" class="headerlink" title="1.5.添加日志存放目录"></a>1.5.添加日志存放目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data/logs/nginx</span><br></pre></td></tr></table></figure>
+<h2 id="2-配置nginx的配置文件"><a href="#2-配置nginx的配置文件" class="headerlink" title="2.配置nginx的配置文件"></a>2.配置nginx的配置文件</h2><p>（注：若还没安装nginx的话，详情请看这一篇文章</p>
+<blockquote>
+<p><a href="http://blog.csdn.net/dushiwodecuo/article/details/78393454）" target="_blank" rel="noopener">http://blog.csdn.net/dushiwodecuo/article/details/78393454）</a></p>
+</blockquote>
+<h3 id="2-1-进入nginx配置目录"><a href="#2-1-进入nginx配置目录" class="headerlink" title="2.1.进入nginx配置目录"></a>2.1.进入nginx配置目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginx/conf/</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-编辑nginx-conf"><a href="#2-2-编辑nginx-conf" class="headerlink" title="2.2.编辑nginx.conf"></a>2.2.编辑nginx.conf</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim nginx.conf</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-1-配置nginx日志格式"><a href="#2-2-1-配置nginx日志格式" class="headerlink" title="2.2.1.配置nginx日志格式"></a>2.2.1.配置nginx日志格式</h4><p>在nginx.conf中找到如下内容，并且将#注释标志去掉<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line"># &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</span><br><span class="line"># &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-2-2-配置nginx主配置内容"><a href="#2-2-2-配置nginx主配置内容" class="headerlink" title="2.2.2.配置nginx主配置内容"></a>2.2.2.配置nginx主配置内容</h4><p>a域名服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	server_name a.chen.com;</span><br><span class="line">	listen 80;</span><br><span class="line">	root /data/site/a.chen.com;</span><br><span class="line">	access_log /data/logs/nginx/a.chen.com-access.log main;</span><br><span class="line">    location /</span><br><span class="line">	&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>b域名服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">	server_name b.chen.com;</span><br><span class="line">	listen 80;</span><br><span class="line">	root /data/site/b.chen.com;</span><br><span class="line">	access_log /data/logs/nginx/b.chen.com-access.log main;</span><br><span class="line">    location /</span><br><span class="line">	&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>配置解析：</p>
+<ul>
+<li>server{}：配置虚拟主机必须有的的段</li>
+<li><p>server_name:虚拟主机的域名，可以写多个域名，类似于别名，比如说你可以配置成：（这样的话，任何一个域名，内容都是一样的）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server_name a.chen.com b.chen.com c.chen.com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>listen：127.0.0.1:80 监听端口</p>
+</li>
+<li>root ：站点根目录，网站文件存放的地方。（注：站点目录和域名尽量一样）</li>
+<li>access_log：访问日志</li>
+<li>location /{}：默认uri</li>
+</ul>
+<h3 id="3-检查nginx配置是否正确"><a href="#3-检查nginx配置是否正确" class="headerlink" title="3.检查nginx配置是否正确"></a>3.检查nginx配置是否正确</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -t</span><br></pre></td></tr></table></figure>
+<ul>
+<li>若出现以下两行ok和successful，表示配置没问题<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="4-重启nginx"><a href="#4-重启nginx" class="headerlink" title="4.重启nginx"></a>4.重启nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+<ul>
+<li>（注：若是之前没有启动过，则启动即可，但若启动过了，应该重启，不然会出现后面配置成功后但是访问域名却一直是nginx的欢迎界面）<h4 id="5-测试"><a href="#5-测试" class="headerlink" title="5.测试"></a>5.测试</h4><h4 id="5-1-Windows下测试"><a href="#5-1-Windows下测试" class="headerlink" title="5.1.Windows下测试"></a>5.1.Windows下测试</h4>修改hosts文件：C:\Windows\System32\drivers\etc，添加以下内容：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.111 a.chen.com</span><br><span class="line">192.168.1.111 b.chen.com</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="5-2-Linux下测试"><a href="#5-2-Linux下测试" class="headerlink" title="5.2.Linux下测试"></a>5.2.Linux下测试</h4><p>修改hosts文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &apos;192.168.1.111 a.chen.com 192.168.1.111 b.chen.com&apos; &gt;&gt; /etc/hosts</span><br></pre></td></tr></table></figure></p>
+<h4 id="5-3-测试结果"><a href="#5-3-测试结果" class="headerlink" title="5.3.测试结果"></a>5.3.测试结果</h4><p>浏览器直接输入：a.chen.com 和 b.chen.com<br><img src="https://i.imgur.com/LTz299K.png" alt=""><br>Linux测试：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://a.chen.com</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://i.imgur.com/CvBAEYK.png" alt=""></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/08/27/nginx/Nginx配置多虚拟主机（即配置域名）/" data-id="cjfb4t8xa0013yk5l4yu2g9et" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-nginx/Nginx root&amp;alias文件路径配置解析" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/26/nginx/Nginx root&alias文件路径配置解析/">Nginx root&amp;alias文件路径配置解析</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/26/nginx/Nginx root&alias文件路径配置解析/">
+            <time datetime="2017-08-26T14:43:43.000Z" itemprop="datePublished">2017-08-26</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Nginx/">Nginx</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="Nginx-root-amp-alias文件路径配置解析"><a href="#Nginx-root-amp-alias文件路径配置解析" class="headerlink" title="Nginx root&amp;alias文件路径配置解析"></a>Nginx root&amp;alias文件路径配置解析</h1><ul>
+<li>nginx在指定文件路径有两种方式root和alias，这两种的主要区别在于nginx如何解析location后面的uri，这会使两者分别以不同的方式请求映射到服务器的文件上。<h3 id="1-root语法的使用"><a href="#1-root语法的使用" class="headerlink" title="1.root语法的使用"></a>1.root语法的使用</h3>【root】<br>语法： root path<br>默认值： root html<br>配置段： http/server/location/if<br>例子:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location ^~/chen/ &#123;</span><br><span class="line">	root /data/www/www.chen.com;</span><br><span class="line">	autoindex on;</span><br><span class="line">	auto_basic &quot;Restricted&quot;;</span><br><span class="line">	auto_basic_user_file passwd/chen;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>例子解析：<br>&emsp;&emsp;如果请求的uri是/chen/httplogs/<a href="http://www.chen.com-access.log时，web服务器将会返回服务器上的“/data/www/www.chen.com”(root的path)+“/chen/httplogs/www.chen.com-access.log”的文件。也就是说root路径配置会根据完整的uri请求来映射，也就是/path/uri" target="_blank" rel="noopener">www.chen.com-access.log时，web服务器将会返回服务器上的“/data/www/www.chen.com”(root的path)+“/chen/httplogs/www.chen.com-access.log”的文件。也就是说root路径配置会根据完整的uri请求来映射，也就是/path/uri</a></p>
+<h3 id="2-alias语法的使用"><a href="#2-alias语法的使用" class="headerlink" title="2.alias语法的使用"></a>2.alias语法的使用</h3><p>【alias】<br>语法：alias path<br>配置段：location<br>例子:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location ^~ /binapp/ &#123;</span><br><span class="line">	limit_conn limit 4;</span><br><span class="line">	limit_rate 200k;</span><br><span class="line">	internal;</span><br><span class="line">	alias /data/statics/bin/apps/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>例子解析：<br>&emsp;&emsp;alias会把location后面配置的路径丢弃，把当前匹配到的目录指向到指定的目录。如果一个请求的uri是/binapp/a.chen.com/favicon时，web服务器将会返回服务器上的“/data/statics/bin/apps/”+“a.chen.com/favicon.html”的文件<br>&emsp;&emsp;alias使用总结：</p>
+<ul>
+<li>使用alias时，目录名后面一定要加“/“</li>
+<li>alias可以指定任何名称</li>
+<li>alias在使用正则表达式时，必须捕捉要匹配到的内容并在指定的内容处使用</li>
+<li>alias只能位于location块中。</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/08/26/nginx/Nginx root&alias文件路径配置解析/" data-id="cjfb4t8x5000ryk5l0he2568i" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1973,7 +2751,7 @@ public class QuartzUtil {
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/02/06/docker/install/centos/" class="thumbnail">
+                            <a href="/2018/02/05/docker/命令/run/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -1983,16 +2761,16 @@ public class QuartzUtil {
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/02/06/docker/install/centos/" class="title"></a></p>
-                            <p class="item-date"><time datetime="2018-02-06T14:42:53.443Z" itemprop="datePublished">2018-02-06</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/docker/">docker</a></p>
+                            <p class="item-title"><a href="/2018/02/05/docker/命令/run/" class="title">Docker run 命令</a></p>
+                            <p class="item-date"><time datetime="2018-02-05T14:33:12.000Z" itemprop="datePublished">2018-02-05</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/02/06/docker/install/nginx/" class="thumbnail">
+                            <a href="/2018/01/23/java/Java开发规范/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -2002,16 +2780,16 @@ public class QuartzUtil {
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/02/06/docker/install/nginx/" class="title"></a></p>
-                            <p class="item-date"><time datetime="2018-02-06T07:26:01.319Z" itemprop="datePublished">2018-02-06</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/01/23/java/Java开发规范/" class="title">Java 编码规范</a></p>
+                            <p class="item-date"><time datetime="2018-01-23T05:20:56.000Z" itemprop="datePublished">2018-01-23</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/02/06/docker/install/redis/" class="thumbnail">
+                            <a href="/2018/01/05/docker/安装/docker安装/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -2021,16 +2799,16 @@ public class QuartzUtil {
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/02/06/docker/install/redis/" class="title"></a></p>
-                            <p class="item-date"><time datetime="2018-02-06T06:09:34.415Z" itemprop="datePublished">2018-02-06</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/docker/">docker</a></p>
+                            <p class="item-title"><a href="/2018/01/05/docker/安装/docker安装/" class="title">CentOS Docker 安装</a></p>
+                            <p class="item-date"><time datetime="2018-01-05T08:33:56.000Z" itemprop="datePublished">2018-01-05</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/02/06/docker/install/mysql/" class="thumbnail">
+                            <a href="/2017/12/16/java/Java 实现中文-拼音转换/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -2040,16 +2818,16 @@ public class QuartzUtil {
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/02/06/docker/install/mysql/" class="title"></a></p>
-                            <p class="item-date"><time datetime="2018-02-06T05:07:14.269Z" itemprop="datePublished">2018-02-06</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2017/12/16/java/Java 实现中文-拼音转换/" class="title">Java 实现中文-拼音转换</a></p>
+                            <p class="item-date"><time datetime="2017-12-16T02:16:56.000Z" itemprop="datePublished">2017-12-16</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/02/06/docker/dockerfile/dockerFile/" class="thumbnail">
+                            <a href="/2017/11/17/Quartz/自定义Quartz超实用工具类/" class="thumbnail">
     
     
         <span class="thumbnail-image thumbnail-none"></span>
@@ -2059,9 +2837,9 @@ public class QuartzUtil {
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/02/06/docker/dockerfile/dockerFile/" class="title"></a></p>
-                            <p class="item-date"><time datetime="2018-02-06T03:11:39.365Z" itemprop="datePublished">2018-02-06</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Quartz/">Quartz</a></p>
+                            <p class="item-title"><a href="/2017/11/17/Quartz/自定义Quartz超实用工具类/" class="title">自定义Quartz超实用工具类</a></p>
+                            <p class="item-date"><time datetime="2017-11-17T03:09:37.000Z" itemprop="datePublished">2017-11-17</time></p>
                         </div>
                     </li>
                 
@@ -2074,7 +2852,7 @@ public class QuartzUtil {
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Quartz/">Quartz</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jenkins/">Jenkins</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Quartz/">Quartz</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -2083,7 +2861,7 @@ public class QuartzUtil {
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -2092,7 +2870,7 @@ public class QuartzUtil {
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -2101,7 +2879,7 @@ public class QuartzUtil {
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 13.33px;">JavaEE</a> <a href="/tags/Nginx/" style="font-size: 20px;">Nginx</a> <a href="/tags/Quartz/" style="font-size: 10px;">Quartz</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 13.33px;">消息队列</a>
+            <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 13.33px;">JavaEE</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Nginx/" style="font-size: 20px;">Nginx</a> <a href="/tags/Quartz/" style="font-size: 10px;">Quartz</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 13.33px;">消息队列</a>
         </div>
     </div>
 
