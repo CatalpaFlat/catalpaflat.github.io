@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>CatalpaFlat&#39;s Blogs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Docker run 命令 docker run ：创建一个新的容器并运行一个命令  1. 语法1docker run [OPTIONS] IMAGE [COMMAND] [ARG...] 1.1. OPTIONS说明 -a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项； -d: 后台运行容器，并返回容器ID； -i: 以交互模式运行容器，通常与 -t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CatalpaFlat&#39;s Blogs">
+<meta property="og:url" content="https://catalpaflat.github.io/2018/02/06/docker/命令/run/index.html">
+<meta property="og:site_name" content="CatalpaFlat&#39;s Blogs">
+<meta property="og:description" content="Docker run 命令 docker run ：创建一个新的容器并运行一个命令  1. 语法1docker run [OPTIONS] IMAGE [COMMAND] [ARG...] 1.1. OPTIONS说明 -a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项； -d: 后台运行容器，并返回容器ID； -i: 以交互模式运行容器，通常与 -t">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-06T02:34:32.559Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CatalpaFlat&#39;s Blogs">
+<meta name="twitter:description" content="Docker run 命令 docker run ：创建一个新的容器并运行一个命令  1. 语法1docker run [OPTIONS] IMAGE [COMMAND] [ARG...] 1.1. OPTIONS说明 -a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项； -d: 后台运行容器，并返回容器ID； -i: 以交互模式运行容器，通常与 -t">
+    
+
+    
+        <link rel="alternate" href="/" title="CatalpaFlat&#39;s Blogs" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">CatalpaFlat&#39;s Blogs</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.jpeg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.jpeg" />
+            <h2 id="name">CatalpaFlat</h2>
+            <h3 id="title">A good DEMO is a good brick wall.</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>ShenZhen, China</span>
+            <a id="follow" target="_blank" href="https://github.com/CatalpaFlat">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                30
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                6
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/CatalpaFlat" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-docker/命令/run" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="Docker-run-命令"><a href="#Docker-run-命令" class="headerlink" title="Docker run 命令"></a>Docker run 命令</h1><blockquote>
+<p>docker run ：创建一个新的容器并运行一个命令</p>
+</blockquote>
+<h2 id="1-语法"><a href="#1-语法" class="headerlink" title="1. 语法"></a>1. 语法</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-OPTIONS说明"><a href="#1-1-OPTIONS说明" class="headerlink" title="1.1. OPTIONS说明"></a>1.1. OPTIONS说明</h3><ol>
+<li>-a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项；</li>
+<li>-d: 后台运行容器，并返回容器ID；</li>
+<li>-i: 以交互模式运行容器，通常与 -t 同时使用；</li>
+<li>-t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；</li>
+<li>–name=”nginx-lb”: 为容器指定一个名称；</li>
+<li>–dns 8.8.8.8: 指定容器使用的DNS服务器，默认和宿主一致；</li>
+<li>–dns-search example.com: 指定容器DNS搜索域名，默认和宿主一致；</li>
+<li>-h “mars”: 指定容器的hostname；</li>
+<li>-e username=”ritchie”: 设置环境变量；</li>
+<li>–env-file=[]: 从指定文件读入环境变量；</li>
+<li>–cpuset=”0-2” or –cpuset=”0,1,2”: 绑定容器到指定CPU运行；</li>
+<li>-m :设置容器使用内存最大值；</li>
+<li>–net=”bridge”: 指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型；</li>
+<li>–link=[]: 添加链接到另一个容器；</li>
+<li>–expose=[]: 开放一个端口或一组端口；<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">Run a command in a new container</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">      --add-host value              Add a custom host-to-IP mapping (host:ip) (default [])</span><br><span class="line">  -a, --attach value                Attach to STDIN, STDOUT or STDERR (default [])</span><br><span class="line">      --blkio-weight value          Block IO (relative weight), between 10 and 1000</span><br><span class="line">      --blkio-weight-device value   Block IO weight (relative device weight) (default [])</span><br><span class="line">      --cap-add value               Add Linux capabilities (default [])</span><br><span class="line">      --cap-drop value              Drop Linux capabilities (default [])</span><br><span class="line">      --cgroup-parent string        Optional parent cgroup for the container</span><br><span class="line">      --cidfile string              Write the container ID to the file</span><br><span class="line">      --cpu-percent int             CPU percent (Windows only)</span><br><span class="line">      --cpu-period int              Limit CPU CFS (Completely Fair Scheduler) period</span><br><span class="line">      --cpu-quota int               Limit CPU CFS (Completely Fair Scheduler) quota</span><br><span class="line">  -c, --cpu-shares int              CPU shares (relative weight)</span><br><span class="line">      --cpuset-cpus string          CPUs in which to allow execution (0-3, 0,1)</span><br><span class="line">      --cpuset-mems string          MEMs in which to allow execution (0-3, 0,1)</span><br><span class="line">  -d, --detach                      Run container in background and print container ID</span><br><span class="line">      --detach-keys string          Override the key sequence for detaching a container</span><br><span class="line">      --device value                Add a host device to the container (default [])</span><br><span class="line">      --device-read-bps value       Limit read rate (bytes per second) from a device (default [])</span><br><span class="line">      --device-read-iops value      Limit read rate (IO per second) from a device (default [])</span><br><span class="line">      --device-write-bps value      Limit write rate (bytes per second) to a device (default [])</span><br><span class="line">      --device-write-iops value     Limit write rate (IO per second) to a device (default [])</span><br><span class="line">      --disable-content-trust       Skip image verification (default true)</span><br><span class="line">      --dns value                   Set custom DNS servers (default [])</span><br><span class="line">      --dns-opt value               Set DNS options (default [])</span><br><span class="line">      --dns-search value            Set custom DNS search domains (default [])</span><br><span class="line">      --entrypoint string           Overwrite the default ENTRYPOINT of the image</span><br><span class="line">  -e, --env value                   Set environment variables (default [])</span><br><span class="line">      --env-file value              Read in a file of environment variables (default [])</span><br><span class="line">      --expose value                Expose a port or a range of ports (default [])</span><br><span class="line">      --group-add value             Add additional groups to join (default [])</span><br><span class="line">      --health-cmd string           Command to run to check health</span><br><span class="line">      --health-interval duration    Time between running the check (default 0s)</span><br><span class="line">      --health-retries int          Consecutive failures needed to report unhealthy</span><br><span class="line">      --health-timeout duration     Maximum time to allow one check to run (default 0s)</span><br><span class="line">      --help                        Print usage</span><br><span class="line">  -h, --hostname string             Container host name</span><br><span class="line">  -i, --interactive                 Keep STDIN open even if not attached</span><br><span class="line">      --io-maxbandwidth string      Maximum IO bandwidth limit for the system drive (Windows only)</span><br><span class="line">      --io-maxiops uint             Maximum IOps limit for the system drive (Windows only)</span><br><span class="line">      --ip string                   Container IPv4 address (e.g. 172.30.100.104)</span><br><span class="line">      --ip6 string                  Container IPv6 address (e.g. 2001:db8::33)</span><br><span class="line">      --ipc string                  IPC namespace to use</span><br><span class="line">      --isolation string            Container isolation technology</span><br><span class="line">      --kernel-memory string        Kernel memory limit</span><br><span class="line">  -l, --label value                 Set meta data on a container (default [])</span><br><span class="line">      --label-file value            Read in a line delimited file of labels (default [])</span><br><span class="line">      --link value                  Add link to another container (default [])</span><br><span class="line">      --link-local-ip value         Container IPv4/IPv6 link-local addresses (default [])</span><br><span class="line">      --log-driver string           Logging driver for the container</span><br><span class="line">      --log-opt value               Log driver options (default [])</span><br><span class="line">      --mac-address string          Container MAC address (e.g. 92:d0:c6:0a:29:33)</span><br><span class="line">  -m, --memory string               Memory limit</span><br><span class="line">      --memory-reservation string   Memory soft limit</span><br><span class="line">      --memory-swap string          Swap limit equal to memory plus swap: '-1' to enable unlimited swap</span><br><span class="line">      --memory-swappiness int       Tune container memory swappiness (0 to 100) (default -1)</span><br><span class="line">      --name string                 Assign a name to the container</span><br><span class="line">      --network string              Connect a container to a network (default "default")</span><br><span class="line">      --network-alias value         Add network-scoped alias for the container (default [])</span><br><span class="line">      --no-healthcheck              Disable any container-specified HEALTHCHECK</span><br><span class="line">      --oom-kill-disable            Disable OOM Killer</span><br><span class="line">      --oom-score-adj int           Tune host's OOM preferences (-1000 to 1000)</span><br><span class="line">      --pid string                  PID namespace to use</span><br><span class="line">      --pids-limit int              Tune container pids limit (set -1 for unlimited)</span><br><span class="line">      --privileged                  Give extended privileges to this container</span><br><span class="line">  -p, --publish value               Publish a container's port(s) to the host (default [])</span><br><span class="line">  -P, --publish-all                 Publish all exposed ports to random ports</span><br><span class="line">      --read-only                   Mount the container's root filesystem as read only</span><br><span class="line">      --restart string              Restart policy to apply when a container exits (default "no")</span><br><span class="line">      --rm                          Automatically remove the container when it exits</span><br><span class="line">      --runtime string              Runtime to use for this container</span><br><span class="line">      --security-opt value          Security Options (default [])</span><br><span class="line">      --shm-size string             Size of /dev/shm, default value is 64MB</span><br><span class="line">      --sig-proxy                   Proxy received signals to the process (default true)</span><br><span class="line">      --stop-signal string          Signal to stop a container, SIGTERM by default (default "SIGTERM")</span><br><span class="line">      --storage-opt value           Storage driver options for the container (default [])</span><br><span class="line">      --sysctl value                Sysctl options (default map[])</span><br><span class="line">      --tmpfs value                 Mount a tmpfs directory (default [])</span><br><span class="line">  -t, --tty                         Allocate a pseudo-TTY</span><br><span class="line">      --ulimit value                Ulimit options (default [])</span><br><span class="line">  -u, --user string                 Username or UID (format: &lt;name|uid&gt;[:&lt;group|gid&gt;])</span><br><span class="line">      --userns string               User namespace to use</span><br><span class="line">      --uts string                  UTS namespace to use</span><br><span class="line">  -v, --volume value                Bind mount a volume (default [])</span><br><span class="line">      --volume-driver string        Optional volume driver for the container</span><br><span class="line">      --volumes-from value          Mount volumes from the specified container(s) (default [])</span><br><span class="line">  -w, --workdir string              Working directory inside the container</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2018/02/06/docker/命令/run/" data-id="cjfb4hwo90039wj5l8v6lyebt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/02/06/docker/dockerfile/dockerFile/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    (no title)
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/02/05/docker/安装/docker安装/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title"></div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/06/docker/install/centos/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/02/06/docker/install/centos/" class="title"></a></p>
+                            <p class="item-date"><time datetime="2018-02-06T14:42:53.443Z" itemprop="datePublished">2018-02-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/06/docker/install/nginx/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/02/06/docker/install/nginx/" class="title"></a></p>
+                            <p class="item-date"><time datetime="2018-02-06T07:26:01.319Z" itemprop="datePublished">2018-02-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/06/docker/install/redis/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/02/06/docker/install/redis/" class="title"></a></p>
+                            <p class="item-date"><time datetime="2018-02-06T06:09:34.415Z" itemprop="datePublished">2018-02-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/06/docker/install/mysql/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/02/06/docker/install/mysql/" class="title"></a></p>
+                            <p class="item-date"><time datetime="2018-02-06T05:07:14.269Z" itemprop="datePublished">2018-02-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/06/docker/dockerfile/dockerFile/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/02/06/docker/dockerfile/dockerFile/" class="title"></a></p>
+                            <p class="item-date"><time datetime="2018-02-06T03:11:39.365Z" itemprop="datePublished">2018-02-06</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Quartz/">Quartz</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 13.33px;">JavaEE</a> <a href="/tags/Nginx/" style="font-size: 20px;">Nginx</a> <a href="/tags/Quartz/" style="font-size: 10px;">Quartz</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 13.33px;">消息队列</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 CatalpaFlat<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
