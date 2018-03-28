@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>自定义Quartz超实用工具类 | CatalpaFlat&#39;s Blogs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="自定义Quartz超实用工具类1.添加maven依赖 &amp;lt;!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz --&amp;gt; &amp;lt;dependency&amp;gt;   &amp;lt;groupId&amp;gt;org.quartz-scheduler&amp;lt;/groupId&amp;gt;   &amp;lt;artifactId&amp;gt;qu">
+<meta name="keywords" content="Quartz">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自定义Quartz超实用工具类">
+<meta property="og:url" content="https://catalpaflat.github.io/2017/11/17/Quartz/自定义Quartz超实用工具类/index.html">
+<meta property="og:site_name" content="CatalpaFlat&#39;s Blogs">
+<meta property="og:description" content="自定义Quartz超实用工具类1.添加maven依赖 &amp;lt;!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz --&amp;gt; &amp;lt;dependency&amp;gt;   &amp;lt;groupId&amp;gt;org.quartz-scheduler&amp;lt;/groupId&amp;gt;   &amp;lt;artifactId&amp;gt;qu">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-28T13:18:51.368Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自定义Quartz超实用工具类">
+<meta name="twitter:description" content="自定义Quartz超实用工具类1.添加maven依赖 &amp;lt;!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz --&amp;gt; &amp;lt;dependency&amp;gt;   &amp;lt;groupId&amp;gt;org.quartz-scheduler&amp;lt;/groupId&amp;gt;   &amp;lt;artifactId&amp;gt;qu">
+    
+
+    
+        <link rel="alternate" href="/" title="CatalpaFlat&#39;s Blogs" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">CatalpaFlat&#39;s Blogs</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.jpeg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Entradas',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categorias',
+            TAGS: 'Etiquetas',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Buscar" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.jpeg" />
+            <h2 id="name">CatalpaFlat</h2>
+            <h3 id="title">A good DEMO is a good brick wall.</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>ShenZhen, China</span>
+            <a id="follow" target="_blank" href="https://github.com/CatalpaFlat">SEGUIR</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                23
+                <span>Entradas</span>
+            </div>
+            <div class="article-info-block">
+                6
+                <span>Etiquetas</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/CatalpaFlat" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-Quartz/自定义Quartz超实用工具类" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            自定义Quartz超实用工具类
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/11/17/Quartz/自定义Quartz超实用工具类/">
+            <time datetime="2017-11-17T03:09:37.000Z" itemprop="datePublished">2017-11-17</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Quartz/">Quartz</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Quartz/">Quartz</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="自定义Quartz超实用工具类"><a href="#自定义Quartz超实用工具类" class="headerlink" title="自定义Quartz超实用工具类"></a>自定义Quartz超实用工具类</h1><h2 id="1-添加maven依赖"><a href="#1-添加maven依赖" class="headerlink" title="1.添加maven依赖"></a>1.添加maven依赖</h2><pre><code> &lt;!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz --&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.quartz-scheduler&lt;/groupId&gt;
+  &lt;artifactId&gt;quartz&lt;/artifactId&gt;
+  &lt;version&gt;${quartz.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h2 id="2-实现Quartz实用工具类"><a href="#2-实现Quartz实用工具类" class="headerlink" title="2.实现Quartz实用工具类"></a>2.实现Quartz实用工具类</h2><pre><code>/**
+ * Quartz任务调度器工具类
+ *
+ * @author CatalpaFlat
+ * @date Create in 10:25 2017/11/16
+ */
+public class QuartzUtil {
+    /**
+     * 调度器工厂
+     */
+    private static SchedulerFactory schedulerFactory = new StdSchedulerFactory();
+    /**
+     * 默认Job组名
+     */
+    private static String JOB_GROUP_NAME = &quot;DEFAULT_JOB_GROUP_NAME&quot;;
+    /**
+     * 默认触发器组名
+     */
+    private static String TRIGGER_GROUP_NAME = &quot;DEFAULT_TRIGGER_GROUP_NAME&quot;;
+
+    /**
+     * 获取调度器
+     *
+     * @return Scheduler
+     * @throws SchedulerException Scheduler获取异常
+     */
+    private static Scheduler getScheduler() throws SchedulerException {
+        return schedulerFactory.getScheduler();
+    }
+
+    /**
+     * 获取CronTrigger
+     *
+     * @param jobName          任务名
+     * @param triggerGroupName 触发器组名（为空使用默认）
+     * @param time             crond格式时间
+     * @return CronTrigger
+     */
+    private static CronTrigger getCronTrigger(String jobName, String triggerGroupName, String time) {
+        if (StringUtils.isBlank(triggerGroupName)) {
+            triggerGroupName = TRIGGER_GROUP_NAME;
+        }
+        return TriggerBuilder.newTrigger().withIdentity(jobName, triggerGroupName)
+                .withSchedule(CronScheduleBuilder.cronSchedule(time)).build();
+    }
+
+    /**
+     * 获取JobDetail
+     *
+     * @param jobName      任务名
+     * @param jobGroupName 任务组名（为空使用默认）
+     * @param cls          任务类
+     * @param jobDataMap   附带参数
+     * @return JobDetail
+     */
+    private static JobDetail getJobDetail(String jobName, String jobGroupName, Class&lt;? extends Job&gt; cls, JobDataMap jobDataMap) {
+        if (StringUtils.isBlank(jobGroupName)) {
+            jobGroupName = JOB_GROUP_NAME;
+        }
+
+        if (jobDataMap != null) {
+            return JobBuilder.newJob(cls).withIdentity(jobName, jobGroupName).usingJobData(jobDataMap).build();
+        } else {
+            return JobBuilder.newJob(cls).withIdentity(jobName, jobGroupName).build();
+        }
+    }
+
+    /**
+     * 设置JobDetail 和 CronTrigger 到 scheduler（已获取的调度器中，无需重复调用）
+     *
+     * @param cls              任务嘞
+     * @param jobName          任务名
+     * @param jobGroupName     任务组名（为空使用默认）
+     * @param triggerGroupName 触发器组名（为空使用默认）
+     * @param time             crond格式时间
+     * @param jobDataMap       附带参数
+     * @param scheduler        调度器
+     * @return 设置成功与否
+     * @throws SchedulerException 调度器异常
+     */
+    private static boolean setJobDetailAndCronTriggerInScheduler(Class&lt;? extends Job&gt; cls, String jobName, String jobGroupName, String triggerGroupName,
+                                                                 String time, JobDataMap jobDataMap, Scheduler scheduler) throws SchedulerException {
+        if (!isJobKey(scheduler, jobName, jobGroupName)) {
+            return false;
+        }
+        JobDetail jobDetail = getJobDetail(jobName, jobGroupName, cls, jobDataMap);
+        CronTrigger trigger = getCronTrigger(jobName, triggerGroupName, time);
+        scheduler.scheduleJob(jobDetail, trigger);
+        if (!scheduler.isShutdown()) {
+            scheduler.start();
+        }
+        return true;
+    }
+
+    /**
+     * 从调度器中移除Job
+     *
+     * @param scheduler  调度器
+     * @param triggerKey 触发器key（名，组）
+     * @param jobKey     任务key（名，组）
+     */
+    private static void removeJob(Scheduler scheduler, TriggerKey triggerKey, JobKey jobKey) {
+        try {
+            // 停止触发器
+            scheduler.pauseTrigger(triggerKey);
+            //移除触发器
+            scheduler.unscheduleJob(triggerKey);
+            // 删除任务
+            scheduler.deleteJob(jobKey);
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 使用CronTrigger类型添加任务
+     *
+     * @param scheduler        调度器
+     * @param cls              任务嘞
+     * @param jobName          任务名
+     * @param jobGroupName     任务组名（为空使用默认）
+     * @param triggerGroupName 触发器组名（为空使用默认）
+     * @param time             crond格式时间
+     * @param jobDataMap       附带参数
+     * @return 是否添加成功
+     */
+    private static boolean addJobByCronTrigger(Scheduler scheduler, Class&lt;? extends Job&gt; cls, String jobName, String jobGroupName,
+                                               String triggerGroupName, String time, JobDataMap jobDataMap) {
+        try {
+            return setJobDetailAndCronTriggerInScheduler(cls, jobName, jobGroupName, triggerGroupName, time, jobDataMap, scheduler);
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 判断是否存在JobKey
+     *
+     * @param scheduler    任务调度器
+     * @param jobName      任务名
+     * @param jobGroupName 任务组名
+     * @return 是否存在JobKey
+     */
+    private static boolean isJobKey(Scheduler scheduler, String jobName, String jobGroupName) {
+        JobKey jobKey = JobKey.jobKey(jobName, jobGroupName);
+        try {
+            JobDetail jobDetail = scheduler.getJobDetail(jobKey);
+            return jobDetail == null;
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 添加定时任务
+     *
+     * @param cls              任务类
+     * @param jobName          任务名
+     * @param jobGroupName     任务组名（为空使用默认）
+     * @param triggerGroupName 触发器组名（为空使用默认）
+     * @param time             crond格式时间
+     * @param jobDataMap       附带参数
+     * @return 是否正常添加任务
+     */
+    public static boolean addJobByCronTrigger(Class&lt;? extends Job&gt; cls, String jobName, String jobGroupName,
+                                              String triggerGroupName, String time, JobDataMap jobDataMap) {
+        try {
+            if (StringUtils.isBlank(jobName)) {
+                return false;
+            }
+            Scheduler scheduler = getScheduler();
+            return setJobDetailAndCronTriggerInScheduler(cls, jobName, jobGroupName, triggerGroupName, time, jobDataMap, scheduler);
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 修改任务时间
+     *
+     * @param jobName          任务名
+     * @param time             crond格式时间
+     * @param jobGroupName     任务组名（为空使用默认）
+     * @param triggerGroupName 触发器组名（为空使用默认）
+     * @param jobDataMap       附带参数
+     * @return 是否修改成功
+     */
+    public static boolean modifyJobTime(String jobName, String time, String jobGroupName,
+                                        String triggerGroupName, JobDataMap jobDataMap) {
+        try {
+            if (StringUtils.isBlank(jobName)) {
+                return false;
+            }
+            Scheduler scheduler = getScheduler();
+            if (StringUtils.isBlank(triggerGroupName)) {
+                triggerGroupName = TRIGGER_GROUP_NAME;
+            }
+            TriggerKey triggerKey = TriggerKey.triggerKey(jobName, triggerGroupName);
+            CronTrigger trigger = (CronTrigger) scheduler.getTrigger(triggerKey);
+            if (trigger == null) {
+                return false;
+            }
+            String oldTime = trigger.getCronExpression();
+            if (!oldTime.equalsIgnoreCase(time)) {
+                if (StringUtils.isBlank(jobGroupName)) {
+                    jobGroupName = JOB_GROUP_NAME;
+                }
+                JobKey jobKey = JobKey.jobKey(jobName, jobGroupName);
+                JobDetail jobDetail = scheduler.getJobDetail(jobKey);
+                Class&lt;? extends Job&gt; jobClass = jobDetail.getJobClass();
+                removeJob(scheduler, triggerKey, jobKey);
+                return addJobByCronTrigger(scheduler, jobClass, jobName, jobGroupName, triggerGroupName, time, jobDataMap);
+            }
+            return true;
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 启动所有定时任务
+     */
+    public static void startJobs() {
+        try {
+            Scheduler scheduler = getScheduler();
+            scheduler.start();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 关闭所有定时任务
+     */
+    public static void shutdownJobs() {
+        try {
+            Scheduler scheduler = getScheduler();
+            if (!scheduler.isShutdown()) {
+                scheduler.shutdown();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 停止一个job任务
+     *
+     * @param jobName      任务名
+     * @param jobGroupName 任务组名（空位默认）
+     * @return 是否停止
+     */
+    public static boolean pauseJob(String jobName, String jobGroupName) {
+        try {
+            Scheduler scheduler = getScheduler();
+            if (StringUtils.isBlank(jobGroupName)) {
+                jobGroupName = JOB_GROUP_NAME;
+            }
+            scheduler.interrupt(JobKey.jobKey(jobName, jobGroupName));
+            return true;
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 恢复一个job任务
+     *
+     * @param jobName      任务名
+     * @param jobGroupName 任务组名（空位默认）
+     * @return 是否恢复
+     */
+    public static boolean resumeJob(String jobName, String jobGroupName) {
+        try {
+            Scheduler scheduler = getScheduler();
+            scheduler.resumeJob(JobKey.jobKey(jobName, jobGroupName));
+            return true;
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 添加定时任务
+     *
+     * @param cls  任务类
+     * @param bJob 任务类属性
+     * @return 是否添加成功
+     */
+    public static boolean addJobByCronTrigger(Class&lt;? extends Job&gt; cls, BaseJob bJob) {
+        if (bJob == null) {
+            return false;
+        }
+        String jobName = bJob.getJobName();
+        if (StringUtils.isBlank(jobName)) {
+            return false;
+        }
+        try {
+            Scheduler scheduler = getScheduler();
+            return setJobDetailAndCronTriggerInScheduler(cls, jobName, bJob.getJobGroupName(), bJob.getTriggerGroupName(), bJob.getCronTime(), bJob.getJobDataMap(), scheduler);
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 修改任务JobDateMap
+     *
+     * @param cls  任务类
+     * @param bJob 任务类属性
+     * @return 是否修改成功
+     */
+    public static boolean modifyJobDateMap(Class&lt;? extends Job&gt; cls, BaseJob bJob) {
+        if (bJob == null) {
+            return false;
+        }
+        String jobName = bJob.getJobName();
+        if (StringUtils.isBlank(jobName)) {
+            return false;
+        }
+        String triggerGroupName = bJob.getTriggerGroupName();
+        if (StringUtils.isBlank(triggerGroupName)) {
+            triggerGroupName = TRIGGER_GROUP_NAME;
+        }
+        TriggerKey triggerKey = TriggerKey.triggerKey(jobName, triggerGroupName);
+        String jobGroupName = bJob.getJobGroupName();
+        if (StringUtils.isBlank(jobGroupName)) {
+            jobGroupName = JOB_GROUP_NAME;
+        }
+        try {
+            Scheduler scheduler = getScheduler();
+            JobKey jobKey = JobKey.jobKey(jobName, jobGroupName);
+            JobDetail jobDetail1 = scheduler.getJobDetail(jobKey);
+            if (jobDetail1 == null) {
+                return false;
+            }
+            JobDataMap oldJobDataMap = jobDetail1.getJobDataMap();
+            JobDataMap jobDataMap = bJob.getJobDataMap();
+            if (!oldJobDataMap.equals(jobDataMap)) {
+                Class&lt;? extends Job&gt; jobClass = jobDetail1.getJobClass();
+                removeJob(scheduler, triggerKey, jobKey);
+                return addJobByCronTrigger(scheduler, jobClass, jobName, jobGroupName, triggerGroupName, bJob.getCronTime(), jobDataMap);
+            }
+            return true;
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+}
+</code></pre>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/11/17/Quartz/自定义Quartz超实用工具类/" data-id="cjfb4aqu10005ut5lweo13h66" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/12/16/java/Java 实现中文-拼音转换/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más nuevo</strong>
+            <div class="article-nav-title">
+                
+                    Java 实现中文-拼音转换
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/11/15/Quartz/深入解读Quartz任务调度器/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">深入解读Quartz任务调度器</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Recientes</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/03/23/java/Java 内存详解/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/03/23/java/Java 内存详解/" class="title">Java JVM 内存详解</a></p>
+                            <p class="item-date"><time datetime="2018-03-23T07:53:56.000Z" itemprop="datePublished">2018-03-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/01/23/java/Java开发规范/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/01/23/java/Java开发规范/" class="title">Java 编码规范</a></p>
+                            <p class="item-date"><time datetime="2018-01-23T05:20:56.000Z" itemprop="datePublished">2018-01-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/16/java/Java 实现中文-拼音转换/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2017/12/16/java/Java 实现中文-拼音转换/" class="title">Java 实现中文-拼音转换</a></p>
+                            <p class="item-date"><time datetime="2017-12-16T02:16:56.000Z" itemprop="datePublished">2017-12-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/11/17/Quartz/自定义Quartz超实用工具类/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Quartz/">Quartz</a></p>
+                            <p class="item-title"><a href="/2017/11/17/Quartz/自定义Quartz超实用工具类/" class="title">自定义Quartz超实用工具类</a></p>
+                            <p class="item-date"><time datetime="2017-11-17T03:09:37.000Z" itemprop="datePublished">2017-11-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/11/15/Quartz/深入解读Quartz任务调度器/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Quartz/">Quartz</a></p>
+                            <p class="item-title"><a href="/2017/11/15/Quartz/深入解读Quartz任务调度器/" class="title">深入解读Quartz任务调度器</a></p>
+                            <p class="item-date"><time datetime="2017-11-15T09:24:17.000Z" itemprop="datePublished">2017-11-15</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Categorias</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Quartz/">Quartz</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Archivos</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Etiquetas</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">Nube de etiquetas</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 13.33px;">JavaEE</a> <a href="/tags/Nginx/" style="font-size: 20px;">Nginx</a> <a href="/tags/Quartz/" style="font-size: 10px;">Quartz</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 13.33px;">消息队列</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">Links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 CatalpaFlat<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

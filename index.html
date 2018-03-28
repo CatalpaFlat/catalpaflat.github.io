@@ -157,11 +157,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                21
+                23
                 <span>Entradas</span>
             </div>
             <div class="article-info-block">
-                5
+                6
                 <span>Etiquetas</span>
             </div>
         </div>
@@ -210,177 +210,6 @@
 
             
             <section id="main">
-    <article id="post-JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/">JavaEE 使用Gradle发布jar包到远程中央仓库</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/">
-            <time datetime="2018-03-23T07:53:56.000Z" itemprop="datePublished">2018-03-23</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/JavaEE/">JavaEE</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/JavaEE/">JavaEE</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="JavaEE-使用Gradle发布jar包到远程中央仓库"><a href="#JavaEE-使用Gradle发布jar包到远程中央仓库" class="headerlink" title="JavaEE 使用Gradle发布jar包到远程中央仓库"></a>JavaEE 使用Gradle发布jar包到远程中央仓库</h1><h2 id="0-前提准备"><a href="#0-前提准备" class="headerlink" title="0. 前提准备"></a>0. 前提准备</h2><p><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a> 上 New Repository 项目<br>（若没有则注册）. </p>
-<p><img src="img/WechatIMG4.jpeg" alt=""></p>
-<h2 id="1-创建Bintray账号"><a href="#1-创建Bintray账号" class="headerlink" title="1. 创建Bintray账号"></a>1. 创建Bintray账号</h2><p>前往 <a href="https://bintray.com" target="_blank" rel="noopener">Bintray</a> ，右上角点击 Sign In 跳转到登录页面，可以选择通过第三方账号登录或者自己注册一个，方便起见我直接用了Github账号。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4675459-77f14e1f0192a478.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="">.   </p>
-<h2 id="2-Bintray上创建maven仓库"><a href="#2-Bintray上创建maven仓库" class="headerlink" title="2. Bintray上创建maven仓库"></a>2. Bintray上创建maven仓库</h2><p>登录后点击左侧的 Add new Repository按钮 跳转到创建仓库的页面，Name一栏填写仓库的名字，这里我写的是maven，仓库类型选 Maven ，创建完成后仓库就可以使用了。   </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4675459-b213b5021b9e9e2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p>
-<h2 id="3-获取BINTRAY-KEY"><a href="#3-获取BINTRAY-KEY" class="headerlink" title="3. 获取BINTRAY_KEY"></a>3. 获取BINTRAY_KEY</h2><p>其中 BINTRAY_KEY 的值设为Api key，从下图所示位置获取:   </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4675459-53e8dc28d2686af6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p>
-<h3 id="4-注册JIRA账号"><a href="#4-注册JIRA账号" class="headerlink" title="4. 注册JIRA账号"></a>4. 注册JIRA账号</h3><p><a href="https://issues.sonatype.org/secure/Dashboard.jspa" target="_blank" rel="noopener">注册链接</a><br>注册之后请妥善保管好账号密码，后续登录相关Nexus链接需要用到。  </p>
-<h3 id="5-创建issue"><a href="#5-创建issue" class="headerlink" title="5. 创建issue"></a>5. 创建issue</h3><p>注册完之后创建ISSUE<br><img src="img/WechatIMG32.jpeg" alt="">.  </p>
-<h2 id="6-GPG签名"><a href="#6-GPG签名" class="headerlink" title="6. GPG签名"></a>6. GPG签名</h2><p>GPG(GnuPG)是一款非对称加密软件，上传的Jar包需要用GPG生成签名文件，否则是不能同步到MavenCentral的，使用GPG给文件签名需要有公钥，可以用Bintray提供的默认的公钥或者使用自己生成的公钥，以下两种方法二选一。</p>
-<h3 id="6-1-较简单方法"><a href="#6-1-较简单方法" class="headerlink" title="6.1 较简单方法"></a>6.1 较简单方法</h3><p>该方法比较便捷，不需要进行生成密钥等繁琐操作。首先进入你创建的仓库页面，点击 Edit ，进入编辑页面</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4675459-663cb5fb4f34e8cb.png?imageMogr2/auto-orient/" alt=""></p>
-<p>然后勾选如图所示的选项，当你上传Jar文件时系统就会自动帮你生成签名文件。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4675459-03cd07c8394d4eab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="">. </p>
-<h3 id="6-2-较复杂方法"><a href="#6-2-较复杂方法" class="headerlink" title="6.2 较复杂方法"></a>6.2 较复杂方法</h3><h4 id="1-下载GPG"><a href="#1-下载GPG" class="headerlink" title="1. 下载GPG"></a>1. 下载GPG</h4><p>1.下载安装。 </p>
-<p>(1) Mac操作系统：  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install gnupg</span><br></pre></td></tr></table></figure>
-<p>(2) Windows操作系统<br>下载地址：<a href="https://www.gpg4win.org/" target="_blank" rel="noopener">https://www.gpg4win.org/</a></p>
-<p>2.校验  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --version</span><br></pre></td></tr></table></figure>
-<p><img src="img/WechatIMG5.jpeg" alt=""></p>
-<h4 id="2-配置GPG生成对称签名"><a href="#2-配置GPG生成对称签名" class="headerlink" title="2. 配置GPG生成对称签名"></a>2. 配置GPG生成对称签名</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --gen-key</span><br></pre></td></tr></table></figure>
-<p>1.输入姓名和邮箱<br><img src="img/WechatIMG7.jpeg" alt=""><br>2.输入passphrase密码<br><img src="img/WechatIMG8.jpeg" alt=""><br>3.记住密钥，用于上传<br><img src="img/WechatIMG9.jpeg" alt="">   </p>
-<h4 id="3-上传GPG签名"><a href="#3-上传GPG签名" class="headerlink" title="3. 上传GPG签名"></a>3. 上传GPG签名</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">gpg --keyserver hkp://keys.gnupg.net --send-keys 上图圈出来的密钥</span><br><span class="line">```    </span><br><span class="line">![](img/WechatIMG11.jpeg)   </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>### 4. 回Bintray的界面</span><br><span class="line">(1).点击右上角导航栏的头像，点击 Edit Profile。</span><br><span class="line">   </span><br><span class="line">   ![](https://upload-images.jianshu.io/upload_images/4675459-284e0e5a1b672ff1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/232)</span><br><span class="line"> </span><br><span class="line">(2).跳转到以下页面，点击GPG Signing。</span><br><span class="line"></span><br><span class="line">  ![](https://upload-images.jianshu.io/upload_images/4675459-4f8038756be33ed9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/292)</span><br><span class="line">  </span><br><span class="line">(3).把刚才导出的公钥和私钥粘贴进去，包括虚线的两行文本，然后点击 Update。</span><br><span class="line"></span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/4675459-a60a639f88a40cfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/583)  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>### 5. 回到仓库页面，点击Edit</span><br><span class="line"></span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/4675459-627856113530cc2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/627)   </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>### 6.开启自动签名功能，配置就完成了</span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/4675459-cfe3b95c277d369a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700)   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span># 7.获取OSSRH_TOKEN信息</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>## 1.使用Sonatype账号[登录](https://oss.sonatype.org)，点击 Profile    </span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/4675459-dddadef2a64dbab8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/440)</span><br><span class="line"><span class="meta">#</span>## 2.点击 Access User Token 查看你的Token</span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/4675459-075ea8a731642ca6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700).  </span><br><span class="line"></span><br><span class="line">左边输入框是你的username，右边是你的密码，建议把账号有关的信息从环境变量中读取，不要提交到VCS中。   </span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/4675459-c04e5d7025d05998.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span># 8. 配置项目bulid.gradle</span><br><span class="line"><span class="meta">#</span>## 1. gradle.properties.</span><br></pre></td></tr></table></figure>
-<p>DEVELOPER_ID=CatalpaFlat<br>DEVELOPER_NAME=CatalpaFlat<br><a href="mailto:DEVELOPER_EMAIL=catalpaflat@outlook.com" target="_blank" rel="noopener">DEVELOPER_EMAIL=catalpaflat@outlook.com</a></p>
-<p>PROJ_NAME=xxx<br>PROJ_GROUP=com.github.catalpaflat<br>PROJ_ARTIFACTID=xxx<br>PROJ_DESCRIPTION=xxx<br>PROJ_VERSION=1.0.0<br>PROJ_WEBSITEURL=<a href="https://github.com/CatalpaFlat/xxxx" target="_blank" rel="noopener">https://github.com/CatalpaFlat/xxxx</a><br>PROJ_ISSUETRACKERURL=<a href="https://github.com/CatalpaFlat/xxxx/issues" target="_blank" rel="noopener">https://github.com/CatalpaFlat/xxxx/issues</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 2. local.properties.</span><br></pre></td></tr></table></figure></p>
-<p>BINTRAY_USER=catalpaflat<br>BINTRAY_KEY=xxxxx</p>
-<p>OSSRH_USER=xxx<br>OSSRH_PASSWORD=xxxxxxx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 3. bulid.gradle.   </span><br><span class="line"></span><br><span class="line">```gradle</span><br><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">        //使用阿里的maven镜像</span><br><span class="line">        maven &#123; url &apos;http://maven.aliyun.com/nexus/content/groups/public&apos; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        //引入bintray插件</span><br><span class="line">        classpath &apos;com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">group = PROJ_GROUP</span><br><span class="line">version = PROJ_VERSION</span><br><span class="line"></span><br><span class="line">apply plugin: &apos;maven&apos;</span><br><span class="line">apply plugin: &apos;java-library&apos;</span><br><span class="line">apply plugin: &apos;maven-publish&apos;</span><br><span class="line">apply plugin: &apos;com.jfrog.bintray&apos;</span><br><span class="line"></span><br><span class="line">apply plugin: &apos;idea&apos;</span><br><span class="line">apply plugin: &apos;java&apos;</span><br><span class="line"></span><br><span class="line">sourceCompatibility = 1.8</span><br><span class="line">targetCompatibility = 1.8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//生成源文件</span><br><span class="line">task sourcesJar(type: Jar, dependsOn: classes) &#123;</span><br><span class="line">    classifier = &apos;sources&apos;</span><br><span class="line">    from sourceSets.main.allSource</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//文档打包成jar</span><br><span class="line">task javadocJar(type: Jar, dependsOn: javadoc) &#123;</span><br><span class="line">    classifier = &apos;javadoc&apos;</span><br><span class="line">    from javadoc.destinationDir</span><br><span class="line">&#125;</span><br><span class="line">//上传到JCenter所需要的源码文件</span><br><span class="line">artifacts &#123;</span><br><span class="line">    archives javadocJar</span><br><span class="line">    archives sourcesJar</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def pomConfig = &#123;</span><br><span class="line">    licenses &#123;</span><br><span class="line">        license &#123;</span><br><span class="line">            //开源协议</span><br><span class="line">            name &apos;The Apache Software License, Version 2.0&apos;</span><br><span class="line">            url &apos;http://www.apache.org/licenses/LICENSE-2.0.txt&apos;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    developers &#123;</span><br><span class="line">        developer &#123;</span><br><span class="line">            //开发者的个人信息</span><br><span class="line">            id &apos;CatalpaFlat&apos;</span><br><span class="line">            name &apos;CatalpaFlat&apos;</span><br><span class="line">            email &quot;catalpaflat@outlook.com&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    scm &#123;</span><br><span class="line">        connection &quot;https://github.com/CatalpaFlat/xxxx.git&quot;</span><br><span class="line">        developerConnection &quot;https://github.com/CatalpaFlat/xxxx.git&quot;</span><br><span class="line">        //项目网站</span><br><span class="line">        url &quot;https://github.com/CatalpaFlat/xxxx&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">publishing &#123;</span><br><span class="line">    publications &#123;</span><br><span class="line">        MyPublication(MavenPublication) &#123;</span><br><span class="line">            from components.java</span><br><span class="line">            artifact sourcesJar</span><br><span class="line">            artifact javadocJar</span><br><span class="line">            groupId &apos;com.github.catalpaflat&apos;</span><br><span class="line">            artifactId &apos;SMS-modularization&apos;</span><br><span class="line">            version &apos;1.0.1&apos;</span><br><span class="line">            pom.withXml &#123;</span><br><span class="line">                def root = asNode()</span><br><span class="line">                root.appendNode(&apos;description&apos;, &apos;XXXX&apos;)</span><br><span class="line">                root.appendNode(&apos;name&apos;, &apos;XXXX&apos;)</span><br><span class="line">                root.appendNode(&apos;url&apos;, &apos;https://github.com/CatalpaFlat/xxxx&apos;)</span><br><span class="line">                root.children().last() + pomConfig</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">task writeNewPom &lt;&lt; &#123;</span><br><span class="line">    pom &#123;</span><br><span class="line">        project &#123;</span><br><span class="line">            inceptionYear &apos;2018&apos;</span><br><span class="line">            licenses &#123;</span><br><span class="line">                license &#123;</span><br><span class="line">                    name &apos;The Apache Software License, Version 2.0&apos;</span><br><span class="line">                    url &apos;http://www.apache.org/licenses/LICENSE-2.0.txt&apos;</span><br><span class="line">                    distribution &apos;repo&apos;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            developers &#123;</span><br><span class="line">                developer &#123;</span><br><span class="line">                    //开发者的个人信息</span><br><span class="line">                    id &apos;CatalpaFlat&apos;</span><br><span class="line">                    name &apos;CatalpaFlat&apos;</span><br><span class="line">                    email &quot;catalpaflat@outlook.com&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            scm &#123;</span><br><span class="line">                connection &quot;https://github.com/CatalpaFlat/xxxx.git&quot;</span><br><span class="line">                developerConnection &quot;https://github.com/CatalpaFlat/xxxx.git&quot;</span><br><span class="line">                //项目网站</span><br><span class="line">                url &quot;https://github.com/CatalpaFlat/xxxx&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;.writeTo(&quot;pom.xml&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">bintray &#123;</span><br><span class="line"></span><br><span class="line">    Properties properties = new Properties()</span><br><span class="line">    properties.load(project.rootProject.file(&apos;local.properties&apos;).newDataInputStream())</span><br><span class="line">    user = properties.getProperty(&apos;BINTRAY_USER&apos;)</span><br><span class="line">    key = properties.getProperty(&apos;BINTRAY_KEY&apos;)</span><br><span class="line">    configurations = [&apos;archives&apos;]</span><br><span class="line">    publications = [&apos;xxxx&apos;]</span><br><span class="line"></span><br><span class="line">    dryRun = false</span><br><span class="line">    publish = true</span><br><span class="line"></span><br><span class="line">    pkg &#123;</span><br><span class="line">        repo = &apos;maven&apos;</span><br><span class="line">        name = PROJ_NAME</span><br><span class="line">        licenses = [&apos;Apache-2.0&apos;]</span><br><span class="line">        vcsUrl = &apos;https://github.com/CatalpaFlat/xxx.git&apos;</span><br><span class="line">        websiteUrl = &apos;https://github.com/CatalpaFlat/xxx&apos;</span><br><span class="line">        issueTrackerUrl = PROJ_ISSUETRACKERURL</span><br><span class="line">        labels = [&apos;java&apos;, &apos;spring&apos;, &apos;example&apos;]</span><br><span class="line">        version &#123;</span><br><span class="line">            name = PROJ_VERSION</span><br><span class="line">            desc = PROJ_DESCRIPTION</span><br><span class="line">            released = new Date()</span><br><span class="line">            vcsTag = PROJ_VERSION</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="9-release"><a href="#9-release" class="headerlink" title="9. release"></a>9. release</h2><p>1.执行gradle命令进行发布：   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew bintrayUpload</span><br></pre></td></tr></table></figure>
-<p>2.让我们回到Bintray上之前创建的maven仓库，这时你能在仓库的页面看到你刚才上传的包了，类似下图：</p>
-<p><img src="img/WechatIMG16.jpeg" alt="">.    </p>
-<p>3.点击包名，跳转后，在页面的右侧你会找到 Add to JCenter 的按钮，点击它继续跳转.  </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4675459-68f2f3ffd84f3338.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="">.     </p>
-<p>你可以填写一些信息，也可以直接点击Send，过一段时间，系统会发送邮件提示你申请已经通过。   </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4675459-659a224e69c8a44e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="">.  </p>
-<p>4.再回到刚才包的页面，点击 Maven Central，输入你的Sonatype的Token信息点击Sync，就可以完成同步了。第一次同步成功后，Sonatype也会通过邮件告知你 。 </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4675459-ba18abc6ded76889.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p>
-<blockquote>
-<p>注：<br>以后再发布新版本的时候直接执行Gradle命令就行了。同步完成后可以马上在 <a href="https://oss.sonatype.org" target="_blank" rel="noopener">https://oss.sonatype.org</a> 进行搜索，但是 <a href="https://mvnrepository.com/" target="_blank" rel="noopener">https://mvnrepository.com/</a> 的搜索并不是实时的，需要等待一段时间，通常搜索结果第二天就能更新。</p>
-</blockquote>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/" data-id="cjfb43oo0002asp5lmhy7h48z" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <article id="post-java/Java 内存详解" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -478,364 +307,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2018/03/23/java/Java 内存详解/" data-id="cjfb43olw0005sp5ltau2y62w" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/">JavaEE 使用Maven发布jar包到远程中央仓库</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/">
-            <time datetime="2018-03-23T07:00:56.000Z" itemprop="datePublished">2018-03-23</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/JavaEE/">JavaEE</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/JavaEE/">JavaEE</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="JavaEE-使用Maven发布jar包到远程中央仓库"><a href="#JavaEE-使用Maven发布jar包到远程中央仓库" class="headerlink" title="JavaEE 使用Maven发布jar包到远程中央仓库"></a>JavaEE 使用Maven发布jar包到远程中央仓库</h1><h3 id="0-前提准备"><a href="#0-前提准备" class="headerlink" title="0. 前提准备"></a>0. 前提准备</h3><p><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a> 上 New Repository 项目<br>（若没有则注册）. </p>
-<p><img src="img/WechatIMG4.jpeg" alt=""></p>
-<h3 id="1-Sonatype-OSSRH-简介"><a href="#1-Sonatype-OSSRH-简介" class="headerlink" title="1. Sonatype OSSRH 简介"></a>1. Sonatype OSSRH 简介</h3><p>Sonatype OSSRH 使用Nexus 为开源项目提供仓库管理服务，该仓库就是所谓maven的中央仓库，OSSRH允许我们向Maven中央仓库提交二进制文件。<br>使用Sonatype OSSRH可以做以下操作：  </p>
-<ul>
-<li>提交(deploy)开发版本的二进制文件（snapshorts)</li>
-<li>阶段性的发布版本</li>
-<li>发布一个release,同步到Sonatype OSSRH 中央仓库。</li>
-</ul>
-<p>总共就两种版本：snapshorts版本（开发版本）和release（发布版本）</p>
-<h3 id="2-注册JIRA账号"><a href="#2-注册JIRA账号" class="headerlink" title="2. 注册JIRA账号"></a>2. 注册JIRA账号</h3><p><a href="https://issues.sonatype.org/secure/Dashboard.jspa" target="_blank" rel="noopener">注册链接</a><br>注册之后请妥善保管好账号密码，后续登录相关Nexus链接需要用到。</p>
-<h3 id="3-创建issue"><a href="#3-创建issue" class="headerlink" title="3. 创建issue"></a>3. 创建issue</h3><p>注册完之后创建ISSUE<br><img src="img/WechatIMG32.jpeg" alt=""></p>
-<blockquote>
-<p><strong>注：</strong> 当创建完之后，issue的status为open状态，此时还不能进行上传jar，若group id为com.github开头的话，基本秒过（管理员审核较快，即从OPEN -&gt; RESOLVED）,当为RESOLVED时，即上传jar。</p>
-<p>当ISSUA转为RESOLVED时，会有附带相关链接,其中只需记录这两个链接：   </p>
-<ul>
-<li>Deploy snapshot artifacts into repository</li>
-<li>Deploy release artifacts into the staging repository</li>
-</ul>
-<p>后续配置项目pom.xml时需要</p>
-</blockquote>
-<p><img src="img/WechatIMG12.jpeg" alt=""></p>
-<h3 id="4-下载GPG"><a href="#4-下载GPG" class="headerlink" title="4. 下载GPG"></a>4. 下载GPG</h3><p>1.下载安装。 </p>
-<p>(1) Mac操作系统：  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install gnupg</span><br></pre></td></tr></table></figure>
-<p>(2) Windows操作系统<br>下载地址：<a href="https://www.gpg4win.org/" target="_blank" rel="noopener">https://www.gpg4win.org/</a></p>
-<p>2.校验  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --version</span><br></pre></td></tr></table></figure>
-<p><img src="img/WechatIMG5.jpeg" alt=""></p>
-<h3 id="5-配置GPG生成对称签名"><a href="#5-配置GPG生成对称签名" class="headerlink" title="5. 配置GPG生成对称签名"></a>5. 配置GPG生成对称签名</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --gen-key</span><br></pre></td></tr></table></figure>
-<p>1.输入姓名和邮箱<br><img src="img/WechatIMG7.jpeg" alt=""><br>2.输入passphrase密码<br><img src="img/WechatIMG8.jpeg" alt=""><br>3.记住密钥，用于上传<br><img src="img/WechatIMG9.jpeg" alt="">   </p>
-<h3 id="6-上传GPG签名"><a href="#6-上传GPG签名" class="headerlink" title="6. 上传GPG签名"></a>6. 上传GPG签名</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">gpg --keyserver hkp://keys.gnupg.net --send-keys 上图圈出来的密钥</span><br><span class="line">```    </span><br><span class="line">![](img/WechatIMG11.jpeg)   </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>## 7. IDEA 创建maven项目</span><br><span class="line">此处无图</span><br><span class="line"><span class="meta">#</span>## 8. 配置maven下config的setting.xml</span><br><span class="line">配置JIRA账号，用于发布snapshorts版本。   </span><br><span class="line"></span><br><span class="line">```xml</span><br><span class="line">&lt;server&gt;</span><br><span class="line">    &lt;id&gt;sonatype-nexus-snapshots&lt;/id&gt;</span><br><span class="line">    &lt;username&gt; account &lt;/username&gt;</span><br><span class="line">    &lt;password&gt; password &lt;/password&gt;</span><br><span class="line">&lt;/server&gt;</span><br><span class="line">&lt;server&gt;</span><br><span class="line">    &lt;id&gt;sonatype-nexus-staging&lt;/id&gt;</span><br><span class="line">    &lt;username&gt; account &lt;/username&gt;</span><br><span class="line">    &lt;password&gt; password d&lt;/password&gt;</span><br><span class="line">&lt;/server&gt;</span><br><span class="line">&lt;/servers&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="9-配置项目pom-xml"><a href="#9-配置项目pom-xml" class="headerlink" title="9.配置项目pom.xml"></a>9.配置项目pom.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.youname<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>XXXX<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 若发布snapshorts版本，则需添加版本后缀 '-SNAPSHOT' --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">	<span class="comment">&lt;!-- org.sonatype.oss依赖--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.sonatype.oss<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>oss-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">	<span class="comment">&lt;!-- 默认许可证 --&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">licenses</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">license</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">name</span>&gt;</span>Apache 2<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://www.apache.org/licenses/LICENSE-2.0.txt<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">distribution</span>&gt;</span>repo<span class="tag">&lt;/<span class="name">distribution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">comments</span>&gt;</span>A business-friendly OSS license<span class="tag">&lt;/<span class="name">comments</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">license</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">licenses</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">	<span class="comment">&lt;!-- GitHub项目地址 --&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">scm</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://github.com/CatalpaFlat/XXX<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">connection</span>&gt;</span>https://github.com/CatalpaFlat/XXX.git<span class="tag">&lt;/<span class="name">connection</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">scm</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- 开源项目作者信息 --&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">developers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">developer</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">name</span>&gt;</span>CatalpaFlat<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">email</span>&gt;</span>youemail<span class="tag">&lt;/<span class="name">email</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://github.com/CatalpaFlat/XXX<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">developer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">developers</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 部署release版本要用到 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>release<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.sonatype.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>nexus-staging-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.6.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">extensions</span>&gt;</span>true<span class="tag">&lt;/<span class="name">extensions</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">serverId</span>&gt;</span>ossrh<span class="tag">&lt;/<span class="name">serverId</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">nexusUrl</span>&gt;</span>https://oss.sonatype.org/<span class="tag">&lt;/<span class="name">nexusUrl</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">autoReleaseAfterClose</span>&gt;</span>true<span class="tag">&lt;/<span class="name">autoReleaseAfterClose</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-release-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">autoVersionSubmodules</span>&gt;</span>true<span class="tag">&lt;/<span class="name">autoVersionSubmodules</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">useReleaseProfile</span>&gt;</span>false<span class="tag">&lt;/<span class="name">useReleaseProfile</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">releaseProfiles</span>&gt;</span>release<span class="tag">&lt;/<span class="name">releaseProfiles</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">goals</span>&gt;</span>deploy<span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">source</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">target</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-gpg-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">id</span>&gt;</span>sign-artifacts<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">phase</span>&gt;</span>verify<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>sign<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-source-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">id</span>&gt;</span>attach-sources<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>jar-no-fork<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-javadoc-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">id</span>&gt;</span>attach-javadocs<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">distributionManagement</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">snapshotRepository</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 这个id需要在setting.xml中设置对应  --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>sonatype-nexus-snapshots<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">name</span>&gt;</span>OSS Snapshots Repository<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 这里的url就是Issue中回复的snapshots 的repo地址--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://oss.sonatype.org/content/repositories/snapshots<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">snapshotRepository</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>sonatype-nexus-staging<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">name</span>&gt;</span>OSS Staging Repository<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 这里的url就是Issue中回复的staging 的repo地址--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://oss.sonatype.org/service/local/staging/deploy/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">distributionManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="10-发布snapshorts版本"><a href="#10-发布snapshorts版本" class="headerlink" title="10. 发布snapshorts版本"></a>10. 发布snapshorts版本</h3><p>修改version加一个-SNAPSHOT.  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean deploy</span><br></pre></td></tr></table></figure>
-<h3 id="11-发布release版本"><a href="#11-发布release版本" class="headerlink" title="11. 发布release版本"></a>11. 发布release版本</h3><p>修改version 不要加-SNAPSHOT.  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean deploy -P release</span><br></pre></td></tr></table></figure>
-<h3 id="12-close-项目-release-项目"><a href="#12-close-项目-release-项目" class="headerlink" title="12. close 项目/release 项目"></a>12. close 项目/release 项目</h3><p>使用注册的账号登录:<br><a href="https://oss.sonatype.org" target="_blank" rel="noopener">Nexus Repository Manager</a><br><img src="img/WechatIMG13.jpeg" alt="">   </p>
-<blockquote>
-<p><strong>注：</strong>查看自己的(你定义的版本号不能带SNAPSHOT要不然看不到)<br>a）构件准备好之后，在命令行上传构建；<br>b）在<a href="https://oss.sonatype.org/" target="_blank" rel="noopener">https://oss.sonatype.org/</a> 先“close”后“release”构件；<br>c) 等待同步好（大约2小时多）之后，就可以使用了。   </p>
-</blockquote>
-<h3 id="13-设置上传中央仓库"><a href="#13-设置上传中央仓库" class="headerlink" title="13. 设置上传中央仓库"></a>13. 设置上传中央仓库</h3><p>Already Synced to Central设置为Yes<br><img src="img/WechatIMG14.jpeg" alt="">   </p>
-<h3 id="14-查询发布结果"><a href="#14-查询发布结果" class="headerlink" title="14. 查询发布结果"></a>14. 查询发布结果</h3><p><a href="https://search.maven.org" target="_blank" rel="noopener">Central Repositiry</a><br><img src="img/WechatIMG15.jpeg" alt="">    </p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2018/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/" data-id="cjfb43oo2002bsp5l520boo51" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/">JavaEE 发布jar包到远程maven中央仓库</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/">
-            <time datetime="2018-03-22T03:33:56.000Z" itemprop="datePublished">2018-03-22</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/JavaEE/">JavaEE</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/JavaEE/">JavaEE</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="JavaEE-发布jar包到远程maven中央仓库"><a href="#JavaEE-发布jar包到远程maven中央仓库" class="headerlink" title="JavaEE 发布jar包到远程maven中央仓库"></a>JavaEE 发布jar包到远程maven中央仓库</h1><blockquote>
-<p>当项目成熟到一定阶段时，需要将相关业务模块抽离封装迭代管理时，可以将业务相关内容模块化，并将其打包到对应远程仓库，以此提高下次开发效率与成本。<br>其中，JavaEE就有两种打包方法：</p>
-<ul>
-<li>maven ——Nexus仓库</li>
-<li>gradle —— JCenter仓库</li>
-</ul>
-<p>两者都可以将jar提交到远程仓库中。</p>
-</blockquote>
-<h2 id="一-Maven方法"><a href="#一-Maven方法" class="headerlink" title="一.Maven方法"></a>一.Maven方法</h2><blockquote>
-<p>使用<strong>Sonatype OSSRH</strong> 将 开源项目的jar 交给Maven的中央仓库。</p>
-<ul>
-<li>Nexus Repository Manager: <a href="https://oss.sonatype.org" target="_blank" rel="noopener">https://oss.sonatype.org</a>  </li>
-<li>Sonatype: <a href="https://issues.sonatype.org" target="_blank" rel="noopener">https://issues.sonatype.org</a></li>
-<li>Central Repositiry: <a href="https://search.maven.org" target="_blank" rel="noopener">https://search.maven.org</a></li>
-</ul>
-<p>简要步骤：  </p>
-<ol>
-<li>GitHub 上创建对应开源项目Repository</li>
-<li>注册JIRA账号 — 远程maven仓库账号</li>
-<li>创建issue — 其中关联GitHub项目链接</li>
-<li>下载GPG（用于签名）</li>
-<li>配置GPG对称签名 ——Remember passphrase/Remember the User Id（密钥）</li>
-<li>上传GPG签名（发布Release版本关键）</li>
-<li>IDEA 创建maven项目</li>
-<li>配置maven下config的setting.xml（snapshorts版本关键）</li>
-<li>配置项目pom.xml</li>
-<li>发布snapshorts版本</li>
-<li>发布release版本</li>
-<li>close 项目</li>
-<li>release 项目</li>
-<li>设置上传中央仓库</li>
-</ol>
-</blockquote>
-<h3 id="Integral-flow-chart"><a href="#Integral-flow-chart" class="headerlink" title="Integral flow chart"></a>Integral flow chart</h3><p><img src="img/mavenIntegral flow chart.png" alt="Maven Integral flow chart"></p>
-<h3 id="The-specific-implementation"><a href="#The-specific-implementation" class="headerlink" title="The specific implementation"></a>The specific implementation</h3><p>JavaEE 使用Maven发布jar包到远程中央仓库</p>
-<h2 id="二-Gradle方法"><a href="#二-Gradle方法" class="headerlink" title="二.Gradle方法"></a>二.Gradle方法</h2><blockquote>
-<p>使用<strong> Bintray </strong>  将 开源项目的jar 交给Maven的中央仓库。   </p>
-<ul>
-<li>Bintray: https:/bintray.com</li>
-<li>Sonatype: <a href="https://issues.sonatype.org" target="_blank" rel="noopener">https://issues.sonatype.org</a></li>
-</ul>
-<p>简要步骤：  </p>
-<ol>
-<li>创建Bintray账号</li>
-<li>Bintray上创建maven仓库</li>
-<li>获取BINTRAY_KEY </li>
-<li>注册JIRA账号 — 远程maven仓库账号</li>
-<li>创建issue — 其中关联GitHub项目链接</li>
-<li>GPG签名 - 配置到Bintray</li>
-<li>获取OSSRH_TOKEN信息（关联issue的凭证） - 配置bulid.gradle和后续Release</li>
-<li>IDEA 创建Gradle项目</li>
-<li>配置项目bulid.gradle - 关联issue/关联Bintray</li>
-<li>发布部署</li>
-</ol>
-</blockquote>
-<h3 id="Integral-flow-chart-1"><a href="#Integral-flow-chart-1" class="headerlink" title="Integral flow chart"></a>Integral flow chart</h3><p><img src="img/gradleIntegral flow chart.png" alt="Gradle Integral flow chart"></p>
-<h3 id="The-specific-implementation-1"><a href="#The-specific-implementation-1" class="headerlink" title="The specific implementation"></a>The specific implementation</h3><p>JavaEE 使用Gradle发布jar包到远程中央仓库</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2018/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/" data-id="cjfb43oo5002esp5l3mndagqx" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="https://catalpaflat.github.io/2018/03/23/java/Java 内存详解/" data-id="cjfb4aqu70009ut5lyxy20ffn" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1109,7 +581,7 @@ for (String item : list) {
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2018/01/23/java/Java开发规范/" data-id="cjfb43om2000asp5lerbfwnoy" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="https://catalpaflat.github.io/2018/01/23/java/Java开发规范/" data-id="cjfb4aque000fut5l8vujs7fh" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1381,7 +853,864 @@ public class ChineseToPinyinUtil {
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/12/16/java/Java 实现中文-拼音转换/" data-id="cjfb43olz0008sp5lc0pl4hyd" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="https://catalpaflat.github.io/2017/12/16/java/Java 实现中文-拼音转换/" data-id="cjfb4aqu9000aut5laq23cxx7" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-Quartz/自定义Quartz超实用工具类" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/11/17/Quartz/自定义Quartz超实用工具类/">自定义Quartz超实用工具类</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/11/17/Quartz/自定义Quartz超实用工具类/">
+            <time datetime="2017-11-17T03:09:37.000Z" itemprop="datePublished">2017-11-17</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Quartz/">Quartz</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Quartz/">Quartz</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="自定义Quartz超实用工具类"><a href="#自定义Quartz超实用工具类" class="headerlink" title="自定义Quartz超实用工具类"></a>自定义Quartz超实用工具类</h1><h2 id="1-添加maven依赖"><a href="#1-添加maven依赖" class="headerlink" title="1.添加maven依赖"></a>1.添加maven依赖</h2><pre><code> &lt;!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz --&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.quartz-scheduler&lt;/groupId&gt;
+  &lt;artifactId&gt;quartz&lt;/artifactId&gt;
+  &lt;version&gt;${quartz.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h2 id="2-实现Quartz实用工具类"><a href="#2-实现Quartz实用工具类" class="headerlink" title="2.实现Quartz实用工具类"></a>2.实现Quartz实用工具类</h2><pre><code>/**
+ * Quartz任务调度器工具类
+ *
+ * @author CatalpaFlat
+ * @date Create in 10:25 2017/11/16
+ */
+public class QuartzUtil {
+    /**
+     * 调度器工厂
+     */
+    private static SchedulerFactory schedulerFactory = new StdSchedulerFactory();
+    /**
+     * 默认Job组名
+     */
+    private static String JOB_GROUP_NAME = &quot;DEFAULT_JOB_GROUP_NAME&quot;;
+    /**
+     * 默认触发器组名
+     */
+    private static String TRIGGER_GROUP_NAME = &quot;DEFAULT_TRIGGER_GROUP_NAME&quot;;
+
+    /**
+     * 获取调度器
+     *
+     * @return Scheduler
+     * @throws SchedulerException Scheduler获取异常
+     */
+    private static Scheduler getScheduler() throws SchedulerException {
+        return schedulerFactory.getScheduler();
+    }
+
+    /**
+     * 获取CronTrigger
+     *
+     * @param jobName          任务名
+     * @param triggerGroupName 触发器组名（为空使用默认）
+     * @param time             crond格式时间
+     * @return CronTrigger
+     */
+    private static CronTrigger getCronTrigger(String jobName, String triggerGroupName, String time) {
+        if (StringUtils.isBlank(triggerGroupName)) {
+            triggerGroupName = TRIGGER_GROUP_NAME;
+        }
+        return TriggerBuilder.newTrigger().withIdentity(jobName, triggerGroupName)
+                .withSchedule(CronScheduleBuilder.cronSchedule(time)).build();
+    }
+
+    /**
+     * 获取JobDetail
+     *
+     * @param jobName      任务名
+     * @param jobGroupName 任务组名（为空使用默认）
+     * @param cls          任务类
+     * @param jobDataMap   附带参数
+     * @return JobDetail
+     */
+    private static JobDetail getJobDetail(String jobName, String jobGroupName, Class&lt;? extends Job&gt; cls, JobDataMap jobDataMap) {
+        if (StringUtils.isBlank(jobGroupName)) {
+            jobGroupName = JOB_GROUP_NAME;
+        }
+
+        if (jobDataMap != null) {
+            return JobBuilder.newJob(cls).withIdentity(jobName, jobGroupName).usingJobData(jobDataMap).build();
+        } else {
+            return JobBuilder.newJob(cls).withIdentity(jobName, jobGroupName).build();
+        }
+    }
+
+    /**
+     * 设置JobDetail 和 CronTrigger 到 scheduler（已获取的调度器中，无需重复调用）
+     *
+     * @param cls              任务嘞
+     * @param jobName          任务名
+     * @param jobGroupName     任务组名（为空使用默认）
+     * @param triggerGroupName 触发器组名（为空使用默认）
+     * @param time             crond格式时间
+     * @param jobDataMap       附带参数
+     * @param scheduler        调度器
+     * @return 设置成功与否
+     * @throws SchedulerException 调度器异常
+     */
+    private static boolean setJobDetailAndCronTriggerInScheduler(Class&lt;? extends Job&gt; cls, String jobName, String jobGroupName, String triggerGroupName,
+                                                                 String time, JobDataMap jobDataMap, Scheduler scheduler) throws SchedulerException {
+        if (!isJobKey(scheduler, jobName, jobGroupName)) {
+            return false;
+        }
+        JobDetail jobDetail = getJobDetail(jobName, jobGroupName, cls, jobDataMap);
+        CronTrigger trigger = getCronTrigger(jobName, triggerGroupName, time);
+        scheduler.scheduleJob(jobDetail, trigger);
+        if (!scheduler.isShutdown()) {
+            scheduler.start();
+        }
+        return true;
+    }
+
+    /**
+     * 从调度器中移除Job
+     *
+     * @param scheduler  调度器
+     * @param triggerKey 触发器key（名，组）
+     * @param jobKey     任务key（名，组）
+     */
+    private static void removeJob(Scheduler scheduler, TriggerKey triggerKey, JobKey jobKey) {
+        try {
+            // 停止触发器
+            scheduler.pauseTrigger(triggerKey);
+            //移除触发器
+            scheduler.unscheduleJob(triggerKey);
+            // 删除任务
+            scheduler.deleteJob(jobKey);
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 使用CronTrigger类型添加任务
+     *
+     * @param scheduler        调度器
+     * @param cls              任务嘞
+     * @param jobName          任务名
+     * @param jobGroupName     任务组名（为空使用默认）
+     * @param triggerGroupName 触发器组名（为空使用默认）
+     * @param time             crond格式时间
+     * @param jobDataMap       附带参数
+     * @return 是否添加成功
+     */
+    private static boolean addJobByCronTrigger(Scheduler scheduler, Class&lt;? extends Job&gt; cls, String jobName, String jobGroupName,
+                                               String triggerGroupName, String time, JobDataMap jobDataMap) {
+        try {
+            return setJobDetailAndCronTriggerInScheduler(cls, jobName, jobGroupName, triggerGroupName, time, jobDataMap, scheduler);
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 判断是否存在JobKey
+     *
+     * @param scheduler    任务调度器
+     * @param jobName      任务名
+     * @param jobGroupName 任务组名
+     * @return 是否存在JobKey
+     */
+    private static boolean isJobKey(Scheduler scheduler, String jobName, String jobGroupName) {
+        JobKey jobKey = JobKey.jobKey(jobName, jobGroupName);
+        try {
+            JobDetail jobDetail = scheduler.getJobDetail(jobKey);
+            return jobDetail == null;
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 添加定时任务
+     *
+     * @param cls              任务类
+     * @param jobName          任务名
+     * @param jobGroupName     任务组名（为空使用默认）
+     * @param triggerGroupName 触发器组名（为空使用默认）
+     * @param time             crond格式时间
+     * @param jobDataMap       附带参数
+     * @return 是否正常添加任务
+     */
+    public static boolean addJobByCronTrigger(Class&lt;? extends Job&gt; cls, String jobName, String jobGroupName,
+                                              String triggerGroupName, String time, JobDataMap jobDataMap) {
+        try {
+            if (StringUtils.isBlank(jobName)) {
+                return false;
+            }
+            Scheduler scheduler = getScheduler();
+            return setJobDetailAndCronTriggerInScheduler(cls, jobName, jobGroupName, triggerGroupName, time, jobDataMap, scheduler);
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 修改任务时间
+     *
+     * @param jobName          任务名
+     * @param time             crond格式时间
+     * @param jobGroupName     任务组名（为空使用默认）
+     * @param triggerGroupName 触发器组名（为空使用默认）
+     * @param jobDataMap       附带参数
+     * @return 是否修改成功
+     */
+    public static boolean modifyJobTime(String jobName, String time, String jobGroupName,
+                                        String triggerGroupName, JobDataMap jobDataMap) {
+        try {
+            if (StringUtils.isBlank(jobName)) {
+                return false;
+            }
+            Scheduler scheduler = getScheduler();
+            if (StringUtils.isBlank(triggerGroupName)) {
+                triggerGroupName = TRIGGER_GROUP_NAME;
+            }
+            TriggerKey triggerKey = TriggerKey.triggerKey(jobName, triggerGroupName);
+            CronTrigger trigger = (CronTrigger) scheduler.getTrigger(triggerKey);
+            if (trigger == null) {
+                return false;
+            }
+            String oldTime = trigger.getCronExpression();
+            if (!oldTime.equalsIgnoreCase(time)) {
+                if (StringUtils.isBlank(jobGroupName)) {
+                    jobGroupName = JOB_GROUP_NAME;
+                }
+                JobKey jobKey = JobKey.jobKey(jobName, jobGroupName);
+                JobDetail jobDetail = scheduler.getJobDetail(jobKey);
+                Class&lt;? extends Job&gt; jobClass = jobDetail.getJobClass();
+                removeJob(scheduler, triggerKey, jobKey);
+                return addJobByCronTrigger(scheduler, jobClass, jobName, jobGroupName, triggerGroupName, time, jobDataMap);
+            }
+            return true;
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 启动所有定时任务
+     */
+    public static void startJobs() {
+        try {
+            Scheduler scheduler = getScheduler();
+            scheduler.start();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 关闭所有定时任务
+     */
+    public static void shutdownJobs() {
+        try {
+            Scheduler scheduler = getScheduler();
+            if (!scheduler.isShutdown()) {
+                scheduler.shutdown();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 停止一个job任务
+     *
+     * @param jobName      任务名
+     * @param jobGroupName 任务组名（空位默认）
+     * @return 是否停止
+     */
+    public static boolean pauseJob(String jobName, String jobGroupName) {
+        try {
+            Scheduler scheduler = getScheduler();
+            if (StringUtils.isBlank(jobGroupName)) {
+                jobGroupName = JOB_GROUP_NAME;
+            }
+            scheduler.interrupt(JobKey.jobKey(jobName, jobGroupName));
+            return true;
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 恢复一个job任务
+     *
+     * @param jobName      任务名
+     * @param jobGroupName 任务组名（空位默认）
+     * @return 是否恢复
+     */
+    public static boolean resumeJob(String jobName, String jobGroupName) {
+        try {
+            Scheduler scheduler = getScheduler();
+            scheduler.resumeJob(JobKey.jobKey(jobName, jobGroupName));
+            return true;
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 添加定时任务
+     *
+     * @param cls  任务类
+     * @param bJob 任务类属性
+     * @return 是否添加成功
+     */
+    public static boolean addJobByCronTrigger(Class&lt;? extends Job&gt; cls, BaseJob bJob) {
+        if (bJob == null) {
+            return false;
+        }
+        String jobName = bJob.getJobName();
+        if (StringUtils.isBlank(jobName)) {
+            return false;
+        }
+        try {
+            Scheduler scheduler = getScheduler();
+            return setJobDetailAndCronTriggerInScheduler(cls, jobName, bJob.getJobGroupName(), bJob.getTriggerGroupName(), bJob.getCronTime(), bJob.getJobDataMap(), scheduler);
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    /**
+     * 修改任务JobDateMap
+     *
+     * @param cls  任务类
+     * @param bJob 任务类属性
+     * @return 是否修改成功
+     */
+    public static boolean modifyJobDateMap(Class&lt;? extends Job&gt; cls, BaseJob bJob) {
+        if (bJob == null) {
+            return false;
+        }
+        String jobName = bJob.getJobName();
+        if (StringUtils.isBlank(jobName)) {
+            return false;
+        }
+        String triggerGroupName = bJob.getTriggerGroupName();
+        if (StringUtils.isBlank(triggerGroupName)) {
+            triggerGroupName = TRIGGER_GROUP_NAME;
+        }
+        TriggerKey triggerKey = TriggerKey.triggerKey(jobName, triggerGroupName);
+        String jobGroupName = bJob.getJobGroupName();
+        if (StringUtils.isBlank(jobGroupName)) {
+            jobGroupName = JOB_GROUP_NAME;
+        }
+        try {
+            Scheduler scheduler = getScheduler();
+            JobKey jobKey = JobKey.jobKey(jobName, jobGroupName);
+            JobDetail jobDetail1 = scheduler.getJobDetail(jobKey);
+            if (jobDetail1 == null) {
+                return false;
+            }
+            JobDataMap oldJobDataMap = jobDetail1.getJobDataMap();
+            JobDataMap jobDataMap = bJob.getJobDataMap();
+            if (!oldJobDataMap.equals(jobDataMap)) {
+                Class&lt;? extends Job&gt; jobClass = jobDetail1.getJobClass();
+                removeJob(scheduler, triggerKey, jobKey);
+                return addJobByCronTrigger(scheduler, jobClass, jobName, jobGroupName, triggerGroupName, bJob.getCronTime(), jobDataMap);
+            }
+            return true;
+        } catch (SchedulerException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+}
+</code></pre>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/11/17/Quartz/自定义Quartz超实用工具类/" data-id="cjfb4aqu10005ut5lweo13h66" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-Quartz/深入解读Quartz任务调度器" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/11/15/Quartz/深入解读Quartz任务调度器/">深入解读Quartz任务调度器</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/11/15/Quartz/深入解读Quartz任务调度器/">
+            <time datetime="2017-11-15T09:24:17.000Z" itemprop="datePublished">2017-11-15</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Quartz/">Quartz</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Quartz/">Quartz</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="深入解读Quartz任务调度器"><a href="#深入解读Quartz任务调度器" class="headerlink" title="深入解读Quartz任务调度器"></a>深入解读Quartz任务调度器</h1><h2 id="1-Quartz简介"><a href="#1-Quartz简介" class="headerlink" title="1.Quartz简介"></a>1.Quartz简介</h2><h3 id="1-1-概要"><a href="#1-1-概要" class="headerlink" title="1.1.概要"></a>1.1.概要</h3><p>　　Quartz是OpenSymphony提供的强大的开源任务调度框架。　　<br>　　官网：<a href="http://www.quartz-scheduler.org" target="_blank" rel="noopener">http://www.quartz-scheduler.org</a><br>　　纯Java实现，精细控制排程。<br><img src="https://i.imgur.com/MB8dnAN.png" alt=""></p>
+<h3 id="1-2-Quartz特点"><a href="#1-2-Quartz特点" class="headerlink" title="1.2.Quartz特点"></a>1.2.Quartz特点</h3><ol>
+<li>强大的调度能力</li>
+<li>灵活的应用方式</li>
+<li>强大的分布式和集群能力<h3 id="1-3-Quartz设计模式"><a href="#1-3-Quartz设计模式" class="headerlink" title="1.3.Quartz设计模式"></a>1.3.Quartz设计模式</h3></li>
+</ol>
+<ul>
+<li>Builder模式</li>
+<li>组件模式</li>
+<li>Factory模式</li>
+<li>链式写法<h3 id="1-4-Quartz体系结构"><a href="#1-4-Quartz体系结构" class="headerlink" title="1.4.Quartz体系结构"></a>1.4.Quartz体系结构</h3><h4 id="1-4-1-三大核心"><a href="#1-4-1-三大核心" class="headerlink" title="1.4.1.三大核心"></a>1.4.1.三大核心</h4></li>
+<li>调度器</li>
+<li>任务</li>
+<li>触发器 </li>
+</ul>
+<p><img src="https://i.imgur.com/mAHuNjM.jpg" alt=""></p>
+<h4 id="1-4-2-重要组成"><a href="#1-4-2-重要组成" class="headerlink" title="1.4.2.重要组成"></a>1.4.2.重要组成</h4><p>1）任务： </p>
+<ul>
+<li><p>Job：表示一个工作，要执行的具体内容。此接口中只有一个方法。要创建一个任务，必须得实现这个接口。该接口只有一个execute方法，任务每次被调用的时候都会执行这个execute方法的逻辑，类似TimerTask的run方法，在里面编写业务逻辑。 </p>
+<pre><code>public class TestJob implements Job {
+    /**把要执行的操作，写在execute方法中  */
+    @Override
+    public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+        SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd hh:mm:ss&quot;);
+        System.out.println(&quot;I can do something...&quot;);
+        System.out.println(sdf.format(new Date()));
+    }
+}
+</code></pre></li>
+</ul>
+<p>生命周期：在每次调度器执行job时，它在调用execute方法前会创建一个新的job实例，当调用完成之后，关联的job对象实例会被释放，释放的实例会被垃圾回收机制回收。</p>
+<ul>
+<li><p>JobBuilder：可向任务传递数据,通常情况下,我们使用它就可向任务类发送数据了，如有特别复杂的传递参数,它提供了一个传递递:JobDataMap对象的方法　　</p>
+<pre><code>JobDetail jobDetail =  JobBuilder.newJob(TestJob.class).withIdentity(&quot;testJob&quot;,&quot;group1&quot;).build();
+</code></pre></li>
+<li><p>JobDetail：用来保存我们任务的详细信息。一个JobDetail可以有多个Trigger，但是一个Trigger只能对应一个JobDetail。下面是JobDetail的一些常用的属性和含义：　　</p>
+</li>
+</ul>
+<p>　　<img src="https://i.imgur.com/aid7mV3.png" alt=""></p>
+<ul>
+<li><p>JobStore：负责跟踪所有你给scheduler的“工作数据”：jobs, triggers, calendars, 等。</p>
+<ul>
+<li><p>RAMJobStore：是使用最简单的也是最高效(依据CPU时间)的JobStore 。RAMJobStore 正如它名字描述的一样，它保存数据在RAM。缺点是你的应用结束之后所有的数据也丢失了–这意味着RAMJobStore 不具有保持job和trigger持久的能力。对于一些程序是可以接受的，甚至是期望的，但对于其他的程序可能是灾难性的。使用RAMJobStore配置Quartz：配置如下</p>
+<pre><code>org.quartz.jobStore.class = org.quartz.simpl.RAMJobStore 
+</code></pre></li>
+<li><p>JDBCJobStore：以JDBC的方式保存数据在数据库中。它比RAMJobStore的配置复杂一点，也没有RAMJobStore快。然而,性能缺点不是糟透了,特别是如果你在数据库表主键上建立了索引。在机器之间的LAN(在scheduler 和数据库之间)合理的情况下，检索和更新一个被触发的Trigger花费的时间少于10毫秒。几乎适用于所有的数据库，广泛用于 Oracle。PostgreSQL, MySQL, MS SQLServer, HSQLDB, 和DB2。使用JDBCJobStore之前你必须首先创建一系列Quartz要使用的表。你可以发现表创建语句在Quartz发布目录的 “docs/dbTables”下面。你需要确定你的应用要使用的事务类型。如果你不想绑定调度命令(例如增加和移除Trigger)到其他的事务，你可以使用JobStoreTX (最常用的选择)作为你的Jobstore。如果你需要Quartz和其他的事务(例如在J2EE应用服务器中)一起工作，你应该使用JobStoreCMT ，Quartz 将让应用服务器容器管理这个事务。使用JobStoreTx配置Quartz：</p>
+<pre><code>org.quartz.jobStore.class = org.quartz.impl.jdbcjobstore.JobStoreTX  
+org.quartz.jobStore.driverDelegateClass = org.quartz.impl.jdbcjobstore.StdJDBCDelegate  
+#配置表的前缀  
+org.quartz.jobStore.tablePrefix = QRTZ_  
+#使用JNDI数据源的时候，数据源的名字  
+org.quartz.jobStore.dataSource = myDS      
+</code></pre></li>
+<li><p>TerracottaJobStore：提供了一个方法：在不使用数据库的情况下使它具有收缩性和强壮性。可以是集群的也可以是非集群的，在这两种情况下为你的job数据提供了一个存储机制用于应用程序重启之间持久,因为数据是存储在Terracotta服务器。它的性能比使用数据库访问JDBCJobStore好一点儿(大约是一个数量级)，但是明显比RAMJobStore慢。使用TerracottaJobStore配置Quartz：</p>
+<pre><code>org.quartz.jobStore.class = org.terracotta.quartz.TerracottaJobStore  
+org.quartz.jobStore.tcConfigUrl = localhost:9510  
+</code></pre></li>
+</ul>
+</li>
+<li><p>JobDataMap：中可以包含不限量的（序列化的）数据对象，在job实例执行的时候，可以使用其中的数据；JobDataMap是Java Map接口的一个实现，额外增加了一些便于存取基本类型的数据的方法。</p>
+<ul>
+<li><p>存：</p>
+<pre><code>JobDetail jobDetail =  JobBuilder.newJob(TestJob.class).withIdentity(&quot;testJob&quot;,&quot;group1&quot;).usingJobData(&quot;date1&quot;,&quot;存内容&quot;).build(); 
+</code></pre></li>
+<li><p>取：</p>
+<pre><code>public class TestJob implements Job {
+    /**把要执行的操作，写在execute方法中  */
+    @Override
+    public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+        JobKey key = jobExecutionContext.getJobDetail().getKey();
+        JobDataMap jobDataMap = jobExecutionContext.getJobDetail().getJobDataMap();
+        String date1 = jobDataMap.getString(&quot;date1&quot;);
+    }
+}
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>2）触发器：用来触发执行Job<br><img src="https://i.imgur.com/Bg3Bxud.png" alt="">  </p>
+<p>2.1）触发器通用属性： </p>
+<ul>
+<li>Jobkey：表示job实例的标识，触发器被触发时，该指定的job实例会被执行</li>
+<li>StartTime：表示触发器的时间表首次被触发的时间，它的值类型为：java.util.Date</li>
+<li>EndTime：指定触发器的不再被触发的时间，它的值类型为：java.util.Date</li>
+</ul>
+<p>2.2）触发器类型：</p>
+<ul>
+<li><p>SimpleTrigger： 主要是针对一些相对简单的时间触发进行配置使用，比如在指定的时间开始然后在一定的时间间隔之内重复执行一个Job，同时可以任意指定重复的次数。下面就是使用一个SimpleTrigger的例子:  </p>
+<pre><code>//创建触发器 每3秒钟执行一次(无开始时间和结束时间)
+Trigger trigger = TriggerBuilder.newTrigger()
+            .withIdentity(&quot;trigger1&quot;, &quot;group3&quot;)
+            .withSchedule(
+            SimpleScheduleBuilder.simpleSchedule()
+            .withIntervalInSeconds(3).repeatForever()).build();
+//创建触发器 每3秒钟执行一次(有开始时间和结束时间)
+ long now = new Date().getTime();
+Date start = new Date(now+6000);
+Date end = new Date(now+12000);
+//创建触发器 每3秒钟执行一次
+Trigger trigger = TriggerBuilder.newTrigger()
+                  .withIdentity(&quot;trigger1&quot;, &quot;group3&quot;)
+                  .startAt(start)
+                  .endAt(end)
+                  .withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInSeconds(3).repeatForever()).build();
+</code></pre><p>SimpleTrigger具有丰富的构造函数，根据业务需求构造不同的构造函数。</p>
+</li>
+<li><p>CronTrigger： 可以配置更复杂的触发时刻表，基于日历的作业触发器，而不像SimpleTrigger那样精确指定间隔时间，比SimpleTrigger更加常用。  </p>
+</li>
+</ul>
+<p>　　Cron表达式：用于配置CronTrigger实例，是由7个表达式组成的字符串，描述了时间表的详细信息。<br>　　格式为：[秒][分][时][日][月][周][年]<br>　　Cron表达式特殊字符意义对应表：<br>　　<img src="https://i.imgur.com/spUTIoo.png" alt=""><br>　　通配符说明：<br>　　<img src="https://i.imgur.com/lkq9yso.png" alt=""><br>　　Cron表达式例子：<br>　　<img src="https://i.imgur.com/SOh7Ujr.png" alt=""></p>
+<pre><code>TriggerBuilder.newTrigger().withIdentity(&quot;trigger2&quot;,&quot;group2&quot;)
+            .withSchedule(CronScheduleBuilder.cronSchedule(&quot;0 0 9 ? * 6L *&quot;)).build();
+</code></pre><p>　　Cron表达式小技巧：<br>　　1. ‘L’和‘W’可以一起组合使用<br>　　2. 周字段英文字母不区分大小写即MOM与mom相同<br>　　3. 利用工具，在线生成cron表达式：<a href="http://cron.qqe2.com/" target="_blank" rel="noopener">http://cron.qqe2.com/</a>  </p>
+<ul>
+<li><p>NthIncludedDayTrigger：是 Quartz 开发团队最新加入到框架中的一个 Trigger。它设计用于在每一间隔类型的第几天执行 Job。例如，你要在每个月的 15 号执行开票的 Job，用 NthIncludedDayTrigger就再合适不过了。</p>
+<pre><code>NthIncludedDayTrigger trigger = new NthIncludedDayTrigger(&quot;NthIncludedDayTrigger&quot;,Scheduler.DEFAULT_GROUP);
+            trigger.setN(15);
+            trigger.setIntervalType(NthIncludedDayTrigger.INTERVAL_TYPE_MONTHLY);
+</code></pre></li>
+</ul>
+<hr>
+<p>3）调度器Scheduler<br>　　代表一个Quartz的独立运行容器，Trigger和JobDetail可以注册到Scheduler中，两者在Scheduler中拥有各自的组及名称，组及名称是Scheduler查找定位容器中某一对象的依据，Trigger的组及名称必须唯一，JobDetail的组和名称也必须唯一（但可以和Trigger的组和名称相同，因为它们是不同类型的）。Scheduler定义了多个接口方法，允许外部通过组及名称访问和控制容器中Trigger和JobDetail。<br>　　Scheduler可以将Trigger绑定到某一JobDetail中，这样当Trigger触发时，对应的Job就被执行。一个Job可以对应多个Trigger，但一个Trigger只能对应一个Job。<br>　　可以通过SchedulerFactory创建一个Scheduler实例。Scheduler拥有一个SchedulerContext，它类似于ServletContext，保存着Scheduler上下文信息，Job和Trigger都可以访问SchedulerContext内的信息。SchedulerContext内部通过一个Map，以键值对的方式维护这些上下文数据，SchedulerContext为保存和获取数据提供了多个put()和getXxx()的方法。可以通过Scheduler# getContext()获取对应的SchedulerContext实例；  </p>
+<pre><code>SchedulerFactory schedulerfactory=new StdSchedulerFactory();
+Scheduler scheduler = schedulerfactory.getScheduler();
+
+ DirectSchedulerFactory factory = DirectSchedulerFactory.getInstance();
+try {
+    Scheduler scheduler = factory.getScheduler();
+} catch (SchedulerException e) {
+    e.printStackTrace();
+}
+</code></pre><hr>
+<p>4)SchedulerFactory:  </p>
+<ul>
+<li>使用一组参数（java.util.Properties）来创建和出书啊Quartz调度器</li>
+<li>配置参数一般存储在quartz.properties中</li>
+<li>调用getScheduler方法就能创建和初始化调度器</li>
+</ul>
+<hr>
+<p>5)quartz.properties:<br>Quartz-Job的quartz.properties配置文件说明，此文件在quartz的jar包有，可直接拿过来使用不过只有基本的几个配置 自己可根据需要进行扩充；另外如果项目中没有对该配置文件重写，则Quartz会加载自己jar包中的quartz.properties文件。  </p>
+<pre><code># Default Properties file for use by StdSchedulerFactory  
+# to create a Quartz Scheduler Instance, if a different  
+# properties file is not explicitly specified.  
+#  
+# ===========================================================================  
+# Configure Main Scheduler Properties 调度器属性  
+# ===========================================================================  
+org.quartz.scheduler.instanceName: DefaultQuartzScheduler  
+#org.quartz.scheduler.instanceid:AUTO  
+org.quartz.scheduler.rmi.export: false  
+org.quartz.scheduler.rmi.proxy: false  
+org.quartz.scheduler.wrapJobExecutionInUserTransaction: false  
+# ===========================================================================    
+# Configure ThreadPool 线程池属性    
+# ===========================================================================  
+#线程池的实现类（一般使用SimpleThreadPool即可满足几乎所有用户的需求）  
+org.quartz.threadPool.class: org.quartz.simpl.SimpleThreadPool  
+#指定线程数，至少为1（无默认值）(一般设置为1-100直接的整数合适)  
+org.quartz.threadPool.threadCount: 10  
+#设置线程的优先级（最大为java.lang.Thread.MAX_PRIORITY 10，最小为Thread.MIN_PRIORITY 1，默认为5）  
+org.quartz.threadPool.threadPriority: 5  
+#设置SimpleThreadPool的一些属性  
+#设置是否为守护线程  
+#org.quartz.threadpool.makethreadsdaemons = false  
+#org.quartz.threadPool.threadsInheritContextClassLoaderOfInitializingThread: true  
+#org.quartz.threadpool.threadsinheritgroupofinitializingthread=false  
+#线程前缀默认值是：[Scheduler Name]_Worker  
+#org.quartz.threadpool.threadnameprefix=swhJobThead;  
+# 配置全局监听(TriggerListener,JobListener) 则应用程序可以接收和执行 预定的事件通知  
+# ===========================================================================  
+# Configuring a Global TriggerListener 配置全局的Trigger监听器  
+# MyTriggerListenerClass 类必须有一个无参数的构造函数，和 属性的set方法，目前2.2.x只支持原始数据类型的值（包括字符串）  
+# ===========================================================================  
+#org.quartz.triggerListener.NAME.class = com.swh.MyTriggerListenerClass  
+#org.quartz.triggerListener.NAME.propName = propValue  
+#org.quartz.triggerListener.NAME.prop2Name = prop2Value  
+# ===========================================================================  
+# Configuring a Global JobListener 配置全局的Job监听器  
+# MyJobListenerClass 类必须有一个无参数的构造函数，和 属性的set方法，目前2.2.x只支持原始数据类型的值（包括字符串）  
+# ===========================================================================  
+#org.quartz.jobListener.NAME.class = com.swh.MyJobListenerClass  
+#org.quartz.jobListener.NAME.propName = propValue  
+#org.quartz.jobListener.NAME.prop2Name = prop2Value  
+# ===========================================================================    
+# Configure JobStore 存储调度信息（工作，触发器和日历等）  
+# ===========================================================================  
+# 信息保存时间 默认值60秒  
+org.quartz.jobStore.misfireThreshold: 60000  
+#保存job和Trigger的状态信息到内存中的类  
+org.quartz.jobStore.class: org.quartz.simpl.RAMJobStore  
+# ===========================================================================    
+# Configure SchedulerPlugins 插件属性 配置  
+# ===========================================================================  
+# 自定义插件    
+#org.quartz.plugin.NAME.class = com.swh.MyPluginClass  
+#org.quartz.plugin.NAME.propName = propValue  
+#org.quartz.plugin.NAME.prop2Name = prop2Value  
+#配置trigger执行历史日志（可以看到类的文档和参数列表）  
+org.quartz.plugin.triggHistory.class = org.quartz.plugins.history.LoggingTriggerHistoryPlugin    
+org.quartz.plugin.triggHistory.triggerFiredMessage = Trigger {1}.{0} fired job {6}.{5} at: {4, date, HH:mm:ss MM/dd/yyyy}    
+org.quartz.plugin.triggHistory.triggerCompleteMessage = Trigger {1}.{0} completed firing job {6}.{5} at {4, date, HH:mm:ss MM/dd/yyyy} with resulting trigger instruction code: {9}    
+#配置job调度插件  quartz_jobs(jobs and triggers内容)的XML文档    
+#加载 Job 和 Trigger 信息的类   （1.8之前用：org.quartz.plugins.xml.JobInitializationPlugin）  
+org.quartz.plugin.jobInitializer.class = org.quartz.plugins.xml.XMLSchedulingDataProcessorPlugin  
+#指定存放调度器(Job 和 Trigger)信息的xml文件，默认是classpath下quartz_jobs.xml  
+org.quartz.plugin.jobInitializer.fileNames = my_quartz_job2.xml    
+#org.quartz.plugin.jobInitializer.overWriteExistingJobs = false    
+org.quartz.plugin.jobInitializer.failOnFileNotFound = true    
+#自动扫描任务单并发现改动的时间间隔,单位为秒  
+org.quartz.plugin.jobInitializer.scanInterval = 10  
+#覆盖任务调度器中同名的jobDetail,避免只修改了CronExpression所造成的不能重新生效情况  
+org.quartz.plugin.jobInitializer.wrapInUserTransaction = false  
+# ===========================================================================    
+# Sample configuration of ShutdownHookPlugin  ShutdownHookPlugin插件的配置样例  
+# ===========================================================================  
+#org.quartz.plugin.shutdownhook.class = \org.quartz.plugins.management.ShutdownHookPlugin  
+#org.quartz.plugin.shutdownhook.cleanShutdown = true  
+#  
+# Configure RMI Settings 远程服务调用配置  
+#  
+#如果你想quartz-scheduler出口本身通过RMI作为服务器，然后设置“出口”标志true(默认值为false)。  
+#org.quartz.scheduler.rmi.export = false  
+#主机上rmi注册表(默认值localhost)  
+#org.quartz.scheduler.rmi.registryhost = localhost  
+#注册监听端口号（默认值1099）  
+#org.quartz.scheduler.rmi.registryport = 1099  
+#创建rmi注册，false/never：如果你已经有一个在运行或不想进行创建注册  
+# true/as_needed:第一次尝试使用现有的注册，然后再回来进行创建  
+# always:先进行创建一个注册，然后再使用回来使用注册  
+#org.quartz.scheduler.rmi.createregistry = never  
+#Quartz Scheduler服务端端口，默认是随机分配RMI注册表  
+#org.quartz.scheduler.rmi.serverport = 1098  
+#true:链接远程服务调度(客户端),这个也要指定registryhost和registryport，默认为false  
+# 如果export和proxy同时指定为true，则export的设置将被忽略  
+#org.quartz.scheduler.rmi.proxy = false  
+</code></pre>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/11/15/Quartz/深入解读Quartz任务调度器/" data-id="cjfb4aqty0004ut5lev23wtzo" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1512,7 +1841,7 @@ public class ChineseToPinyinUtil {
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/11/11/消息队列/RabbitMQ/" data-id="cjfb43omn001fsp5l29z1of6h" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="https://catalpaflat.github.io/2017/11/11/消息队列/RabbitMQ/" data-id="cjfb4aquu001dut5lvld2edka" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1895,7 +2224,7 @@ public class TestRedis {
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/11/11/java/Java 自定义超实用Redis工具类（满足对象，list，map等类型）/" data-id="cjfb43om00009sp5leq3rp12q" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="https://catalpaflat.github.io/2017/11/11/java/Java 自定义超实用Redis工具类（满足对象，list，map等类型）/" data-id="cjfb4aquc000eut5la0h54dq3" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2064,7 +2393,7 @@ public class TestRedis {
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/08/27/nginx/Nginx配置多虚拟主机（即配置域名）/" data-id="cjfb43ome000vsp5l5y3hdg2v" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/27/nginx/Nginx配置多虚拟主机（即配置域名）/" data-id="cjfb4aqum000xut5lew9osjub" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2206,7 +2535,272 @@ public class TestRedis {
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/08/26/nginx/Nginx root&alias文件路径配置解析/" data-id="cjfb43omb000lsp5lweot3uzr" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/26/nginx/Nginx root&alias文件路径配置解析/" data-id="cjfb4aqui000put5l0svlypcf" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-nginx/Nginx rewrite深入解读" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/26/nginx/Nginx rewrite深入解读/">Nginx rewrite深入解读</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/26/nginx/Nginx rewrite深入解读/">
+            <time datetime="2017-08-26T10:23:12.000Z" itemprop="datePublished">2017-08-26</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Nginx/">Nginx</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="Nginx-rewrite深入解读"><a href="#Nginx-rewrite深入解读" class="headerlink" title="Nginx rewrite深入解读"></a>Nginx rewrite深入解读</h1><h2 id="1-什么是rewrite"><a href="#1-什么是rewrite" class="headerlink" title="1.什么是rewrite"></a>1.什么是rewrite</h2><p>官方解读：nginx的重写模块（rewrite）是一个简单的正则表达式匹配与一个虚拟堆叠机结合。<br>个人解读：nginx的rewrite是结合正则表达式和标志位实现url重写、改变以及重定向。如：域名跳转，防盗链，反向代理，各种跳转（跳转维护界面，前端跳转，基于uri跳转，基于目录跳转等）</p>
+<hr>
+<h2 id="2-rewrite的支撑源头"><a href="#2-rewrite的支撑源头" class="headerlink" title="2.rewrite的支撑源头"></a>2.rewrite的支撑源头</h2><p>nginx通过ngx_http_rewrite_module模块支持url重写、支持if条件判断。依赖于PCRE库，因此需要安装pcre。</p>
+<hr>
+<h2 id="3-rewrite的7个指令"><a href="#3-rewrite的7个指令" class="headerlink" title="3.rewrite的7个指令"></a>3.rewrite的7个指令</h2><h3 id="3-1-break"><a href="#3-1-break" class="headerlink" title="3.1.break"></a>3.1.break</h3><ul>
+<li>语法：break</li>
+<li>默认值：none</li>
+<li>配置段：server,location,if</li>
+<li>作用：完成当前设置的重写规则，停止处理后续rewrite指令集，并不在重新查找,但是当前location内剩余非rewrite语句和location外的的非rewrite语句可以执行。</li>
+<li>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if ($slow) &#123;</span><br><span class="line">	limit_rate 10k;</span><br><span class="line">	break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-2-if"><a href="#3-2-if" class="headerlink" title="3.2.if"></a>3.2.if</h3><ul>
+<li>语法：if(condition){…}</li>
+<li>默认值：none</li>
+<li>配置段：server,location</li>
+<li>作用：对给定的条件condition进行判断</li>
+<li>conditon：if条件(conditon)可以是如下任何内容:<ol>
+<li>一个变量名:空字符传“ ”或者一些“0”开始的字符串为false</li>
+<li>字符串比较：使用=或!=运算符</li>
+<li>正则表达式匹配：用~或~*+正则表达式匹配的变量，如果这个正则表达式中包含}或;，则整个表达式需要用” 或’ 包围</li>
+<li>文件是否存在：使用-f或者!-f操作符</li>
+<li>目录是否存在：使用-d或者!-d操作符</li>
+<li>文件、目录、符号链接是否存在：使用-e或者!-e操作符</li>
+<li>文件是否可执行：使用-x或者!-x操作符</li>
+</ol>
+</li>
+<li>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if ($http_cookie ~* &quot;id=([^;]+)(?:;|$)&quot;) &#123;</span><br><span class="line">	set $id $1;</span><br><span class="line">&#125;</span><br><span class="line">if ($http_user_agent ~ MSIE) &#123;    </span><br><span class="line">	rewrite ^(.*)$ /msie/$1 </span><br><span class="line">	break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-3-return"><a href="#3-3-return" class="headerlink" title="3.3.return"></a>3.3.return</h3><ul>
+<li>语法：<ul>
+<li>return code；</li>
+<li>return url；</li>
+<li>return code url；</li>
+</ul>
+</li>
+<li>默认值：none</li>
+<li>配置段：server,location,if</li>
+<li>作用：<ol>
+<li>停止处理，并为客户端返回状态码。</li>
+<li>非标准的444状态码将关闭连接，不发送任何响应头</li>
+<li>可以使用的状态码有：204/400/402-406/408/410/411/413/416/500-504</li>
+<li>如果状态码后面是一个url，该url将成为location头的补值。</li>
+<li>没有状态码的url将被视为一个默认的302状态码</li>
+<li>状态码附带文字段落，该文本将被放置在响应主体里</li>
+</ol>
+</li>
+<li>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if ($request_method = POST) &#123;</span><br><span class="line">     return 405;</span><br><span class="line">&#125;</span><br><span class="line">if ($invalid_referer) &#123;</span><br><span class="line">     return 403;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-4-rewrite"><a href="#3-4-rewrite" class="headerlink" title="3.4.rewrite"></a>3.4.rewrite</h3><ul>
+<li>语法：rewrite regex replacement [flag];</li>
+<li>默认值：none</li>
+<li>配置段：server,location,if</li>
+<li>作用：    <ol>
+<li>如果一个URI匹配指定的正则表达式regex，URI就按照replacement重写</li>
+<li>可以在重写指令后添加标识【flag】</li>
+<li>flag标志可以停止继续处理</li>
+<li>如果replacement以”http://“或”https://“开始，将不再继续处理rewrite指令，这个重定向将返回给客户端</li>
+</ol>
+</li>
+<li>flag标识符可为以下值：<ol>
+<li>last：停止处理后续rewrite指令集，然后对当前重写的新URI在rewrite指令集上重新查找。</li>
+<li>break：完成rewrite指令，并不在重新查找,但是当前location内剩余非rewrite语句和location外的的非rewrite语句可以执行。</li>
+<li>redirect：如果replacement不是以http:// 或https://开始，返回302临时重定向</li>
+<li>permannet：返回301永久重定向</li>
+</ol>
+</li>
+<li>最终完整的重定向URL包括请求scheme(http://,https://等),请求的server_name_in_redirect和 port_in_redirec三部分 ，说白了也就是http协议 域名 端口三部分组成。</li>
+<li>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location /download/ &#123;     </span><br><span class="line">	rewrite ^(/download/.*)/media/(.*)..*$ $1/mp3/$2.mp3 break;     </span><br><span class="line">	rewrite ^(/download/.*)/audio/(.*)..*$ $1/mp3/$2.ra break;     </span><br><span class="line">	return 403;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-5-rewrite-log"><a href="#3-5-rewrite-log" class="headerlink" title="3.5.rewrite_log"></a>3.5.rewrite_log</h3><ul>
+<li>语法：rewrite_log on|off;</li>
+<li>默认值：rewrite_log off;</li>
+<li>配置段：http,server,location,if</li>
+<li>作用：启用时将在error log中记录notice级别的重写日志</li>
+<li>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rewrite_log on;</span><br><span class="line">error_log logs/xxx.error.log notice;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-6-set"><a href="#3-6-set" class="headerlink" title="3.6.set"></a>3.6.set</h3><ul>
+<li>语法：set variable value;</li>
+<li>默认值：none</li>
+<li>配置段：server,location,if</li>
+<li>作用：定义一个变量并赋值，值可以是文本，变量或者文本变量混合体。<h3 id="3-7-uninitialized-variable-warn"><a href="#3-7-uninitialized-variable-warn" class="headerlink" title="3.7.uninitialized_variable_warn"></a>3.7.uninitialized_variable_warn</h3></li>
+<li>语法：uninitialized_variable_warn on | off;</li>
+<li>默认值：uninitialized_variable_warn on</li>
+<li>作用域：http,server,location,if</li>
+<li>作用：控制是否记录未初始化的警告信息</li>
+<li></li>
+</ul>
+<hr>
+<h2 id="4-rewrite的规则"><a href="#4-rewrite的规则" class="headerlink" title="4.rewrite的规则"></a>4.rewrite的规则</h2><h3 id="4-1-rewrite指令执行顺序"><a href="#4-1-rewrite指令执行顺序" class="headerlink" title="4.1.rewrite指令执行顺序"></a>4.1.rewrite指令执行顺序</h3><ol>
+<li>执行server块的rewrite指令(这里的块指的是server关键字后{}包围的区域，其它xx块类似)</li>
+<li>执行location匹配</li>
+<li>执行选定的location中的rewrite指令</li>
+<li>如果其中某步URI被重写，则重新循环执行1-3，直到找到真实存在的文件<br>如果循环超过10次，则返回500 Internal Server Error错误<h3 id="4-2-正则表达式-引用取值"><a href="#4-2-正则表达式-引用取值" class="headerlink" title="4.2.正则表达式-引用取值"></a>4.2.正则表达式-引用取值</h3></li>
+</ol>
+<ul>
+<li>可以使用括号来捕获，后续可用位置来将其引用，位置变量取决于捕获正则表达式中的顺序，$1引用第一个括号（）中值，$2则引用第二个括号中的值</li>
+<li><p>实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^/img/([a-z]&#123;2&#125;)/([a-z0-9]&#123;5&#125;)/(.*)\.(png|gif|jpg)$</span><br></pre></td></tr></table></figure>
+<p>1） $1:是([a-z]{2})，两个小写字母组成的字符串<br>2） $2:是([a-z0-9]{5})，由小写字母或0-9组成的5个字符串<br>3） $3:是(.*)，是文件名<br>4） $4:是(png|gif|jpg)，其中一个</p>
+<h3 id="4-3-return返回规则"><a href="#4-3-return返回规则" class="headerlink" title="4.3.return返回规则"></a>4.3.return返回规则</h3></li>
+</ul>
+<ol>
+<li>停止处理，并为客户端返回状态码。</li>
+<li>非标准的444状态码将关闭连接，不发送任何响应头</li>
+<li>可以使用的状态码有：204/400/402-406/408/410/411/413/416/500-504</li>
+<li>如果状态码后面是一个url，该url将成为location头的补值。</li>
+<li>没有状态码的url将被视为一个默认的302状态码</li>
+<li>状态码附带文字段落，该文本将被放置在响应主体里<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location = /img404.html&#123;</span><br><span class="line">	return 404 &quot;image not found\n&quot;;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<h2 id="5-rewrite小实例"><a href="#5-rewrite小实例" class="headerlink" title="5.rewrite小实例"></a>5.rewrite小实例</h2><h3 id="5-1-禁止-sh-bash"><a href="#5-1-禁止-sh-bash" class="headerlink" title="5.1.禁止.sh .bash"></a>5.1.禁止.sh .bash</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location ~ .*\.(sh|bash)?$&#123;  </span><br><span class="line">  return 403;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/6FjAULs.png" alt=""> </p>
+<hr>
+<h3 id="5-2-目录跳转"><a href="#5-2-目录跳转" class="headerlink" title="5.2.目录跳转"></a>5.2.目录跳转</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">location /a&#123;</span><br><span class="line">         alias /data/site/b.chen.com/a;</span><br><span class="line">         rewrite ^/a/?$ /b last;</span><br><span class="line">&#125;</span><br><span class="line">location /b&#123;</span><br><span class="line">        alias /data/site/b.chen.com/b;</span><br><span class="line">        default_type &apos;text/html&apos;;</span><br><span class="line">        echo &quot;url is a -&gt; rewrite to b...&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/sDD29j1.png" alt=""></p>
+<hr>
+<h3 id="5-3-防盗链实例"><a href="#5-3-防盗链实例" class="headerlink" title="5.3.防盗链实例"></a>5.3.防盗链实例</h3><h4 id="5-3-0-valid-referer指令说明"><a href="#5-3-0-valid-referer指令说明" class="headerlink" title="5.3.0.valid_referer指令说明"></a>5.3.0.valid_referer指令说明</h4><p>Nginx配置中有一个指令valid_referers，用来获取Referer头域中的值，并且根据该值的情况给Nginx全局变量$invalid_referer的值，如果Referer头域中没有符合valid_referers指令配置的值，$invalid_referer变量将会被赋值为1。<br>valid_referer指令的语法结构为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">valid_referers none | blocked | server_names | string ....;</span><br><span class="line">none 检测Referer头域不存在的请求</span><br><span class="line">blocked 检测Referer头域的值被防火墙或者代理服务器删除或伪装的情况。</span><br><span class="line">这种情况下，该头域的值不以“http://”或者“https：//”开头</span><br><span class="line">server_names 设置一个或多个URL,检测Referer头域的值是否是这些URL中的某个。</span><br><span class="line">从nginx 0.5.33以后支持使用通配符“*”。</span><br></pre></td></tr></table></figure></p>
+<h4 id="5-3-1-nginx-conf的server配置"><a href="#5-3-1-nginx-conf的server配置" class="headerlink" title="5.3.1.nginx.conf的server配置"></a>5.3.1.nginx.conf的server配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    server_name echo.chen.com;</span><br><span class="line">    listen 80;</span><br><span class="line">    location /&#123;</span><br><span class="line">        root /data/site/echo.chen.com;</span><br><span class="line">        index index.html;</span><br><span class="line">    &#125;</span><br><span class="line">	location ~ .*\.(jpg|png)$ &#123;</span><br><span class="line">        valid_referers none blocked echo.chen.com;</span><br><span class="line">        if ($invalid_referer) &#123;</span><br><span class="line">                return 412;</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">       root /data/site/echo.chen.com;</span><br><span class="line">    &#125;</span><br><span class="line">    location =/error.html&#123;</span><br><span class="line">            root /data/site/echo.chen.com;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>/data/site/echo.chen.com 自行创建目录</li>
+<li>index.html内容如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">this is index.html</span><br><span class="line">&lt;img src=&quot;http://echo.chen.com/1.jpg&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="5-3-2-Windows下host配置"><a href="#5-3-2-Windows下host配置" class="headerlink" title="5.3.2.Windows下host配置"></a>5.3.2.Windows下host配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.111 b.chen.com</span><br><span class="line">192.168.1.111 echo.chen.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置不同域名指定同一个ip，以便测试<h4 id="5-3-3-浏览器测试"><a href="#5-3-3-浏览器测试" class="headerlink" title="5.3.3.浏览器测试"></a>5.3.3.浏览器测试</h4>访问指定的域名，即可访问到图片<br><img src="https://i.imgur.com/D7uzwFv.png" alt=""><br>使用b.chen.com进行访问则不能访问到服务器图片<br><img src="https://i.imgur.com/ZdjnR8Q.png" alt=""></li>
+</ul>
+<hr>
+<h3 id="5-4-域名跳转"><a href="#5-4-域名跳转" class="headerlink" title="5.4.域名跳转"></a>5.4.域名跳转</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    server_name jump.chen.com;</span><br><span class="line">    listen 80;</span><br><span class="line">    access_log off;</span><br><span class="line">    location /&#123;</span><br><span class="line">            default_type &quot;text/html&quot;;</span><br><span class="line">            echo &quot;it is echo.chen.com jump to jump.chen.com&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">server&#123;</span><br><span class="line">    server_name echo.chen.com;</span><br><span class="line">    listen 80;</span><br><span class="line">    rewrite ^/ http://jump.chen.com/;</span><br><span class="line">    location /&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/xRbRVPg.gif" alt=""></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/08/26/nginx/Nginx rewrite深入解读/" data-id="cjfb4aquh000lut5l7yh95am9" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2299,25 +2893,6 @@ public class TestRedis {
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
-                            <p class="item-title"><a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/" class="title">JavaEE 使用Gradle发布jar包到远程中央仓库</a></p>
-                            <p class="item-date"><time datetime="2018-03-23T07:53:56.000Z" itemprop="datePublished">2018-03-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2018/03/23/java/Java 内存详解/" class="thumbnail">
     
     
@@ -2331,44 +2906,6 @@ public class TestRedis {
                             <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
                             <p class="item-title"><a href="/2018/03/23/java/Java 内存详解/" class="title">Java JVM 内存详解</a></p>
                             <p class="item-date"><time datetime="2018-03-23T07:53:56.000Z" itemprop="datePublished">2018-03-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
-                            <p class="item-title"><a href="/2018/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/" class="title">JavaEE 使用Maven发布jar包到远程中央仓库</a></p>
-                            <p class="item-date"><time datetime="2018-03-23T07:00:56.000Z" itemprop="datePublished">2018-03-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/JavaEE/">JavaEE</a></p>
-                            <p class="item-title"><a href="/2018/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/" class="title">JavaEE 发布jar包到远程maven中央仓库</a></p>
-                            <p class="item-date"><time datetime="2018-03-22T03:33:56.000Z" itemprop="datePublished">2018-03-22</time></p>
                         </div>
                     </li>
                 
@@ -2391,6 +2928,63 @@ public class TestRedis {
                         </div>
                     </li>
                 
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/16/java/Java 实现中文-拼音转换/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2017/12/16/java/Java 实现中文-拼音转换/" class="title">Java 实现中文-拼音转换</a></p>
+                            <p class="item-date"><time datetime="2017-12-16T02:16:56.000Z" itemprop="datePublished">2017-12-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/11/17/Quartz/自定义Quartz超实用工具类/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Quartz/">Quartz</a></p>
+                            <p class="item-title"><a href="/2017/11/17/Quartz/自定义Quartz超实用工具类/" class="title">自定义Quartz超实用工具类</a></p>
+                            <p class="item-date"><time datetime="2017-11-17T03:09:37.000Z" itemprop="datePublished">2017-11-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/11/15/Quartz/深入解读Quartz任务调度器/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Quartz/">Quartz</a></p>
+                            <p class="item-title"><a href="/2017/11/15/Quartz/深入解读Quartz任务调度器/" class="title">深入解读Quartz任务调度器</a></p>
+                            <p class="item-date"><time datetime="2017-11-15T09:24:17.000Z" itemprop="datePublished">2017-11-15</time></p>
+                        </div>
+                    </li>
+                
             </ul>
         </div>
     </div>
@@ -2400,7 +2994,7 @@ public class TestRedis {
     <div class="widget-wrap">
         <h3 class="widget-title">Categorias</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Quartz/">Quartz</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -2409,7 +3003,7 @@ public class TestRedis {
     <div class="widget-wrap">
         <h3 class="widget-title">Archivos</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -2418,7 +3012,7 @@ public class TestRedis {
     <div class="widget-wrap">
         <h3 class="widget-title">Etiquetas</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -2427,7 +3021,7 @@ public class TestRedis {
     <div class="widget-wrap">
         <h3 class="widget-title">Nube de etiquetas</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 13.33px;">JavaEE</a> <a href="/tags/Nginx/" style="font-size: 20px;">Nginx</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 13.33px;">消息队列</a>
+            <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 13.33px;">JavaEE</a> <a href="/tags/Nginx/" style="font-size: 20px;">Nginx</a> <a href="/tags/Quartz/" style="font-size: 10px;">Quartz</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 13.33px;">消息队列</a>
         </div>
     </div>
 
