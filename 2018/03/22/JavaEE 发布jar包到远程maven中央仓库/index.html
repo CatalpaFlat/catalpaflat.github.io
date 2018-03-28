@@ -6,20 +6,23 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   
-  <title>Hello World | CatalpaFlat&#39;s Blogs</title>
+  <title>JavaEE 发布jar包到远程maven中央仓库 | CatalpaFlat&#39;s Blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta name="keywords" content="Java">
+  <meta name="description" content="JavaEE 发布jar包到远程maven中央仓库 当项目成熟到一定阶段时，需要将相关业务模块抽离封装迭代管理时，可以将业务相关内容模块化，并将其打包到对应远程仓库，以此提高下次开发效率与成本。其中，JavaEE就有两种打包方法：  maven ——Nexus仓库 gradle —— JCenter仓库  两者都可以将jar提交到远程仓库中。  一.Maven方法 使用Sonatype OSSRH">
+<meta name="keywords" content="JavaEE">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://catalpaflat.github.io/2018/03/28/hello-world/index.html">
+<meta property="og:title" content="JavaEE 发布jar包到远程maven中央仓库">
+<meta property="og:url" content="https://catalpaflat.github.io/2018/03/22/JavaEE 发布jar包到远程maven中央仓库/index.html">
 <meta property="og:site_name" content="CatalpaFlat&#39;s Blogs">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="JavaEE 发布jar包到远程maven中央仓库 当项目成熟到一定阶段时，需要将相关业务模块抽离封装迭代管理时，可以将业务相关内容模块化，并将其打包到对应远程仓库，以此提高下次开发效率与成本。其中，JavaEE就有两种打包方法：  maven ——Nexus仓库 gradle —— JCenter仓库  两者都可以将jar提交到远程仓库中。  一.Maven方法 使用Sonatype OSSRH">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-28T03:38:25.214Z">
+<meta property="og:image" content="https://catalpaflat.github.io/2018/03/22/JavaEE%20发布jar包到远程maven中央仓库/img/mavenIntegral%20flow%20chart.png">
+<meta property="og:image" content="https://catalpaflat.github.io/2018/03/22/JavaEE%20发布jar包到远程maven中央仓库/img/gradleIntegral%20flow%20chart.png">
+<meta property="og:updated_time" content="2018-03-28T10:04:54.339Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="JavaEE 发布jar包到远程maven中央仓库">
+<meta name="twitter:description" content="JavaEE 发布jar包到远程maven中央仓库 当项目成熟到一定阶段时，需要将相关业务模块抽离封装迭代管理时，可以将业务相关内容模块化，并将其打包到对应远程仓库，以此提高下次开发效率与成本。其中，JavaEE就有两种打包方法：  maven ——Nexus仓库 gradle —— JCenter仓库  两者都可以将jar提交到远程仓库中。  一.Maven方法 使用Sonatype OSSRH">
+<meta name="twitter:image" content="https://catalpaflat.github.io/2018/03/22/JavaEE%20发布jar包到远程maven中央仓库/img/mavenIntegral%20flow%20chart.png">
   
     <link rel="alternate" href="/atom.xml" title="CatalpaFlat&#39;s Blogs" type="application/atom+xml">
   
@@ -153,32 +156,80 @@
     <div class="container post-box">
         <div class="content post-title is-flex center flex-column" style="margin-bottom: 70px; overflow: auto;">
             <h1 class="has-text-centered" style="padding-bottom: 10px; border-bottom: 3px solid #fff">
-                <strong>Hello World</strong>
+                <strong>JavaEE 发布jar包到远程maven中央仓库</strong>
             </h1>
             
             <div class="is-flex align-center">
                 <img class="post-avatar" src="https://avatars0.githubusercontent.com/u/25949306?s=460&v=4">
                 <span style="padding:0 10px;"> <span class="sub-title">By</span> CatalpaFlat</span>
-                <span class="post-date sub-title">at: 2018-03-28</span>
+                <span class="post-date sub-title">at: 2018-03-22</span>
             </div>
             
                 <div>
                     
-                         <a class="tag is-post-tag" href="/tags/Java/">Java</a>
+                         <a class="tag is-post-tag" href="/tags/JavaEE/">JavaEE</a>
                     
                 </div>
             
         </div>
         <div class="content" style="overflow: auto">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+            <h1 id="JavaEE-发布jar包到远程maven中央仓库"><a href="#JavaEE-发布jar包到远程maven中央仓库" class="headerlink" title="JavaEE 发布jar包到远程maven中央仓库"></a>JavaEE 发布jar包到远程maven中央仓库</h1><blockquote>
+<p>当项目成熟到一定阶段时，需要将相关业务模块抽离封装迭代管理时，可以将业务相关内容模块化，并将其打包到对应远程仓库，以此提高下次开发效率与成本。<br>其中，JavaEE就有两种打包方法：</p>
+<ul>
+<li>maven ——Nexus仓库</li>
+<li>gradle —— JCenter仓库</li>
+</ul>
+<p>两者都可以将jar提交到远程仓库中。</p>
+</blockquote>
+<h2 id="一-Maven方法"><a href="#一-Maven方法" class="headerlink" title="一.Maven方法"></a>一.Maven方法</h2><blockquote>
+<p>使用<strong>Sonatype OSSRH</strong> 将 开源项目的jar 交给Maven的中央仓库。</p>
+<ul>
+<li>Nexus Repository Manager: <a href="https://oss.sonatype.org" target="_blank" rel="noopener">https://oss.sonatype.org</a>  </li>
+<li>Sonatype: <a href="https://issues.sonatype.org" target="_blank" rel="noopener">https://issues.sonatype.org</a></li>
+<li>Central Repositiry: <a href="https://search.maven.org" target="_blank" rel="noopener">https://search.maven.org</a></li>
+</ul>
+<p>简要步骤：  </p>
+<ol>
+<li>GitHub 上创建对应开源项目Repository</li>
+<li>注册JIRA账号 — 远程maven仓库账号</li>
+<li>创建issue — 其中关联GitHub项目链接</li>
+<li>下载GPG（用于签名）</li>
+<li>配置GPG对称签名 ——Remember passphrase/Remember the User Id（密钥）</li>
+<li>上传GPG签名（发布Release版本关键）</li>
+<li>IDEA 创建maven项目</li>
+<li>配置maven下config的setting.xml（snapshorts版本关键）</li>
+<li>配置项目pom.xml</li>
+<li>发布snapshorts版本</li>
+<li>发布release版本</li>
+<li>close 项目</li>
+<li>release 项目</li>
+<li>设置上传中央仓库</li>
+</ol>
+</blockquote>
+<h3 id="Integral-flow-chart"><a href="#Integral-flow-chart" class="headerlink" title="Integral flow chart"></a>Integral flow chart</h3><p><img src="img/mavenIntegral flow chart.png" alt="Maven Integral flow chart"></p>
+<h3 id="The-specific-implementation"><a href="#The-specific-implementation" class="headerlink" title="The specific implementation"></a>The specific implementation</h3><p>JavaEE 使用Maven发布jar包到远程中央仓库</p>
+<h2 id="二-Gradle方法"><a href="#二-Gradle方法" class="headerlink" title="二.Gradle方法"></a>二.Gradle方法</h2><blockquote>
+<p>使用<strong> Bintray </strong>  将 开源项目的jar 交给Maven的中央仓库。   </p>
+<ul>
+<li>Bintray: https:/bintray.com</li>
+<li>Sonatype: <a href="https://issues.sonatype.org" target="_blank" rel="noopener">https://issues.sonatype.org</a></li>
+</ul>
+<p>简要步骤：  </p>
+<ol>
+<li>创建Bintray账号</li>
+<li>Bintray上创建maven仓库</li>
+<li>获取BINTRAY_KEY </li>
+<li>注册JIRA账号 — 远程maven仓库账号</li>
+<li>创建issue — 其中关联GitHub项目链接</li>
+<li>GPG签名 - 配置到Bintray</li>
+<li>获取OSSRH_TOKEN信息（关联issue的凭证） - 配置bulid.gradle和后续Release</li>
+<li>IDEA 创建Gradle项目</li>
+<li>配置项目bulid.gradle - 关联issue/关联Bintray</li>
+<li>发布部署</li>
+</ol>
+</blockquote>
+<h3 id="Integral-flow-chart-1"><a href="#Integral-flow-chart-1" class="headerlink" title="Integral flow chart"></a>Integral flow chart</h3><p><img src="img/gradleIntegral flow chart.png" alt="Gradle Integral flow chart"></p>
+<h3 id="The-specific-implementation-1"><a href="#The-specific-implementation-1" class="headerlink" title="The specific implementation"></a>The specific implementation</h3><p>JavaEE 使用Gradle发布jar包到远程中央仓库</p>
 
         </div>
         <div class="post-reply">
