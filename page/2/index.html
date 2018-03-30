@@ -157,11 +157,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                27
+                29
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                8
+                9
                 <span>tags</span>
             </div>
         </div>
@@ -399,7 +399,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/08/26/nginx/Nginx rewrite深入解读/" data-id="cjfb4t8x6000vyk5luphbypcq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/26/nginx/Nginx rewrite深入解读/" data-id="cjfdcvnmo00175mh2zqom7dpw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -572,7 +572,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/08/24/nginx/Nginx location配置解析/" data-id="cjfb4t8x2000lyk5l9drwpu0a" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/24/nginx/Nginx location配置解析/" data-id="cjfdcvnmk000v5mh2v895z418" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -789,7 +789,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/08/24/nginx/Nginx 日志配置详情解析/" data-id="cjfb4t8x90011yk5lpv9y76jx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/24/nginx/Nginx 日志配置详情解析/" data-id="cjfdcvnmp00195mh2o7x09kon" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -993,7 +993,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/08/22/nginx/服务器集成Nginx/" data-id="cjfb4t8xd0019yk5la94imvhr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/22/nginx/服务器集成Nginx/" data-id="cjfdcvnmr001d5mh2nya9mpm4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1157,7 +1157,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/08/22/nginx/Nginx 动态添加模块/" data-id="cjfb4t8x8000xyk5luzy2ouu7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/22/nginx/Nginx 动态添加模块/" data-id="cjfdcvnml00105mh2w42cfaba" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1352,7 +1352,569 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/08/20/nginx/nginx 的ngx_http_core_module模块处理请求/" data-id="cjfb4t8xc0017yk5ll1k9lsh1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/20/nginx/nginx 的ngx_http_core_module模块处理请求/" data-id="cjfdcvnmm00135mh25cr2v2av" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-支付/微信支付/JavaEE 微信境外支付" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/05/支付/微信支付/JavaEE 微信境外支付/">JavaEE 微信境外支付</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/05/支付/微信支付/JavaEE 微信境外支付/">
+            <time datetime="2017-08-05T02:33:12.000Z" itemprop="datePublished">2017-08-05</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/支付/">支付</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/支付/">支付</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="JavaEE-微信境外支付"><a href="#JavaEE-微信境外支付" class="headerlink" title="JavaEE 微信境外支付"></a>JavaEE 微信境外支付</h1><blockquote>
+<p><a href="https://pay.weixin.qq.com/wiki/doc/api/external/index.html" target="_blank" rel="noopener">API文档</a></p>
+<p>境外分为两种：   </p>
+<ul>
+<li>普通商户版</li>
+<li>服务商版</li>
+</ul>
+<p>普通商户版：   </p>
+<p>1.支付方式:  </p>
+<ul>
+<li>刷卡支付</li>
+<li>公众号支付</li>
+<li>扫码支付</li>
+<li>APP支付</li>
+</ul>
+<p>2.报关接口：<br>用于商户提交海关需要的订单附近信息</p>
+<p>服务商版包括的支付方式有：  </p>
+<ul>
+<li>刷卡支付</li>
+<li>公众号支付</li>
+<li>扫码支付</li>
+</ul>
+</blockquote>
+<h2 id="1-普通商户版"><a href="#1-普通商户版" class="headerlink" title="1. 普通商户版"></a>1. 普通商户版</h2><h3 id="1-1-刷卡支付"><a href="#1-1-刷卡支付" class="headerlink" title="1.1 刷卡支付"></a>1.1 刷卡支付</h3><blockquote>
+<p><a href="https://pay.weixin.qq.com/wiki/doc/api/external/micropay.php?chapter=9_10&amp;index=1" target="_blank" rel="noopener">详情API文档</a>.   </p>
+<p><strong>应用场景:</strong><br>收银员使用扫码设备读取微信用户刷卡授权码以后，二维码或条码信息传送至商户收银台，由商户收银台或者商户后台调用该接口发起支付。    </p>
+</blockquote>
+<blockquote>
+<p><strong>⚠️提醒1：</strong>提交支付请求后微信会同步返回支付结果。当返回结果为“系统错误”时，商户系统等待5秒后调用【查询订单API】，查询支付实际交易结果；当返回结果为“USERPAYING”时，商户系统可设置间隔时间(建议10秒)重新查询支付结果，直到支付成功或超时(建议30秒)；   </p>
+<p><strong>⚠️提醒2：</strong>在调用查询接口返回后，如果交易状况不明晰，请调用【撤销订单API】，此时如果交易失败则关闭订单，该单不能再支付成功；如果交易成功，则将扣款退回到用户账户。当撤销无返回或错误时，请再次调用。注意：请勿扣款后立即调用【撤销订单API】,建议至少15秒后再调用。撤销订单API需要双向证书。</p>
+</blockquote>
+<h4 id="1-1-1-接口url："><a href="#1-1-1-接口url：" class="headerlink" title="1.1.1 接口url："></a>1.1.1 接口url：</h4><ul>
+<li><a href="https://apihk.mch.weixin.qq.com/pay/micropay" target="_blank" rel="noopener">https://apihk.mch.weixin.qq.com/pay/micropay</a>    （建议接入点：东南亚）</li>
+<li><a href="https://apius.mch.weixin.qq.com/pay/micropay" target="_blank" rel="noopener">https://apius.mch.weixin.qq.com/pay/micropay</a>    （建议接入点：其它）</li>
+<li><a href="https://api.mch.weixin.qq.com/pay/micropay" target="_blank" rel="noopener">https://api.mch.weixin.qq.com/pay/micropay</a>        （建议接入点：中国国内）</li>
+</ul>
+<h4 id="1-1-2-与境内对比参数"><a href="#1-1-2-与境内对比参数" class="headerlink" title="1.1.2 与境内对比参数"></a>1.1.2 与境内对比参数</h4><p>除了以下参数，其他都和国内一致。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>变量名</th>
+<th>必填</th>
+<th>类型</th>
+<th>示例值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>版本号</td>
+<td>version</td>
+<td>否</td>
+<td>String(32)</td>
+<td>1.0</td>
+<td>固定值 1.0</td>
+</tr>
+<tr>
+<td>商品详情</td>
+<td>detail</td>
+<td>否</td>
+<td>String(6000)</td>
+<td></td>
+<td>商品详细列表，使用Json格式，传输签名前请务必使用CDATA标签将JSON文本串保护起来。</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>商品详情类型</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"goods_detail"</span>:[</span><br><span class="line">&#123; </span><br><span class="line"><span class="attr">"goods_name"</span>:<span class="string">"iPhone6s 16G"</span>,</span><br><span class="line"><span class="attr">"quantity"</span>:<span class="number">1</span>, </span><br><span class="line">&#125;,</span><br><span class="line">&#123; </span><br><span class="line"><span class="attr">"goods_name"</span>:<span class="string">"iPhone6s 32G"</span>,</span><br><span class="line"><span class="attr">"quantity"</span>:<span class="number">1</span>, </span><br><span class="line">&#125;</span><br><span class="line">]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>商品详情描述</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">goods_detail</span><br><span class="line">└ goods_name String 必填 256 商品名称</span><br><span class="line">└ quantity Int 必填4 商品数量</span><br></pre></td></tr></table></figure>
+<h4 id="1-1-3-支付方式："><a href="#1-1-3-支付方式：" class="headerlink" title="1.1.3 支付方式："></a>1.1.3 支付方式：</h4><ol>
+<li>免密支付流程  </li>
+<li>验密支付流程   </li>
+</ol>
+<h3 id="1-2-公众号支付"><a href="#1-2-公众号支付" class="headerlink" title="1.2 公众号支付"></a>1.2 公众号支付</h3><blockquote>
+<p><strong>注意：</strong>商户也可以把商品网页的链接生成二维码，用户扫一扫打开后即可完成购买支付。   </p>
+<p>交互细节：   </p>
+<p>以下是支付场景的交互细节，请认真阅读，设计商户页面的逻辑：  </p>
+<ul>
+<li>（1）用户打开商户网页选购商品，发起支付，在网页通过JavaScript调用getBrandWCPayRequest接口，发起微信支付请求，用户进入支付流程。</li>
+<li>（2）用户成功支付点击完成按钮后，商户的前端会收到JavaScript的返回值。商户可直接跳转到支付成功的静态页面进行展示。</li>
+<li>（3）商户后台收到来自微信开放平台的支付成功回调通知，标志该笔订单支付成功。</li>
+</ul>
+<p><strong>注：</strong>（2）和（3）的触发不保证遵循严格的时序。JS API返回值作为触发商户网页跳转的标志，但商户后台应该只在收到微信后台的支付成功回调通知后，才做真正的支付成功的处理。</p>
+</blockquote>
+<h4 id="1-2-1-接口url："><a href="#1-2-1-接口url：" class="headerlink" title="1.2.1 接口url："></a>1.2.1 接口url：</h4><ul>
+<li><a href="https://apihk.mch.weixin.qq.com/pay/unifiedorder" target="_blank" rel="noopener">https://apihk.mch.weixin.qq.com/pay/unifiedorder</a>    （建议接入点：东南亚）</li>
+<li><a href="https://apius.mch.weixin.qq.com/pay/unifiedorder" target="_blank" rel="noopener">https://apius.mch.weixin.qq.com/pay/unifiedorder</a>    （建议接入点：其它）</li>
+<li><a href="https://api.mch.weixin.qq.com/pay/unifiedorder" target="_blank" rel="noopener">https://api.mch.weixin.qq.com/pay/unifiedorder</a>        （建议接入点：中国国内）</li>
+</ul>
+<p><strong>注：</strong>商户可根据实际请求情况选择最优域名进行访问，建议在接入时做好兼容，当访问其中一个域名出现异常时，可自动切换为其他域名。</p>
+<h4 id="1-2-2-与境内对比参数"><a href="#1-2-2-与境内对比参数" class="headerlink" title="1.2.2 与境内对比参数"></a>1.2.2 与境内对比参数</h4><p>和刷卡支付一样的参数区别。</p>
+<h3 id="1-3-扫码支付"><a href="#1-3-扫码支付" class="headerlink" title="1.3 扫码支付"></a>1.3 扫码支付</h3><p>几乎和公众号支付相同</p>
+<h3 id="1-4-APP支付"><a href="#1-4-APP支付" class="headerlink" title="1.4 APP支付"></a>1.4 APP支付</h3><blockquote>
+<p>商户系统先调用该接口在微信支付服务后台生成预支付交易单，返回正确的预支付交易回话标识后再在APP里面调起支付。</p>
+</blockquote>
+<p>除了请求参数“版本号” 和“商品详情” 不一样，其他都和境内一致。</p>
+<h3 id="1-5-报关接口"><a href="#1-5-报关接口" class="headerlink" title="1.5 报关接口"></a>1.5 报关接口</h3><blockquote>
+<p>用于商户提交海关需要的订单附件信息。报关接口只支持一个月内的支付订单进行报关申请。<br>以下为财付通的海关备案信息，一般海关会提供，如果没有请参考下表：<br>财付通海关备案名称：财付通支付科技有限公司<br>财付通10位海关注册编码：440316T004</p>
+</blockquote>
+<h4 id="1-5-1-订单附加信息提交接口"><a href="#1-5-1-订单附加信息提交接口" class="headerlink" title="1.5.1 订单附加信息提交接口"></a>1.5.1 订单附加信息提交接口</h4><blockquote>
+<p><a href="https://pay.weixin.qq.com/wiki/doc/api/external/declarecustom.php?chapter=18_1" target="_blank" rel="noopener">详情API</a></p>
+</blockquote>
+<h5 id="1-5-1-1-url"><a href="#1-5-1-1-url" class="headerlink" title="1.5.1.1 url"></a>1.5.1.1 url</h5><p>URL地址：<a href="https://api.mch.weixin.qq.com/cgi-bin/mch/customs/customdeclareorder" target="_blank" rel="noopener">https://api.mch.weixin.qq.com/cgi-bin/mch/customs/customdeclareorder</a></p>
+<p><strong>重点注意：请求接口前请先在以下页面提交您的海关信息，所有你需要报关的海关信息都需要提交，且信息真实有效：<a href="https://pay.weixin.qq.com/index.php/extend/customs" target="_blank" rel="noopener">https://pay.weixin.qq.com/index.php/extend/customs</a></strong></p>
+<h4 id="1-5-2-订单附加信息查询接口"><a href="#1-5-2-订单附加信息查询接口" class="headerlink" title="1.5.2 订单附加信息查询接口"></a>1.5.2 订单附加信息查询接口</h4><blockquote>
+<p>商户通过订单号查询提交的订单附加信息。如果是微信收集的实名信息，查询接口不返回实名信息内容.   </p>
+<p><a href="https://pay.weixin.qq.com/wiki/doc/api/external/declarecustom.php?chapter=18_2" target="_blank" rel="noopener">详情API</a></p>
+</blockquote>
+<h2 id="2-服务商版"><a href="#2-服务商版" class="headerlink" title="2. 服务商版"></a>2. 服务商版</h2><blockquote>
+<p><a href="https://pay.weixin.qq.com/wiki/doc/api/external/micropay_sl.php?chapter=9_10&amp;index=1" target="_blank" rel="noopener">详情API文档</a></p>
+</blockquote>
+<h3 id="2-1-刷卡支付"><a href="#2-1-刷卡支付" class="headerlink" title="2.1 刷卡支付"></a>2.1 刷卡支付</h3><h4 id="2-1-1-url"><a href="#2-1-1-url" class="headerlink" title="2.1.1 url"></a>2.1.1 url</h4><p><a href="https://api.mch.weixin.qq.com/pay/micropay" target="_blank" rel="noopener">https://api.mch.weixin.qq.com/pay/micropay</a></p>
+<h4 id="2-1-1-参数区别"><a href="#2-1-1-参数区别" class="headerlink" title="2.1.1 参数区别"></a>2.1.1 参数区别</h4><p>和普通商户版刷卡支付一样的参数区别。</p>
+<h3 id="2-2-公众号支付"><a href="#2-2-公众号支付" class="headerlink" title="2.2 公众号支付"></a>2.2 公众号支付</h3><blockquote>
+<p><a href="https://pay.weixin.qq.com/wiki/doc/api/external/jsapi_sl.php?chapter=9_1" target="_blank" rel="noopener">详情API文档</a></p>
+</blockquote>
+<h4 id="2-2-1-url"><a href="#2-2-1-url" class="headerlink" title="2.2.1 url"></a>2.2.1 url</h4><p><a href="https://api.mch.weixin.qq.com/pay/unifiedorder" target="_blank" rel="noopener">https://api.mch.weixin.qq.com/pay/unifiedorder</a></p>
+<h4 id="2-2-2-参数区别："><a href="#2-2-2-参数区别：" class="headerlink" title="2.2.2 参数区别："></a>2.2.2 参数区别：</h4><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>变量名</th>
+<th>必填</th>
+<th>类型</th>
+<th>示例值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>商品ID</td>
+<td>product_id</td>
+<td>否</td>
+<td>String(32)</td>
+<td>12235413214070356458058</td>
+<td>trade_type=NATIVE，此参数必传。此id为二维码中包含的商品ID，商户自行定义。</td>
+</tr>
+<tr>
+<td>用户标识</td>
+<td>openid</td>
+<td>否</td>
+<td>String(128)</td>
+<td>oUpF8uMuAJO_M2pxb1Q9zNjWeS6o</td>
+<td>trade_type=JSAPI，此参数必传，用户在主商户appid下的唯一标识。openid和sub_openid可以选传其中之一，如果选择传sub_openid,则必须传sub_appid。下单前需要调用【网页授权获取用户信息】接口获取到用户的Openid。</td>
+</tr>
+<tr>
+<td>用户子标识</td>
+<td>sub_openid</td>
+<td>否</td>
+<td>String(128)</td>
+<td>oUpF8uMuAJO_M2pxb1Q9zNjWeS6o</td>
+<td>trade_type=JSAPI，此参数必传，用户在子商户appid下的唯一标识。openid和sub_openid可以选传其中之一，如果选择传sub_openid,则必须传sub_appid。下单前需要调用【网页授权获取用户信息】接口获取到用户的Openid。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-3-扫码支付"><a href="#2-3-扫码支付" class="headerlink" title="2.3 扫码支付"></a>2.3 扫码支付</h3><blockquote>
+<p><a href="https://pay.weixin.qq.com/wiki/doc/api/external/native_sl.php?chapter=9_1" target="_blank" rel="noopener">详情API文档</a></p>
+</blockquote>
+<p>和公众号支付一致。</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/08/05/支付/微信支付/JavaEE 微信境外支付/" data-id="cjfdcvno400365mh2z5n8lia2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-支付/微信支付/JavaEE 微信支付" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/04/支付/微信支付/JavaEE 微信支付/">JavaEE 微信支付</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/04/支付/微信支付/JavaEE 微信支付/">
+            <time datetime="2017-08-04T11:33:12.000Z" itemprop="datePublished">2017-08-04</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/支付/">支付</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/支付/">支付</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="JavaEE-微信支付"><a href="#JavaEE-微信支付" class="headerlink" title="JavaEE 微信支付"></a>JavaEE 微信支付</h1><blockquote>
+<p>微信境内支付包括：  </p>
+<ul>
+<li>App支付</li>
+<li>公众号支付</li>
+<li>小程序支付</li>
+<li>H5 支付</li>
+<li>扫码支付</li>
+<li>刷卡支付</li>
+</ul>
+<p>除刷卡支付场景以外，商户系统先调用该接口在微信支付服务后台生成预支付交易单，返回正确的预支付交易回话标识后再按扫码、JSAPI、APP等不同场景生成交易串调起支付。</p>
+<p><a href="https://pay.weixin.qq.com/wiki/doc/api/index.html" target="_blank" rel="noopener">API 文档</a></p>
+</blockquote>
+<h2 id="1-常用API-列表"><a href="#1-常用API-列表" class="headerlink" title="1. 常用API 列表"></a>1. 常用API 列表</h2><ol>
+<li>统一下单（提交刷卡支付）</li>
+<li>查询订单</li>
+<li>关闭订单</li>
+<li>申请退款</li>
+<li>查询退款</li>
+<li>下载对账账单</li>
+<li>下载资金账单</li>
+<li>支付结果通知</li>
+<li>退款结果通知</li>
+</ol>
+<h2 id="2-微信支付接口请求大致流程"><a href="#2-微信支付接口请求大致流程" class="headerlink" title="2. 微信支付接口请求大致流程"></a>2. 微信支付接口请求大致流程</h2><ol>
+<li>封装请求参数</li>
+<li>将请求参数进行sort()</li>
+<li>对排序好的参数进行trim()</li>
+<li>将参数拼接为正确顺序的uri并加入key（秘钥）到最后</li>
+<li>将uri进行签名得到sign</li>
+<li>将参数以及sign（排除秘钥）按顺序转为xml</li>
+<li>请求对应接口（统一下单等）</li>
+<li>响应时也是xml格式</li>
+<li>转换xml为Map格式</li>
+<li>校验returnCode和resultCode</li>
+</ol>
+<h2 id="3-常用API中的区别点"><a href="#3-常用API中的区别点" class="headerlink" title="3. 常用API中的区别点"></a>3. 常用API中的区别点</h2><h3 id="3-1-刷卡支付"><a href="#3-1-刷卡支付" class="headerlink" title="3.1 刷卡支付"></a>3.1 刷卡支付</h3><p>1.下单非统一下单，而是提交刷卡支付，即请求的url和其他几种都不同。</p>
+<ul>
+<li>刷卡请求url：<a href="https://api.mch.weixin.qq.com/pay/micropay" target="_blank" rel="noopener">https://api.mch.weixin.qq.com/pay/micropay</a></li>
+<li>其他统一下单url：<a href="https://api.mch.weixin.qq.com/pay/unifiedorde" target="_blank" rel="noopener">https://api.mch.weixin.qq.com/pay/unifiedorde</a></li>
+</ul>
+<p>2.提交刷卡支付参数中不能携带参数有以下：（其他类型支付均可）。 </p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>变量名</th>
+<th>必填</th>
+<th>类型</th>
+<th>示例值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>交易类型</td>
+<td>trade_type</td>
+<td>是</td>
+<td>String(16)</td>
+<td>JSAPI</td>
+<td>JSAPI 公众号支付 NATIVE 扫码支付 APP APP支付</td>
+</tr>
+<tr>
+<td>用户标识</td>
+<td>openid</td>
+<td>否</td>
+<td>String(128)</td>
+<td>oUpF8uMuAJO_M2pxb1Q9zNjWeS6o</td>
+<td>trade_type=JSAPI时（即公众号支付），此参数必传，此参数为微信用户在商户对应appid下的唯一标识。openid如何获取，可参考【获取openid】。企业号请使用【企业号OAuth2.0接口】获取企业号内成员userid，再调用【企业号userid转openid接口】进行转换</td>
+</tr>
+<tr>
+<td>通知地址</td>
+<td>notify_url</td>
+<td>是</td>
+<td>String(256)</td>
+<td><a href="http://www.weixin.qq.com/wxpay/pay.php" target="_blank" rel="noopener">http://www.weixin.qq.com/wxpay/pay.php</a></td>
+<td>异步接收微信支付结果通知的回调地址，通知url必须为外网可访问的url，不能携带参数。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-2-授权码"><a href="#3-2-授权码" class="headerlink" title="3.2 授权码"></a>3.2 授权码</h3><p>提交刷卡支接口需要：auth_code.   </p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>变量名</th>
+<th>必填</th>
+<th>类型</th>
+<th>示例值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>授权码</td>
+<td>auth_code</td>
+<td>是</td>
+<td>String(128)</td>
+<td>120061098828009406</td>
+<td>扫码支付授权码，设备读取用户微信中的条码或者二维码信息（注：用户刷卡条形码规则：18位纯数字，以10、11、12、13、14、15开头）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-3-H5支付"><a href="#3-3-H5支付" class="headerlink" title="3.3 H5支付"></a>3.3 H5支付</h3><p><strong>注⚠️：提醒：H5支付不建议在APP端使用，如需要在APP中使用微信支付，请接APP支付</strong></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>变量名</th>
+<th>必填</th>
+<th>类型</th>
+<th>示例值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>场景信息</td>
+<td>scene_info</td>
+<td>是</td>
+<td>String(256)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>示例值</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//IOS移动应用</span><br><span class="line">&#123;&quot;h5_info&quot;: &#123;&quot;type&quot;:&quot;IOS&quot;,&quot;app_name&quot;: &quot;王者荣耀&quot;,&quot;bundle_id&quot;: &quot;com.tencent.wzryIOS&quot;&#125;&#125;</span><br><span class="line"></span><br><span class="line">//安卓移动应用</span><br><span class="line">&#123;&quot;h5_info&quot;: &#123;&quot;type&quot;:&quot;Android&quot;,&quot;app_name&quot;: &quot;王者荣耀&quot;,&quot;package_name&quot;: &quot;com.tencent.tmgp.sgame&quot;&#125;&#125;</span><br><span class="line"></span><br><span class="line">//WAP网站应用</span><br><span class="line">&#123;&quot;h5_info&quot;: &#123;&quot;type&quot;:&quot;Wap&quot;,&quot;wap_url&quot;: &quot;https://pay.qq.com&quot;,&quot;wap_name&quot;: &quot;腾讯充值&quot;&#125;&#125;	该字段用于上报支付的场景信息,针对H5支付有以下三种场景,请根据对应场景上报,H5支付不建议在APP端使用，针对场景1，2请接入APP支付，不然可能会出现兼容性问题</span><br></pre></td></tr></table></figure>
+<ol>
+<li>描述.  </li>
+</ol>
+<p>1，IOS移动应用</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"h5_info"</span>: //h5支付固定传<span class="string">"h5_info"</span></span><br><span class="line">    &#123;"type": "",  //场景类型</span><br><span class="line">     "app_name": "",  //应用名</span><br><span class="line">     "bundle_id": ""  //bundle_id</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2，安卓移动应用</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"h5_info"</span>: //h5支付固定传<span class="string">"h5_info"</span></span><br><span class="line">    &#123;"type": "",  //场景类型</span><br><span class="line">     "app_name": "",  //应用名</span><br><span class="line">     "package_name": ""  //包名</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3，WAP网站应用</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"h5_info"</span>: //h5支付固定传<span class="string">"h5_info"</span></span><br><span class="line">   &#123;"type": "",  //场景类型</span><br><span class="line">    "wap_url": "",//WAP网站URL地址</span><br><span class="line">    "wap_name": ""  //WAP 网站名</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-微信境外支付"><a href="#4-微信境外支付" class="headerlink" title="4. 微信境外支付"></a>4. 微信境外支付</h2><p><a href="JavaEE 微信境外支付.md">JavaEE 微信境外支付</a></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/08/04/支付/微信支付/JavaEE 微信支付/" data-id="cjfdcvno600375mh2d64o72oh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1507,7 +2069,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/07/23/消息队列/消息中间件/" data-id="cjfb4t8xk001pyk5lors3dzyt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/07/23/消息队列/消息中间件/" data-id="cjfdcvnmt001k5mh2g98bz7bz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1679,305 +2241,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/07/23/消息队列/消息队列/" data-id="cjfb4t8xj001lyk5lgrlq3pxb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-Jenkins/Jenkins 安装" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/05/27/Jenkins/Jenkins 安装/">Linux Jenkins 安装Jenkins 部署理念</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/27/Jenkins/Jenkins 安装/">
-            <time datetime="2017-05-27T14:09:56.000Z" itemprop="datePublished">2017-05-27</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Jenkins/">Jenkins</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Jenkins/">Jenkins</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="Linux-Jenkins-安装"><a href="#Linux-Jenkins-安装" class="headerlink" title="Linux Jenkins 安装"></a>Linux Jenkins 安装</h2><blockquote>
-<p>安装步骤:  </p>
-<ol>
-<li>依赖</li>
-<li>拉取库的配置到本地对应文件  </li>
-<li>导入公钥  </li>
-<li>下载安装jenkins</li>
-<li>初始配置jenkins  </li>
-<li>启动jenkins   </li>
-<li>设置iptables</li>
-<li>配置jenkins</li>
-</ol>
-</blockquote>
-<p><a href="https://jenkins.io/" target="_blank" rel="noopener">Jenkins 官网</a></p>
-<h3 id="1-依赖"><a href="#1-依赖" class="headerlink" title="1. 依赖"></a>1. 依赖</h3><p>部署Jenkins，需有Java - JDK。<br>检测是否安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure></p>
-<p>若没安装可以参考这篇Linux Java-JDK 安装</p>
-<h3 id="2-拉取库的配置到本地对应文件"><a href="#2-拉取库的配置到本地对应文件" class="headerlink" title="2. 拉取库的配置到本地对应文件"></a>2. 拉取库的配置到本地对应文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo</span><br></pre></td></tr></table></figure>
-<h3 id="3-导入公钥"><a href="#3-导入公钥" class="headerlink" title="3. 导入公钥"></a>3. 导入公钥</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key</span><br></pre></td></tr></table></figure>
-<h3 id="4-下载安装jenkins"><a href="#4-下载安装jenkins" class="headerlink" title="4. 下载安装jenkins"></a>4. 下载安装jenkins</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install jenkins</span><br></pre></td></tr></table></figure>
-<h3 id="5-初始配置jenkins"><a href="#5-初始配置jenkins" class="headerlink" title="5. 初始配置jenkins"></a>5. 初始配置jenkins</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/jenkins  </span><br><span class="line">    JENKINS_USER=&quot;root&quot;  </span><br><span class="line">    JENKINS_PORT=&quot;6267&quot;  </span><br><span class="line">    //JENKINS_ARGS=&quot;--prefix=/jenkins&quot;  </span><br><span class="line">    JENKINS_JAVA_OPTIONS=&quot;-Djava.awt.headless=true -Dhudson.util.ProcessTree.disable=true&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="6-启动jenkins"><a href="#6-启动jenkins" class="headerlink" title="6. 启动jenkins"></a>6. 启动jenkins</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service jenkins start</span><br></pre></td></tr></table></figure>
-<h3 id="7-设置iptables"><a href="#7-设置iptables" class="headerlink" title="7. 设置iptables"></a>7. 设置iptables</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/iptables</span><br></pre></td></tr></table></figure>
-<p>开放端口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A INPUT -p tcp -m tcp --dport 6257 -j ACCEPT</span><br></pre></td></tr></table></figure></p>
-<p>重启iptables!()[img/j1.jpg]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure></p>
-<h3 id="8-配置jenkins"><a href="#8-配置jenkins" class="headerlink" title="8. 配置jenkins"></a>8. 配置jenkins</h3><h4 id="8-1访问jenkins"><a href="#8-1访问jenkins" class="headerlink" title="8.1访问jenkins"></a>8.1访问jenkins</h4><p>访问 <a href="http://localhost:6257" target="_blank" rel="noopener">http://localhost:6257</a><br>初期启动需要密码（密码在这个文件里：/var/lib/jenkins/secrets/initialAdminPassword）<br><img src="img/j1.jpg" alt=""></p>
-<h4 id="8-2-安装插件"><a href="#8-2-安装插件" class="headerlink" title="8.2 安装插件"></a>8.2 安装插件</h4><p>（查看安装日志：/var/log/jenkins/jenkins.log）<br><img src="img/j2.jpg" alt=""><br>如果安装插件过程有错误，可以不用管，之后还可以通过Dashboard管理插件：<br><img src="img/j4.jpg" alt=""></p>
-<h4 id="8-3-创建用户"><a href="#8-3-创建用户" class="headerlink" title="8.3 创建用户"></a>8.3 创建用户</h4><p><img src="img/j3.jpg" alt=""></p>
-<h4 id="8-4-安装成功"><a href="#8-4-安装成功" class="headerlink" title="8.4 安装成功"></a>8.4 安装成功</h4><p><img src="img/j5.jpg" alt="">  </p>
-<p><img src="img/j6.jpg" alt=""></p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/05/27/Jenkins/Jenkins 安装/" data-id="cjfb4t8wj0004yk5lqethf7e4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-Jenkins/JenKin部署" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/05/26/Jenkins/JenKin部署/">Jenkins 部署理念</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/26/Jenkins/JenKin部署/">
-            <time datetime="2017-05-26T07:53:56.000Z" itemprop="datePublished">2017-05-26</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Jenkins/">Jenkins</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Jenkins/">Jenkins</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="Jenkins-部署理念"><a href="#Jenkins-部署理念" class="headerlink" title="Jenkins 部署理念"></a>Jenkins 部署理念</h1><blockquote>
-<p>Jenkins是一个开源软件项目，是基于Java开发的一种持续集成工具，用于监控持续重复的工作.</p>
-</blockquote>
-<h3 id="1-Jenkins简述"><a href="#1-Jenkins简述" class="headerlink" title="1.Jenkins简述"></a>1.Jenkins简述</h3><p>目前持续集成(CI)已成为当前许多软件开发团队在整个软件开发生命周期内侧重于保证代码质量的常见做法。它是一种实践，旨在缓和和稳固软件的构建过程。并且能够帮助您的开发团队应对如下挑战：</p>
-<ul>
-<li>软件构建自动化 ：配置完成后，CI系统会依照预先制定的时间表，或者针对某一特定事件，对目标软件进行构建。</li>
-<li>构建可持续的自动化检查 ：CI系统能持续地获取新增或修改后签入的源代码，也就是说，当软件开发团队需要周期性的检查新增或修改后的代码时，CI系统会不断确认这些新代码是否破坏了原有软件的成功构建。这减少了开发者们在检查彼此相互依存的代码中变化情况需要花费的时间和精力</li>
-<li>构建可持续的自动化测试 ：构建检查的扩展部分，构建后执行预先制定的一套测试规则，完成后触发通知(Email,RSS等等)给相关的当事人。</li>
-<li>生成后后续过程的自动化 :当自动化检查和测试成功完成，软件构建的周期中可能也需要一些额外的任务，诸如生成文档、打包软件、部署构件到一个运行环境或者软件仓库。这样，构件才能更迅速地提供给用户使用。</li>
-<li>部署一个CI系统需要的最低要求是，一个可获取的源代码的仓库，一个包含构建脚本的项目。<h3 id="2-Jenkins运行分析"><a href="#2-Jenkins运行分析" class="headerlink" title="2.Jenkins运行分析"></a>2.Jenkins运行分析</h3>简要分析：<br>首先要有统一的代码库，服务器不断从版本控制服务器上检查代码状态，看代码是否有更新。如果发现有代码更新，那么就从版本控制服务器下载最新的代码。等代码完全更新以后，调用自动化编译脚本，进行代码编译。然后运行所有的自动化测试，并且进行代码分析。如果其中任何一个步骤失败，就表示build失败，持续集成服务器会给予响应的反馈。每次代码提交之后，都会在持续集成服务器上触发一个定时构建，然后进行编译、部署。</li>
-</ul>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/05/26/Jenkins/JenKin部署/" data-id="cjfb4t8wn0005yk5lfbx4xyg6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/07/23/消息队列/消息队列/" data-id="cjfdcvnmw001r5mh2lsa3131e" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2171,7 +2435,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jenkins/">Jenkins</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Quartz/">Quartz</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jenkins/">Jenkins</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Quartz/">Quartz</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/支付/">支付</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -2180,7 +2444,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -2189,7 +2453,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支付/">支付</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -2198,7 +2462,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 13.33px;">JavaEE</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Nginx/" style="font-size: 20px;">Nginx</a> <a href="/tags/Quartz/" style="font-size: 10px;">Quartz</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 13.33px;">消息队列</a>
+            <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 13.33px;">JavaEE</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Nginx/" style="font-size: 20px;">Nginx</a> <a href="/tags/Quartz/" style="font-size: 10px;">Quartz</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/支付/" style="font-size: 10px;">支付</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 13.33px;">消息队列</a>
         </div>
     </div>
 

@@ -157,11 +157,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                27
+                29
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                8
+                9
                 <span>tags</span>
             </div>
         </div>
@@ -210,6 +210,304 @@
 
             
             <section id="main">
+    <article id="post-Jenkins/Jenkins 安装" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/05/27/Jenkins/Jenkins 安装/">Linux Jenkins 安装Jenkins 部署理念</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/27/Jenkins/Jenkins 安装/">
+            <time datetime="2017-05-27T14:09:56.000Z" itemprop="datePublished">2017-05-27</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Jenkins/">Jenkins</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Jenkins/">Jenkins</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="Linux-Jenkins-安装"><a href="#Linux-Jenkins-安装" class="headerlink" title="Linux Jenkins 安装"></a>Linux Jenkins 安装</h2><blockquote>
+<p>安装步骤:  </p>
+<ol>
+<li>依赖</li>
+<li>拉取库的配置到本地对应文件  </li>
+<li>导入公钥  </li>
+<li>下载安装jenkins</li>
+<li>初始配置jenkins  </li>
+<li>启动jenkins   </li>
+<li>设置iptables</li>
+<li>配置jenkins</li>
+</ol>
+</blockquote>
+<p><a href="https://jenkins.io/" target="_blank" rel="noopener">Jenkins 官网</a></p>
+<h3 id="1-依赖"><a href="#1-依赖" class="headerlink" title="1. 依赖"></a>1. 依赖</h3><p>部署Jenkins，需有Java - JDK。<br>检测是否安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure></p>
+<p>若没安装可以参考这篇Linux Java-JDK 安装</p>
+<h3 id="2-拉取库的配置到本地对应文件"><a href="#2-拉取库的配置到本地对应文件" class="headerlink" title="2. 拉取库的配置到本地对应文件"></a>2. 拉取库的配置到本地对应文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo</span><br></pre></td></tr></table></figure>
+<h3 id="3-导入公钥"><a href="#3-导入公钥" class="headerlink" title="3. 导入公钥"></a>3. 导入公钥</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key</span><br></pre></td></tr></table></figure>
+<h3 id="4-下载安装jenkins"><a href="#4-下载安装jenkins" class="headerlink" title="4. 下载安装jenkins"></a>4. 下载安装jenkins</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install jenkins</span><br></pre></td></tr></table></figure>
+<h3 id="5-初始配置jenkins"><a href="#5-初始配置jenkins" class="headerlink" title="5. 初始配置jenkins"></a>5. 初始配置jenkins</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/jenkins  </span><br><span class="line">    JENKINS_USER=&quot;root&quot;  </span><br><span class="line">    JENKINS_PORT=&quot;6267&quot;  </span><br><span class="line">    //JENKINS_ARGS=&quot;--prefix=/jenkins&quot;  </span><br><span class="line">    JENKINS_JAVA_OPTIONS=&quot;-Djava.awt.headless=true -Dhudson.util.ProcessTree.disable=true&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="6-启动jenkins"><a href="#6-启动jenkins" class="headerlink" title="6. 启动jenkins"></a>6. 启动jenkins</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service jenkins start</span><br></pre></td></tr></table></figure>
+<h3 id="7-设置iptables"><a href="#7-设置iptables" class="headerlink" title="7. 设置iptables"></a>7. 设置iptables</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/iptables</span><br></pre></td></tr></table></figure>
+<p>开放端口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A INPUT -p tcp -m tcp --dport 6257 -j ACCEPT</span><br></pre></td></tr></table></figure></p>
+<p>重启iptables!()[img/j1.jpg]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure></p>
+<h3 id="8-配置jenkins"><a href="#8-配置jenkins" class="headerlink" title="8. 配置jenkins"></a>8. 配置jenkins</h3><h4 id="8-1访问jenkins"><a href="#8-1访问jenkins" class="headerlink" title="8.1访问jenkins"></a>8.1访问jenkins</h4><p>访问 <a href="http://localhost:6257" target="_blank" rel="noopener">http://localhost:6257</a><br>初期启动需要密码（密码在这个文件里：/var/lib/jenkins/secrets/initialAdminPassword）<br><img src="img/j1.jpg" alt=""></p>
+<h4 id="8-2-安装插件"><a href="#8-2-安装插件" class="headerlink" title="8.2 安装插件"></a>8.2 安装插件</h4><p>（查看安装日志：/var/log/jenkins/jenkins.log）<br><img src="img/j2.jpg" alt=""><br>如果安装插件过程有错误，可以不用管，之后还可以通过Dashboard管理插件：<br><img src="img/j4.jpg" alt=""></p>
+<h4 id="8-3-创建用户"><a href="#8-3-创建用户" class="headerlink" title="8.3 创建用户"></a>8.3 创建用户</h4><p><img src="img/j3.jpg" alt=""></p>
+<h4 id="8-4-安装成功"><a href="#8-4-安装成功" class="headerlink" title="8.4 安装成功"></a>8.4 安装成功</h4><p><img src="img/j5.jpg" alt="">  </p>
+<p><img src="img/j6.jpg" alt=""></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/05/27/Jenkins/Jenkins 安装/" data-id="cjfdcvnmf000l5mh29ayqvl0w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-Jenkins/JenKin部署" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/05/26/Jenkins/JenKin部署/">Jenkins 部署理念</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/26/Jenkins/JenKin部署/">
+            <time datetime="2017-05-26T07:53:56.000Z" itemprop="datePublished">2017-05-26</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Jenkins/">Jenkins</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Jenkins/">Jenkins</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="Jenkins-部署理念"><a href="#Jenkins-部署理念" class="headerlink" title="Jenkins 部署理念"></a>Jenkins 部署理念</h1><blockquote>
+<p>Jenkins是一个开源软件项目，是基于Java开发的一种持续集成工具，用于监控持续重复的工作.</p>
+</blockquote>
+<h3 id="1-Jenkins简述"><a href="#1-Jenkins简述" class="headerlink" title="1.Jenkins简述"></a>1.Jenkins简述</h3><p>目前持续集成(CI)已成为当前许多软件开发团队在整个软件开发生命周期内侧重于保证代码质量的常见做法。它是一种实践，旨在缓和和稳固软件的构建过程。并且能够帮助您的开发团队应对如下挑战：</p>
+<ul>
+<li>软件构建自动化 ：配置完成后，CI系统会依照预先制定的时间表，或者针对某一特定事件，对目标软件进行构建。</li>
+<li>构建可持续的自动化检查 ：CI系统能持续地获取新增或修改后签入的源代码，也就是说，当软件开发团队需要周期性的检查新增或修改后的代码时，CI系统会不断确认这些新代码是否破坏了原有软件的成功构建。这减少了开发者们在检查彼此相互依存的代码中变化情况需要花费的时间和精力</li>
+<li>构建可持续的自动化测试 ：构建检查的扩展部分，构建后执行预先制定的一套测试规则，完成后触发通知(Email,RSS等等)给相关的当事人。</li>
+<li>生成后后续过程的自动化 :当自动化检查和测试成功完成，软件构建的周期中可能也需要一些额外的任务，诸如生成文档、打包软件、部署构件到一个运行环境或者软件仓库。这样，构件才能更迅速地提供给用户使用。</li>
+<li>部署一个CI系统需要的最低要求是，一个可获取的源代码的仓库，一个包含构建脚本的项目。<h3 id="2-Jenkins运行分析"><a href="#2-Jenkins运行分析" class="headerlink" title="2.Jenkins运行分析"></a>2.Jenkins运行分析</h3>简要分析：<br>首先要有统一的代码库，服务器不断从版本控制服务器上检查代码状态，看代码是否有更新。如果发现有代码更新，那么就从版本控制服务器下载最新的代码。等代码完全更新以后，调用自动化编译脚本，进行代码编译。然后运行所有的自动化测试，并且进行代码分析。如果其中任何一个步骤失败，就表示build失败，持续集成服务器会给予响应的反馈。每次代码提交之后，都会在持续集成服务器上触发一个定时构建，然后进行编译、部署。</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/05/26/Jenkins/JenKin部署/" data-id="cjfdcvnme000g5mh2qhg35xya" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -305,7 +603,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/" data-id="cjfb4t8z6003ayk5lt55mji5c" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/" data-id="cjfdcvno100315mh2bhuefxk9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -476,7 +774,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/" data-id="cjfb4t8z50037yk5l7m100pih" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/" data-id="cjfdcvnnz00305mh2942n4jxx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -662,7 +960,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/" data-id="cjfb4t8z40036yk5lp1urpvbw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/" data-id="cjfdcvno200325mh20kyoxn79" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -805,7 +1103,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2016/11/23/服务器/虚拟机CentOS6.7 快速安装redis/" data-id="cjfb4t8xe001dyk5lrqp6a1w3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2016/11/23/服务器/虚拟机CentOS6.7 快速安装redis/" data-id="cjfdcvnmv001m5mh2rreqbewg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -967,7 +1265,7 @@ DNS1=114.114.114.114
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2016/11/23/服务器/虚拟机快速搭建CentOS，并解决网络问题/" data-id="cjfb4t8xf001fyk5leff7szph" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2016/11/23/服务器/虚拟机快速搭建CentOS，并解决网络问题/" data-id="cjfdcvnn0001y5mh2ls3pobyx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1125,7 +1423,7 @@ DNS1=114.114.114.114
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2016/07/23/java/Java 实体/" data-id="cjfb4t8wx000eyk5lajvpm6nu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2016/07/23/java/Java 实体/" data-id="cjfdcvnm000045mh2p16a30bd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1298,7 +1596,7 @@ DNS1=114.114.114.114
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2016/03/23/java/Java 内存详解/" data-id="cjfb4t8wu000ayk5l02eomjjr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2016/03/23/java/Java 内存详解/" data-id="cjfdcvnm300055mh2gmboxvsu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1492,7 +1790,7 @@ DNS1=114.114.114.114
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jenkins/">Jenkins</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Quartz/">Quartz</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jenkins/">Jenkins</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Quartz/">Quartz</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/支付/">支付</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -1501,7 +1799,7 @@ DNS1=114.114.114.114
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1510,7 +1808,7 @@ DNS1=114.114.114.114
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支付/">支付</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -1519,7 +1817,7 @@ DNS1=114.114.114.114
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 13.33px;">JavaEE</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Nginx/" style="font-size: 20px;">Nginx</a> <a href="/tags/Quartz/" style="font-size: 10px;">Quartz</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 13.33px;">消息队列</a>
+            <a href="/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 13.33px;">JavaEE</a> <a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a> <a href="/tags/Nginx/" style="font-size: 20px;">Nginx</a> <a href="/tags/Quartz/" style="font-size: 10px;">Quartz</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/支付/" style="font-size: 10px;">支付</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 13.33px;">消息队列</a>
         </div>
     </div>
 
