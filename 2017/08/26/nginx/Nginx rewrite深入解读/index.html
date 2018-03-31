@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Nginx rewrite深入解读 | CatalpaFlat&#39;s Blogs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Nginx rewrite深入解读1.什么是rewrite官方解读：nginx的重写模块（rewrite）是一个简单的正则表达式匹配与一个虚拟堆叠机结合。个人解读：nginx的rewrite是结合正则表达式和标志位实现url重写、改变以及重定向。如：域名跳转，防盗链，反向代理，各种跳转（跳转维护界面，前端跳转，基于uri跳转，基于目录跳转等）  2.rewrite的支撑源头nginx通过ngx_h">
+<meta name="keywords" content="Nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx rewrite深入解读">
+<meta property="og:url" content="https://catalpaflat.github.io/2017/08/26/nginx/Nginx rewrite深入解读/index.html">
+<meta property="og:site_name" content="CatalpaFlat&#39;s Blogs">
+<meta property="og:description" content="Nginx rewrite深入解读1.什么是rewrite官方解读：nginx的重写模块（rewrite）是一个简单的正则表达式匹配与一个虚拟堆叠机结合。个人解读：nginx的rewrite是结合正则表达式和标志位实现url重写、改变以及重定向。如：域名跳转，防盗链，反向代理，各种跳转（跳转维护界面，前端跳转，基于uri跳转，基于目录跳转等）  2.rewrite的支撑源头nginx通过ngx_h">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.imgur.com/6FjAULs.png">
+<meta property="og:image" content="https://i.imgur.com/sDD29j1.png">
+<meta property="og:image" content="https://i.imgur.com/D7uzwFv.png">
+<meta property="og:image" content="https://i.imgur.com/ZdjnR8Q.png">
+<meta property="og:image" content="https://i.imgur.com/xRbRVPg.gif">
+<meta property="og:updated_time" content="2018-03-28T13:12:50.203Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nginx rewrite深入解读">
+<meta name="twitter:description" content="Nginx rewrite深入解读1.什么是rewrite官方解读：nginx的重写模块（rewrite）是一个简单的正则表达式匹配与一个虚拟堆叠机结合。个人解读：nginx的rewrite是结合正则表达式和标志位实现url重写、改变以及重定向。如：域名跳转，防盗链，反向代理，各种跳转（跳转维护界面，前端跳转，基于uri跳转，基于目录跳转等）  2.rewrite的支撑源头nginx通过ngx_h">
+<meta name="twitter:image" content="https://i.imgur.com/6FjAULs.png">
+    
+
+    
+        <link rel="alternate" href="/" title="CatalpaFlat&#39;s Blogs" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">CatalpaFlat&#39;s Blogs</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.jpeg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.jpeg" />
+            <h2 id="name">CatalpaFlat</h2>
+            <h3 id="title">A good DEMO is a good brick wall.</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>ShenZhen, China</span>
+            <a id="follow" target="_blank" href="https://github.com/CatalpaFlat">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                30
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                10
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/CatalpaFlat" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-nginx/Nginx rewrite深入解读" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Nginx rewrite深入解读
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/26/nginx/Nginx rewrite深入解读/">
+            <time datetime="2017-08-26T10:23:12.000Z" itemprop="datePublished">2017-08-26</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Nginx/">Nginx</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="Nginx-rewrite深入解读"><a href="#Nginx-rewrite深入解读" class="headerlink" title="Nginx rewrite深入解读"></a>Nginx rewrite深入解读</h1><h2 id="1-什么是rewrite"><a href="#1-什么是rewrite" class="headerlink" title="1.什么是rewrite"></a>1.什么是rewrite</h2><p>官方解读：nginx的重写模块（rewrite）是一个简单的正则表达式匹配与一个虚拟堆叠机结合。<br>个人解读：nginx的rewrite是结合正则表达式和标志位实现url重写、改变以及重定向。如：域名跳转，防盗链，反向代理，各种跳转（跳转维护界面，前端跳转，基于uri跳转，基于目录跳转等）</p>
+<hr>
+<h2 id="2-rewrite的支撑源头"><a href="#2-rewrite的支撑源头" class="headerlink" title="2.rewrite的支撑源头"></a>2.rewrite的支撑源头</h2><p>nginx通过ngx_http_rewrite_module模块支持url重写、支持if条件判断。依赖于PCRE库，因此需要安装pcre。</p>
+<hr>
+<h2 id="3-rewrite的7个指令"><a href="#3-rewrite的7个指令" class="headerlink" title="3.rewrite的7个指令"></a>3.rewrite的7个指令</h2><h3 id="3-1-break"><a href="#3-1-break" class="headerlink" title="3.1.break"></a>3.1.break</h3><ul>
+<li>语法：break</li>
+<li>默认值：none</li>
+<li>配置段：server,location,if</li>
+<li>作用：完成当前设置的重写规则，停止处理后续rewrite指令集，并不在重新查找,但是当前location内剩余非rewrite语句和location外的的非rewrite语句可以执行。</li>
+<li>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if ($slow) &#123;</span><br><span class="line">	limit_rate 10k;</span><br><span class="line">	break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-2-if"><a href="#3-2-if" class="headerlink" title="3.2.if"></a>3.2.if</h3><ul>
+<li>语法：if(condition){…}</li>
+<li>默认值：none</li>
+<li>配置段：server,location</li>
+<li>作用：对给定的条件condition进行判断</li>
+<li>conditon：if条件(conditon)可以是如下任何内容:<ol>
+<li>一个变量名:空字符传“ ”或者一些“0”开始的字符串为false</li>
+<li>字符串比较：使用=或!=运算符</li>
+<li>正则表达式匹配：用~或~*+正则表达式匹配的变量，如果这个正则表达式中包含}或;，则整个表达式需要用” 或’ 包围</li>
+<li>文件是否存在：使用-f或者!-f操作符</li>
+<li>目录是否存在：使用-d或者!-d操作符</li>
+<li>文件、目录、符号链接是否存在：使用-e或者!-e操作符</li>
+<li>文件是否可执行：使用-x或者!-x操作符</li>
+</ol>
+</li>
+<li>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if ($http_cookie ~* &quot;id=([^;]+)(?:;|$)&quot;) &#123;</span><br><span class="line">	set $id $1;</span><br><span class="line">&#125;</span><br><span class="line">if ($http_user_agent ~ MSIE) &#123;    </span><br><span class="line">	rewrite ^(.*)$ /msie/$1 </span><br><span class="line">	break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-3-return"><a href="#3-3-return" class="headerlink" title="3.3.return"></a>3.3.return</h3><ul>
+<li>语法：<ul>
+<li>return code；</li>
+<li>return url；</li>
+<li>return code url；</li>
+</ul>
+</li>
+<li>默认值：none</li>
+<li>配置段：server,location,if</li>
+<li>作用：<ol>
+<li>停止处理，并为客户端返回状态码。</li>
+<li>非标准的444状态码将关闭连接，不发送任何响应头</li>
+<li>可以使用的状态码有：204/400/402-406/408/410/411/413/416/500-504</li>
+<li>如果状态码后面是一个url，该url将成为location头的补值。</li>
+<li>没有状态码的url将被视为一个默认的302状态码</li>
+<li>状态码附带文字段落，该文本将被放置在响应主体里</li>
+</ol>
+</li>
+<li>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if ($request_method = POST) &#123;</span><br><span class="line">     return 405;</span><br><span class="line">&#125;</span><br><span class="line">if ($invalid_referer) &#123;</span><br><span class="line">     return 403;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-4-rewrite"><a href="#3-4-rewrite" class="headerlink" title="3.4.rewrite"></a>3.4.rewrite</h3><ul>
+<li>语法：rewrite regex replacement [flag];</li>
+<li>默认值：none</li>
+<li>配置段：server,location,if</li>
+<li>作用：    <ol>
+<li>如果一个URI匹配指定的正则表达式regex，URI就按照replacement重写</li>
+<li>可以在重写指令后添加标识【flag】</li>
+<li>flag标志可以停止继续处理</li>
+<li>如果replacement以”http://“或”https://“开始，将不再继续处理rewrite指令，这个重定向将返回给客户端</li>
+</ol>
+</li>
+<li>flag标识符可为以下值：<ol>
+<li>last：停止处理后续rewrite指令集，然后对当前重写的新URI在rewrite指令集上重新查找。</li>
+<li>break：完成rewrite指令，并不在重新查找,但是当前location内剩余非rewrite语句和location外的的非rewrite语句可以执行。</li>
+<li>redirect：如果replacement不是以http:// 或https://开始，返回302临时重定向</li>
+<li>permannet：返回301永久重定向</li>
+</ol>
+</li>
+<li>最终完整的重定向URL包括请求scheme(http://,https://等),请求的server_name_in_redirect和 port_in_redirec三部分 ，说白了也就是http协议 域名 端口三部分组成。</li>
+<li>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location /download/ &#123;     </span><br><span class="line">	rewrite ^(/download/.*)/media/(.*)..*$ $1/mp3/$2.mp3 break;     </span><br><span class="line">	rewrite ^(/download/.*)/audio/(.*)..*$ $1/mp3/$2.ra break;     </span><br><span class="line">	return 403;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-5-rewrite-log"><a href="#3-5-rewrite-log" class="headerlink" title="3.5.rewrite_log"></a>3.5.rewrite_log</h3><ul>
+<li>语法：rewrite_log on|off;</li>
+<li>默认值：rewrite_log off;</li>
+<li>配置段：http,server,location,if</li>
+<li>作用：启用时将在error log中记录notice级别的重写日志</li>
+<li>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rewrite_log on;</span><br><span class="line">error_log logs/xxx.error.log notice;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="3-6-set"><a href="#3-6-set" class="headerlink" title="3.6.set"></a>3.6.set</h3><ul>
+<li>语法：set variable value;</li>
+<li>默认值：none</li>
+<li>配置段：server,location,if</li>
+<li>作用：定义一个变量并赋值，值可以是文本，变量或者文本变量混合体。<h3 id="3-7-uninitialized-variable-warn"><a href="#3-7-uninitialized-variable-warn" class="headerlink" title="3.7.uninitialized_variable_warn"></a>3.7.uninitialized_variable_warn</h3></li>
+<li>语法：uninitialized_variable_warn on | off;</li>
+<li>默认值：uninitialized_variable_warn on</li>
+<li>作用域：http,server,location,if</li>
+<li>作用：控制是否记录未初始化的警告信息</li>
+<li></li>
+</ul>
+<hr>
+<h2 id="4-rewrite的规则"><a href="#4-rewrite的规则" class="headerlink" title="4.rewrite的规则"></a>4.rewrite的规则</h2><h3 id="4-1-rewrite指令执行顺序"><a href="#4-1-rewrite指令执行顺序" class="headerlink" title="4.1.rewrite指令执行顺序"></a>4.1.rewrite指令执行顺序</h3><ol>
+<li>执行server块的rewrite指令(这里的块指的是server关键字后{}包围的区域，其它xx块类似)</li>
+<li>执行location匹配</li>
+<li>执行选定的location中的rewrite指令</li>
+<li>如果其中某步URI被重写，则重新循环执行1-3，直到找到真实存在的文件<br>如果循环超过10次，则返回500 Internal Server Error错误<h3 id="4-2-正则表达式-引用取值"><a href="#4-2-正则表达式-引用取值" class="headerlink" title="4.2.正则表达式-引用取值"></a>4.2.正则表达式-引用取值</h3></li>
+</ol>
+<ul>
+<li>可以使用括号来捕获，后续可用位置来将其引用，位置变量取决于捕获正则表达式中的顺序，$1引用第一个括号（）中值，$2则引用第二个括号中的值</li>
+<li><p>实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^/img/([a-z]&#123;2&#125;)/([a-z0-9]&#123;5&#125;)/(.*)\.(png|gif|jpg)$</span><br></pre></td></tr></table></figure>
+<p>1） $1:是([a-z]{2})，两个小写字母组成的字符串<br>2） $2:是([a-z0-9]{5})，由小写字母或0-9组成的5个字符串<br>3） $3:是(.*)，是文件名<br>4） $4:是(png|gif|jpg)，其中一个</p>
+<h3 id="4-3-return返回规则"><a href="#4-3-return返回规则" class="headerlink" title="4.3.return返回规则"></a>4.3.return返回规则</h3></li>
+</ul>
+<ol>
+<li>停止处理，并为客户端返回状态码。</li>
+<li>非标准的444状态码将关闭连接，不发送任何响应头</li>
+<li>可以使用的状态码有：204/400/402-406/408/410/411/413/416/500-504</li>
+<li>如果状态码后面是一个url，该url将成为location头的补值。</li>
+<li>没有状态码的url将被视为一个默认的302状态码</li>
+<li>状态码附带文字段落，该文本将被放置在响应主体里<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location = /img404.html&#123;</span><br><span class="line">	return 404 &quot;image not found\n&quot;;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<h2 id="5-rewrite小实例"><a href="#5-rewrite小实例" class="headerlink" title="5.rewrite小实例"></a>5.rewrite小实例</h2><h3 id="5-1-禁止-sh-bash"><a href="#5-1-禁止-sh-bash" class="headerlink" title="5.1.禁止.sh .bash"></a>5.1.禁止.sh .bash</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location ~ .*\.(sh|bash)?$&#123;  </span><br><span class="line">  return 403;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/6FjAULs.png" alt=""> </p>
+<hr>
+<h3 id="5-2-目录跳转"><a href="#5-2-目录跳转" class="headerlink" title="5.2.目录跳转"></a>5.2.目录跳转</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">location /a&#123;</span><br><span class="line">         alias /data/site/b.chen.com/a;</span><br><span class="line">         rewrite ^/a/?$ /b last;</span><br><span class="line">&#125;</span><br><span class="line">location /b&#123;</span><br><span class="line">        alias /data/site/b.chen.com/b;</span><br><span class="line">        default_type &apos;text/html&apos;;</span><br><span class="line">        echo &quot;url is a -&gt; rewrite to b...&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/sDD29j1.png" alt=""></p>
+<hr>
+<h3 id="5-3-防盗链实例"><a href="#5-3-防盗链实例" class="headerlink" title="5.3.防盗链实例"></a>5.3.防盗链实例</h3><h4 id="5-3-0-valid-referer指令说明"><a href="#5-3-0-valid-referer指令说明" class="headerlink" title="5.3.0.valid_referer指令说明"></a>5.3.0.valid_referer指令说明</h4><p>Nginx配置中有一个指令valid_referers，用来获取Referer头域中的值，并且根据该值的情况给Nginx全局变量$invalid_referer的值，如果Referer头域中没有符合valid_referers指令配置的值，$invalid_referer变量将会被赋值为1。<br>valid_referer指令的语法结构为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">valid_referers none | blocked | server_names | string ....;</span><br><span class="line">none 检测Referer头域不存在的请求</span><br><span class="line">blocked 检测Referer头域的值被防火墙或者代理服务器删除或伪装的情况。</span><br><span class="line">这种情况下，该头域的值不以“http://”或者“https：//”开头</span><br><span class="line">server_names 设置一个或多个URL,检测Referer头域的值是否是这些URL中的某个。</span><br><span class="line">从nginx 0.5.33以后支持使用通配符“*”。</span><br></pre></td></tr></table></figure></p>
+<h4 id="5-3-1-nginx-conf的server配置"><a href="#5-3-1-nginx-conf的server配置" class="headerlink" title="5.3.1.nginx.conf的server配置"></a>5.3.1.nginx.conf的server配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    server_name echo.chen.com;</span><br><span class="line">    listen 80;</span><br><span class="line">    location /&#123;</span><br><span class="line">        root /data/site/echo.chen.com;</span><br><span class="line">        index index.html;</span><br><span class="line">    &#125;</span><br><span class="line">	location ~ .*\.(jpg|png)$ &#123;</span><br><span class="line">        valid_referers none blocked echo.chen.com;</span><br><span class="line">        if ($invalid_referer) &#123;</span><br><span class="line">                return 412;</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">       root /data/site/echo.chen.com;</span><br><span class="line">    &#125;</span><br><span class="line">    location =/error.html&#123;</span><br><span class="line">            root /data/site/echo.chen.com;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>/data/site/echo.chen.com 自行创建目录</li>
+<li>index.html内容如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">this is index.html</span><br><span class="line">&lt;img src=&quot;http://echo.chen.com/1.jpg&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="5-3-2-Windows下host配置"><a href="#5-3-2-Windows下host配置" class="headerlink" title="5.3.2.Windows下host配置"></a>5.3.2.Windows下host配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.111 b.chen.com</span><br><span class="line">192.168.1.111 echo.chen.com</span><br></pre></td></tr></table></figure>
+<ul>
+<li>配置不同域名指定同一个ip，以便测试<h4 id="5-3-3-浏览器测试"><a href="#5-3-3-浏览器测试" class="headerlink" title="5.3.3.浏览器测试"></a>5.3.3.浏览器测试</h4>访问指定的域名，即可访问到图片<br><img src="https://i.imgur.com/D7uzwFv.png" alt=""><br>使用b.chen.com进行访问则不能访问到服务器图片<br><img src="https://i.imgur.com/ZdjnR8Q.png" alt=""></li>
+</ul>
+<hr>
+<h3 id="5-4-域名跳转"><a href="#5-4-域名跳转" class="headerlink" title="5.4.域名跳转"></a>5.4.域名跳转</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    server_name jump.chen.com;</span><br><span class="line">    listen 80;</span><br><span class="line">    access_log off;</span><br><span class="line">    location /&#123;</span><br><span class="line">            default_type &quot;text/html&quot;;</span><br><span class="line">            echo &quot;it is echo.chen.com jump to jump.chen.com&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">server&#123;</span><br><span class="line">    server_name echo.chen.com;</span><br><span class="line">    listen 80;</span><br><span class="line">    rewrite ^/ http://jump.chen.com/;</span><br><span class="line">    location /&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.imgur.com/xRbRVPg.gif" alt=""></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/08/26/nginx/Nginx rewrite深入解读/" data-id="cjff44xd4000y44h2c2o3dq2v" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/08/26/nginx/Nginx root&alias文件路径配置解析/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Nginx root&amp;alias文件路径配置解析
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/08/24/nginx/Nginx location配置解析/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Nginx location配置解析</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/05/docker/命令/run/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/docker/">docker</a></p>
+                            <p class="item-title"><a href="/2018/02/05/docker/命令/run/" class="title">Docker run 命令</a></p>
+                            <p class="item-date"><time datetime="2018-02-05T14:33:12.000Z" itemprop="datePublished">2018-02-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/01/23/java/Java开发规范/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/01/23/java/Java开发规范/" class="title">Java 编码规范</a></p>
+                            <p class="item-date"><time datetime="2018-01-23T05:20:56.000Z" itemprop="datePublished">2018-01-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/01/05/docker/安装/docker安装/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/docker/">docker</a></p>
+                            <p class="item-title"><a href="/2018/01/05/docker/安装/docker安装/" class="title">CentOS Docker 安装</a></p>
+                            <p class="item-date"><time datetime="2018-01-05T08:33:56.000Z" itemprop="datePublished">2018-01-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/16/java/Java 实现中文-拼音转换/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2017/12/16/java/Java 实现中文-拼音转换/" class="title">Java 实现中文-拼音转换</a></p>
+                            <p class="item-date"><time datetime="2017-12-16T02:16:56.000Z" itemprop="datePublished">2017-12-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/11/17/Quartz/自定义Quartz超实用工具类/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Quartz/">Quartz</a></p>
+                            <p class="item-title"><a href="/2017/11/17/Quartz/自定义Quartz超实用工具类/" class="title">自定义Quartz超实用工具类</a></p>
+                            <p class="item-date"><time datetime="2017-11-17T03:09:37.000Z" itemprop="datePublished">2017-11-17</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jenkins/">Jenkins</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Quartz/">Quartz</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/支付/">支付</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支付/">支付</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支付宝支付/">支付宝支付</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 15px;">JavaEE</a> <a href="/tags/Jenkins/" style="font-size: 12.5px;">Jenkins</a> <a href="/tags/Nginx/" style="font-size: 20px;">Nginx</a> <a href="/tags/Quartz/" style="font-size: 12.5px;">Quartz</a> <a href="/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/tags/支付/" style="font-size: 12.5px;">支付</a> <a href="/tags/支付宝支付/" style="font-size: 10px;">支付宝支付</a> <a href="/tags/服务器/" style="font-size: 12.5px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 15px;">消息队列</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 CatalpaFlat<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

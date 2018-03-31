@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Nginx 日志配置详情解析 | CatalpaFlat&#39;s Blogs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Nginx 日志配置详情解析&amp;emsp;&amp;emsp;在使用nginx进行服务器管理时候，日志对于统计、审查、排错来说非常有利。&amp;emsp;&amp;emsp;nginx日志相关的配置有：access_log(访问日志)、log_format（日志格式）、open_log_file_cache、log_not_found、log_subrequest、rewrite_log、error_log。&amp;emsp;">
+<meta name="keywords" content="Nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx 日志配置详情解析">
+<meta property="og:url" content="https://catalpaflat.github.io/2017/08/24/nginx/Nginx 日志配置详情解析/index.html">
+<meta property="og:site_name" content="CatalpaFlat&#39;s Blogs">
+<meta property="og:description" content="Nginx 日志配置详情解析&amp;emsp;&amp;emsp;在使用nginx进行服务器管理时候，日志对于统计、审查、排错来说非常有利。&amp;emsp;&amp;emsp;nginx日志相关的配置有：access_log(访问日志)、log_format（日志格式）、open_log_file_cache、log_not_found、log_subrequest、rewrite_log、error_log。&amp;emsp;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-28T13:11:38.627Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nginx 日志配置详情解析">
+<meta name="twitter:description" content="Nginx 日志配置详情解析&amp;emsp;&amp;emsp;在使用nginx进行服务器管理时候，日志对于统计、审查、排错来说非常有利。&amp;emsp;&amp;emsp;nginx日志相关的配置有：access_log(访问日志)、log_format（日志格式）、open_log_file_cache、log_not_found、log_subrequest、rewrite_log、error_log。&amp;emsp;">
+    
+
+    
+        <link rel="alternate" href="/" title="CatalpaFlat&#39;s Blogs" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">CatalpaFlat&#39;s Blogs</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.jpeg" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.jpeg" />
+            <h2 id="name">CatalpaFlat</h2>
+            <h3 id="title">A good DEMO is a good brick wall.</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>ShenZhen, China</span>
+            <a id="follow" target="_blank" href="https://github.com/CatalpaFlat">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                30
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                10
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/CatalpaFlat" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="twitter" class=tooltip>
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="facebook" class=tooltip>
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="dribbble" class=tooltip>
+                            <i class="fa fa-dribbble"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/" target="_blank" title="rss" class=tooltip>
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-nginx/Nginx 日志配置详情解析" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Nginx 日志配置详情解析
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/24/nginx/Nginx 日志配置详情解析/">
+            <time datetime="2017-08-24T13:22:56.000Z" itemprop="datePublished">2017-08-24</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Nginx/">Nginx</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="Nginx-日志配置详情解析"><a href="#Nginx-日志配置详情解析" class="headerlink" title="Nginx 日志配置详情解析"></a>Nginx 日志配置详情解析</h1><p>&emsp;&emsp;在使用nginx进行服务器管理时候，日志对于统计、审查、排错来说非常有利。<br>&emsp;&emsp;nginx日志相关的配置有：access_log(访问日志)、log_format（日志格式）、open_log_file_cache、log_not_found、log_subrequest、rewrite_log、error_log。<br>&emsp;&emsp;nginx有一个非常灵活的日志记录模式，每个级别的配置可以有各自独立的访问日志。日志格式通过log_format命令来定义。（主要基于ngx_http_log_module:用于定义请求日志格式）</p>
+<h2 id="1-access-log配置解析"><a href="#1-access-log配置解析" class="headerlink" title="1.access_log配置解析"></a>1.access_log配置解析</h2><h3 id="1-1-access-log语法"><a href="#1-1-access-log语法" class="headerlink" title="1.1.access_log语法"></a>1.1.access_log语法</h3><ul>
+<li>access_log path [format [buffer=size [flush=time]]]</li>
+<li>access_log path format gzip[=level] [buffer=size [flush=time]]</li>
+<li>access_log syslog:server=address[,parameter=value][format]</li>
+<li>access_log off<h3 id="1-2-access-log默认值"><a href="#1-2-access-log默认值" class="headerlink" title="1.2.access_log默认值"></a>1.2.access_log默认值</h3></li>
+<li>access_log log/access.log combined<h3 id="1-3-access-log配置段"><a href="#1-3-access-log配置段" class="headerlink" title="1.3.access_log配置段"></a>1.3.access_log配置段</h3></li>
+<li>http</li>
+<li>server</li>
+<li>location</li>
+<li>if in location</li>
+<li>limit_except<h3 id="1-4-access-log语法参数解析"><a href="#1-4-access-log语法参数解析" class="headerlink" title="1.4.access_log语法参数解析"></a>1.4.access_log语法参数解析</h3></li>
+<li>gzip：压缩等级</li>
+<li>buffer：设置所需内容缓存区大小</li>
+<li>flush：保存在缓存区的最长时间</li>
+<li>off：不记录日志</li>
+<li>combined：使用默认的格式记录日志（access_log log/access.log combined或access_log log/access.log）</li>
+</ul>
+<hr>
+<h2 id="2-log-format配置解析"><a href="#2-log-format配置解析" class="headerlink" title="2.log_format配置解析"></a>2.log_format配置解析</h2><h3 id="2-1-log-format语法"><a href="#2-1-log-format语法" class="headerlink" title="2.1.log_format语法"></a>2.1.log_format语法</h3><ul>
+<li>log_format name string …;<h3 id="2-2-log-format默认值"><a href="#2-2-log-format默认值" class="headerlink" title="2.2.log_format默认值"></a>2.2.log_format默认值</h3></li>
+<li>log_format combined “…”;<br>log_format有一个默认的无需设置的combined日志格式，相当于apache的combined日志格式。格式如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_format  combined  &apos;$remote_addr - $remote_user  [$time_local]  &apos;</span><br><span class="line">                                   &apos; &quot;$request&quot;  $status  $body_bytes_sent  &apos;</span><br><span class="line">                                   &apos; &quot;$http_referer&quot;  &quot;$http_user_agent&quot; &apos;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-3-log-format配置段"><a href="#2-3-log-format配置段" class="headerlink" title="2.3.log_format配置段"></a>2.3.log_format配置段</h3><ul>
+<li>http<h3 id="2-4-log-format语法参数解析"><a href="#2-4-log-format语法参数解析" class="headerlink" title="2.4.log_format语法参数解析"></a>2.4.log_format语法参数解析</h3></li>
+<li>name表示格式名称</li>
+<li>string表示等义的格式。<h3 id="2-5-log-format常用的变量参数："><a href="#2-5-log-format常用的变量参数：" class="headerlink" title="2.5.log_format常用的变量参数："></a>2.5.log_format常用的变量参数：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$remote_addr, $http_x_forwarded_for（反向） 记录客户端IP地址</span><br><span class="line">$remote_user 记录客户端用户名称</span><br><span class="line">$request 记录请求的URL和HTTP协议</span><br><span class="line">$status 记录请求状态</span><br><span class="line">$body_bytes_sent 发送给客户端的字节数，不包括响应头的大小； 该变量与Apache模块mod_log_config里的“%B”参数兼容。</span><br><span class="line">$bytes_sent 发送给客户端的总字节数。</span><br><span class="line">$connection 连接的序列号。</span><br><span class="line">$connection_requests 当前通过一个连接获得的请求数量。</span><br><span class="line">$msec 日志写入时间。单位为秒，精度是毫秒。</span><br><span class="line">$pipe 如果请求是通过HTTP流水线(pipelined)发送，pipe值为“p”，否则为“.”。</span><br><span class="line">$http_referer 记录从哪个页面链接访问过来的</span><br><span class="line">$http_user_agent 记录客户端浏览器相关信息</span><br><span class="line">$request_length 请求的长度（包括请求行，请求头和请求正文）。</span><br><span class="line">$request_time 请求处理时间，单位为秒，精度毫秒； 从读入客户端的第一个字节开始，直到把最后一个字符发送给客户端后进行日志写入为止。</span><br><span class="line">$time_iso8601 ISO8601标准格式下的本地时间。</span><br><span class="line">$time_local 通用日志格式下的本地时间。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-6-log-format使用例子"><a href="#2-6-log-format使用例子" class="headerlink" title="2.6.log_format使用例子"></a>2.6.log_format使用例子</h3><h4 id="2-6-1-nginx反向代理时配置log-format"><a href="#2-6-1-nginx反向代理时配置log-format" class="headerlink" title="2.6.1.nginx反向代理时配置log_format"></a>2.6.1.nginx反向代理时配置log_format</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_format  porxy  &apos;$http_x_forwarded_for - $remote_user  [$time_local]  &apos;</span><br><span class="line">                   &apos; &quot;$request&quot;  $status $body_bytes_sent &apos;</span><br><span class="line">                   &apos; &quot;$http_referer&quot;  &quot;$http_user_agent&quot; &apos;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>注：nginx位于负载均衡器，squid，nginx反向代理之后，web服务器无法直接获取到客户端真实的IP地址了。 $remote_addr获取反向代理的IP地址。反向代理服务器在转发请求的http头信息中，可以增加X-Forwarded-For信息，用来记录 客户端IP地址和客户端请求的服务器地址。</p>
+<h4 id="2-6-2-http发送给客户端时配置log-format"><a href="#2-6-2-http发送给客户端时配置log-format" class="headerlink" title="2.6.2.http发送给客户端时配置log_format"></a>2.6.2.http发送给客户端时配置log_format</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line"> log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">                   &apos;&quot;$status&quot; $body_bytes_sent &quot;$http_referer&quot; &apos;</span><br><span class="line">                   &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot; &apos;</span><br><span class="line">                   &apos;&quot;$gzip_ratio&quot; $request_time $bytes_sent $request_length&apos;;</span><br><span class="line"> </span><br><span class="line"> log_format srcache_log &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">                        &apos;&quot;$status&quot; $body_bytes_sent $request_time $bytes_sent $request_length &apos;</span><br><span class="line">                        &apos;[$upstream_response_time] [$srcache_fetch_status] [$srcache_store_status] [$srcache_expire]&apos;;</span><br><span class="line"> </span><br><span class="line"> open_log_file_cache max=1000 inactive=60s;</span><br><span class="line"></span><br><span class="line"> server &#123;</span><br><span class="line"> 	server_name ~^(www\.)?(.+)$;</span><br><span class="line"> 	access_log logs/$2-access.log main;</span><br><span class="line"> 	error_log logs/$2-error.log;</span><br><span class="line">	location /srcache &#123;</span><br><span class="line"> 		access_log logs/access-srcache.log srcache_log;</span><br><span class="line"> 	&#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注：发送给客户端的响应头拥有“sent_http_”前缀。 比如$sent_http_content_range。</p>
+</li>
+<li></li>
+</ul>
+<hr>
+<h2 id="3-open-log-file-cache配置解析"><a href="#3-open-log-file-cache配置解析" class="headerlink" title="3.open_log_file_cache配置解析"></a>3.open_log_file_cache配置解析</h2><h3 id="3-1-open-log-file-cache语法"><a href="#3-1-open-log-file-cache语法" class="headerlink" title="3.1.open_log_file_cache语法"></a>3.1.open_log_file_cache语法</h3><ul>
+<li>open_log_file_cache max=N [inactive=time] [min_uses=N] [valid=time];</li>
+<li>open_log_file_cache off;<h3 id="3-2-open-log-file-cache默认值"><a href="#3-2-open-log-file-cache默认值" class="headerlink" title="3.2.open_log_file_cache默认值"></a>3.2.open_log_file_cache默认值</h3></li>
+<li>open_log_file_cache off;<h3 id="3-3-open-log-file-cache配置段"><a href="#3-3-open-log-file-cache配置段" class="headerlink" title="3.3.open_log_file_cache配置段"></a>3.3.open_log_file_cache配置段</h3></li>
+<li>http</li>
+<li>server</li>
+<li>location<h3 id="3-4-open-log-file-cache语法参数解析"><a href="#3-4-open-log-file-cache语法参数解析" class="headerlink" title="3.4.open_log_file_cache语法参数解析"></a>3.4.open_log_file_cache语法参数解析</h3></li>
+<li>max:设置缓存中的最大文件描述符数量，如果缓存被占满，采用LRU算法将描述符关闭。</li>
+<li>inactive:设置存活时间，默认是10s</li>
+<li>min_uses:设置在inactive时间段内，日志文件最少使用多少次后，该日志文件描述符记入缓存中，默认是1次</li>
+<li>valid:设置检查频率，默认60s</li>
+<li>off：禁用缓存<h3 id="3-5-open-log-file-cache的作用"><a href="#3-5-open-log-file-cache的作用" class="headerlink" title="3.5.open_log_file_cache的作用"></a>3.5.open_log_file_cache的作用</h3>对于每一条日志记录，都将是先打开文件，再写入日志，然后关闭。可以使用open_log_file_cache来设置日志文件缓存(默认是off)<h3 id="3-6-open-log-file-cache使用例子"><a href="#3-6-open-log-file-cache使用例子" class="headerlink" title="3.6.open_log_file_cache使用例子"></a>3.6.open_log_file_cache使用例子</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">open_log_file_cache max=1000 inactive=20s valid=1m min_uses=2;</span><br><span class="line">open_log_file_cache off;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="4-log-not-found配置解析"><a href="#4-log-not-found配置解析" class="headerlink" title="4.log_not_found配置解析"></a>4.log_not_found配置解析</h2><h3 id="4-1-log-not-found语法"><a href="#4-1-log-not-found语法" class="headerlink" title="4.1.log_not_found语法"></a>4.1.log_not_found语法</h3><ul>
+<li>log_not_found on | off;<h3 id="4-2-log-not-found默认值"><a href="#4-2-log-not-found默认值" class="headerlink" title="4.2.log_not_found默认值"></a>4.2.log_not_found默认值</h3></li>
+<li>log_not_found on;<h3 id="4-3-log-not-found配置段"><a href="#4-3-log-not-found配置段" class="headerlink" title="4.3.log_not_found配置段"></a>4.3.log_not_found配置段</h3></li>
+<li>http</li>
+<li>server</li>
+<li>location<h3 id="4-4-log-not-found的作用"><a href="#4-4-log-not-found的作用" class="headerlink" title="4.4.log_not_found的作用"></a>4.4.log_not_found的作用</h3>是否在error_log中记录不存在的错误。默认是。</li>
+</ul>
+<hr>
+<h2 id="5-log-subrequest配置解析"><a href="#5-log-subrequest配置解析" class="headerlink" title="5.log_subrequest配置解析"></a>5.log_subrequest配置解析</h2><h3 id="5-1-log-subrequest语法"><a href="#5-1-log-subrequest语法" class="headerlink" title="5.1.log_subrequest语法"></a>5.1.log_subrequest语法</h3><ul>
+<li>log_subrequest on | off;<h3 id="5-2-log-subrequest默认值"><a href="#5-2-log-subrequest默认值" class="headerlink" title="5.2.log_subrequest默认值"></a>5.2.log_subrequest默认值</h3></li>
+<li>log_subrequest off;<h3 id="5-3-log-subrequest配置段"><a href="#5-3-log-subrequest配置段" class="headerlink" title="5.3.log_subrequest配置段"></a>5.3.log_subrequest配置段</h3></li>
+<li>http</li>
+<li>server</li>
+<li>location<h3 id="5-4-log-subrequest的作用"><a href="#5-4-log-subrequest的作用" class="headerlink" title="5.4.log_subrequest的作用"></a>5.4.log_subrequest的作用</h3>是否在access_log中记录子请求的访问日志。默认不记录。</li>
+</ul>
+<hr>
+<h2 id="6-rewrite-log配置解析"><a href="#6-rewrite-log配置解析" class="headerlink" title="6.rewrite_log配置解析"></a>6.rewrite_log配置解析</h2><h3 id="6-1-rewrite-log语法"><a href="#6-1-rewrite-log语法" class="headerlink" title="6.1.rewrite_log语法"></a>6.1.rewrite_log语法</h3><ul>
+<li>rewrite_log on | off;<h3 id="6-2-rewrite-log默认值"><a href="#6-2-rewrite-log默认值" class="headerlink" title="6.2.rewrite_log默认值"></a>6.2.rewrite_log默认值</h3></li>
+<li>rewrite_log off;<h3 id="6-3-rewrite-log配置段"><a href="#6-3-rewrite-log配置段" class="headerlink" title="6.3.rewrite_log配置段"></a>6.3.rewrite_log配置段</h3></li>
+<li>http</li>
+<li>server</li>
+<li>location</li>
+<li>if<h3 id="6-4-rewrite-log的作用"><a href="#6-4-rewrite-log的作用" class="headerlink" title="6.4.rewrite_log的作用"></a>6.4.rewrite_log的作用</h3>启用时将在error log中记录notice级别的重写日志。<br>基于ngx_http_rewrite_module模块提供的。用来记录重写日志的。对于调试重写规则建议开启。</li>
+</ul>
+<hr>
+<h2 id="7-error-log配置解析"><a href="#7-error-log配置解析" class="headerlink" title="7.error_log配置解析"></a>7.error_log配置解析</h2><h3 id="7-1-error-log语法"><a href="#7-1-error-log语法" class="headerlink" title="7.1.error_log语法"></a>7.1.error_log语法</h3><ul>
+<li>error_log file | stderr | syslog:server=address[,parameter=value] [debug | info | notice | warn | error | crit | alert | emerg];<h3 id="7-2-error-log默认值"><a href="#7-2-error-log默认值" class="headerlink" title="7.2.error_log默认值"></a>7.2.error_log默认值</h3></li>
+<li>error_log logs/error.log error;<h3 id="7-3-error-log配置段"><a href="#7-3-error-log配置段" class="headerlink" title="7.3.error_log配置段"></a>7.3.error_log配置段</h3></li>
+<li>http</li>
+<li>server</li>
+<li>location</li>
+<li>main<h3 id="7-4-error-log的作用"><a href="#7-4-error-log的作用" class="headerlink" title="7.4.error_log的作用"></a>7.4.error_log的作用</h3>配置错误日志。</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/08/24/nginx/Nginx 日志配置详情解析/" data-id="cjff44xd9001844h26j7pi35q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/08/24/nginx/Nginx location配置解析/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Nginx location配置解析
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2017/08/22/nginx/服务器集成Nginx/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">服务器快速集成Nginx</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/02/05/docker/命令/run/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/docker/">docker</a></p>
+                            <p class="item-title"><a href="/2018/02/05/docker/命令/run/" class="title">Docker run 命令</a></p>
+                            <p class="item-date"><time datetime="2018-02-05T14:33:12.000Z" itemprop="datePublished">2018-02-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/01/23/java/Java开发规范/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2018/01/23/java/Java开发规范/" class="title">Java 编码规范</a></p>
+                            <p class="item-date"><time datetime="2018-01-23T05:20:56.000Z" itemprop="datePublished">2018-01-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/01/05/docker/安装/docker安装/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/docker/">docker</a></p>
+                            <p class="item-title"><a href="/2018/01/05/docker/安装/docker安装/" class="title">CentOS Docker 安装</a></p>
+                            <p class="item-date"><time datetime="2018-01-05T08:33:56.000Z" itemprop="datePublished">2018-01-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/12/16/java/Java 实现中文-拼音转换/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/2017/12/16/java/Java 实现中文-拼音转换/" class="title">Java 实现中文-拼音转换</a></p>
+                            <p class="item-date"><time datetime="2017-12-16T02:16:56.000Z" itemprop="datePublished">2017-12-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/11/17/Quartz/自定义Quartz超实用工具类/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Quartz/">Quartz</a></p>
+                            <p class="item-title"><a href="/2017/11/17/Quartz/自定义Quartz超实用工具类/" class="title">自定义Quartz超实用工具类</a></p>
+                            <p class="item-date"><time datetime="2017-11-17T03:09:37.000Z" itemprop="datePublished">2017-11-17</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jenkins/">Jenkins</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Quartz/">Quartz</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/支付/">支付</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支付/">支付</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支付宝支付/">支付宝支付</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 15px;">JavaEE</a> <a href="/tags/Jenkins/" style="font-size: 12.5px;">Jenkins</a> <a href="/tags/Nginx/" style="font-size: 20px;">Nginx</a> <a href="/tags/Quartz/" style="font-size: 12.5px;">Quartz</a> <a href="/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/tags/支付/" style="font-size: 12.5px;">支付</a> <a href="/tags/支付宝支付/" style="font-size: 10px;">支付宝支付</a> <a href="/tags/服务器/" style="font-size: 12.5px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 15px;">消息队列</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 CatalpaFlat<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
