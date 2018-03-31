@@ -399,7 +399,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/08/26/nginx/Nginx rewrite深入解读/" data-id="cjff44xd4000y44h2c2o3dq2v" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/26/nginx/Nginx rewrite深入解读/" data-id="cjff7y7ih001kcgh2gs2j4qum" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -572,7 +572,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/08/24/nginx/Nginx location配置解析/" data-id="cjff44xd1000s44h2p6rjz6yy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/24/nginx/Nginx location配置解析/" data-id="cjff7y7i80014cgh2k78is1f8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -789,7 +789,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/08/24/nginx/Nginx 日志配置详情解析/" data-id="cjff44xd9001844h26j7pi35q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/24/nginx/Nginx 日志配置详情解析/" data-id="cjff7y7if001gcgh2kcx7092h" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -993,7 +993,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/08/22/nginx/服务器集成Nginx/" data-id="cjff44xdd001g44h2rtwfhixw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/22/nginx/服务器集成Nginx/" data-id="cjff7y7il001qcgh2scyhkh0r" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1157,7 +1157,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/08/22/nginx/Nginx 动态添加模块/" data-id="cjff44xd7001444h2g62yhgad" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/22/nginx/Nginx 动态添加模块/" data-id="cjff7y7ib001acgh2e64xr3w7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1352,7 +1352,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/08/20/nginx/nginx 的ngx_http_core_module模块处理请求/" data-id="cjff44xdc001e44h2nrnfei13" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/20/nginx/nginx 的ngx_http_core_module模块处理请求/" data-id="cjff7y7ij001mcgh2voqahfy9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1646,256 +1646,7 @@
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/08/05/支付/微信支付/JavaEE 微信境外支付/" data-id="cjff44xf4003d44h2t730ewu8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-支付/支付宝支付/JavaEE 支付宝支付" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/08/04/支付/支付宝支付/JavaEE 支付宝支付/">JavaEE 支付宝支付</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/08/04/支付/支付宝支付/JavaEE 支付宝支付/">
-            <time datetime="2017-08-04T11:33:12.000Z" itemprop="datePublished">2017-08-04</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/支付/">支付</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/支付宝支付/">支付宝支付</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="JavaEE-支付宝支付"><a href="#JavaEE-支付宝支付" class="headerlink" title="JavaEE 支付宝支付"></a>JavaEE 支付宝支付</h1><blockquote>
-<p><a href="https://docs.open.alipay.com/api_1/alipay.trade.app.pay/" target="_blank" rel="noopener">开发文档大全</a>   </p>
-<p>支付宝已经更新添封装好的签名方法,可以在自己的项目中直接调用进行签名,减少了自己手动签名产生的问题,主要是在进行方法调用时注意传参的要求,尤其是公钥使用的是支付宝的公钥,而不是APP的公钥。   </p>
-<p>支付宝支付使用SDK进行对接API，会比微信好很多，已经封装好了，不同请求对象对应不同响应对象。</p>
-</blockquote>
-<h2 id="1-支付宝—双对称加密"><a href="#1-支付宝—双对称加密" class="headerlink" title="1. 支付宝—双对称加密"></a>1. 支付宝—双对称加密</h2><p><strong>支付宝与微信的不同之处：</strong>   </p>
-<ol>
-<li>微信是通过xml以及签名进行数据保护</li>
-<li>支付宝是通过双对称加密进行数据保护</li>
-</ol>
-<p><strong>支付宝双对称加密：</strong>   </p>
-<ol>
-<li>用户先使用 <a href="https://docs.open.alipay.com/291/106097" target="_blank" rel="noopener">RSA密钥工具</a>  生成自身一对用户的对称秘钥（公钥和秘钥）</li>
-<li>将公钥上传到支付宝（在创建应用时便会让用户提供）</li>
-<li>支付宝会根据上传到公钥生成一对 支付宝的对称秘钥（公钥和秘钥）</li>
-</ol>
-<p><strong>支付宝双对称加密使用方式：</strong>   </p>
-<ol>
-<li>用户加签 的时候是用 用户的私钥</li>
-<li>用户解密 的时候是用 支付宝的公钥  </li>
-<li>支付宝加签 的时候是用 支付宝的私钥</li>
-<li>支付宝解密 的时候是用 用户的公钥</li>
-</ol>
-<p><strong>详情图解:</strong>  </p>
-<p><img src="img/支付宝双对称加密.png" alt="支付宝双对称加密"></p>
-<h2 id="2-支付宝常用API接口"><a href="#2-支付宝常用API接口" class="headerlink" title="2. 支付宝常用API接口"></a>2. 支付宝常用API接口</h2><p>支付API：   </p>
-<ul>
-<li>app支付接口2.0</li>
-<li>手机网站支付接口2.0</li>
-<li>统一收单交易退款查询</li>
-<li>统一收单交易结算接口</li>
-<li>统一收单交易关闭接口</li>
-<li>统一收单交易撤销接口</li>
-<li>统一收单交易退款接口</li>
-<li>统一收单线下交易预创建</li>
-<li>统一收单交易创建接口</li>
-<li>统一收单交易支付接口</li>
-<li>统一收单线下交易查询</li>
-</ul>
-<h2 id="3-Java-Instance"><a href="#3-Java-Instance" class="headerlink" title="3. Java Instance"></a>3. Java Instance</h2><p><strong>普通调用示例</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实例化客户端</span></span><br><span class="line">AlipayClient alipayClient = <span class="keyword">new</span> DefaultAlipayClient(<span class="string">"https://openapi.alipay.com/gateway.do"</span>, APP_ID, APP_PRIVATE_KEY, <span class="string">"json"</span>, CHARSET, ALIPAY_PUBLIC_KEY, <span class="string">"RSA2"</span>);</span><br><span class="line"><span class="comment">//实例化具体API对应的request类,类名称和接口名称对应,当前调用接口名称：alipay.open.public.template.message.industry.modify </span></span><br><span class="line">AlipayOpenPublicTemplateMessageIndustryModifyRequest request = <span class="keyword">new</span> AlipayOpenPublicTemplateMessageIndustryModifyRequest();</span><br><span class="line"><span class="comment">//SDK已经封装掉了公共参数，这里只需要传入业务参数</span></span><br><span class="line"><span class="comment">//此次只是参数展示，未进行字符串转义，实际情况下请转义</span></span><br><span class="line">request.setBizContent(<span class="string">"  &#123;"</span> +</span><br><span class="line"><span class="string">"    \"primary_industry_name\":\"IT科技/IT软件与服务\","</span> +</span><br><span class="line"><span class="string">"    \"primary_industry_code\":\"10001/20102\","</span> +</span><br><span class="line"><span class="string">"    \"secondary_industry_code\":\"10001/20102\","</span> +</span><br><span class="line"><span class="string">"    \"secondary_industry_name\":\"IT科技/IT软件与服务\""</span> +</span><br><span class="line"><span class="string">" &#125;"</span>);</span><br><span class="line">AlipayOpenPublicTemplateMessageIndustryModifyResponse response = alipayClient.execute(request); </span><br><span class="line"><span class="comment">//调用成功，则处理业务逻辑</span></span><br><span class="line"><span class="keyword">if</span>(response.isSuccess())&#123;</span><br><span class="line">	<span class="comment">//.....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>app支付接口2.0</strong> </p>
-<pre><code class="java">AlipayClient alipayClient = <span class="keyword">new</span> DefaultAlipayClient(<span class="string">"https://openapi.alipay.com/gateway.do"</span>,<span class="string">"app_id"</span>,<span class="string">"your private_key"</span>,<span class="string">"json"</span>,<span class="string">"GBK"</span>,<span class="string">"alipay_public_key"</span>,<span class="string">"RSA2"</span>);
-AlipayTradeAppPayRequest request = <span class="keyword">new</span> AlipayTradeAppPayRequest();
-request.setBizContent(<span class="string">"{"</span> +
-<span class="string">"\"timeout_express\":\"90m\","</span> +
-<span class="string">"\"total_amount\":\"9.00\","</span> +
-<span class="string">"\"seller_id\":\"2088102147948060\","</span> +
-<span class="string">"\"product_code\":\"QUICK_MSECURITY_PAY\","</span> +
-<span class="string">"\"body\":\"Iphone6 16G\","</span> +
-<span class="string">"\"subject\":\"大乐透\","</span> +
-<span class="string">"\"out_trade_no\":\"70501111111S001111119\","</span> +
-<span class="string">"\"time_expire\":\"2016-12-31 10:05\","</span> +
-<span class="string">"\"goods_type\":\"0\","</span> +
-<span class="string">"\"promo_params\":\"{\\\"storeIdType\\\":\\\"1\\\"}\","</span> +
-<span class="string">"\"passback_params\":\"merchantBizType%3d3C%26merchantBizNo%3d2016010101111\","</span> +
-<span class="string">"\"royalty_info\":{"</span> +
-<span class="string">"\"royalty_type\":\"ROYALTY\","</span> +
-<span class="string">"        \"royalty_detail_infos\":[{"</span> +
-<span class="string">"          \"serial_no\":1,"</span> +
-<span class="string">"\"trans_in_type\":\"userId\","</span> +
-<span class="string">"\"batch_no\":\"123\","</span> +
-<span class="string">"\"out_relation_id\":\"20131124001\","</span> +
-<span class="string">"\"trans_out_type\":\"userId\","</span> +
-<span class="string">"\"trans_out\":\"2088101126765726\","</span> +
-<span class="string">"\"trans_in\":\"2088101126708402\","</span> +
-<span class="string">"\"amount\":0.1,"</span> +
-<span class="string">"\"desc\":\"分账测试1\","</span> +
-<span class="string">"\"amount_percentage\":\"100\""</span> +
-<span class="string">"          }]"</span> +
-<span class="string">"    },"</span> +
-<span class="string">"\"extend_params\":{"</span> +
-<span class="string">"\"sys_service_provider_id\":\"2088511833207846\","</span> +
-<span class="string">"\"hb_fq_num\":\"3\","</span> +
-<span class="string">"\"hb_fq_seller_percent\":\"100\","</span> +
-<span class="string">"\"industry_reflux_info\":\"{\\\\\\\"scene_code\\\\\\\":\\\\\\\"metro_tradeorder\\\\\\\",\\\\\\\"channel\\\\\\\":\\\\\\\"xxxx\\\\\\\",\\\\\\\"scene_data\\\\\\\":{\\\\\\\"asset_name\\\\\\\":\\\\\\\"ALIPAY\\\\\\\"}}\","</span> +
-<span class="string">"\"card_type\":\"S0JP0000\""</span> +
-<span class="string">"    },"</span> +
-<span class="string">"\"sub_merchant\":{"</span> +
-<span class="string">"\"merchant_id\":\"19023454\","</span> +
-<span class="string">"\"merchant_type\":\"alipay: 支付宝分配的间连商户编号, merchant: 商户端的间连商户编号\""</span> +
-<span class="string">"    },"</span> +
-<span class="string">"\"enable_pay_channels\":\"pcredit,moneyFund,debitCardExpress\","</span> +
-<span class="string">"\"store_id\":\"NJ_001\","</span> +
-<span class="string">"\"specified_channel\":\"pcredit\","</span> +
-<span class="string">"\"disable_pay_channels\":\"pcredit,moneyFund,debitCardExpress\","</span> +
-<span class="string">"\"settle_info\":{"</span> +
-<span class="string">"        \"settle_detail_infos\":[{"</span> +
-<span class="string">"          \"trans_in_type\":\"cardSerialNo\","</span> +
-<span class="string">"\"trans_in\":\"A0001\","</span> +
-<span class="string">"\"summary_dimension\":\"A0001\","</span> +
-<span class="string">"\"amount\":0.1"</span> +
-<span class="string">"          }]"</span> +
-<span class="string">"    },"</span> +
-<span class="string">"\"invoice_info\":{"</span> +
-<span class="string">"\"key_info\":{"</span> +
-<span class="string">"\"is_support_invoice\":true,"</span> +
-<span class="string">"\"invoice_merchant_name\":\"ABC|003\","</span> +
-<span class="string">"\"tax_num\":\"1464888883494\""</span> +
-<span class="string">"      },"</span> +
-<span class="string">"\"details\":\"[{\\\"code\\\":\\\"100294400\\\",\\\"name\\\":\\\"服饰\\\",\\\"num\\\":\\\"2\\\",\\\"sumPrice\\\":\\\"200.00\\\",\\\"taxRate\\\":\\\"6%\\\"}]\""</span> +
-<span class="string">"    },"</span> +
-<span class="string">"\"ext_user_info\":{"</span> +
-<span class="string">"\"name\":\"李明\","</span> +
-<span class="string">"\"mobile\":\"16587658765\","</span> +
-<span class="string">"\"cert_type\":\"IDENTITY_CARD\","</span> +
-<span class="string">"\"cert_no\":\"362334768769238881\","</span> +
-<span class="string">"\"min_age\":\"18\","</span> +
-<span class="string">"\"fix_buyer\":\"F\","</span> +
-<span class="string">"\"need_check_info\":\"F\""</span> +
-<span class="string">"    },"</span> +
-<span class="string">"\"business_params\":\"{\\\"data\\\":\\\"123\\\"}\""</span> +
-<span class="string">"  }"</span>);
-AlipayTradeAppPayResponse response = alipayClient.pageExecute(request);
-<span class="keyword">if</span>(response.isSuccess()){
-System.out.println(<span class="string">"调用成功"</span>);
-} <span class="keyword">else</span> {
-System.out.println(<span class="string">"调用失败"</span>);
-}
-</code></pre>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/08/04/支付/支付宝支付/JavaEE 支付宝支付/" data-id="cjff44xfa003n44h2hxf6tovs" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/05/支付/微信支付/JavaEE 微信境外支付/" data-id="cjff7y7l30040cgh2zh8jubh0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2163,7 +1914,256 @@ System.out.println(<span class="string">"调用失败"</span>);
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/08/04/支付/微信支付/JavaEE 微信支付/" data-id="cjff44xf7003i44h2ps17x83w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/08/04/支付/微信支付/JavaEE 微信支付/" data-id="cjff7y7l1003xcgh2snnxuz77" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-支付/支付宝支付/JavaEE 支付宝支付" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/08/04/支付/支付宝支付/JavaEE 支付宝支付/">JavaEE 支付宝支付</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/08/04/支付/支付宝支付/JavaEE 支付宝支付/">
+            <time datetime="2017-08-04T11:33:12.000Z" itemprop="datePublished">2017-08-04</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/支付/">支付</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/支付宝支付/">支付宝支付</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="JavaEE-支付宝支付"><a href="#JavaEE-支付宝支付" class="headerlink" title="JavaEE 支付宝支付"></a>JavaEE 支付宝支付</h1><blockquote>
+<p><a href="https://docs.open.alipay.com/api_1/alipay.trade.app.pay/" target="_blank" rel="noopener">开发文档大全</a>   </p>
+<p>支付宝已经更新添封装好的签名方法,可以在自己的项目中直接调用进行签名,减少了自己手动签名产生的问题,主要是在进行方法调用时注意传参的要求,尤其是公钥使用的是支付宝的公钥,而不是APP的公钥。   </p>
+<p>支付宝支付使用SDK进行对接API，会比微信好很多，已经封装好了，不同请求对象对应不同响应对象。</p>
+</blockquote>
+<h2 id="1-支付宝—双对称加密"><a href="#1-支付宝—双对称加密" class="headerlink" title="1. 支付宝—双对称加密"></a>1. 支付宝—双对称加密</h2><p><strong>支付宝与微信的不同之处：</strong>   </p>
+<ol>
+<li>微信是通过xml以及签名进行数据保护</li>
+<li>支付宝是通过双对称加密进行数据保护</li>
+</ol>
+<p><strong>支付宝双对称加密：</strong>   </p>
+<ol>
+<li>用户先使用 <a href="https://docs.open.alipay.com/291/106097" target="_blank" rel="noopener">RSA密钥工具</a>  生成自身一对用户的对称秘钥（公钥和秘钥）</li>
+<li>将公钥上传到支付宝（在创建应用时便会让用户提供）</li>
+<li>支付宝会根据上传到公钥生成一对 支付宝的对称秘钥（公钥和秘钥）</li>
+</ol>
+<p><strong>支付宝双对称加密使用方式：</strong>   </p>
+<ol>
+<li>用户加签 的时候是用 用户的私钥</li>
+<li>用户解密 的时候是用 支付宝的公钥  </li>
+<li>支付宝加签 的时候是用 支付宝的私钥</li>
+<li>支付宝解密 的时候是用 用户的公钥</li>
+</ol>
+<p><strong>详情图解:</strong>  </p>
+<p><img src="img/支付宝双对称加密.png" alt="支付宝双对称加密"></p>
+<h2 id="2-支付宝常用API接口"><a href="#2-支付宝常用API接口" class="headerlink" title="2. 支付宝常用API接口"></a>2. 支付宝常用API接口</h2><p>支付API：   </p>
+<ul>
+<li>app支付接口2.0</li>
+<li>手机网站支付接口2.0</li>
+<li>统一收单交易退款查询</li>
+<li>统一收单交易结算接口</li>
+<li>统一收单交易关闭接口</li>
+<li>统一收单交易撤销接口</li>
+<li>统一收单交易退款接口</li>
+<li>统一收单线下交易预创建</li>
+<li>统一收单交易创建接口</li>
+<li>统一收单交易支付接口</li>
+<li>统一收单线下交易查询</li>
+</ul>
+<h2 id="3-Java-Instance"><a href="#3-Java-Instance" class="headerlink" title="3. Java Instance"></a>3. Java Instance</h2><p><strong>普通调用示例</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实例化客户端</span></span><br><span class="line">AlipayClient alipayClient = <span class="keyword">new</span> DefaultAlipayClient(<span class="string">"https://openapi.alipay.com/gateway.do"</span>, APP_ID, APP_PRIVATE_KEY, <span class="string">"json"</span>, CHARSET, ALIPAY_PUBLIC_KEY, <span class="string">"RSA2"</span>);</span><br><span class="line"><span class="comment">//实例化具体API对应的request类,类名称和接口名称对应,当前调用接口名称：alipay.open.public.template.message.industry.modify </span></span><br><span class="line">AlipayOpenPublicTemplateMessageIndustryModifyRequest request = <span class="keyword">new</span> AlipayOpenPublicTemplateMessageIndustryModifyRequest();</span><br><span class="line"><span class="comment">//SDK已经封装掉了公共参数，这里只需要传入业务参数</span></span><br><span class="line"><span class="comment">//此次只是参数展示，未进行字符串转义，实际情况下请转义</span></span><br><span class="line">request.setBizContent(<span class="string">"  &#123;"</span> +</span><br><span class="line"><span class="string">"    \"primary_industry_name\":\"IT科技/IT软件与服务\","</span> +</span><br><span class="line"><span class="string">"    \"primary_industry_code\":\"10001/20102\","</span> +</span><br><span class="line"><span class="string">"    \"secondary_industry_code\":\"10001/20102\","</span> +</span><br><span class="line"><span class="string">"    \"secondary_industry_name\":\"IT科技/IT软件与服务\""</span> +</span><br><span class="line"><span class="string">" &#125;"</span>);</span><br><span class="line">AlipayOpenPublicTemplateMessageIndustryModifyResponse response = alipayClient.execute(request); </span><br><span class="line"><span class="comment">//调用成功，则处理业务逻辑</span></span><br><span class="line"><span class="keyword">if</span>(response.isSuccess())&#123;</span><br><span class="line">	<span class="comment">//.....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>app支付接口2.0</strong> </p>
+<pre><code class="java">AlipayClient alipayClient = <span class="keyword">new</span> DefaultAlipayClient(<span class="string">"https://openapi.alipay.com/gateway.do"</span>,<span class="string">"app_id"</span>,<span class="string">"your private_key"</span>,<span class="string">"json"</span>,<span class="string">"GBK"</span>,<span class="string">"alipay_public_key"</span>,<span class="string">"RSA2"</span>);
+AlipayTradeAppPayRequest request = <span class="keyword">new</span> AlipayTradeAppPayRequest();
+request.setBizContent(<span class="string">"{"</span> +
+<span class="string">"\"timeout_express\":\"90m\","</span> +
+<span class="string">"\"total_amount\":\"9.00\","</span> +
+<span class="string">"\"seller_id\":\"2088102147948060\","</span> +
+<span class="string">"\"product_code\":\"QUICK_MSECURITY_PAY\","</span> +
+<span class="string">"\"body\":\"Iphone6 16G\","</span> +
+<span class="string">"\"subject\":\"大乐透\","</span> +
+<span class="string">"\"out_trade_no\":\"70501111111S001111119\","</span> +
+<span class="string">"\"time_expire\":\"2016-12-31 10:05\","</span> +
+<span class="string">"\"goods_type\":\"0\","</span> +
+<span class="string">"\"promo_params\":\"{\\\"storeIdType\\\":\\\"1\\\"}\","</span> +
+<span class="string">"\"passback_params\":\"merchantBizType%3d3C%26merchantBizNo%3d2016010101111\","</span> +
+<span class="string">"\"royalty_info\":{"</span> +
+<span class="string">"\"royalty_type\":\"ROYALTY\","</span> +
+<span class="string">"        \"royalty_detail_infos\":[{"</span> +
+<span class="string">"          \"serial_no\":1,"</span> +
+<span class="string">"\"trans_in_type\":\"userId\","</span> +
+<span class="string">"\"batch_no\":\"123\","</span> +
+<span class="string">"\"out_relation_id\":\"20131124001\","</span> +
+<span class="string">"\"trans_out_type\":\"userId\","</span> +
+<span class="string">"\"trans_out\":\"2088101126765726\","</span> +
+<span class="string">"\"trans_in\":\"2088101126708402\","</span> +
+<span class="string">"\"amount\":0.1,"</span> +
+<span class="string">"\"desc\":\"分账测试1\","</span> +
+<span class="string">"\"amount_percentage\":\"100\""</span> +
+<span class="string">"          }]"</span> +
+<span class="string">"    },"</span> +
+<span class="string">"\"extend_params\":{"</span> +
+<span class="string">"\"sys_service_provider_id\":\"2088511833207846\","</span> +
+<span class="string">"\"hb_fq_num\":\"3\","</span> +
+<span class="string">"\"hb_fq_seller_percent\":\"100\","</span> +
+<span class="string">"\"industry_reflux_info\":\"{\\\\\\\"scene_code\\\\\\\":\\\\\\\"metro_tradeorder\\\\\\\",\\\\\\\"channel\\\\\\\":\\\\\\\"xxxx\\\\\\\",\\\\\\\"scene_data\\\\\\\":{\\\\\\\"asset_name\\\\\\\":\\\\\\\"ALIPAY\\\\\\\"}}\","</span> +
+<span class="string">"\"card_type\":\"S0JP0000\""</span> +
+<span class="string">"    },"</span> +
+<span class="string">"\"sub_merchant\":{"</span> +
+<span class="string">"\"merchant_id\":\"19023454\","</span> +
+<span class="string">"\"merchant_type\":\"alipay: 支付宝分配的间连商户编号, merchant: 商户端的间连商户编号\""</span> +
+<span class="string">"    },"</span> +
+<span class="string">"\"enable_pay_channels\":\"pcredit,moneyFund,debitCardExpress\","</span> +
+<span class="string">"\"store_id\":\"NJ_001\","</span> +
+<span class="string">"\"specified_channel\":\"pcredit\","</span> +
+<span class="string">"\"disable_pay_channels\":\"pcredit,moneyFund,debitCardExpress\","</span> +
+<span class="string">"\"settle_info\":{"</span> +
+<span class="string">"        \"settle_detail_infos\":[{"</span> +
+<span class="string">"          \"trans_in_type\":\"cardSerialNo\","</span> +
+<span class="string">"\"trans_in\":\"A0001\","</span> +
+<span class="string">"\"summary_dimension\":\"A0001\","</span> +
+<span class="string">"\"amount\":0.1"</span> +
+<span class="string">"          }]"</span> +
+<span class="string">"    },"</span> +
+<span class="string">"\"invoice_info\":{"</span> +
+<span class="string">"\"key_info\":{"</span> +
+<span class="string">"\"is_support_invoice\":true,"</span> +
+<span class="string">"\"invoice_merchant_name\":\"ABC|003\","</span> +
+<span class="string">"\"tax_num\":\"1464888883494\""</span> +
+<span class="string">"      },"</span> +
+<span class="string">"\"details\":\"[{\\\"code\\\":\\\"100294400\\\",\\\"name\\\":\\\"服饰\\\",\\\"num\\\":\\\"2\\\",\\\"sumPrice\\\":\\\"200.00\\\",\\\"taxRate\\\":\\\"6%\\\"}]\""</span> +
+<span class="string">"    },"</span> +
+<span class="string">"\"ext_user_info\":{"</span> +
+<span class="string">"\"name\":\"李明\","</span> +
+<span class="string">"\"mobile\":\"16587658765\","</span> +
+<span class="string">"\"cert_type\":\"IDENTITY_CARD\","</span> +
+<span class="string">"\"cert_no\":\"362334768769238881\","</span> +
+<span class="string">"\"min_age\":\"18\","</span> +
+<span class="string">"\"fix_buyer\":\"F\","</span> +
+<span class="string">"\"need_check_info\":\"F\""</span> +
+<span class="string">"    },"</span> +
+<span class="string">"\"business_params\":\"{\\\"data\\\":\\\"123\\\"}\""</span> +
+<span class="string">"  }"</span>);
+AlipayTradeAppPayResponse response = alipayClient.pageExecute(request);
+<span class="keyword">if</span>(response.isSuccess()){
+System.out.println(<span class="string">"调用成功"</span>);
+} <span class="keyword">else</span> {
+System.out.println(<span class="string">"调用失败"</span>);
+}
+</code></pre>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="https://catalpaflat.github.io/2017/08/04/支付/支付宝支付/JavaEE 支付宝支付/" data-id="cjff7y7l0003wcgh2osqu3979" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2318,7 +2318,7 @@ System.out.println(<span class="string">"调用失败"</span>);
 
 </div>
 
-    <a data-url="https://catalpaflat.github.io/2017/07/23/消息队列/消息中间件/" data-id="cjff44xdh001m44h2cep8rslg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://catalpaflat.github.io/2017/07/23/消息队列/消息中间件/" data-id="cjff7y7i0000qcgh2wer2lj2s" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
