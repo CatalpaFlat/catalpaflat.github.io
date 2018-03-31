@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang=zh>
 <head>
-    <meta charset="utf-8">
-    
-    <title>CatalpaFlat&#39;s Blogs</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="IT technology has no end.">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Hexo</title>
+  <meta name="description" content="IT technology has no end.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="CatalpaFlat&#39;s Blogs">
 <meta property="og:url" content="https://catalpaflat.github.io/page/3/index.html">
@@ -15,87 +27,769 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CatalpaFlat&#39;s Blogs">
 <meta name="twitter:description" content="IT technology has no end.">
-    
-
-    
-        <link rel="alternate" href="/" title="CatalpaFlat&#39;s Blogs" type="application/atom+xml" />
-    
-
-    
-
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/open-sans/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
-
-    <link rel="stylesheet" href="/css/style.css">
-
-    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://catalpaflat.github.io/page/3/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="CatalpaFlat&#39;s Blogs" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <!-- font-awesome CSS -->
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="/css/style.css">
+  
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
-    
-    
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-    
-    
-    
-    
-
 
 </head>
 
-<body>
-    <div id="container">
-        <header id="header">
-    <div id="header-main" class="header-inner">
-        <div class="outer">
-            <a href="/" id="logo">
-                <i class="logo"></i>
-                <span class="site-title">CatalpaFlat&#39;s Blogs</span>
-            </a>
-            <nav id="main-nav">
-                
-                    <a class="main-nav-link" href="/.">Home</a>
-                
-                    <a class="main-nav-link" href="/archives">Archives</a>
-                
-                    <a class="main-nav-link" href="/categories">Categories</a>
-                
-                    <a class="main-nav-link" href="/tags">Tags</a>
-                
-                    <a class="main-nav-link" href="/about">About</a>
-                
-            </nav>
-            
-                
-                <nav id="sub-nav">
-                    <div class="profile" id="profile-nav">
-                        <a id="profile-anchor" href="javascript:;">
-                            <img class="avatar" src="/css/images/avatar.jpeg" />
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-                    </div>
-                </nav>
-            
-            <div id="search-form-wrap">
 
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-        <button type="submit" class="search-form-submit"></button>
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/cofess" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpeg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">CatalpaFlat</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">A good DEMO is a good brick wall.</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
     </form>
     <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav">
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/CatalpaFlat" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
         </div>
     </div>
 </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jenkins/">Jenkins</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Quartz/">Quartz</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/支付/">支付</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支付/">支付</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支付宝支付/">支付宝支付</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Java/" style="font-size: 13.75px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 13.5px;">JavaEE</a> <a href="/tags/Jenkins/" style="font-size: 13.25px;">Jenkins</a> <a href="/tags/Nginx/" style="font-size: 14px;">Nginx</a> <a href="/tags/Quartz/" style="font-size: 13.25px;">Quartz</a> <a href="/tags/docker/" style="font-size: 13.25px;">docker</a> <a href="/tags/支付/" style="font-size: 13.25px;">支付</a> <a href="/tags/支付宝支付/" style="font-size: 13px;">支付宝支付</a> <a href="/tags/服务器/" style="font-size: 13.25px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 13.5px;">消息队列</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/docker/">docker</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/02/05/docker/命令/run/" class="title">Docker run 命令</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-02-05T14:33:12.000Z" itemprop="datePublished">2018-02-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Java/">Java</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/01/23/java/Java开发规范/" class="title">Java 编码规范</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-01-23T05:20:56.000Z" itemprop="datePublished">2018-01-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/docker/">docker</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/01/05/docker/安装/docker安装/" class="title">CentOS Docker 安装</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-01-05T08:33:56.000Z" itemprop="datePublished">2018-01-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Java/">Java</a>
+              </p>
+              <p class="item-title">
+                <a href="/2017/12/16/java/Java 实现中文-拼音转换/" class="title">Java 实现中文-拼音转换</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-12-16T02:16:56.000Z" itemprop="datePublished">2017-12-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Quartz/">Quartz</a>
+              </p>
+              <p class="item-title">
+                <a href="/2017/11/17/Quartz/自定义Quartz超实用工具类/" class="title">自定义Quartz超实用工具类</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-11-17T03:09:37.000Z" itemprop="datePublished">2017-11-17</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  <main class="main" role="main">
+  
+  <div class="content article-list">
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/23/消息队列/消息队列/">分布式之消息队列</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/07/23/消息队列/消息队列/" class="article-date">
+	  <time datetime="2017-07-23T01:20:56.000Z" itemprop="datePublished">Jul 23</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/消息队列/">消息队列</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/消息队列/">消息队列</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/07/23/消息队列/消息队列/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/27/Jenkins/Jenkins 安装/">Linux Jenkins 安装Jenkins 部署理念</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/05/27/Jenkins/Jenkins 安装/" class="article-date">
+	  <time datetime="2017-05-27T14:09:56.000Z" itemprop="datePublished">May 27</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Jenkins/">Jenkins</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Jenkins/">Jenkins</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/05/27/Jenkins/Jenkins 安装/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/26/Jenkins/JenKin部署/">Jenkins 部署理念</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/05/26/Jenkins/JenKin部署/" class="article-date">
+	  <time datetime="2017-05-26T07:53:56.000Z" itemprop="datePublished">May 26</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Jenkins/">Jenkins</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Jenkins/">Jenkins</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/05/26/Jenkins/JenKin部署/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/">JavaEE 使用Gradle发布jar包到远程中央仓库</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/" class="article-date">
+	  <time datetime="2017-03-23T07:53:56.000Z" itemprop="datePublished">Mar 23</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/JavaEE/">JavaEE</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/JavaEE/">JavaEE</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/">JavaEE 使用Maven发布jar包到远程中央仓库</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/" class="article-date">
+	  <time datetime="2017-03-23T07:00:56.000Z" itemprop="datePublished">Mar 23</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/JavaEE/">JavaEE</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/JavaEE/">JavaEE</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/">JavaEE 发布jar包到远程maven中央仓库</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/" class="article-date">
+	  <time datetime="2017-03-22T03:33:56.000Z" itemprop="datePublished">Mar 22</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/JavaEE/">JavaEE</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/JavaEE/">JavaEE</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/23/服务器/虚拟机CentOS6.7 快速安装redis/">虚拟机CentOS6.7 快速安装redis</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2016/11/23/服务器/虚拟机CentOS6.7 快速安装redis/" class="article-date">
+	  <time datetime="2016-11-23T14:13:21.000Z" itemprop="datePublished">Nov 23</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/服务器/">服务器</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/服务器/">服务器</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/11/23/服务器/虚拟机CentOS6.7 快速安装redis/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/23/服务器/虚拟机快速搭建CentOS，并解决网络问题/">虚拟机快速搭建CentOS，并解决网络问题</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2016/11/23/服务器/虚拟机快速搭建CentOS，并解决网络问题/" class="article-date">
+	  <time datetime="2016-11-23T06:20:56.000Z" itemprop="datePublished">Nov 23</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/服务器/">服务器</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/服务器/">服务器</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/11/23/服务器/虚拟机快速搭建CentOS，并解决网络问题/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/23/java/Java 实体/">Java中的各种O</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2016/07/23/java/Java 实体/" class="article-date">
+	  <time datetime="2016-07-23T05:20:56.000Z" itemprop="datePublished">Jul 23</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Java/">Java</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/07/23/java/Java 实体/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/23/java/Java 内存详解/">Java JVM 内存详解</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2016/03/23/java/Java 内存详解/" class="article-date">
+	  <time datetime="2016-03-23T07:53:56.000Z" itemprop="datePublished">Mar 23</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Java/">Java</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2016/03/23/java/Java 内存详解/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+  </div>
+
+  
+    
+    <nav class="bar bar-footer clearfix" data-stick-bottom>
+        <div class="bar-inner">
+        <ul class="pager pull-left">
+            
+            <li class="prev">
+                <a href="/page/2/">
+                    <i class="icon icon-angle-left"></i>
+                    Prev
+                </a>
+            </li>
+            
+            
+            <li class="next disabled">
+                <a href="javascript:;">
+                    Next
+                    <i class="icon icon-angle-right"></i>                    
+                </a>
+            </li>
+            
+        </ul>
+        <div class="total-article bar-right">Page 3 of 3</div>
+        </div>
+    </nav>
+    
+ 
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/CatalpaFlat" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+  
+    
+    
+    
+        <script>
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
@@ -112,1941 +806,17 @@
 })(window);
 </script>
 <script src="/js/insight.js"></script>
-
-</div>
-        </div>
-    </div>
-    <div id="main-nav-mobile" class="header-sub header-inner">
-        <table class="menu outer">
-            <tr>
-                
-                    <td><a class="main-nav-link" href="/.">Home</a></td>
-                
-                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
-                
-                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
-                
-                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
-                
-                    <td><a class="main-nav-link" href="/about">About</a></td>
-                
-                <td>
-                    
-    <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-    </div>
-
-                </td>
-            </tr>
-        </table>
-    </div>
-</header>
-
-        <div class="outer">
-            
-                
-
-<aside id="profile">
-    <div class="inner profile-inner">
-        <div class="base-info profile-block">
-            <img id="avatar" src="/css/images/avatar.jpeg" />
-            <h2 id="name">CatalpaFlat</h2>
-            <h3 id="title">A good DEMO is a good brick wall.</h3>
-            <span id="location"><i class="fa fa-map-marker"></i>ShenZhen, China</span>
-            <a id="follow" target="_blank" href="https://github.com/CatalpaFlat">FOLLOW</a>
-        </div>
-        <div class="article-info profile-block">
-            <div class="article-info-block">
-                30
-                <span>posts</span>
-            </div>
-            <div class="article-info-block">
-                10
-                <span>tags</span>
-            </div>
-        </div>
-        
-        <div class="profile-block social-links">
-            <table>
-                <tr>
-                    
-                    
-                    <td>
-                        <a href="https://github.com/CatalpaFlat" target="_blank" title="github" class=tooltip>
-                            <i class="fa fa-github"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/" target="_blank" title="twitter" class=tooltip>
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/" target="_blank" title="facebook" class=tooltip>
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/" target="_blank" title="dribbble" class=tooltip>
-                            <i class="fa fa-dribbble"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/" target="_blank" title="rss" class=tooltip>
-                            <i class="fa fa-rss"></i>
-                        </a>
-                    </td>
-                    
-                </tr>
-            </table>
-        </div>
-        
-    </div>
-</aside>
-
-            
-            <section id="main">
-    <article id="post-消息队列/消息队列" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/07/23/消息队列/消息队列/">分布式之消息队列</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/07/23/消息队列/消息队列/">
-            <time datetime="2017-07-23T01:20:56.000Z" itemprop="datePublished">2017-07-23</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/消息队列/">消息队列</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/消息队列/">消息队列</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="分布式之消息队列"><a href="#分布式之消息队列" class="headerlink" title="分布式之消息队列"></a>分布式之消息队列</h1><blockquote>
-<p>目录：</p>
-<ul>
-<li><a href="#1">1.消息队列概述</a></li>
-<li><a href="#2">2.消息队列应用场景</a> <ul>
-<li><a href="#2.1">2.1应用解耦</a> <ul>
-<li><a href="#2.1.1">2.1.1传统模式</a> </li>
-<li><a href="#2.1.2">2.1.2使用消息队列</a></li>
-</ul>
-</li>
-<li><a href="#2.2">2.2异步处理消息</a> <ul>
-<li><a href="#2.2.1">2.2.1传统模式</a> </li>
-<li><a href="#2.2.2">2.2.2使用消息队列</a>  </li>
-</ul>
-</li>
-<li><a href="#2.3">2.3流量削锋</a> </li>
-<li><a href="#2.4">2.4日志处理</a> </li>
-<li><a href="#2.5">2.4消息通讯</a> </li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h2 id="1-消息队列概述"><a href="#1-消息队列概述" class="headerlink" title="1.消息队列概述"></a><h2 id="1">1.消息队列概述</h2></h2><p>&emsp;&emsp;“消息队列”是在消息的传输过程中保存消息的容器。<br>&emsp;&emsp;消息队列管理器在将消息从它的源中继到它的目标时充当中间人。队列的主要目的是提供路由并保证消息的传递；如果发送消息时接收者不可用，消息队列会保留消息，直到可以成功地传递它.<br>&emsp;&emsp;消息队列中间件是分布式系统中重要的组件，主要解决应用耦合、异步消息、流量削锋等问题。实现高性能、高可用、可伸缩和最终一致性架构。是大型分布式系统不可缺少的中间件。<br>目前在生产环境，使用较多的消息队列有ActiveMQ，RabbitMQ，ZeroMQ，Kafka，MetaMQ，RocketMQ等。</p>
-<h2 id="2-消息队列应用场景"><a href="#2-消息队列应用场景" class="headerlink" title=" 2.消息队列应用场景"></a><h2 id="2"> 2.消息队列应用场景</h2></h2><h3 id="2-1应用解耦"><a href="#2-1应用解耦" class="headerlink" title="2.1应用解耦"></a><h3 id="2.1">2.1应用解耦</h3></h3><p>&emsp;&emsp;场景例子：用户下单后，订单系统需要通知库存系统。传统的做法是，订单系统调用库存系统的接口。  </p>
-<h4 id="2-1-1传统模式："><a href="#2-1-1传统模式：" class="headerlink" title="2.1.1传统模式："></a><h4 id="2.1.1">2.1.1传统模式：</h4></h4><p>&emsp;&emsp;<img src="https://i.imgur.com/IHZtlbK.png" alt=""><br>&emsp;&emsp;传统模式的缺点：<br>&emsp;&emsp;1）假如库存系统无法访问，则订单减库存将失败，从而导致订单失败；<br>&emsp;&emsp;2）订单系统和库存系统耦合；  </p>
-<h4 id="2-1-2使用消息队列："><a href="#2-1-2使用消息队列：" class="headerlink" title="2.1.2使用消息队列："></a><h4 id="2.1.2">2.1.2使用消息队列：</h4></h4><p>&emsp;&emsp;<img src="https://i.imgur.com/TrXxkjZ.png" alt=""><br>&emsp;&emsp;1）订单系统：用户下单后，订单系统完成持久化处理，将消息写入消息队列，返回用户订单下单成功。<br>&emsp;&emsp;2）库存系统：订阅下单的消息，采用拉/推的方式，获取下单信息，库存系统根据下单信息，进行库存操作。<br>&emsp;&emsp;3）假如：在下单时库存系统不能正常使用。也不影响正常下单，因为下单后，订单系统写入消息队列就不再关心其他的后续操作了。实现订单系统与库存系统的应用解耦。  </p>
-<hr>
-<h3 id="2-2异步处理消息"><a href="#2-2异步处理消息" class="headerlink" title="2.2异步处理消息"></a><h3 id="2.2">2.2异步处理消息</h3></h3><p>####</p><h4 id="2.2.1"> 2.2.1传统模式</h4> ####<br>&emsp;&emsp;场景例子：用户注册后，需要发注册邮件和短信，传统的做法有两种1.串行的方式；2.并行方式。<br>&emsp;&emsp;1)传统串行方式：将注册信息写入数据库后，接着发送注册邮件，再发送短信，等三步骤完成之后再响应客户端<br>&emsp;&emsp;<img src="https://i.imgur.com/m4WdM4y.png" alt=""><br>&emsp;&emsp;2）传统并行方式：将注册信息写入数据库后，同时发送注册邮件和短信，等三步骤完成之后再响应客户端。与串行的差别是，并行的方式可以提高处理的时间、缩短响应时间。<br>&emsp;&emsp;<img src="https://i.imgur.com/n1i6ioZ.png" alt=""><br>&emsp;&emsp;假设三个业务节点每个使用50毫秒钟，不考虑网络等其他开销，则串行方式的时间是150毫秒，并行的时间可能是100毫秒。<br>&emsp;&emsp;因为CPU在单位时间内处理的请求数是一定的，假设CPU1秒内吞吐量是100次。则串行方式1秒内CPU可处理的请求量是7次（1000/150）。并行方式处理的请求量是10次（1000/100）。<br>&emsp;&emsp;传统的方式系统的性能（并发量，吞吐量，响应时间）会有瓶颈。  <p></p>
-<h4 id="2-2-2使用消息队列"><a href="#2-2-2使用消息队列" class="headerlink" title=" 2.2.2使用消息队列"></a><h4 id="2.2.2"> 2.2.2使用消息队列</h4></h4><p>&emsp;&emsp;<img src="https://i.imgur.com/leaO2zv.png" alt=""><br>&emsp;&emsp;1）引入消息队列，除去不必要的业务逻辑，异步处理<br>&emsp;&emsp;2）客户端响应时间相当于注册信息写入库中的时间（由于写入队列时间几乎可以忽略不计）<br>&emsp;&emsp;3）发送注册邮件和短信写入消息队列后，直接返回<br>&emsp;&emsp;4）因此架构改变后，系统的吞吐量提高到每秒20 QPS。比串行提高了3倍，比并行提高了两倍。</p>
-<hr>
-<h3 id="2-3流量削锋"><a href="#2-3流量削锋" class="headerlink" title="2.3流量削锋"></a><h3 id="2.3">2.3流量削锋</h3></h3><p>&emsp;&emsp;流量削锋也是消息队列中的常用场景，一般在秒杀或团抢活动中使用广泛。<br>&emsp;&emsp;应用场景：秒杀活动，一般会因为流量过大，导致流量暴增，应用挂掉。为解决这个问题，一般需要在应用前端加入消息队列。<br>&emsp;&emsp;1）可以控制活动的人数；<br>&emsp;&emsp;2）可以缓解短时间内高流量压垮应用；<br>&emsp;&emsp;加入消息队列示意图：<br>&emsp;&emsp;<img src="https://i.imgur.com/zrBf2t8.png" alt=""><br>&emsp;&emsp;1）用户的请求，服务器接收后，首先写入消息队列。假如消息队列长度超过最大数量，则直接抛弃用户请求或跳转到错误页面；<br>&emsp;&emsp;2）秒杀业务根据消息队列中的请求信息，再做后续处理。  </p>
-<h3 id="2-4日志处理"><a href="#2-4日志处理" class="headerlink" title="2.4日志处理"></a><h3 id="2.4">2.4日志处理</h3></h3><p>&emsp;&emsp;日志处理是指消息队列应用在日志处理中，比如Kafka的应用（是一种高吞吐量的分布式发布订阅消息系统）解决大量日志传输的问题。架构简化如下：<br>&emsp;&emsp;<img src="https://i.imgur.com/TQlAFDy.png" alt=""><br>&emsp;&emsp;架构解读：  </p>
-<ul>
-<li>日志采集客户端，负责日志数据采集，定时写受写入Kafka队列；  </li>
-</ul>
-<ul>
-<li>Kafka消息队列，负责日志数据的接收，存储和转发；  </li>
-</ul>
-<ul>
-<li>日志处理应用：订阅并消费kafka队列中的日志数据；</li>
-</ul>
-<hr>
-<h3 id="2-5消息通讯"><a href="#2-5消息通讯" class="headerlink" title="2.5消息通讯"></a><h3 id="2.5">2.5消息通讯</h3></h3><p>&emsp;&emsp;消息通讯是指，消息队列一般都内置了高效的通信机制，因此也可以用在纯的消息通讯。比如实现点对点消息队列，或者聊天室等。<br>&emsp;&emsp;1）点对点通讯：<br>&emsp;&emsp;<img src="https://i.imgur.com/SisxtjZ.png" alt=""><br>&emsp;&emsp;客户端A和客户端B使用同一队列，进行消息通讯。<br>&emsp;&emsp;2）聊天室通讯：<br>&emsp;&emsp;<img src="https://i.imgur.com/L4txxGQ.png" alt=""><br>&emsp;&emsp;客户端A，客户端B，客户端N订阅同一主题，进行消息发布和接收。实现类似聊天室效果。<br>&emsp;&emsp;以上实际是消息队列的两种消息模式，点对点或发布订阅模式。</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/07/23/消息队列/消息队列/" data-id="cjff7y7hy000mcgh2u6agqeh4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-Jenkins/Jenkins 安装" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/05/27/Jenkins/Jenkins 安装/">Linux Jenkins 安装Jenkins 部署理念</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/27/Jenkins/Jenkins 安装/">
-            <time datetime="2017-05-27T14:09:56.000Z" itemprop="datePublished">2017-05-27</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Jenkins/">Jenkins</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Jenkins/">Jenkins</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="Linux-Jenkins-安装"><a href="#Linux-Jenkins-安装" class="headerlink" title="Linux Jenkins 安装"></a>Linux Jenkins 安装</h2><blockquote>
-<p>安装步骤:  </p>
-<ol>
-<li>依赖</li>
-<li>拉取库的配置到本地对应文件  </li>
-<li>导入公钥  </li>
-<li>下载安装jenkins</li>
-<li>初始配置jenkins  </li>
-<li>启动jenkins   </li>
-<li>设置iptables</li>
-<li>配置jenkins</li>
-</ol>
-</blockquote>
-<p><a href="https://jenkins.io/" target="_blank" rel="noopener">Jenkins 官网</a></p>
-<h3 id="1-依赖"><a href="#1-依赖" class="headerlink" title="1. 依赖"></a>1. 依赖</h3><p>部署Jenkins，需有Java - JDK。<br>检测是否安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure></p>
-<p>若没安装可以参考这篇Linux Java-JDK 安装</p>
-<h3 id="2-拉取库的配置到本地对应文件"><a href="#2-拉取库的配置到本地对应文件" class="headerlink" title="2. 拉取库的配置到本地对应文件"></a>2. 拉取库的配置到本地对应文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo</span><br></pre></td></tr></table></figure>
-<h3 id="3-导入公钥"><a href="#3-导入公钥" class="headerlink" title="3. 导入公钥"></a>3. 导入公钥</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key</span><br></pre></td></tr></table></figure>
-<h3 id="4-下载安装jenkins"><a href="#4-下载安装jenkins" class="headerlink" title="4. 下载安装jenkins"></a>4. 下载安装jenkins</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install jenkins</span><br></pre></td></tr></table></figure>
-<h3 id="5-初始配置jenkins"><a href="#5-初始配置jenkins" class="headerlink" title="5. 初始配置jenkins"></a>5. 初始配置jenkins</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/jenkins  </span><br><span class="line">    JENKINS_USER=&quot;root&quot;  </span><br><span class="line">    JENKINS_PORT=&quot;6267&quot;  </span><br><span class="line">    //JENKINS_ARGS=&quot;--prefix=/jenkins&quot;  </span><br><span class="line">    JENKINS_JAVA_OPTIONS=&quot;-Djava.awt.headless=true -Dhudson.util.ProcessTree.disable=true&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="6-启动jenkins"><a href="#6-启动jenkins" class="headerlink" title="6. 启动jenkins"></a>6. 启动jenkins</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service jenkins start</span><br></pre></td></tr></table></figure>
-<h3 id="7-设置iptables"><a href="#7-设置iptables" class="headerlink" title="7. 设置iptables"></a>7. 设置iptables</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/iptables</span><br></pre></td></tr></table></figure>
-<p>开放端口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A INPUT -p tcp -m tcp --dport 6257 -j ACCEPT</span><br></pre></td></tr></table></figure></p>
-<p>重启iptables!()[img/j1.jpg]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure></p>
-<h3 id="8-配置jenkins"><a href="#8-配置jenkins" class="headerlink" title="8. 配置jenkins"></a>8. 配置jenkins</h3><h4 id="8-1访问jenkins"><a href="#8-1访问jenkins" class="headerlink" title="8.1访问jenkins"></a>8.1访问jenkins</h4><p>访问 <a href="http://localhost:6257" target="_blank" rel="noopener">http://localhost:6257</a><br>初期启动需要密码（密码在这个文件里：/var/lib/jenkins/secrets/initialAdminPassword）<br><img src="img/j1.jpg" alt=""></p>
-<h4 id="8-2-安装插件"><a href="#8-2-安装插件" class="headerlink" title="8.2 安装插件"></a>8.2 安装插件</h4><p>（查看安装日志：/var/log/jenkins/jenkins.log）<br><img src="img/j2.jpg" alt=""><br>如果安装插件过程有错误，可以不用管，之后还可以通过Dashboard管理插件：<br><img src="img/j4.jpg" alt=""></p>
-<h4 id="8-3-创建用户"><a href="#8-3-创建用户" class="headerlink" title="8.3 创建用户"></a>8.3 创建用户</h4><p><img src="img/j3.jpg" alt=""></p>
-<h4 id="8-4-安装成功"><a href="#8-4-安装成功" class="headerlink" title="8.4 安装成功"></a>8.4 安装成功</h4><p><img src="img/j5.jpg" alt="">  </p>
-<p><img src="img/j6.jpg" alt=""></p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/05/27/Jenkins/Jenkins 安装/" data-id="cjff7y7hj0006cgh2tg3h3jsy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-Jenkins/JenKin部署" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/05/26/Jenkins/JenKin部署/">Jenkins 部署理念</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/05/26/Jenkins/JenKin部署/">
-            <time datetime="2017-05-26T07:53:56.000Z" itemprop="datePublished">2017-05-26</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Jenkins/">Jenkins</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Jenkins/">Jenkins</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="Jenkins-部署理念"><a href="#Jenkins-部署理念" class="headerlink" title="Jenkins 部署理念"></a>Jenkins 部署理念</h1><blockquote>
-<p>Jenkins是一个开源软件项目，是基于Java开发的一种持续集成工具，用于监控持续重复的工作.</p>
-</blockquote>
-<h3 id="1-Jenkins简述"><a href="#1-Jenkins简述" class="headerlink" title="1.Jenkins简述"></a>1.Jenkins简述</h3><p>目前持续集成(CI)已成为当前许多软件开发团队在整个软件开发生命周期内侧重于保证代码质量的常见做法。它是一种实践，旨在缓和和稳固软件的构建过程。并且能够帮助您的开发团队应对如下挑战：</p>
-<ul>
-<li>软件构建自动化 ：配置完成后，CI系统会依照预先制定的时间表，或者针对某一特定事件，对目标软件进行构建。</li>
-<li>构建可持续的自动化检查 ：CI系统能持续地获取新增或修改后签入的源代码，也就是说，当软件开发团队需要周期性的检查新增或修改后的代码时，CI系统会不断确认这些新代码是否破坏了原有软件的成功构建。这减少了开发者们在检查彼此相互依存的代码中变化情况需要花费的时间和精力</li>
-<li>构建可持续的自动化测试 ：构建检查的扩展部分，构建后执行预先制定的一套测试规则，完成后触发通知(Email,RSS等等)给相关的当事人。</li>
-<li>生成后后续过程的自动化 :当自动化检查和测试成功完成，软件构建的周期中可能也需要一些额外的任务，诸如生成文档、打包软件、部署构件到一个运行环境或者软件仓库。这样，构件才能更迅速地提供给用户使用。</li>
-<li>部署一个CI系统需要的最低要求是，一个可获取的源代码的仓库，一个包含构建脚本的项目。<h3 id="2-Jenkins运行分析"><a href="#2-Jenkins运行分析" class="headerlink" title="2.Jenkins运行分析"></a>2.Jenkins运行分析</h3>简要分析：<br>首先要有统一的代码库，服务器不断从版本控制服务器上检查代码状态，看代码是否有更新。如果发现有代码更新，那么就从版本控制服务器下载最新的代码。等代码完全更新以后，调用自动化编译脚本，进行代码编译。然后运行所有的自动化测试，并且进行代码分析。如果其中任何一个步骤失败，就表示build失败，持续集成服务器会给予响应的反馈。每次代码提交之后，都会在持续集成服务器上触发一个定时构建，然后进行编译、部署。</li>
-</ul>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/05/26/Jenkins/JenKin部署/" data-id="cjff7y7hf0005cgh2noze9ri5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/">JavaEE 使用Gradle发布jar包到远程中央仓库</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/">
-            <time datetime="2017-03-23T07:53:56.000Z" itemprop="datePublished">2017-03-23</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/JavaEE/">JavaEE</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/JavaEE/">JavaEE</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="JavaEE-使用Gradle发布jar包到远程中央仓库"><a href="#JavaEE-使用Gradle发布jar包到远程中央仓库" class="headerlink" title="JavaEE 使用Gradle发布jar包到远程中央仓库"></a>JavaEE 使用Gradle发布jar包到远程中央仓库</h1><h2 id="0-前提准备"><a href="#0-前提准备" class="headerlink" title="0. 前提准备"></a>0. 前提准备</h2><p><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a> 上 New Repository 项目<br>（若没有则注册）. </p>
-<p><img src="img/WechatIMG4.jpeg" alt=""></p>
-<h2 id="1-创建Bintray账号"><a href="#1-创建Bintray账号" class="headerlink" title="1. 创建Bintray账号"></a>1. 创建Bintray账号</h2><p>前往 <a href="https://bintray.com" target="_blank" rel="noopener">Bintray</a> ，右上角点击 Sign In 跳转到登录页面，可以选择通过第三方账号登录或者自己注册一个，方便起见我直接用了Github账号。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4675459-77f14e1f0192a478.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="">.   </p>
-<h2 id="2-Bintray上创建maven仓库"><a href="#2-Bintray上创建maven仓库" class="headerlink" title="2. Bintray上创建maven仓库"></a>2. Bintray上创建maven仓库</h2><p>登录后点击左侧的 Add new Repository按钮 跳转到创建仓库的页面，Name一栏填写仓库的名字，这里我写的是maven，仓库类型选 Maven ，创建完成后仓库就可以使用了。   </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4675459-b213b5021b9e9e2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p>
-<h2 id="3-获取BINTRAY-KEY"><a href="#3-获取BINTRAY-KEY" class="headerlink" title="3. 获取BINTRAY_KEY"></a>3. 获取BINTRAY_KEY</h2><p>其中 BINTRAY_KEY 的值设为Api key，从下图所示位置获取:   </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4675459-53e8dc28d2686af6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p>
-<h3 id="4-注册JIRA账号"><a href="#4-注册JIRA账号" class="headerlink" title="4. 注册JIRA账号"></a>4. 注册JIRA账号</h3><p><a href="https://issues.sonatype.org/secure/Dashboard.jspa" target="_blank" rel="noopener">注册链接</a><br>注册之后请妥善保管好账号密码，后续登录相关Nexus链接需要用到。  </p>
-<h3 id="5-创建issue"><a href="#5-创建issue" class="headerlink" title="5. 创建issue"></a>5. 创建issue</h3><p>注册完之后创建ISSUE<br><img src="img/WechatIMG32.jpeg" alt="">.  </p>
-<h2 id="6-GPG签名"><a href="#6-GPG签名" class="headerlink" title="6. GPG签名"></a>6. GPG签名</h2><p>GPG(GnuPG)是一款非对称加密软件，上传的Jar包需要用GPG生成签名文件，否则是不能同步到MavenCentral的，使用GPG给文件签名需要有公钥，可以用Bintray提供的默认的公钥或者使用自己生成的公钥，以下两种方法二选一。</p>
-<h3 id="6-1-较简单方法"><a href="#6-1-较简单方法" class="headerlink" title="6.1 较简单方法"></a>6.1 较简单方法</h3><p>该方法比较便捷，不需要进行生成密钥等繁琐操作。首先进入你创建的仓库页面，点击 Edit ，进入编辑页面</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4675459-663cb5fb4f34e8cb.png?imageMogr2/auto-orient/" alt=""></p>
-<p>然后勾选如图所示的选项，当你上传Jar文件时系统就会自动帮你生成签名文件。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4675459-03cd07c8394d4eab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="">. </p>
-<h3 id="6-2-较复杂方法"><a href="#6-2-较复杂方法" class="headerlink" title="6.2 较复杂方法"></a>6.2 较复杂方法</h3><h4 id="1-下载GPG"><a href="#1-下载GPG" class="headerlink" title="1. 下载GPG"></a>1. 下载GPG</h4><p>1.下载安装。 </p>
-<p>(1) Mac操作系统：  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install gnupg</span><br></pre></td></tr></table></figure>
-<p>(2) Windows操作系统<br>下载地址：<a href="https://www.gpg4win.org/" target="_blank" rel="noopener">https://www.gpg4win.org/</a></p>
-<p>2.校验  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --version</span><br></pre></td></tr></table></figure>
-<p><img src="img/WechatIMG5.jpeg" alt=""></p>
-<h4 id="2-配置GPG生成对称签名"><a href="#2-配置GPG生成对称签名" class="headerlink" title="2. 配置GPG生成对称签名"></a>2. 配置GPG生成对称签名</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --gen-key</span><br></pre></td></tr></table></figure>
-<p>1.输入姓名和邮箱<br><img src="img/WechatIMG7.jpeg" alt=""><br>2.输入passphrase密码<br><img src="img/WechatIMG8.jpeg" alt=""><br>3.记住密钥，用于上传<br><img src="img/WechatIMG9.jpeg" alt="">   </p>
-<h4 id="3-上传GPG签名"><a href="#3-上传GPG签名" class="headerlink" title="3. 上传GPG签名"></a>3. 上传GPG签名</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">gpg --keyserver hkp://keys.gnupg.net --send-keys 上图圈出来的密钥</span><br><span class="line">```    </span><br><span class="line">![](img/WechatIMG11.jpeg)   </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>### 4. 回Bintray的界面</span><br><span class="line">(1).点击右上角导航栏的头像，点击 Edit Profile。</span><br><span class="line">   </span><br><span class="line">   ![](https://upload-images.jianshu.io/upload_images/4675459-284e0e5a1b672ff1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/232)</span><br><span class="line"> </span><br><span class="line">(2).跳转到以下页面，点击GPG Signing。</span><br><span class="line"></span><br><span class="line">  ![](https://upload-images.jianshu.io/upload_images/4675459-4f8038756be33ed9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/292)</span><br><span class="line">  </span><br><span class="line">(3).把刚才导出的公钥和私钥粘贴进去，包括虚线的两行文本，然后点击 Update。</span><br><span class="line"></span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/4675459-a60a639f88a40cfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/583)  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>### 5. 回到仓库页面，点击Edit</span><br><span class="line"></span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/4675459-627856113530cc2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/627)   </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>### 6.开启自动签名功能，配置就完成了</span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/4675459-cfe3b95c277d369a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700)   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span># 7.获取OSSRH_TOKEN信息</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>## 1.使用Sonatype账号[登录](https://oss.sonatype.org)，点击 Profile    </span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/4675459-dddadef2a64dbab8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/440)</span><br><span class="line"><span class="meta">#</span>## 2.点击 Access User Token 查看你的Token</span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/4675459-075ea8a731642ca6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700).  </span><br><span class="line"></span><br><span class="line">左边输入框是你的username，右边是你的密码，建议把账号有关的信息从环境变量中读取，不要提交到VCS中。   </span><br><span class="line">![](https://upload-images.jianshu.io/upload_images/4675459-c04e5d7025d05998.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span># 8. 配置项目bulid.gradle</span><br><span class="line"><span class="meta">#</span>## 1. gradle.properties.</span><br></pre></td></tr></table></figure>
-<p>DEVELOPER_ID=CatalpaFlat<br>DEVELOPER_NAME=CatalpaFlat<br><a href="mailto:DEVELOPER_EMAIL=catalpaflat@outlook.com" target="_blank" rel="noopener">DEVELOPER_EMAIL=catalpaflat@outlook.com</a></p>
-<p>PROJ_NAME=xxx<br>PROJ_GROUP=com.github.catalpaflat<br>PROJ_ARTIFACTID=xxx<br>PROJ_DESCRIPTION=xxx<br>PROJ_VERSION=1.0.0<br>PROJ_WEBSITEURL=<a href="https://github.com/CatalpaFlat/xxxx" target="_blank" rel="noopener">https://github.com/CatalpaFlat/xxxx</a><br>PROJ_ISSUETRACKERURL=<a href="https://github.com/CatalpaFlat/xxxx/issues" target="_blank" rel="noopener">https://github.com/CatalpaFlat/xxxx/issues</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 2. local.properties.</span><br></pre></td></tr></table></figure></p>
-<p>BINTRAY_USER=catalpaflat<br>BINTRAY_KEY=xxxxx</p>
-<p>OSSRH_USER=xxx<br>OSSRH_PASSWORD=xxxxxxx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 3. bulid.gradle.   </span><br><span class="line"></span><br><span class="line">```gradle</span><br><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        google()</span><br><span class="line">        jcenter()</span><br><span class="line">        //使用阿里的maven镜像</span><br><span class="line">        maven &#123; url &apos;http://maven.aliyun.com/nexus/content/groups/public&apos; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        //引入bintray插件</span><br><span class="line">        classpath &apos;com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">group = PROJ_GROUP</span><br><span class="line">version = PROJ_VERSION</span><br><span class="line"></span><br><span class="line">apply plugin: &apos;maven&apos;</span><br><span class="line">apply plugin: &apos;java-library&apos;</span><br><span class="line">apply plugin: &apos;maven-publish&apos;</span><br><span class="line">apply plugin: &apos;com.jfrog.bintray&apos;</span><br><span class="line"></span><br><span class="line">apply plugin: &apos;idea&apos;</span><br><span class="line">apply plugin: &apos;java&apos;</span><br><span class="line"></span><br><span class="line">sourceCompatibility = 1.8</span><br><span class="line">targetCompatibility = 1.8</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//生成源文件</span><br><span class="line">task sourcesJar(type: Jar, dependsOn: classes) &#123;</span><br><span class="line">    classifier = &apos;sources&apos;</span><br><span class="line">    from sourceSets.main.allSource</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//文档打包成jar</span><br><span class="line">task javadocJar(type: Jar, dependsOn: javadoc) &#123;</span><br><span class="line">    classifier = &apos;javadoc&apos;</span><br><span class="line">    from javadoc.destinationDir</span><br><span class="line">&#125;</span><br><span class="line">//上传到JCenter所需要的源码文件</span><br><span class="line">artifacts &#123;</span><br><span class="line">    archives javadocJar</span><br><span class="line">    archives sourcesJar</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">def pomConfig = &#123;</span><br><span class="line">    licenses &#123;</span><br><span class="line">        license &#123;</span><br><span class="line">            //开源协议</span><br><span class="line">            name &apos;The Apache Software License, Version 2.0&apos;</span><br><span class="line">            url &apos;http://www.apache.org/licenses/LICENSE-2.0.txt&apos;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    developers &#123;</span><br><span class="line">        developer &#123;</span><br><span class="line">            //开发者的个人信息</span><br><span class="line">            id &apos;CatalpaFlat&apos;</span><br><span class="line">            name &apos;CatalpaFlat&apos;</span><br><span class="line">            email &quot;catalpaflat@outlook.com&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    scm &#123;</span><br><span class="line">        connection &quot;https://github.com/CatalpaFlat/xxxx.git&quot;</span><br><span class="line">        developerConnection &quot;https://github.com/CatalpaFlat/xxxx.git&quot;</span><br><span class="line">        //项目网站</span><br><span class="line">        url &quot;https://github.com/CatalpaFlat/xxxx&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">publishing &#123;</span><br><span class="line">    publications &#123;</span><br><span class="line">        MyPublication(MavenPublication) &#123;</span><br><span class="line">            from components.java</span><br><span class="line">            artifact sourcesJar</span><br><span class="line">            artifact javadocJar</span><br><span class="line">            groupId &apos;com.github.catalpaflat&apos;</span><br><span class="line">            artifactId &apos;SMS-modularization&apos;</span><br><span class="line">            version &apos;1.0.1&apos;</span><br><span class="line">            pom.withXml &#123;</span><br><span class="line">                def root = asNode()</span><br><span class="line">                root.appendNode(&apos;description&apos;, &apos;XXXX&apos;)</span><br><span class="line">                root.appendNode(&apos;name&apos;, &apos;XXXX&apos;)</span><br><span class="line">                root.appendNode(&apos;url&apos;, &apos;https://github.com/CatalpaFlat/xxxx&apos;)</span><br><span class="line">                root.children().last() + pomConfig</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">task writeNewPom &lt;&lt; &#123;</span><br><span class="line">    pom &#123;</span><br><span class="line">        project &#123;</span><br><span class="line">            inceptionYear &apos;2018&apos;</span><br><span class="line">            licenses &#123;</span><br><span class="line">                license &#123;</span><br><span class="line">                    name &apos;The Apache Software License, Version 2.0&apos;</span><br><span class="line">                    url &apos;http://www.apache.org/licenses/LICENSE-2.0.txt&apos;</span><br><span class="line">                    distribution &apos;repo&apos;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            developers &#123;</span><br><span class="line">                developer &#123;</span><br><span class="line">                    //开发者的个人信息</span><br><span class="line">                    id &apos;CatalpaFlat&apos;</span><br><span class="line">                    name &apos;CatalpaFlat&apos;</span><br><span class="line">                    email &quot;catalpaflat@outlook.com&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            scm &#123;</span><br><span class="line">                connection &quot;https://github.com/CatalpaFlat/xxxx.git&quot;</span><br><span class="line">                developerConnection &quot;https://github.com/CatalpaFlat/xxxx.git&quot;</span><br><span class="line">                //项目网站</span><br><span class="line">                url &quot;https://github.com/CatalpaFlat/xxxx&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;.writeTo(&quot;pom.xml&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">bintray &#123;</span><br><span class="line"></span><br><span class="line">    Properties properties = new Properties()</span><br><span class="line">    properties.load(project.rootProject.file(&apos;local.properties&apos;).newDataInputStream())</span><br><span class="line">    user = properties.getProperty(&apos;BINTRAY_USER&apos;)</span><br><span class="line">    key = properties.getProperty(&apos;BINTRAY_KEY&apos;)</span><br><span class="line">    configurations = [&apos;archives&apos;]</span><br><span class="line">    publications = [&apos;xxxx&apos;]</span><br><span class="line"></span><br><span class="line">    dryRun = false</span><br><span class="line">    publish = true</span><br><span class="line"></span><br><span class="line">    pkg &#123;</span><br><span class="line">        repo = &apos;maven&apos;</span><br><span class="line">        name = PROJ_NAME</span><br><span class="line">        licenses = [&apos;Apache-2.0&apos;]</span><br><span class="line">        vcsUrl = &apos;https://github.com/CatalpaFlat/xxx.git&apos;</span><br><span class="line">        websiteUrl = &apos;https://github.com/CatalpaFlat/xxx&apos;</span><br><span class="line">        issueTrackerUrl = PROJ_ISSUETRACKERURL</span><br><span class="line">        labels = [&apos;java&apos;, &apos;spring&apos;, &apos;example&apos;]</span><br><span class="line">        version &#123;</span><br><span class="line">            name = PROJ_VERSION</span><br><span class="line">            desc = PROJ_DESCRIPTION</span><br><span class="line">            released = new Date()</span><br><span class="line">            vcsTag = PROJ_VERSION</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="9-release"><a href="#9-release" class="headerlink" title="9. release"></a>9. release</h2><p>1.执行gradle命令进行发布：   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew bintrayUpload</span><br></pre></td></tr></table></figure>
-<p>2.让我们回到Bintray上之前创建的maven仓库，这时你能在仓库的页面看到你刚才上传的包了，类似下图：</p>
-<p><img src="img/WechatIMG16.jpeg" alt="">.    </p>
-<p>3.点击包名，跳转后，在页面的右侧你会找到 Add to JCenter 的按钮，点击它继续跳转.  </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4675459-68f2f3ffd84f3338.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="">.     </p>
-<p>你可以填写一些信息，也可以直接点击Send，过一段时间，系统会发送邮件提示你申请已经通过。   </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4675459-659a224e69c8a44e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="">.  </p>
-<p>4.再回到刚才包的页面，点击 Maven Central，输入你的Sonatype的Token信息点击Sync，就可以完成同步了。第一次同步成功后，Sonatype也会通过邮件告知你 。 </p>
-<p><img src="https://upload-images.jianshu.io/upload_images/4675459-ba18abc6ded76889.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p>
-<blockquote>
-<p>注：<br>以后再发布新版本的时候直接执行Gradle命令就行了。同步完成后可以马上在 <a href="https://oss.sonatype.org" target="_blank" rel="noopener">https://oss.sonatype.org</a> 进行搜索，但是 <a href="https://mvnrepository.com/" target="_blank" rel="noopener">https://mvnrepository.com/</a> 的搜索并不是实时的，需要等待一段时间，通常搜索结果第二天就能更新。</p>
-</blockquote>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/" data-id="cjff7y7ka003ccgh259043ql2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/">JavaEE 使用Maven发布jar包到远程中央仓库</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/">
-            <time datetime="2017-03-23T07:00:56.000Z" itemprop="datePublished">2017-03-23</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/JavaEE/">JavaEE</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/JavaEE/">JavaEE</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="JavaEE-使用Maven发布jar包到远程中央仓库"><a href="#JavaEE-使用Maven发布jar包到远程中央仓库" class="headerlink" title="JavaEE 使用Maven发布jar包到远程中央仓库"></a>JavaEE 使用Maven发布jar包到远程中央仓库</h1><h3 id="0-前提准备"><a href="#0-前提准备" class="headerlink" title="0. 前提准备"></a>0. 前提准备</h3><p><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a> 上 New Repository 项目<br>（若没有则注册）. </p>
-<p><img src="img/WechatIMG4.jpeg" alt=""></p>
-<h3 id="1-Sonatype-OSSRH-简介"><a href="#1-Sonatype-OSSRH-简介" class="headerlink" title="1. Sonatype OSSRH 简介"></a>1. Sonatype OSSRH 简介</h3><p>Sonatype OSSRH 使用Nexus 为开源项目提供仓库管理服务，该仓库就是所谓maven的中央仓库，OSSRH允许我们向Maven中央仓库提交二进制文件。<br>使用Sonatype OSSRH可以做以下操作：  </p>
-<ul>
-<li>提交(deploy)开发版本的二进制文件（snapshorts)</li>
-<li>阶段性的发布版本</li>
-<li>发布一个release,同步到Sonatype OSSRH 中央仓库。</li>
-</ul>
-<p>总共就两种版本：snapshorts版本（开发版本）和release（发布版本）</p>
-<h3 id="2-注册JIRA账号"><a href="#2-注册JIRA账号" class="headerlink" title="2. 注册JIRA账号"></a>2. 注册JIRA账号</h3><p><a href="https://issues.sonatype.org/secure/Dashboard.jspa" target="_blank" rel="noopener">注册链接</a><br>注册之后请妥善保管好账号密码，后续登录相关Nexus链接需要用到。</p>
-<h3 id="3-创建issue"><a href="#3-创建issue" class="headerlink" title="3. 创建issue"></a>3. 创建issue</h3><p>注册完之后创建ISSUE<br><img src="img/WechatIMG32.jpeg" alt=""></p>
-<blockquote>
-<p><strong>注：</strong> 当创建完之后，issue的status为open状态，此时还不能进行上传jar，若group id为com.github开头的话，基本秒过（管理员审核较快，即从OPEN -&gt; RESOLVED）,当为RESOLVED时，即上传jar。</p>
-<p>当ISSUA转为RESOLVED时，会有附带相关链接,其中只需记录这两个链接：   </p>
-<ul>
-<li>Deploy snapshot artifacts into repository</li>
-<li>Deploy release artifacts into the staging repository</li>
-</ul>
-<p>后续配置项目pom.xml时需要</p>
-</blockquote>
-<p><img src="img/WechatIMG12.jpeg" alt=""></p>
-<h3 id="4-下载GPG"><a href="#4-下载GPG" class="headerlink" title="4. 下载GPG"></a>4. 下载GPG</h3><p>1.下载安装。 </p>
-<p>(1) Mac操作系统：  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install gnupg</span><br></pre></td></tr></table></figure>
-<p>(2) Windows操作系统<br>下载地址：<a href="https://www.gpg4win.org/" target="_blank" rel="noopener">https://www.gpg4win.org/</a></p>
-<p>2.校验  </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --version</span><br></pre></td></tr></table></figure>
-<p><img src="img/WechatIMG5.jpeg" alt=""></p>
-<h3 id="5-配置GPG生成对称签名"><a href="#5-配置GPG生成对称签名" class="headerlink" title="5. 配置GPG生成对称签名"></a>5. 配置GPG生成对称签名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gpg --gen-key</span><br></pre></td></tr></table></figure>
-<p>1.输入姓名和邮箱<br><img src="img/WechatIMG7.jpeg" alt=""><br>2.输入passphrase密码<br><img src="img/WechatIMG8.jpeg" alt=""><br>3.记住密钥，用于上传<br><img src="img/WechatIMG9.jpeg" alt="">   </p>
-<h3 id="6-上传GPG签名"><a href="#6-上传GPG签名" class="headerlink" title="6. 上传GPG签名"></a>6. 上传GPG签名</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">gpg --keyserver hkp://keys.gnupg.net --send-keys 上图圈出来的密钥</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">![](img/WechatIMG11.jpeg)   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 7. IDEA 创建maven项目</span><br><span class="line">此处无图</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 8. 配置maven下config的setting.xml</span><br><span class="line">配置JIRA账号，用于发布snapshorts版本。   </span><br><span class="line"></span><br><span class="line">```xml</span><br><span class="line">&lt;server&gt;</span><br><span class="line">    &lt;id&gt;sonatype-nexus-snapshots&lt;/id&gt;</span><br><span class="line">    &lt;username&gt; account &lt;/username&gt;</span><br><span class="line">    &lt;password&gt; password &lt;/password&gt;</span><br><span class="line">&lt;/server&gt;</span><br><span class="line">&lt;server&gt;</span><br><span class="line">    &lt;id&gt;sonatype-nexus-staging&lt;/id&gt;</span><br><span class="line">    &lt;username&gt; account &lt;/username&gt;</span><br><span class="line">    &lt;password&gt; password d&lt;/password&gt;</span><br><span class="line">&lt;/server&gt;</span><br><span class="line">&lt;/servers&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="9-配置项目pom-xml"><a href="#9-配置项目pom-xml" class="headerlink" title="9.配置项目pom.xml"></a>9.配置项目pom.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.youname<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>XXXX<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 若发布snapshorts版本，则需添加版本后缀 '-SNAPSHOT' --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">	<span class="comment">&lt;!-- org.sonatype.oss依赖--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.sonatype.oss<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>oss-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">	<span class="comment">&lt;!-- 默认许可证 --&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">licenses</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">license</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">name</span>&gt;</span>Apache 2<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://www.apache.org/licenses/LICENSE-2.0.txt<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">distribution</span>&gt;</span>repo<span class="tag">&lt;/<span class="name">distribution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">comments</span>&gt;</span>A business-friendly OSS license<span class="tag">&lt;/<span class="name">comments</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">license</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">licenses</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">	<span class="comment">&lt;!-- GitHub项目地址 --&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">scm</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://github.com/CatalpaFlat/XXX<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">connection</span>&gt;</span>https://github.com/CatalpaFlat/XXX.git<span class="tag">&lt;/<span class="name">connection</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">scm</span>&gt;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">&lt;!-- 开源项目作者信息 --&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">developers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">developer</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">name</span>&gt;</span>CatalpaFlat<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">email</span>&gt;</span>youemail<span class="tag">&lt;/<span class="name">email</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://github.com/CatalpaFlat/XXX<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">developer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">developers</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 部署release版本要用到 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>&gt;</span>release<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.sonatype.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>nexus-staging-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.6.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">extensions</span>&gt;</span>true<span class="tag">&lt;/<span class="name">extensions</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">serverId</span>&gt;</span>ossrh<span class="tag">&lt;/<span class="name">serverId</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">nexusUrl</span>&gt;</span>https://oss.sonatype.org/<span class="tag">&lt;/<span class="name">nexusUrl</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">autoReleaseAfterClose</span>&gt;</span>true<span class="tag">&lt;/<span class="name">autoReleaseAfterClose</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-release-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">autoVersionSubmodules</span>&gt;</span>true<span class="tag">&lt;/<span class="name">autoVersionSubmodules</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">useReleaseProfile</span>&gt;</span>false<span class="tag">&lt;/<span class="name">useReleaseProfile</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">releaseProfiles</span>&gt;</span>release<span class="tag">&lt;/<span class="name">releaseProfiles</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">goals</span>&gt;</span>deploy<span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">source</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">target</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-gpg-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">id</span>&gt;</span>sign-artifacts<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">phase</span>&gt;</span>verify<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>sign<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-source-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">id</span>&gt;</span>attach-sources<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>jar-no-fork<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-javadoc-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">id</span>&gt;</span>attach-javadocs<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>jar<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">distributionManagement</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">snapshotRepository</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 这个id需要在setting.xml中设置对应  --&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>sonatype-nexus-snapshots<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">name</span>&gt;</span>OSS Snapshots Repository<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 这里的url就是Issue中回复的snapshots 的repo地址--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://oss.sonatype.org/content/repositories/snapshots<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">snapshotRepository</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>sonatype-nexus-staging<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">name</span>&gt;</span>OSS Staging Repository<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 这里的url就是Issue中回复的staging 的repo地址--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://oss.sonatype.org/service/local/staging/deploy/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">distributionManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="10-发布snapshorts版本"><a href="#10-发布snapshorts版本" class="headerlink" title="10. 发布snapshorts版本"></a>10. 发布snapshorts版本</h3><p>修改version加一个-SNAPSHOT.  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean deploy</span><br></pre></td></tr></table></figure>
-<h3 id="11-发布release版本"><a href="#11-发布release版本" class="headerlink" title="11. 发布release版本"></a>11. 发布release版本</h3><p>修改version 不要加-SNAPSHOT.  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean deploy -P release</span><br></pre></td></tr></table></figure>
-<h3 id="12-close-项目-release-项目"><a href="#12-close-项目-release-项目" class="headerlink" title="12. close 项目/release 项目"></a>12. close 项目/release 项目</h3><p>使用注册的账号登录:<br><a href="https://oss.sonatype.org" target="_blank" rel="noopener">Nexus Repository Manager</a><br><img src="img/WechatIMG13.jpeg" alt="">   </p>
-<blockquote>
-<p><strong>注：</strong>查看自己的(你定义的版本号不能带SNAPSHOT要不然看不到)<br>a）构件准备好之后，在命令行上传构建；<br>b）在<a href="https://oss.sonatype.org/" target="_blank" rel="noopener">https://oss.sonatype.org/</a> 先“close”后“release”构件；<br>c) 等待同步好（大约2小时多）之后，就可以使用了。   </p>
-</blockquote>
-<h3 id="13-设置上传中央仓库"><a href="#13-设置上传中央仓库" class="headerlink" title="13. 设置上传中央仓库"></a>13. 设置上传中央仓库</h3><p>Already Synced to Central设置为Yes<br><img src="img/WechatIMG14.jpeg" alt="">   </p>
-<h3 id="14-查询发布结果"><a href="#14-查询发布结果" class="headerlink" title="14. 查询发布结果"></a>14. 查询发布结果</h3><p><a href="https://search.maven.org" target="_blank" rel="noopener">Central Repositiry</a><br><img src="img/WechatIMG15.jpeg" alt="">    </p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/" data-id="cjff7y7k9003bcgh271e0pdnn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/">JavaEE 发布jar包到远程maven中央仓库</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/">
-            <time datetime="2017-03-22T03:33:56.000Z" itemprop="datePublished">2017-03-22</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/JavaEE/">JavaEE</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/JavaEE/">JavaEE</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="JavaEE-发布jar包到远程maven中央仓库"><a href="#JavaEE-发布jar包到远程maven中央仓库" class="headerlink" title="JavaEE 发布jar包到远程maven中央仓库"></a>JavaEE 发布jar包到远程maven中央仓库</h1><blockquote>
-<p>当项目成熟到一定阶段时，需要将相关业务模块抽离封装迭代管理时，可以将业务相关内容模块化，并将其打包到对应远程仓库，以此提高下次开发效率与成本。<br>其中，JavaEE就有两种打包方法：</p>
-<ul>
-<li>maven ——Nexus仓库</li>
-<li>gradle —— JCenter仓库</li>
-</ul>
-<p>两者都可以将jar提交到远程仓库中。</p>
-</blockquote>
-<h2 id="一-Maven方法"><a href="#一-Maven方法" class="headerlink" title="一.Maven方法"></a>一.Maven方法</h2><blockquote>
-<p>使用<strong>Sonatype OSSRH</strong> 将 开源项目的jar 交给Maven的中央仓库。</p>
-<ul>
-<li>Nexus Repository Manager: <a href="https://oss.sonatype.org" target="_blank" rel="noopener">https://oss.sonatype.org</a>  </li>
-<li>Sonatype: <a href="https://issues.sonatype.org" target="_blank" rel="noopener">https://issues.sonatype.org</a></li>
-<li>Central Repositiry: <a href="https://search.maven.org" target="_blank" rel="noopener">https://search.maven.org</a></li>
-</ul>
-<p>简要步骤：  </p>
-<ol>
-<li>GitHub 上创建对应开源项目Repository</li>
-<li>注册JIRA账号 — 远程maven仓库账号</li>
-<li>创建issue — 其中关联GitHub项目链接</li>
-<li>下载GPG（用于签名）</li>
-<li>配置GPG对称签名 ——Remember passphrase/Remember the User Id（密钥）</li>
-<li>上传GPG签名（发布Release版本关键）</li>
-<li>IDEA 创建maven项目</li>
-<li>配置maven下config的setting.xml（snapshorts版本关键）</li>
-<li>配置项目pom.xml</li>
-<li>发布snapshorts版本</li>
-<li>发布release版本</li>
-<li>close 项目</li>
-<li>release 项目</li>
-<li>设置上传中央仓库</li>
-</ol>
-</blockquote>
-<h3 id="Integral-flow-chart"><a href="#Integral-flow-chart" class="headerlink" title="Integral flow chart"></a>Integral flow chart</h3><p><img src="img/mavenIntegral flow chart.png" alt="Maven Integral flow chart"></p>
-<h3 id="The-specific-implementation"><a href="#The-specific-implementation" class="headerlink" title="The specific implementation"></a>The specific implementation</h3><p>JavaEE 使用Maven发布jar包到远程中央仓库</p>
-<h2 id="二-Gradle方法"><a href="#二-Gradle方法" class="headerlink" title="二.Gradle方法"></a>二.Gradle方法</h2><blockquote>
-<p>使用<strong> Bintray </strong>  将 开源项目的jar 交给Maven的中央仓库。   </p>
-<ul>
-<li>Bintray: https:/bintray.com</li>
-<li>Sonatype: <a href="https://issues.sonatype.org" target="_blank" rel="noopener">https://issues.sonatype.org</a></li>
-</ul>
-<p>简要步骤：  </p>
-<ol>
-<li>创建Bintray账号</li>
-<li>Bintray上创建maven仓库</li>
-<li>获取BINTRAY_KEY</li>
-<li>注册JIRA账号 — 远程maven仓库账号</li>
-<li>创建issue — 其中关联GitHub项目链接</li>
-<li>GPG签名 - 配置到Bintray</li>
-<li>获取OSSRH_TOKEN信息（关联issue的凭证） - 配置bulid.gradle和后续Release</li>
-<li>IDEA 创建Gradle项目</li>
-<li>配置项目bulid.gradle - 关联issue/关联Bintray</li>
-<li>发布部署</li>
-</ol>
-</blockquote>
-<h3 id="Integral-flow-chart-1"><a href="#Integral-flow-chart-1" class="headerlink" title="Integral flow chart"></a>Integral flow chart</h3><p><img src="img/gradleIntegral flow chart.png" alt="Gradle Integral flow chart"></p>
-<h3 id="The-specific-implementation-1"><a href="#The-specific-implementation-1" class="headerlink" title="The specific implementation"></a>The specific implementation</h3><p>JavaEE 使用Gradle发布jar包到远程中央仓库</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/03/22/JavaEE/packaging/JavaEE 发布jar包到远程maven中央仓库/" data-id="cjff7y7kb003dcgh2fwvhlev4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-服务器/虚拟机CentOS6.7 快速安装redis" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/11/23/服务器/虚拟机CentOS6.7 快速安装redis/">虚拟机CentOS6.7 快速安装redis</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/11/23/服务器/虚拟机CentOS6.7 快速安装redis/">
-            <time datetime="2016-11-23T14:13:21.000Z" itemprop="datePublished">2016-11-23</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/服务器/">服务器</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/服务器/">服务器</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="虚拟机CentOS6-7-快速安装redis"><a href="#虚拟机CentOS6-7-快速安装redis" class="headerlink" title="虚拟机CentOS6.7 快速安装redis"></a>虚拟机CentOS6.7 快速安装redis</h1><h2 id="1-配置编译环境"><a href="#1-配置编译环境" class="headerlink" title="1.配置编译环境"></a>1.配置编译环境</h2><pre><code>yum -y install gcc-c++
-</code></pre><h2 id="2-下载redis安装包"><a href="#2-下载redis安装包" class="headerlink" title="2.下载redis安装包"></a>2.下载redis安装包</h2><pre><code>wget http://download.redis.io/releases/redis-3.2.8.tar.gz
-</code></pre><h2 id="3-解压源码"><a href="#3-解压源码" class="headerlink" title="3.解压源码"></a>3.解压源码</h2><pre><code>tar -zxvf redis-3.2.8.tar.gz -C /usr/local/
-</code></pre><h2 id="4-进入源码目录"><a href="#4-进入源码目录" class="headerlink" title="4.进入源码目录"></a>4.进入源码目录</h2><pre><code>cd /usr/local/redis-3.2.8
-</code></pre><h2 id="5-编译redis"><a href="#5-编译redis" class="headerlink" title="5.编译redis"></a>5.编译redis</h2><pre><code>make MALLOC=libc
-</code></pre><p>tips：make命令执行完成编译后，会在src目录下生成6个可执行文件，分别是redis-server、redis-cli、redis-benchmark、redis-check-aof、redis-check-rdb、redis-sentinel。<br><img src="https://i.imgur.com/VeKouuD.png" alt=""></p>
-<h2 id="6-安装redis"><a href="#6-安装redis" class="headerlink" title="6.安装redis"></a>6.安装redis</h2><pre><code>make install
-</code></pre><h2 id="7-配置Redis能随系统启动"><a href="#7-配置Redis能随系统启动" class="headerlink" title="7.配置Redis能随系统启动"></a>7.配置Redis能随系统启动</h2><pre><code>./utils/install_server.sh
-</code></pre><p>一直enter到底<br><img src="https://i.imgur.com/5zxhsnH.png" alt=""></p>
-<h2 id="8-查看redis进程"><a href="#8-查看redis进程" class="headerlink" title="8.查看redis进程"></a>8.查看redis进程</h2><pre><code>ps =ef|grep redis
-</code></pre><p><img src="https://i.imgur.com/jL1Nt4i.png" alt=""></p>
-<h2 id="9-操作redis服务"><a href="#9-操作redis服务" class="headerlink" title="9.操作redis服务"></a>9.操作redis服务</h2><pre><code>/etc/init.d/redis_6379 start 开启（service redis_6379 start）
-/etc/init.d/redis_6379 stop 关闭（service redis_6379 stop）
-/etc/init.d/redis_6379 status 状态（service redis_6379 status）
-</code></pre>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2016/11/23/服务器/虚拟机CentOS6.7 快速安装redis/" data-id="cjff7y7i70012cgh205tployj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-服务器/虚拟机快速搭建CentOS，并解决网络问题" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/11/23/服务器/虚拟机快速搭建CentOS，并解决网络问题/">虚拟机快速搭建CentOS，并解决网络问题</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/11/23/服务器/虚拟机快速搭建CentOS，并解决网络问题/">
-            <time datetime="2016-11-23T06:20:56.000Z" itemprop="datePublished">2016-11-23</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/服务器/">服务器</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/服务器/">服务器</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="虚拟机快速搭建CentOS，并解决网络问题"><a href="#虚拟机快速搭建CentOS，并解决网络问题" class="headerlink" title="虚拟机快速搭建CentOS，并解决网络问题"></a>虚拟机快速搭建CentOS，并解决网络问题</h1><h3 id="1-搭建环境："><a href="#1-搭建环境：" class="headerlink" title="1.搭建环境："></a>1.搭建环境：</h3><ul>
-<li>虚拟机：VMware Workstation12</li>
-<li>镜像：CentOS-6.7-x86_64-bin-DVD1.iso</li>
-<li>网络设配器：NAT模式</li>
-<li>主机：window7</li>
-</ul>
-<p>Vmware提供了三种网络连接模式：<br>1.bridged(桥接模式):默认使用VMnet0，不提供DHCP服务<br>简述：虚拟机和宿主计算机处于同等地位，虚拟机就像是一台真实主机一样存在于局域网中。<br>2.NAT(网络地址转换模式):默认使用VMnet8，提供DHCP服务<br>简述：宿主计算机相当于一台开启了DHCP功能的路由器，而虚拟机则是内网中的一台真实主机，通过路由器(宿主计算机)DHCP动态获得网络参数。因此在NAT模式下，虚拟机可以访问外部网络。<br>使用NAT模式的方便之处在于，我们不需要做任何网络设置，只要宿主计算机可以连接到外部网络，虚拟机也可以。<br>3.Host-only(主机模式):默认使用VMnet1，提供DHCP服务<br>简述：在Host-only模式下，相当于虚拟机通过双绞线和宿主计算机直连，而宿主计算机不提供任何路由服务。因此在Host-only模式下，虚拟机可以和宿主计算机互相访问，但是虚拟机无法访问外部网络。<br>当我们要组成一个与物理网络相隔离的虚拟网络时，无疑非常适合使用Host-only模式。</p>
-<hr>
-<p>好了，接下来继续！</p>
-<hr>
-<h3 id="2-编辑虚拟网络编辑器"><a href="#2-编辑虚拟网络编辑器" class="headerlink" title="2.编辑虚拟网络编辑器"></a>2.编辑虚拟网络编辑器</h3><p>1).编辑-&gt;虚拟网络编辑器-&gt;更改配置<br><img src="https://i.imgur.com/2HQSjD4.png" alt=""><br>2).选择VMnet8-&gt;取消勾选使用本地DHCP-&gt;设置子网IP-&gt;NAT设置-&gt;网关IP设置<br><img src="http://img.blog.csdn.net/20171109233602662?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvRHVTaGlXb0RlQ3Vv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""><br><img src="https://i.imgur.com/SOW0JS9.png" alt=""><br>说明：修改子网IP设置，实现自由设置固定IP。若你想设置固定IP为192.168.6.2-255，比如192.168.6.111，则子网IP为192.168.6.0，网关192.168.6.1.</p>
-<h3 id="3-虚拟机网络设配器"><a href="#3-虚拟机网络设配器" class="headerlink" title="3.虚拟机网络设配器"></a>3.虚拟机网络设配器</h3><p>虚拟机-&gt;设置-&gt;选择NAT模式<br><img src="https://i.imgur.com/6wBOTX1.png" alt=""></p>
-<h3 id="4-宿主机（即本机）VMnet8配置"><a href="#4-宿主机（即本机）VMnet8配置" class="headerlink" title="4.宿主机（即本机）VMnet8配置"></a>4.宿主机（即本机）VMnet8配置</h3><p>控制面板-&gt;网络和 Internet-&gt;网络连接-&gt;VMware Network Adapter VMnet8<br><img src="https://i.imgur.com/lXA1kXX.png" alt=""></p>
-<h3 id="5-虚拟机安装CentOS的流程网上一抓一大把，所以这里就不详细说明，最主要是前面几步"><a href="#5-虚拟机安装CentOS的流程网上一抓一大把，所以这里就不详细说明，最主要是前面几步" class="headerlink" title="5.虚拟机安装CentOS的流程网上一抓一大把，所以这里就不详细说明，最主要是前面几步"></a>5.虚拟机安装CentOS的流程网上一抓一大把，所以这里就不详细说明，最主要是前面几步</h3><h3 id="6-配置CentOS-静态ip"><a href="#6-配置CentOS-静态ip" class="headerlink" title="6.配置CentOS 静态ip"></a>6.配置CentOS 静态ip</h3><pre><code>vi /etc/sysconfig/network-scripts/ifcfg-eth0
-</code></pre><h3 id="7-配置静态ip"><a href="#7-配置静态ip" class="headerlink" title="7.配置静态ip"></a>7.配置静态ip</h3><pre><code>DEVICE=eth0
-HWADDR=00:0C:29:8D:2B:41
-TYPE=Ethernet
-UUID=a5d920bf-b096-4bdd-aa75-7a60b982aa19
-ONBOOT=yes
-NM_CONTROLLED=yes
-BOOTPROTO=static
-IPADDR=192.168.6.111
-NETMASK=255.255.255.0
-GATEWAY=192.168.6.1
-DNS1=114.114.114.114
-</code></pre><h3 id="8-重启networl"><a href="#8-重启networl" class="headerlink" title="8.重启networl"></a>8.重启networl</h3><pre><code>service network restart
-</code></pre><h3 id="9-查看当前ip是否配置成功"><a href="#9-查看当前ip是否配置成功" class="headerlink" title="9.查看当前ip是否配置成功"></a>9.查看当前ip是否配置成功</h3><pre><code>ifconfig -a
-</code></pre><p><img src="https://i.imgur.com/iTe1Cxi.png" alt=""></p>
-<h3 id="10-主虚互ping"><a href="#10-主虚互ping" class="headerlink" title="10.主虚互ping"></a>10.主虚互ping</h3><p><img src="https://i.imgur.com/zO0nuOl.png" alt=""></p>
-<hr>
-<p><img src="https://i.imgur.com/oXz7Gv1.png" alt=""></p>
-<hr>
-<p>虚拟机搭建CentOS已经完成，并且网络配置已经调通。</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2016/11/23/服务器/虚拟机快速搭建CentOS，并解决网络问题/" data-id="cjff7y7i5000ycgh2z91ebejj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-java/Java 实体" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/07/23/java/Java 实体/">Java中的各种O</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/07/23/java/Java 实体/">
-            <time datetime="2016-07-23T05:20:56.000Z" itemprop="datePublished">2016-07-23</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Java/">Java</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>展示层 →  接口层 →  服务层  →  数据访问层  →  持久层<br>                      ↓         ↑<br>                       业务逻辑层</p>
-<p>layer：</p>
-<ol>
-<li>IDAL(接口层)</li>
-<li>service(服务层)</li>
-<li>BLL(业务逻辑层)</li>
-<li>DAL(数据访问层)</li>
-<li>Persistent(持久层)</li>
-</ol>
-<p>class：</p>
-<ol>
-<li>VO（View Object）：<br>视图对象，用于展示层，它的作用是把某个指定页面（或组件）的所有数据封装起来。</li>
-<li>DTO（Data Transfer Object）：<br>数据传输对象，这个概念来源于J2EE的设计模式，原来的目的是为了EJB的分布式应用提供粗粒度的数据实体，以减少分布式调用的次数，从而提高分布式调用的性能和降低网络负载.<br>但在Dankal，我们泛指用于展示层与服务层之间的数据传输对象。</li>
-<li>DO（Domain Object）：<br>领域对象，就是从现实世界中抽象出来的有形或无形的业务实体。</li>
-<li>PO（Persistent Object）：<br>持久化对象，它跟持久层（通常是关系型数据库）的数据结构形成一一对应的映射关系，如果持久层是关系型数据库，那么，数据表中的每个字段（或若干个）就对应PO的一个（或若干个）属性。（数据库表的一条记录）</li>
-<li>TO(Transfer Object):<br>数据传输对象,在应用程序不同tie(关系)之间传输的对象.</li>
-<li>BO(business object)：<br>业务对象（BO用来封装多个PO），从业务模型的角度看,见UML元件领域模型中的领域对象。封装业务逻辑的java对象,通过调用DAO方法,结合PO,VO进行业务操作。</li>
-<li>POJO(plain ordinary java object)：<br>简单无规则java对象 纯的传统意义的java对象。最基本的Java Bean，只有属性字段及setter和getter方法！没有其他封装方法。</li>
-</ol>
-<p>frame:</p>
-<ol>
-<li>BOF Business Object Framework 业务对象框架</li>
-<li>EMF Eclipse Model Framework Eclipse 建模框架</li>
-</ol>
-<p>design:</p>
-<ol>
-<li>SOA Service Orient Architecture 面向服务的设计</li>
-</ol>
-<p>DALFactory(类工厂)</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2016/07/23/java/Java 实体/" data-id="cjff7y7hs000fcgh2qi3xkdur" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-java/Java 内存详解" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2016/03/23/java/Java 内存详解/">Java JVM 内存详解</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2016/03/23/java/Java 内存详解/">
-            <time datetime="2016-03-23T07:53:56.000Z" itemprop="datePublished">2016-03-23</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Java/">Java</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>[TOC]</p>
-<h1 id="Java-JVM-内存详解"><a href="#Java-JVM-内存详解" class="headerlink" title="Java JVM 内存详解"></a>Java JVM 内存详解</h1><h2 id="一、Java内存分配-数据存储区域-："><a href="#一、Java内存分配-数据存储区域-：" class="headerlink" title="一、Java内存分配(数据存储区域)："></a>一、Java内存分配(数据存储区域)：</h2><h3 id="1-程序计数器（Program-Counter-Register）"><a href="#1-程序计数器（Program-Counter-Register）" class="headerlink" title="1. 程序计数器（Program Counter Register）"></a>1. 程序计数器（Program Counter Register）</h3><ul>
-<li>当前线程所执行的字节码行号指示器</li>
-<li>一块较小的内存空间</li>
-<li>线程私有内存</li>
-</ul>
-<p>由于Java虚拟机是多线程的，因此在多线程执行时候，其实是线程之间的轮流切换从而来获取CPU的处理，因此想要记录当前线程上一步所执行到哪里，就是通过程序计数器，这样就能在下次当前线程获取CPU的执行权的时候，能够正常继续执行。因此每一条线程都其自身的程序计数器，线程间互补影响，独立存储。</p>
-<h3 id="2-Java-虚拟机栈"><a href="#2-Java-虚拟机栈" class="headerlink" title="2. Java 虚拟机栈"></a>2. Java 虚拟机栈</h3><ul>
-<li>当前执行方法的内存模型</li>
-<li>线程私有内存</li>
-</ul>
-<p>当一个方法被执行时，会创建一个栈帧用来存储：</p>
-<ul>
-<li>局部变量表</li>
-<li>操作栈</li>
-<li>动态链接</li>
-<li>方法出口</li>
-<li>……<br>其实Java虚拟机栈就是我们经常所说的“栈内存”<br>其中64位长度的long和double类型的数据会占用2个局部变量空间（Slot），其余的数据类型只占用1个。<br>局部变量表所需要的内存空间，在编译期完全分配好，当进入一个方法，这个方法需要在帧中分配多大的局部变量表内存空间是完全群的，不会在方法运行时改变局部变量表的大小。</li>
-</ul>
-<h3 id="3-本地方法栈"><a href="#3-本地方法栈" class="headerlink" title="3. 本地方法栈"></a>3. 本地方法栈</h3><p>本地方法栈（Native Method Stacks）与虚拟机栈所发挥的作用是非常相似的，其区别不过是虚拟机栈为虚拟机执行Java方法（也就是字节码）服务，而本地方法栈则是为虚拟机使用到的Native方法服务。</p>
-<h3 id="4-堆"><a href="#4-堆" class="headerlink" title="4. 堆"></a>4. 堆</h3><p>Java堆（Java Heap）是Java虚拟机所管理的内存中最大的一块。Java堆是被所有线程共享的一块内存区域，在虚拟机启动时创建。此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例都在这里分配内存。</p>
-<h3 id="5-方法区"><a href="#5-方法区" class="headerlink" title="5. 方法区"></a>5. 方法区</h3><p>方法区（Method Area）与Java堆一样，是各个线程共享的内存区域，它用于存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。</p>
-<h4 id="5-1-运行时常量池："><a href="#5-1-运行时常量池：" class="headerlink" title="5.1 运行时常量池："></a>5.1 运行时常量池：</h4><pre><code>运行时常量池（Runtime Constant Pool）是方法区的一部分。Class文件中除了有类的版本、字段、方法、接口等描述等信息外，还有一项信息是常量池（Constant Pool Table），用于存放编译期生成的各种字面量和符号引用，这部分内容将在类加载后存放到方法区的运行时常量池中。
-</code></pre><h2 id="二、Java对象的内存创建、内存布局、内存访问"><a href="#二、Java对象的内存创建、内存布局、内存访问" class="headerlink" title="二、Java对象的内存创建、内存布局、内存访问"></a>二、Java对象的内存创建、内存布局、内存访问</h2><h3 id="1-对象内存创建"><a href="#1-对象内存创建" class="headerlink" title="1. 对象内存创建"></a>1. 对象内存创建</h3><p>1）使用new<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">                                    -&gt; (有) 是否已经加载、解析、初始化                -&gt; 指针碰撞                     -&gt; 进行同步处理</span><br><span class="line">常量池 -&gt; （检索）是否有该类的符号引用                                    -&gt;  分配内存              -&gt;(分配时的线程安全)                  -&gt;(初始化)</span><br><span class="line">                                    -&gt; (无) 加载 、解析                              -&gt; 空闲列表                     -&gt; TLAB(线程缓冲)</span><br></pre></td></tr></table></figure></p>
-<p>2）赋值引用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">                      -&gt; 存在    -&gt; 栈中的reference指向对象</span><br><span class="line">堆  -&gt; (查询是否存在)</span><br><span class="line">                      -&gt; 不存在  -&gt; null</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-对象内存布局"><a href="#2-对象内存布局" class="headerlink" title="2. 对象内存布局"></a>2. 对象内存布局</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    -&gt; 对象头</span><br><span class="line">布局 -&gt; 实例数据</span><br><span class="line">    -&gt; 对齐填充</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">          -&gt; 1)存储对象自身的运行时数据，如哈希吗、GC分代年龄、锁状态标志、线程持有的锁、偏向线程ID、偏向时间戳等</span><br><span class="line">1.对象头：</span><br><span class="line">          -&gt; 2)类型指针，指向它的类元数据（元数据即关于数据的数据），虚拟机通过这个指针确定这个对象是哪个类的实例。</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>实例数据：对象真正存储的有效信息，也是在代码中所定义的各种类型的字段内容。无论是从父类继承的还是子类中定义的，都需要记录起来。</p>
-</li>
-<li><p>对齐填充：并不是必然存在的，仅仅起着占位符的作用。HotSpot的自动内存管理系统要求对象起始地址必须是8字节的整数倍，因此当对象实例数据部分没有对齐时，需要对齐填充来补全。</p>
-</li>
-</ol>
-<h3 id="3-对象内存访问"><a href="#3-对象内存访问" class="headerlink" title="3. 对象内存访问"></a>3. 对象内存访问</h3><pre><code>-&gt;  句柄
-</code></pre><p>访问方式<br>        -&gt;  直接指针</p>
-<ol>
-<li>句柄：Java堆中会划分出一块内存作为句柄池，栈中的reference指向对象的句柄地址，句柄中包含了对象实例数据和类型数据各自的具体地址信息。</li>
-</ol>
-<p><img src="http://img.blog.csdn.net/20150621105931517" alt=""></p>
-<ol>
-<li>直接指针：reference中存储的就是对象地址</li>
-</ol>
-<p><img src="http://img.blog.csdn.net/20150621105820153" alt=""></p>
-<p>使用句柄访问的最大好处就是reference中存储的是稳定的句柄地址，对象被移动（垃圾收集时移动对象是非常普遍的行为）时只会改变句柄中的实例数据指针，reference本身不需要修改。<br>使用直接指针访问的最大好处就是速度快，节省了一次指针定位的时间开销。</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2016/03/23/java/Java 内存详解/" data-id="cjff7y7hp000bcgh2e7jsj3kk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
-</section>
-            
-                
-<aside id="sidebar">
-   
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">recent</h3>
-        <div class="widget">
-            <ul id="recent-post" class="">
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/02/05/docker/命令/run/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/docker/">docker</a></p>
-                            <p class="item-title"><a href="/2018/02/05/docker/命令/run/" class="title">Docker run 命令</a></p>
-                            <p class="item-date"><time datetime="2018-02-05T14:33:12.000Z" itemprop="datePublished">2018-02-05</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/01/23/java/Java开发规范/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
-                            <p class="item-title"><a href="/2018/01/23/java/Java开发规范/" class="title">Java 编码规范</a></p>
-                            <p class="item-date"><time datetime="2018-01-23T05:20:56.000Z" itemprop="datePublished">2018-01-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/01/05/docker/安装/docker安装/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/docker/">docker</a></p>
-                            <p class="item-title"><a href="/2018/01/05/docker/安装/docker安装/" class="title">CentOS Docker 安装</a></p>
-                            <p class="item-date"><time datetime="2018-01-05T08:33:56.000Z" itemprop="datePublished">2018-01-05</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/12/16/java/Java 实现中文-拼音转换/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
     
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
-                            <p class="item-title"><a href="/2017/12/16/java/Java 实现中文-拼音转换/" class="title">Java 实现中文-拼音转换</a></p>
-                            <p class="item-date"><time datetime="2017-12-16T02:16:56.000Z" itemprop="datePublished">2017-12-16</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/11/17/Quartz/自定义Quartz超实用工具类/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Quartz/">Quartz</a></p>
-                            <p class="item-title"><a href="/2017/11/17/Quartz/自定义Quartz超实用工具类/" class="title">自定义Quartz超实用工具类</a></p>
-                            <p class="item-date"><time datetime="2017-11-17T03:09:37.000Z" itemprop="datePublished">2017-11-17</time></p>
-                        </div>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">categories</h3>
-        <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jenkins/">Jenkins</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Quartz/">Quartz</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/支付/">支付</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">archives</h3>
-        <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li></ul>
-        </div>
-    </div>
-
     
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">tags</h3>
-        <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支付/">支付</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支付宝支付/">支付宝支付</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">tag cloud</h3>
-        <div class="widget tagcloud">
-            <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 15px;">JavaEE</a> <a href="/tags/Jenkins/" style="font-size: 12.5px;">Jenkins</a> <a href="/tags/Nginx/" style="font-size: 20px;">Nginx</a> <a href="/tags/Quartz/" style="font-size: 12.5px;">Quartz</a> <a href="/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/tags/支付/" style="font-size: 12.5px;">支付</a> <a href="/tags/支付宝支付/" style="font-size: 10px;">支付宝支付</a> <a href="/tags/服务器/" style="font-size: 12.5px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 15px;">消息队列</a>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">links</h3>
-        <div class="widget">
-            <ul>
-                
-                    <li>
-                        <a href="http://hexo.io">Hexo</a>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-
     
-    <div id="toTop" class="fa fa-angle-up"></div>
-</aside>
-
-            
-        </div>
-        <footer id="footer">
-    <div class="outer">
-        <div id="footer-info" class="inner">
-            &copy; 2018 CatalpaFlat<br>
-            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
-        </div>
-    </div>
-</footer>
         
 
 
-    
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
     
     
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
     
-    
-
 
 
-<!-- Custom Scripts -->
-<script src="/js/main.js"></script>
 
-    </div>
 </body>
 </html>

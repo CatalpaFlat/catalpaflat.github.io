@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang=zh>
 <head>
-    <meta charset="utf-8">
-    
-    <title>CatalpaFlat&#39;s Blogs</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="IT technology has no end.">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Hexo</title>
+  <meta name="description" content="IT technology has no end.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="CatalpaFlat&#39;s Blogs">
 <meta property="og:url" content="https://catalpaflat.github.io/page/2/index.html">
@@ -15,87 +27,769 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CatalpaFlat&#39;s Blogs">
 <meta name="twitter:description" content="IT technology has no end.">
-    
-
-    
-        <link rel="alternate" href="/" title="CatalpaFlat&#39;s Blogs" type="application/atom+xml" />
-    
-
-    
-
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/open-sans/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
-
-    <link rel="stylesheet" href="/css/style.css">
-
-    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://catalpaflat.github.io/page/2/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="CatalpaFlat&#39;s Blogs" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <!-- font-awesome CSS -->
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="/css/style.css">
+  
     
     
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
-    
-    
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-    
-    
-    
-    
-
 
 </head>
 
-<body>
-    <div id="container">
-        <header id="header">
-    <div id="header-main" class="header-inner">
-        <div class="outer">
-            <a href="/" id="logo">
-                <i class="logo"></i>
-                <span class="site-title">CatalpaFlat&#39;s Blogs</span>
-            </a>
-            <nav id="main-nav">
-                
-                    <a class="main-nav-link" href="/.">Home</a>
-                
-                    <a class="main-nav-link" href="/archives">Archives</a>
-                
-                    <a class="main-nav-link" href="/categories">Categories</a>
-                
-                    <a class="main-nav-link" href="/tags">Tags</a>
-                
-                    <a class="main-nav-link" href="/about">About</a>
-                
-            </nav>
-            
-                
-                <nav id="sub-nav">
-                    <div class="profile" id="profile-nav">
-                        <a id="profile-anchor" href="javascript:;">
-                            <img class="avatar" src="/css/images/avatar.jpeg" />
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-                    </div>
-                </nav>
-            
-            <div id="search-form-wrap">
 
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-        <button type="submit" class="search-form-submit"></button>
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/cofess" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpeg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">CatalpaFlat</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">A good DEMO is a good brick wall.</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
     </form>
     <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav">
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/CatalpaFlat" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
         </div>
     </div>
 </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jenkins/">Jenkins</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Quartz/">Quartz</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/支付/">支付</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支付/">支付</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支付宝支付/">支付宝支付</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Java/" style="font-size: 13.75px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 13.5px;">JavaEE</a> <a href="/tags/Jenkins/" style="font-size: 13.25px;">Jenkins</a> <a href="/tags/Nginx/" style="font-size: 14px;">Nginx</a> <a href="/tags/Quartz/" style="font-size: 13.25px;">Quartz</a> <a href="/tags/docker/" style="font-size: 13.25px;">docker</a> <a href="/tags/支付/" style="font-size: 13.25px;">支付</a> <a href="/tags/支付宝支付/" style="font-size: 13px;">支付宝支付</a> <a href="/tags/服务器/" style="font-size: 13.25px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 13.5px;">消息队列</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/docker/">docker</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/02/05/docker/命令/run/" class="title">Docker run 命令</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-02-05T14:33:12.000Z" itemprop="datePublished">2018-02-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Java/">Java</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/01/23/java/Java开发规范/" class="title">Java 编码规范</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-01-23T05:20:56.000Z" itemprop="datePublished">2018-01-23</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/docker/">docker</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/01/05/docker/安装/docker安装/" class="title">CentOS Docker 安装</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-01-05T08:33:56.000Z" itemprop="datePublished">2018-01-05</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Java/">Java</a>
+              </p>
+              <p class="item-title">
+                <a href="/2017/12/16/java/Java 实现中文-拼音转换/" class="title">Java 实现中文-拼音转换</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-12-16T02:16:56.000Z" itemprop="datePublished">2017-12-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Quartz/">Quartz</a>
+              </p>
+              <p class="item-title">
+                <a href="/2017/11/17/Quartz/自定义Quartz超实用工具类/" class="title">自定义Quartz超实用工具类</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2017-11-17T03:09:37.000Z" itemprop="datePublished">2017-11-17</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  <main class="main" role="main">
+  
+  <div class="content article-list">
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/26/nginx/Nginx rewrite深入解读/">Nginx rewrite深入解读</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/08/26/nginx/Nginx rewrite深入解读/" class="article-date">
+	  <time datetime="2017-08-26T10:23:12.000Z" itemprop="datePublished">Aug 26</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Nginx/">Nginx</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/08/26/nginx/Nginx rewrite深入解读/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/24/nginx/Nginx location配置解析/">Nginx location配置解析</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/08/24/nginx/Nginx location配置解析/" class="article-date">
+	  <time datetime="2017-08-24T15:34:12.000Z" itemprop="datePublished">Aug 24</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Nginx/">Nginx</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/08/24/nginx/Nginx location配置解析/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/24/nginx/Nginx 日志配置详情解析/">Nginx 日志配置详情解析</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/08/24/nginx/Nginx 日志配置详情解析/" class="article-date">
+	  <time datetime="2017-08-24T13:22:56.000Z" itemprop="datePublished">Aug 24</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Nginx/">Nginx</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/08/24/nginx/Nginx 日志配置详情解析/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/22/nginx/服务器集成Nginx/">服务器快速集成Nginx</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/08/22/nginx/服务器集成Nginx/" class="article-date">
+	  <time datetime="2017-08-22T07:23:54.000Z" itemprop="datePublished">Aug 22</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Nginx/">Nginx</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/08/22/nginx/服务器集成Nginx/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/22/nginx/Nginx 动态添加模块/">Nginx 动态添加模块</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/08/22/nginx/Nginx 动态添加模块/" class="article-date">
+	  <time datetime="2017-08-22T05:23:42.000Z" itemprop="datePublished">Aug 22</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Nginx/">Nginx</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/08/22/nginx/Nginx 动态添加模块/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/20/nginx/nginx 的ngx_http_core_module模块处理请求/">Nginx 的ngx_http_core_module模块</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/08/20/nginx/nginx 的ngx_http_core_module模块处理请求/" class="article-date">
+	  <time datetime="2017-08-20T02:40:56.000Z" itemprop="datePublished">Aug 20</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Nginx/">Nginx</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/08/20/nginx/nginx 的ngx_http_core_module模块处理请求/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/05/支付/微信支付/JavaEE 微信境外支付/">JavaEE 微信境外支付</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/08/05/支付/微信支付/JavaEE 微信境外支付/" class="article-date">
+	  <time datetime="2017-08-05T02:33:12.000Z" itemprop="datePublished">Aug 5</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/支付/">支付</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/支付/">支付</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/08/05/支付/微信支付/JavaEE 微信境外支付/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/04/支付/支付宝支付/JavaEE 支付宝支付/">JavaEE 支付宝支付</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/08/04/支付/支付宝支付/JavaEE 支付宝支付/" class="article-date">
+	  <time datetime="2017-08-04T11:33:12.000Z" itemprop="datePublished">Aug 4</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/支付/">支付</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/支付宝支付/">支付宝支付</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/08/04/支付/支付宝支付/JavaEE 支付宝支付/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/04/支付/微信支付/JavaEE 微信支付/">JavaEE 微信支付</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/08/04/支付/微信支付/JavaEE 微信支付/" class="article-date">
+	  <time datetime="2017-08-04T11:33:12.000Z" itemprop="datePublished">Aug 4</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/支付/">支付</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/支付/">支付</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/08/04/支付/微信支付/JavaEE 微信支付/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/23/消息队列/消息中间件/">分布式之消息中间件</a>
+    </h1>
+  
+
+  </div>
+  
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2017/07/23/消息队列/消息中间件/" class="article-date">
+	  <time datetime="2017-07-23T07:46:12.000Z" itemprop="datePublished">Jul 23</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/消息队列/">消息队列</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/消息队列/">消息队列</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2017/07/23/消息队列/消息中间件/#comments" class="article-comment-link">Comments</a></span>
+    
+  </p>
+</article>
+
+    
+  </div>
+
+  
+    
+    <nav class="bar bar-footer clearfix" data-stick-bottom>
+        <div class="bar-inner">
+        <ul class="pager pull-left">
+            
+            <li class="prev">
+                <a href="/">
+                    <i class="icon icon-angle-left"></i>
+                    Prev
+                </a>
+            </li>
+            
+            
+            <li class="next">
+                <a href="/page/3/">
+                    Next
+                    <i class="icon icon-angle-right"></i>
+                </a>
+            </li>
+            
+        </ul>
+        <div class="total-article bar-right">Page 2 of 3</div>
+        </div>
+    </nav>
+    
+ 
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/CatalpaFlat" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+  
+    
+    
+    
+        <script>
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
@@ -112,2491 +806,17 @@
 })(window);
 </script>
 <script src="/js/insight.js"></script>
-
-</div>
-        </div>
-    </div>
-    <div id="main-nav-mobile" class="header-sub header-inner">
-        <table class="menu outer">
-            <tr>
-                
-                    <td><a class="main-nav-link" href="/.">Home</a></td>
-                
-                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
-                
-                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
-                
-                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
-                
-                    <td><a class="main-nav-link" href="/about">About</a></td>
-                
-                <td>
-                    
-    <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-    </div>
-
-                </td>
-            </tr>
-        </table>
-    </div>
-</header>
-
-        <div class="outer">
-            
-                
-
-<aside id="profile">
-    <div class="inner profile-inner">
-        <div class="base-info profile-block">
-            <img id="avatar" src="/css/images/avatar.jpeg" />
-            <h2 id="name">CatalpaFlat</h2>
-            <h3 id="title">A good DEMO is a good brick wall.</h3>
-            <span id="location"><i class="fa fa-map-marker"></i>ShenZhen, China</span>
-            <a id="follow" target="_blank" href="https://github.com/CatalpaFlat">FOLLOW</a>
-        </div>
-        <div class="article-info profile-block">
-            <div class="article-info-block">
-                30
-                <span>posts</span>
-            </div>
-            <div class="article-info-block">
-                10
-                <span>tags</span>
-            </div>
-        </div>
-        
-        <div class="profile-block social-links">
-            <table>
-                <tr>
-                    
-                    
-                    <td>
-                        <a href="https://github.com/CatalpaFlat" target="_blank" title="github" class=tooltip>
-                            <i class="fa fa-github"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/" target="_blank" title="twitter" class=tooltip>
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/" target="_blank" title="facebook" class=tooltip>
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/" target="_blank" title="dribbble" class=tooltip>
-                            <i class="fa fa-dribbble"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/" target="_blank" title="rss" class=tooltip>
-                            <i class="fa fa-rss"></i>
-                        </a>
-                    </td>
-                    
-                </tr>
-            </table>
-        </div>
-        
-    </div>
-</aside>
-
-            
-            <section id="main">
-    <article id="post-nginx/Nginx rewrite深入解读" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/08/26/nginx/Nginx rewrite深入解读/">Nginx rewrite深入解读</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/08/26/nginx/Nginx rewrite深入解读/">
-            <time datetime="2017-08-26T10:23:12.000Z" itemprop="datePublished">2017-08-26</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Nginx/">Nginx</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="Nginx-rewrite深入解读"><a href="#Nginx-rewrite深入解读" class="headerlink" title="Nginx rewrite深入解读"></a>Nginx rewrite深入解读</h1><h2 id="1-什么是rewrite"><a href="#1-什么是rewrite" class="headerlink" title="1.什么是rewrite"></a>1.什么是rewrite</h2><p>官方解读：nginx的重写模块（rewrite）是一个简单的正则表达式匹配与一个虚拟堆叠机结合。<br>个人解读：nginx的rewrite是结合正则表达式和标志位实现url重写、改变以及重定向。如：域名跳转，防盗链，反向代理，各种跳转（跳转维护界面，前端跳转，基于uri跳转，基于目录跳转等）</p>
-<hr>
-<h2 id="2-rewrite的支撑源头"><a href="#2-rewrite的支撑源头" class="headerlink" title="2.rewrite的支撑源头"></a>2.rewrite的支撑源头</h2><p>nginx通过ngx_http_rewrite_module模块支持url重写、支持if条件判断。依赖于PCRE库，因此需要安装pcre。</p>
-<hr>
-<h2 id="3-rewrite的7个指令"><a href="#3-rewrite的7个指令" class="headerlink" title="3.rewrite的7个指令"></a>3.rewrite的7个指令</h2><h3 id="3-1-break"><a href="#3-1-break" class="headerlink" title="3.1.break"></a>3.1.break</h3><ul>
-<li>语法：break</li>
-<li>默认值：none</li>
-<li>配置段：server,location,if</li>
-<li>作用：完成当前设置的重写规则，停止处理后续rewrite指令集，并不在重新查找,但是当前location内剩余非rewrite语句和location外的的非rewrite语句可以执行。</li>
-<li>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if ($slow) &#123;</span><br><span class="line">	limit_rate 10k;</span><br><span class="line">	break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="3-2-if"><a href="#3-2-if" class="headerlink" title="3.2.if"></a>3.2.if</h3><ul>
-<li>语法：if(condition){…}</li>
-<li>默认值：none</li>
-<li>配置段：server,location</li>
-<li>作用：对给定的条件condition进行判断</li>
-<li>conditon：if条件(conditon)可以是如下任何内容:<ol>
-<li>一个变量名:空字符传“ ”或者一些“0”开始的字符串为false</li>
-<li>字符串比较：使用=或!=运算符</li>
-<li>正则表达式匹配：用~或~*+正则表达式匹配的变量，如果这个正则表达式中包含}或;，则整个表达式需要用” 或’ 包围</li>
-<li>文件是否存在：使用-f或者!-f操作符</li>
-<li>目录是否存在：使用-d或者!-d操作符</li>
-<li>文件、目录、符号链接是否存在：使用-e或者!-e操作符</li>
-<li>文件是否可执行：使用-x或者!-x操作符</li>
-</ol>
-</li>
-<li>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if ($http_cookie ~* &quot;id=([^;]+)(?:;|$)&quot;) &#123;</span><br><span class="line">	set $id $1;</span><br><span class="line">&#125;</span><br><span class="line">if ($http_user_agent ~ MSIE) &#123;    </span><br><span class="line">	rewrite ^(.*)$ /msie/$1 </span><br><span class="line">	break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="3-3-return"><a href="#3-3-return" class="headerlink" title="3.3.return"></a>3.3.return</h3><ul>
-<li>语法：<ul>
-<li>return code；</li>
-<li>return url；</li>
-<li>return code url；</li>
-</ul>
-</li>
-<li>默认值：none</li>
-<li>配置段：server,location,if</li>
-<li>作用：<ol>
-<li>停止处理，并为客户端返回状态码。</li>
-<li>非标准的444状态码将关闭连接，不发送任何响应头</li>
-<li>可以使用的状态码有：204/400/402-406/408/410/411/413/416/500-504</li>
-<li>如果状态码后面是一个url，该url将成为location头的补值。</li>
-<li>没有状态码的url将被视为一个默认的302状态码</li>
-<li>状态码附带文字段落，该文本将被放置在响应主体里</li>
-</ol>
-</li>
-<li>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if ($request_method = POST) &#123;</span><br><span class="line">     return 405;</span><br><span class="line">&#125;</span><br><span class="line">if ($invalid_referer) &#123;</span><br><span class="line">     return 403;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="3-4-rewrite"><a href="#3-4-rewrite" class="headerlink" title="3.4.rewrite"></a>3.4.rewrite</h3><ul>
-<li>语法：rewrite regex replacement [flag];</li>
-<li>默认值：none</li>
-<li>配置段：server,location,if</li>
-<li>作用：    <ol>
-<li>如果一个URI匹配指定的正则表达式regex，URI就按照replacement重写</li>
-<li>可以在重写指令后添加标识【flag】</li>
-<li>flag标志可以停止继续处理</li>
-<li>如果replacement以”http://“或”https://“开始，将不再继续处理rewrite指令，这个重定向将返回给客户端</li>
-</ol>
-</li>
-<li>flag标识符可为以下值：<ol>
-<li>last：停止处理后续rewrite指令集，然后对当前重写的新URI在rewrite指令集上重新查找。</li>
-<li>break：完成rewrite指令，并不在重新查找,但是当前location内剩余非rewrite语句和location外的的非rewrite语句可以执行。</li>
-<li>redirect：如果replacement不是以http:// 或https://开始，返回302临时重定向</li>
-<li>permannet：返回301永久重定向</li>
-</ol>
-</li>
-<li>最终完整的重定向URL包括请求scheme(http://,https://等),请求的server_name_in_redirect和 port_in_redirec三部分 ，说白了也就是http协议 域名 端口三部分组成。</li>
-<li>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location /download/ &#123;     </span><br><span class="line">	rewrite ^(/download/.*)/media/(.*)..*$ $1/mp3/$2.mp3 break;     </span><br><span class="line">	rewrite ^(/download/.*)/audio/(.*)..*$ $1/mp3/$2.ra break;     </span><br><span class="line">	return 403;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="3-5-rewrite-log"><a href="#3-5-rewrite-log" class="headerlink" title="3.5.rewrite_log"></a>3.5.rewrite_log</h3><ul>
-<li>语法：rewrite_log on|off;</li>
-<li>默认值：rewrite_log off;</li>
-<li>配置段：http,server,location,if</li>
-<li>作用：启用时将在error log中记录notice级别的重写日志</li>
-<li>实例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rewrite_log on;</span><br><span class="line">error_log logs/xxx.error.log notice;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="3-6-set"><a href="#3-6-set" class="headerlink" title="3.6.set"></a>3.6.set</h3><ul>
-<li>语法：set variable value;</li>
-<li>默认值：none</li>
-<li>配置段：server,location,if</li>
-<li>作用：定义一个变量并赋值，值可以是文本，变量或者文本变量混合体。<h3 id="3-7-uninitialized-variable-warn"><a href="#3-7-uninitialized-variable-warn" class="headerlink" title="3.7.uninitialized_variable_warn"></a>3.7.uninitialized_variable_warn</h3></li>
-<li>语法：uninitialized_variable_warn on | off;</li>
-<li>默认值：uninitialized_variable_warn on</li>
-<li>作用域：http,server,location,if</li>
-<li>作用：控制是否记录未初始化的警告信息</li>
-<li></li>
-</ul>
-<hr>
-<h2 id="4-rewrite的规则"><a href="#4-rewrite的规则" class="headerlink" title="4.rewrite的规则"></a>4.rewrite的规则</h2><h3 id="4-1-rewrite指令执行顺序"><a href="#4-1-rewrite指令执行顺序" class="headerlink" title="4.1.rewrite指令执行顺序"></a>4.1.rewrite指令执行顺序</h3><ol>
-<li>执行server块的rewrite指令(这里的块指的是server关键字后{}包围的区域，其它xx块类似)</li>
-<li>执行location匹配</li>
-<li>执行选定的location中的rewrite指令</li>
-<li>如果其中某步URI被重写，则重新循环执行1-3，直到找到真实存在的文件<br>如果循环超过10次，则返回500 Internal Server Error错误<h3 id="4-2-正则表达式-引用取值"><a href="#4-2-正则表达式-引用取值" class="headerlink" title="4.2.正则表达式-引用取值"></a>4.2.正则表达式-引用取值</h3></li>
-</ol>
-<ul>
-<li>可以使用括号来捕获，后续可用位置来将其引用，位置变量取决于捕获正则表达式中的顺序，$1引用第一个括号（）中值，$2则引用第二个括号中的值</li>
-<li><p>实例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^/img/([a-z]&#123;2&#125;)/([a-z0-9]&#123;5&#125;)/(.*)\.(png|gif|jpg)$</span><br></pre></td></tr></table></figure>
-<p>1） $1:是([a-z]{2})，两个小写字母组成的字符串<br>2） $2:是([a-z0-9]{5})，由小写字母或0-9组成的5个字符串<br>3） $3:是(.*)，是文件名<br>4） $4:是(png|gif|jpg)，其中一个</p>
-<h3 id="4-3-return返回规则"><a href="#4-3-return返回规则" class="headerlink" title="4.3.return返回规则"></a>4.3.return返回规则</h3></li>
-</ul>
-<ol>
-<li>停止处理，并为客户端返回状态码。</li>
-<li>非标准的444状态码将关闭连接，不发送任何响应头</li>
-<li>可以使用的状态码有：204/400/402-406/408/410/411/413/416/500-504</li>
-<li>如果状态码后面是一个url，该url将成为location头的补值。</li>
-<li>没有状态码的url将被视为一个默认的302状态码</li>
-<li>状态码附带文字段落，该文本将被放置在响应主体里<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location = /img404.html&#123;</span><br><span class="line">	return 404 &quot;image not found\n&quot;;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<hr>
-<h2 id="5-rewrite小实例"><a href="#5-rewrite小实例" class="headerlink" title="5.rewrite小实例"></a>5.rewrite小实例</h2><h3 id="5-1-禁止-sh-bash"><a href="#5-1-禁止-sh-bash" class="headerlink" title="5.1.禁止.sh .bash"></a>5.1.禁止.sh .bash</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location ~ .*\.(sh|bash)?$&#123;  </span><br><span class="line">  return 403;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/6FjAULs.png" alt=""> </p>
-<hr>
-<h3 id="5-2-目录跳转"><a href="#5-2-目录跳转" class="headerlink" title="5.2.目录跳转"></a>5.2.目录跳转</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">location /a&#123;</span><br><span class="line">         alias /data/site/b.chen.com/a;</span><br><span class="line">         rewrite ^/a/?$ /b last;</span><br><span class="line">&#125;</span><br><span class="line">location /b&#123;</span><br><span class="line">        alias /data/site/b.chen.com/b;</span><br><span class="line">        default_type &apos;text/html&apos;;</span><br><span class="line">        echo &quot;url is a -&gt; rewrite to b...&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/sDD29j1.png" alt=""></p>
-<hr>
-<h3 id="5-3-防盗链实例"><a href="#5-3-防盗链实例" class="headerlink" title="5.3.防盗链实例"></a>5.3.防盗链实例</h3><h4 id="5-3-0-valid-referer指令说明"><a href="#5-3-0-valid-referer指令说明" class="headerlink" title="5.3.0.valid_referer指令说明"></a>5.3.0.valid_referer指令说明</h4><p>Nginx配置中有一个指令valid_referers，用来获取Referer头域中的值，并且根据该值的情况给Nginx全局变量$invalid_referer的值，如果Referer头域中没有符合valid_referers指令配置的值，$invalid_referer变量将会被赋值为1。<br>valid_referer指令的语法结构为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">valid_referers none | blocked | server_names | string ....;</span><br><span class="line">none 检测Referer头域不存在的请求</span><br><span class="line">blocked 检测Referer头域的值被防火墙或者代理服务器删除或伪装的情况。</span><br><span class="line">这种情况下，该头域的值不以“http://”或者“https：//”开头</span><br><span class="line">server_names 设置一个或多个URL,检测Referer头域的值是否是这些URL中的某个。</span><br><span class="line">从nginx 0.5.33以后支持使用通配符“*”。</span><br></pre></td></tr></table></figure></p>
-<h4 id="5-3-1-nginx-conf的server配置"><a href="#5-3-1-nginx-conf的server配置" class="headerlink" title="5.3.1.nginx.conf的server配置"></a>5.3.1.nginx.conf的server配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    server_name echo.chen.com;</span><br><span class="line">    listen 80;</span><br><span class="line">    location /&#123;</span><br><span class="line">        root /data/site/echo.chen.com;</span><br><span class="line">        index index.html;</span><br><span class="line">    &#125;</span><br><span class="line">	location ~ .*\.(jpg|png)$ &#123;</span><br><span class="line">        valid_referers none blocked echo.chen.com;</span><br><span class="line">        if ($invalid_referer) &#123;</span><br><span class="line">                return 412;</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">       root /data/site/echo.chen.com;</span><br><span class="line">    &#125;</span><br><span class="line">    location =/error.html&#123;</span><br><span class="line">            root /data/site/echo.chen.com;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>/data/site/echo.chen.com 自行创建目录</li>
-<li>index.html内容如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">this is index.html</span><br><span class="line">&lt;img src=&quot;http://echo.chen.com/1.jpg&quot;&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="5-3-2-Windows下host配置"><a href="#5-3-2-Windows下host配置" class="headerlink" title="5.3.2.Windows下host配置"></a>5.3.2.Windows下host配置</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.111 b.chen.com</span><br><span class="line">192.168.1.111 echo.chen.com</span><br></pre></td></tr></table></figure>
-<ul>
-<li>配置不同域名指定同一个ip，以便测试<h4 id="5-3-3-浏览器测试"><a href="#5-3-3-浏览器测试" class="headerlink" title="5.3.3.浏览器测试"></a>5.3.3.浏览器测试</h4>访问指定的域名，即可访问到图片<br><img src="https://i.imgur.com/D7uzwFv.png" alt=""><br>使用b.chen.com进行访问则不能访问到服务器图片<br><img src="https://i.imgur.com/ZdjnR8Q.png" alt=""></li>
-</ul>
-<hr>
-<h3 id="5-4-域名跳转"><a href="#5-4-域名跳转" class="headerlink" title="5.4.域名跳转"></a>5.4.域名跳转</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    server_name jump.chen.com;</span><br><span class="line">    listen 80;</span><br><span class="line">    access_log off;</span><br><span class="line">    location /&#123;</span><br><span class="line">            default_type &quot;text/html&quot;;</span><br><span class="line">            echo &quot;it is echo.chen.com jump to jump.chen.com&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">server&#123;</span><br><span class="line">    server_name echo.chen.com;</span><br><span class="line">    listen 80;</span><br><span class="line">    rewrite ^/ http://jump.chen.com/;</span><br><span class="line">    location /&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://i.imgur.com/xRbRVPg.gif" alt=""></p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/08/26/nginx/Nginx rewrite深入解读/" data-id="cjff7y7ih001kcgh2gs2j4qum" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-nginx/Nginx location配置解析" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/08/24/nginx/Nginx location配置解析/">Nginx location配置解析</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/08/24/nginx/Nginx location配置解析/">
-            <time datetime="2017-08-24T15:34:12.000Z" itemprop="datePublished">2017-08-24</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Nginx/">Nginx</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="Nginx-location配置解析"><a href="#Nginx-location配置解析" class="headerlink" title="Nginx location配置解析"></a>Nginx location配置解析</h1><h3 id="1-语法规则"><a href="#1-语法规则" class="headerlink" title="1.语法规则"></a>1.语法规则</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">location [=|~|~*|^~]/uri/&#123;...&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>=  表示精确匹配，这个优先级最高的</li>
-<li>^~ 表示uri以某个常规字符串开头，理解为匹配 url路径即可，Nginx不对url做编码，因此请求为/static/80%/aa,可以被规则^~/static/ /aa(注意中间是空格)</li>
-<li>~  表示区分大小写的正则匹配、</li>
-<li>~* 表示不区分大小写的正则匹配</li>
-<li>!~ 表示区分大小写不正则匹配</li>
-<li>!~*表示不区分大小写不正则匹配</li>
-<li>/  表示通用匹配，任何请求都会匹配到，默认匹配<br>其中常用正则</li>
-<li>. ： 匹配除换行符以外的任意字符</li>
-<li>? ： 重复0次或1次</li>
-<li>+ ： 重复1次或更多次</li>
-<li>* ： 重复0次或更多次</li>
-<li>\d ：匹配数字</li>
-<li>^ ： 匹配字符串的开始</li>
-<li>$ ： 匹配字符串的介绍</li>
-<li>{n} ： 重复n次</li>
-<li>{n,} ： 重复n次或更多次</li>
-<li>[c] ： 匹配单个字符c</li>
-<li>[a-z] ： 匹配a-z小写字母的任意一个<h3 id="2-语法优先级别"><a href="#2-语法优先级别" class="headerlink" title="2.语法优先级别"></a>2.语法优先级别</h3>优先级：= &gt; ^~<br>首先匹配 = ，其次匹配 ^~，其次是按文件中顺序的正则匹配，最后是交给 / 通用匹配。当有匹配成功时候，停止匹配，按当前匹配规则请求。<h3 id="3-定义匹配规则"><a href="#3-定义匹配规则" class="headerlink" title="3.定义匹配规则"></a>3.定义匹配规则</h3>(注：需要安装echo模块才行，才能使用echo)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">	echo &apos;/&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location = /&#123;</span><br><span class="line">	echo &apos;=/&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location = /nginx&#123;</span><br><span class="line">	echo &apos;=/nginx&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location ~ \.(gif|jpg|png|js|css) &#123;</span><br><span class="line">	echo &apos;name-gif/jpg/png&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location ~* \.png$ &#123;</span><br><span class="line">	echo &apos;all-png&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location ^~ /static/ &#123;</span><br><span class="line">	echo &apos;static&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="4-访问测试"><a href="#4-访问测试" class="headerlink" title="4.访问测试"></a>4.访问测试</h3><ul>
-<li><p>访问<a href="http://a.chen.com/，匹配到“=/”" target="_blank" rel="noopener">http://a.chen.com/，匹配到“=/”</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#curl http://a.chen.com/</span><br><span class="line">=/</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>访问<a href="http://a.chen.com/nginx，完全匹配到“=/nginx”" target="_blank" rel="noopener">http://a.chen.com/nginx，完全匹配到“=/nginx”</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#curl http://a.chen.com/nginx</span><br><span class="line">=/nginx</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>访问<a href="http://a.chen.com/xxx/xxx.PNG，完全匹配到“~" target="_blank" rel="noopener">http://a.chen.com/xxx/xxx.PNG，完全匹配到“~</a>* .png$，因为大写。所以没有匹配到‘~.(gif|jpg|png|js|css)’，因为 ~ 区分大小写 ”</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#curl http://a.chen.com/xxx/1.PNG</span><br><span class="line">all-png</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>访问<a href="http://a.chen.com/static/xxx.PNG，匹配到“" target="_blank" rel="noopener">http://a.chen.com/static/xxx.PNG，匹配到“</a> ^~ /static/ 因为有 ^~ 停止往下匹配了”</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#curl http://a.chen.com/static/1.PNG</span><br><span class="line">static</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="5-常用的静态资源匹配规则"><a href="#5-常用的静态资源匹配规则" class="headerlink" title="5.常用的静态资源匹配规则"></a>5.常用的静态资源匹配规则</h3><h4 id="5-1-样式和JS"><a href="#5-1-样式和JS" class="headerlink" title="5.1.样式和JS"></a>5.1.样式和JS</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location ~* .*\.(js|css)?$&#123;</span><br><span class="line">	expires 7d;//7天过期</span><br><span class="line">	access_log off;//不保存日志</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="5-5-图片图标等"><a href="#5-5-图片图标等" class="headerlink" title="5.5.图片图标等"></a>5.5.图片图标等</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location ~* .*\.(jpg|png|gif|jpeg|bmp|ico)?$&#123;</span><br><span class="line">	expires 7d;//7天过期</span><br><span class="line">	access_log off;//不保存日志</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="5-6-资源数据"><a href="#5-6-资源数据" class="headerlink" title="5.6.资源数据"></a>5.6.资源数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location ~* .*\.(zip|rar|exe|msi|iso|gho|mp3|mp4|rmvb|wma|wmv|rm)?$&#123;</span><br><span class="line">	deny all;//禁止这些文件的下载</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/08/24/nginx/Nginx location配置解析/" data-id="cjff7y7i80014cgh2k78is1f8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-nginx/Nginx 日志配置详情解析" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/08/24/nginx/Nginx 日志配置详情解析/">Nginx 日志配置详情解析</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/08/24/nginx/Nginx 日志配置详情解析/">
-            <time datetime="2017-08-24T13:22:56.000Z" itemprop="datePublished">2017-08-24</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Nginx/">Nginx</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="Nginx-日志配置详情解析"><a href="#Nginx-日志配置详情解析" class="headerlink" title="Nginx 日志配置详情解析"></a>Nginx 日志配置详情解析</h1><p>&emsp;&emsp;在使用nginx进行服务器管理时候，日志对于统计、审查、排错来说非常有利。<br>&emsp;&emsp;nginx日志相关的配置有：access_log(访问日志)、log_format（日志格式）、open_log_file_cache、log_not_found、log_subrequest、rewrite_log、error_log。<br>&emsp;&emsp;nginx有一个非常灵活的日志记录模式，每个级别的配置可以有各自独立的访问日志。日志格式通过log_format命令来定义。（主要基于ngx_http_log_module:用于定义请求日志格式）</p>
-<h2 id="1-access-log配置解析"><a href="#1-access-log配置解析" class="headerlink" title="1.access_log配置解析"></a>1.access_log配置解析</h2><h3 id="1-1-access-log语法"><a href="#1-1-access-log语法" class="headerlink" title="1.1.access_log语法"></a>1.1.access_log语法</h3><ul>
-<li>access_log path [format [buffer=size [flush=time]]]</li>
-<li>access_log path format gzip[=level] [buffer=size [flush=time]]</li>
-<li>access_log syslog:server=address[,parameter=value][format]</li>
-<li>access_log off<h3 id="1-2-access-log默认值"><a href="#1-2-access-log默认值" class="headerlink" title="1.2.access_log默认值"></a>1.2.access_log默认值</h3></li>
-<li>access_log log/access.log combined<h3 id="1-3-access-log配置段"><a href="#1-3-access-log配置段" class="headerlink" title="1.3.access_log配置段"></a>1.3.access_log配置段</h3></li>
-<li>http</li>
-<li>server</li>
-<li>location</li>
-<li>if in location</li>
-<li>limit_except<h3 id="1-4-access-log语法参数解析"><a href="#1-4-access-log语法参数解析" class="headerlink" title="1.4.access_log语法参数解析"></a>1.4.access_log语法参数解析</h3></li>
-<li>gzip：压缩等级</li>
-<li>buffer：设置所需内容缓存区大小</li>
-<li>flush：保存在缓存区的最长时间</li>
-<li>off：不记录日志</li>
-<li>combined：使用默认的格式记录日志（access_log log/access.log combined或access_log log/access.log）</li>
-</ul>
-<hr>
-<h2 id="2-log-format配置解析"><a href="#2-log-format配置解析" class="headerlink" title="2.log_format配置解析"></a>2.log_format配置解析</h2><h3 id="2-1-log-format语法"><a href="#2-1-log-format语法" class="headerlink" title="2.1.log_format语法"></a>2.1.log_format语法</h3><ul>
-<li>log_format name string …;<h3 id="2-2-log-format默认值"><a href="#2-2-log-format默认值" class="headerlink" title="2.2.log_format默认值"></a>2.2.log_format默认值</h3></li>
-<li>log_format combined “…”;<br>log_format有一个默认的无需设置的combined日志格式，相当于apache的combined日志格式。格式如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_format  combined  &apos;$remote_addr - $remote_user  [$time_local]  &apos;</span><br><span class="line">                                   &apos; &quot;$request&quot;  $status  $body_bytes_sent  &apos;</span><br><span class="line">                                   &apos; &quot;$http_referer&quot;  &quot;$http_user_agent&quot; &apos;;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="2-3-log-format配置段"><a href="#2-3-log-format配置段" class="headerlink" title="2.3.log_format配置段"></a>2.3.log_format配置段</h3><ul>
-<li>http<h3 id="2-4-log-format语法参数解析"><a href="#2-4-log-format语法参数解析" class="headerlink" title="2.4.log_format语法参数解析"></a>2.4.log_format语法参数解析</h3></li>
-<li>name表示格式名称</li>
-<li>string表示等义的格式。<h3 id="2-5-log-format常用的变量参数："><a href="#2-5-log-format常用的变量参数：" class="headerlink" title="2.5.log_format常用的变量参数："></a>2.5.log_format常用的变量参数：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$remote_addr, $http_x_forwarded_for（反向） 记录客户端IP地址</span><br><span class="line">$remote_user 记录客户端用户名称</span><br><span class="line">$request 记录请求的URL和HTTP协议</span><br><span class="line">$status 记录请求状态</span><br><span class="line">$body_bytes_sent 发送给客户端的字节数，不包括响应头的大小； 该变量与Apache模块mod_log_config里的“%B”参数兼容。</span><br><span class="line">$bytes_sent 发送给客户端的总字节数。</span><br><span class="line">$connection 连接的序列号。</span><br><span class="line">$connection_requests 当前通过一个连接获得的请求数量。</span><br><span class="line">$msec 日志写入时间。单位为秒，精度是毫秒。</span><br><span class="line">$pipe 如果请求是通过HTTP流水线(pipelined)发送，pipe值为“p”，否则为“.”。</span><br><span class="line">$http_referer 记录从哪个页面链接访问过来的</span><br><span class="line">$http_user_agent 记录客户端浏览器相关信息</span><br><span class="line">$request_length 请求的长度（包括请求行，请求头和请求正文）。</span><br><span class="line">$request_time 请求处理时间，单位为秒，精度毫秒； 从读入客户端的第一个字节开始，直到把最后一个字符发送给客户端后进行日志写入为止。</span><br><span class="line">$time_iso8601 ISO8601标准格式下的本地时间。</span><br><span class="line">$time_local 通用日志格式下的本地时间。</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="2-6-log-format使用例子"><a href="#2-6-log-format使用例子" class="headerlink" title="2.6.log_format使用例子"></a>2.6.log_format使用例子</h3><h4 id="2-6-1-nginx反向代理时配置log-format"><a href="#2-6-1-nginx反向代理时配置log-format" class="headerlink" title="2.6.1.nginx反向代理时配置log_format"></a>2.6.1.nginx反向代理时配置log_format</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log_format  porxy  &apos;$http_x_forwarded_for - $remote_user  [$time_local]  &apos;</span><br><span class="line">                   &apos; &quot;$request&quot;  $status $body_bytes_sent &apos;</span><br><span class="line">                   &apos; &quot;$http_referer&quot;  &quot;$http_user_agent&quot; &apos;;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>注：nginx位于负载均衡器，squid，nginx反向代理之后，web服务器无法直接获取到客户端真实的IP地址了。 $remote_addr获取反向代理的IP地址。反向代理服务器在转发请求的http头信息中，可以增加X-Forwarded-For信息，用来记录 客户端IP地址和客户端请求的服务器地址。</p>
-<h4 id="2-6-2-http发送给客户端时配置log-format"><a href="#2-6-2-http发送给客户端时配置log-format" class="headerlink" title="2.6.2.http发送给客户端时配置log_format"></a>2.6.2.http发送给客户端时配置log_format</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line"> log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">                   &apos;&quot;$status&quot; $body_bytes_sent &quot;$http_referer&quot; &apos;</span><br><span class="line">                   &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot; &apos;</span><br><span class="line">                   &apos;&quot;$gzip_ratio&quot; $request_time $bytes_sent $request_length&apos;;</span><br><span class="line"> </span><br><span class="line"> log_format srcache_log &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">                        &apos;&quot;$status&quot; $body_bytes_sent $request_time $bytes_sent $request_length &apos;</span><br><span class="line">                        &apos;[$upstream_response_time] [$srcache_fetch_status] [$srcache_store_status] [$srcache_expire]&apos;;</span><br><span class="line"> </span><br><span class="line"> open_log_file_cache max=1000 inactive=60s;</span><br><span class="line"></span><br><span class="line"> server &#123;</span><br><span class="line"> 	server_name ~^(www\.)?(.+)$;</span><br><span class="line"> 	access_log logs/$2-access.log main;</span><br><span class="line"> 	error_log logs/$2-error.log;</span><br><span class="line">	location /srcache &#123;</span><br><span class="line"> 		access_log logs/access-srcache.log srcache_log;</span><br><span class="line"> 	&#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>注：发送给客户端的响应头拥有“sent_http_”前缀。 比如$sent_http_content_range。</p>
-</li>
-<li></li>
-</ul>
-<hr>
-<h2 id="3-open-log-file-cache配置解析"><a href="#3-open-log-file-cache配置解析" class="headerlink" title="3.open_log_file_cache配置解析"></a>3.open_log_file_cache配置解析</h2><h3 id="3-1-open-log-file-cache语法"><a href="#3-1-open-log-file-cache语法" class="headerlink" title="3.1.open_log_file_cache语法"></a>3.1.open_log_file_cache语法</h3><ul>
-<li>open_log_file_cache max=N [inactive=time] [min_uses=N] [valid=time];</li>
-<li>open_log_file_cache off;<h3 id="3-2-open-log-file-cache默认值"><a href="#3-2-open-log-file-cache默认值" class="headerlink" title="3.2.open_log_file_cache默认值"></a>3.2.open_log_file_cache默认值</h3></li>
-<li>open_log_file_cache off;<h3 id="3-3-open-log-file-cache配置段"><a href="#3-3-open-log-file-cache配置段" class="headerlink" title="3.3.open_log_file_cache配置段"></a>3.3.open_log_file_cache配置段</h3></li>
-<li>http</li>
-<li>server</li>
-<li>location<h3 id="3-4-open-log-file-cache语法参数解析"><a href="#3-4-open-log-file-cache语法参数解析" class="headerlink" title="3.4.open_log_file_cache语法参数解析"></a>3.4.open_log_file_cache语法参数解析</h3></li>
-<li>max:设置缓存中的最大文件描述符数量，如果缓存被占满，采用LRU算法将描述符关闭。</li>
-<li>inactive:设置存活时间，默认是10s</li>
-<li>min_uses:设置在inactive时间段内，日志文件最少使用多少次后，该日志文件描述符记入缓存中，默认是1次</li>
-<li>valid:设置检查频率，默认60s</li>
-<li>off：禁用缓存<h3 id="3-5-open-log-file-cache的作用"><a href="#3-5-open-log-file-cache的作用" class="headerlink" title="3.5.open_log_file_cache的作用"></a>3.5.open_log_file_cache的作用</h3>对于每一条日志记录，都将是先打开文件，再写入日志，然后关闭。可以使用open_log_file_cache来设置日志文件缓存(默认是off)<h3 id="3-6-open-log-file-cache使用例子"><a href="#3-6-open-log-file-cache使用例子" class="headerlink" title="3.6.open_log_file_cache使用例子"></a>3.6.open_log_file_cache使用例子</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">open_log_file_cache max=1000 inactive=20s valid=1m min_uses=2;</span><br><span class="line">open_log_file_cache off;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h2 id="4-log-not-found配置解析"><a href="#4-log-not-found配置解析" class="headerlink" title="4.log_not_found配置解析"></a>4.log_not_found配置解析</h2><h3 id="4-1-log-not-found语法"><a href="#4-1-log-not-found语法" class="headerlink" title="4.1.log_not_found语法"></a>4.1.log_not_found语法</h3><ul>
-<li>log_not_found on | off;<h3 id="4-2-log-not-found默认值"><a href="#4-2-log-not-found默认值" class="headerlink" title="4.2.log_not_found默认值"></a>4.2.log_not_found默认值</h3></li>
-<li>log_not_found on;<h3 id="4-3-log-not-found配置段"><a href="#4-3-log-not-found配置段" class="headerlink" title="4.3.log_not_found配置段"></a>4.3.log_not_found配置段</h3></li>
-<li>http</li>
-<li>server</li>
-<li>location<h3 id="4-4-log-not-found的作用"><a href="#4-4-log-not-found的作用" class="headerlink" title="4.4.log_not_found的作用"></a>4.4.log_not_found的作用</h3>是否在error_log中记录不存在的错误。默认是。</li>
-</ul>
-<hr>
-<h2 id="5-log-subrequest配置解析"><a href="#5-log-subrequest配置解析" class="headerlink" title="5.log_subrequest配置解析"></a>5.log_subrequest配置解析</h2><h3 id="5-1-log-subrequest语法"><a href="#5-1-log-subrequest语法" class="headerlink" title="5.1.log_subrequest语法"></a>5.1.log_subrequest语法</h3><ul>
-<li>log_subrequest on | off;<h3 id="5-2-log-subrequest默认值"><a href="#5-2-log-subrequest默认值" class="headerlink" title="5.2.log_subrequest默认值"></a>5.2.log_subrequest默认值</h3></li>
-<li>log_subrequest off;<h3 id="5-3-log-subrequest配置段"><a href="#5-3-log-subrequest配置段" class="headerlink" title="5.3.log_subrequest配置段"></a>5.3.log_subrequest配置段</h3></li>
-<li>http</li>
-<li>server</li>
-<li>location<h3 id="5-4-log-subrequest的作用"><a href="#5-4-log-subrequest的作用" class="headerlink" title="5.4.log_subrequest的作用"></a>5.4.log_subrequest的作用</h3>是否在access_log中记录子请求的访问日志。默认不记录。</li>
-</ul>
-<hr>
-<h2 id="6-rewrite-log配置解析"><a href="#6-rewrite-log配置解析" class="headerlink" title="6.rewrite_log配置解析"></a>6.rewrite_log配置解析</h2><h3 id="6-1-rewrite-log语法"><a href="#6-1-rewrite-log语法" class="headerlink" title="6.1.rewrite_log语法"></a>6.1.rewrite_log语法</h3><ul>
-<li>rewrite_log on | off;<h3 id="6-2-rewrite-log默认值"><a href="#6-2-rewrite-log默认值" class="headerlink" title="6.2.rewrite_log默认值"></a>6.2.rewrite_log默认值</h3></li>
-<li>rewrite_log off;<h3 id="6-3-rewrite-log配置段"><a href="#6-3-rewrite-log配置段" class="headerlink" title="6.3.rewrite_log配置段"></a>6.3.rewrite_log配置段</h3></li>
-<li>http</li>
-<li>server</li>
-<li>location</li>
-<li>if<h3 id="6-4-rewrite-log的作用"><a href="#6-4-rewrite-log的作用" class="headerlink" title="6.4.rewrite_log的作用"></a>6.4.rewrite_log的作用</h3>启用时将在error log中记录notice级别的重写日志。<br>基于ngx_http_rewrite_module模块提供的。用来记录重写日志的。对于调试重写规则建议开启。</li>
-</ul>
-<hr>
-<h2 id="7-error-log配置解析"><a href="#7-error-log配置解析" class="headerlink" title="7.error_log配置解析"></a>7.error_log配置解析</h2><h3 id="7-1-error-log语法"><a href="#7-1-error-log语法" class="headerlink" title="7.1.error_log语法"></a>7.1.error_log语法</h3><ul>
-<li>error_log file | stderr | syslog:server=address[,parameter=value] [debug | info | notice | warn | error | crit | alert | emerg];<h3 id="7-2-error-log默认值"><a href="#7-2-error-log默认值" class="headerlink" title="7.2.error_log默认值"></a>7.2.error_log默认值</h3></li>
-<li>error_log logs/error.log error;<h3 id="7-3-error-log配置段"><a href="#7-3-error-log配置段" class="headerlink" title="7.3.error_log配置段"></a>7.3.error_log配置段</h3></li>
-<li>http</li>
-<li>server</li>
-<li>location</li>
-<li>main<h3 id="7-4-error-log的作用"><a href="#7-4-error-log的作用" class="headerlink" title="7.4.error_log的作用"></a>7.4.error_log的作用</h3>配置错误日志。</li>
-</ul>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/08/24/nginx/Nginx 日志配置详情解析/" data-id="cjff7y7if001gcgh2kcx7092h" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-nginx/服务器集成Nginx" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/08/22/nginx/服务器集成Nginx/">服务器快速集成Nginx</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/08/22/nginx/服务器集成Nginx/">
-            <time datetime="2017-08-22T07:23:54.000Z" itemprop="datePublished">2017-08-22</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Nginx/">Nginx</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="服务器快速集成Nginx"><a href="#服务器快速集成Nginx" class="headerlink" title="服务器快速集成Nginx"></a>服务器快速集成Nginx</h1><h3 id="1-安装依赖"><a href="#1-安装依赖" class="headerlink" title="1.安装依赖"></a>1.安装依赖</h3><h4 id="1-1-pcre重定向依赖"><a href="#1-1-pcre重定向依赖" class="headerlink" title="1.1.pcre重定向依赖"></a>1.1.pcre重定向依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install pcre*</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>PCRE(Perl Compatible Regular Expressions)是一个Perl库，不止具有http重定向依赖，还包括 perl 兼容的正则表达式库。nginx的http模块使用pcre来解析正则表达式，所以需要在linux上安装pcre库。</p>
-<h4 id="1-2-openssl-http-https支持，如果不需要https可以不安装。"><a href="#1-2-openssl-http-https支持，如果不需要https可以不安装。" class="headerlink" title="1.2.openssl(http/https支持，如果不需要https可以不安装。"></a>1.2.openssl(http/https支持，如果不需要https可以不安装。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install pcre*</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议，并提供丰富的应用程序供测试或其它目的使用。</p>
-<h4 id="1-3-安装-Tengine-执行配置命令-gcc环境"><a href="#1-3-安装-Tengine-执行配置命令-gcc环境" class="headerlink" title="1.3.安装 Tengine 执行配置命令 gcc环境"></a>1.3.安装 Tengine 执行配置命令 gcc环境</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc gcc-c++ autoconf automake make</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>若是本机上已经安装则可以忽略，主要用于编译Nginx源码</p>
-</li>
-</ul>
-<h4 id="2-下载解压"><a href="#2-下载解压" class="headerlink" title="2.下载解压"></a>2.下载解压</h4><h4 id="2-1-下载"><a href="#2-1-下载" class="headerlink" title="2.1.下载"></a>2.1.下载</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://nginx.org/download/nginx-1.12.2.tar.gz</span><br></pre></td></tr></table></figure>
-<h4 id="2-2-解压"><a href="#2-2-解压" class="headerlink" title="2.2.解压"></a>2.2.解压</h4><p>先创建Nginx存放路径，再进行解压<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir nginxgz</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf nginx-1.7.8.tar.gz -C /usr/local/nginxgz</span><br></pre></td></tr></table></figure>
-<h3 id="3-编译安装Nginx"><a href="#3-编译安装Nginx" class="headerlink" title="3.编译安装Nginx"></a>3.编译安装Nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginxgz/nginx-1.12.2</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx --with-http_ssl_module --with-http_v2_module --with-http_stub_status_module --with-pcre</span><br></pre></td></tr></table></figure>
-<ul>
-<li>–with-http_ssl_module ： 支持https</li>
-<li>–with-http_stub_status_module ： 支持nginx状态查询</li>
-<li>–with-http_v2_module ： 支持Google发明的SPDY协议，必须有ssl的支持</li>
-<li>–with-pcre ： 支持rewrite重写功能，必须有pcre<br>注：若是没有安装gcc则会报如下错误：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">checking for OS</span><br><span class="line"> + Linux 2.6.32-431.el6.x86_64 x86_64</span><br><span class="line">checking for C compiler ... not found</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>编译：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure>
-<h3 id="4-操作Nginx"><a href="#4-操作Nginx" class="headerlink" title="4.操作Nginx"></a>4.操作Nginx</h3><ul>
-<li><p>启动：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重启：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>关闭：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -s stop</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="5-配置防火墙（iptables）测试"><a href="#5-配置防火墙（iptables）测试" class="headerlink" title="5.配置防火墙（iptables）测试"></a>5.配置防火墙（iptables）测试</h3><h4 id="5-1-关闭防火墙"><a href="#5-1-关闭防火墙" class="headerlink" title="5.1.关闭防火墙"></a>5.1.关闭防火墙</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables stop</span><br></pre></td></tr></table></figure>
-<h4 id="5-2-编辑配置文件"><a href="#5-2-编辑配置文件" class="headerlink" title="5.2.编辑配置文件"></a>5.2.编辑配置文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/iptables</span><br></pre></td></tr></table></figure>
-<h4 id="5-3-开发80端口"><a href="#5-3-开发80端口" class="headerlink" title="5.3.开发80端口"></a>5.3.开发80端口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT</span><br></pre></td></tr></table></figure>
-<h4 id="5-4-重启服务"><a href="#5-4-重启服务" class="headerlink" title="5.4.重启服务"></a>5.4.重启服务</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service iptables restart</span><br></pre></td></tr></table></figure>
-<h4 id="测试，浏览器输入服务器地址（如：192-168-1-111）"><a href="#测试，浏览器输入服务器地址（如：192-168-1-111）" class="headerlink" title="测试，浏览器输入服务器地址（如：192.168.1.111）"></a>测试，浏览器输入服务器地址（如：192.168.1.111）</h4><p><img src="https://i.imgur.com/32msO8G.png" alt=""></p>
-<h4 id="6-将Nginx添加到服务（service）中"><a href="#6-将Nginx添加到服务（service）中" class="headerlink" title="6.将Nginx添加到服务（service）中"></a>6.将Nginx添加到服务（service）中</h4><ul>
-<li><p>6.1.切换到启动脚本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/init.d</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>6.2.创建nginx文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch nginx</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>6.3.编辑nginx文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/init.d/nginx</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>6.4.并且添加以下内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash  </span><br><span class="line"># nginx Startup script for the Nginx HTTP Server  </span><br><span class="line">#  </span><br><span class="line"># chkconfig: - 85 15  </span><br><span class="line"># description: Nginx is a high-performance web and proxy server.  </span><br><span class="line"># It has a lot of features, but it&apos;s not for everyone.  </span><br><span class="line"># processname: nginx  </span><br><span class="line"># pidfile: /var/run/nginx.pid  </span><br><span class="line"># config: /usr/local/nginx/conf/nginx.conf  </span><br><span class="line">nginxd=/usr/local/nginx/sbin/nginx  </span><br><span class="line">nginx_config=/usr/local/nginx/conf/nginx.conf  </span><br><span class="line">nginx_pid=/usr/local/nginx/nginx.pid  </span><br><span class="line"> </span><br><span class="line">RETVAL=0  </span><br><span class="line">prog=&quot;nginx&quot; </span><br><span class="line"> </span><br><span class="line"># Source function library.  </span><br><span class="line">. /etc/rc.d/init.d/functions  </span><br><span class="line"> </span><br><span class="line"># Source networking configuration.  </span><br><span class="line">. /etc/sysconfig/network  </span><br><span class="line"> </span><br><span class="line"># Check that networking is up.  </span><br><span class="line">[ $&#123;NETWORKING&#125; = &quot;no&quot; ] &amp;&amp; exit 0  </span><br><span class="line"> </span><br><span class="line">[ -x $nginxd ] || exit 0  </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"># Start nginx daemons functions.  </span><br><span class="line">start() &#123;  </span><br><span class="line"> </span><br><span class="line">if [ -e $nginx_pid ];then </span><br><span class="line">   echo &quot;nginx already running....&quot; </span><br><span class="line">   exit 1  </span><br><span class="line">fi  </span><br><span class="line"> </span><br><span class="line">   echo -n $&quot;Starting $prog: &quot; </span><br><span class="line">   daemon $nginxd -c $&#123;nginx_config&#125;  </span><br><span class="line">   RETVAL=$?  </span><br><span class="line">   echo  </span><br><span class="line">   [ $RETVAL = 0 ] &amp;&amp; touch /var/lock/subsys/nginx  </span><br><span class="line">   return $RETVAL  </span><br><span class="line"> </span><br><span class="line">&#125;  </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"># Stop nginx daemons functions.  </span><br><span class="line">stop() &#123;  </span><br><span class="line">        echo -n $&quot;Stopping $prog: &quot; </span><br><span class="line">        killproc $nginxd  </span><br><span class="line">        RETVAL=$?  </span><br><span class="line">        echo  </span><br><span class="line">        [ $RETVAL = 0 ] &amp;&amp; rm -f /var/lock/subsys/nginx /var/run/nginx.pid  </span><br><span class="line">&#125;  </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"># reload nginx service functions.  </span><br><span class="line">reload() &#123;  </span><br><span class="line"> </span><br><span class="line">    echo -n $&quot;Reloading $prog: &quot; </span><br><span class="line"> $nginxd -s reload  </span><br><span class="line">    #if your nginx version is below 0.8, please use this command: &quot;kill -HUP `cat $&#123;nginx_pid&#125;`&quot; </span><br><span class="line">    RETVAL=$?  </span><br><span class="line">    echo  </span><br><span class="line"> </span><br><span class="line">&#125;  </span><br><span class="line"> </span><br><span class="line"># See how we were called.  </span><br><span class="line">case &quot;$1&quot; in </span><br><span class="line">start)  </span><br><span class="line">        start  </span><br><span class="line">        ;;  </span><br><span class="line"> </span><br><span class="line">stop)  </span><br><span class="line">        stop  </span><br><span class="line">        ;;  </span><br><span class="line"> </span><br><span class="line">reload)  </span><br><span class="line">        reload  </span><br><span class="line">        ;;  </span><br><span class="line"> </span><br><span class="line">restart)  </span><br><span class="line">        stop  </span><br><span class="line">        start  </span><br><span class="line">        ;;  </span><br><span class="line"> </span><br><span class="line">status)  </span><br><span class="line">        status $prog  </span><br><span class="line">        RETVAL=$?  </span><br><span class="line">        ;;  </span><br><span class="line">*)  </span><br><span class="line">        echo $&quot;Usage: $prog &#123;start|stop|restart|reload|status|help&#125;&quot; </span><br><span class="line">        exit 1  </span><br><span class="line">esac  </span><br><span class="line"> </span><br><span class="line">exit $RETVAL</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>注：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># chkconfig: - 85 15</span><br><span class="line"># description: nginx is a World Wide Web server. It is used to serve</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><p>脚本中这两个不能去除，不然不能启动，而且会报以下错误，即语法错误</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx 服务不支持 chkconfig</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>chkconfig语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">语　法：chkconfig [--add][--del][--list][系统服务] 或 chkconfig [--level &lt;等级代号&gt;][系统服务][on/off/reset]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>6.5.保存退出后，切换路径</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/rc.d/init.d</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>6.6.设置权限</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x nginx</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>6.7.chkconfig改变nginx运行级别</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/chkconfig --level 345 nginx on</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>到此为止：<br>任何位置都能运行   service nginx start           可选  start | stop | restart | reload | status |  help</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/08/22/nginx/服务器集成Nginx/" data-id="cjff7y7il001qcgh2scyhkh0r" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-nginx/Nginx 动态添加模块" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/08/22/nginx/Nginx 动态添加模块/">Nginx 动态添加模块</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/08/22/nginx/Nginx 动态添加模块/">
-            <time datetime="2017-08-22T05:23:42.000Z" itemprop="datePublished">2017-08-22</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Nginx/">Nginx</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="Nginx-动态添加模块"><a href="#Nginx-动态添加模块" class="headerlink" title="Nginx 动态添加模块"></a>Nginx 动态添加模块</h1><p>nginx模块依赖：nginx的一些模块需要第三方支持，例如gzip模块需要zlib库，rewrite模块需要pcre库，ssl功能需要openssl库。<br>根据需求添加不同模块<br>例添加echo模块：</p>
-<h2 id="1-下载并安装nginx"><a href="#1-下载并安装nginx" class="headerlink" title="1.下载并安装nginx"></a>1.下载并安装nginx</h2><p>详情请看：<a href="http://blog.csdn.net/dushiwodecuo/article/details/78393454" target="_blank" rel="noopener">http://blog.csdn.net/dushiwodecuo/article/details/78393454</a></p>
-<h2 id="2-查看nginx已安装的模块"><a href="#2-查看nginx已安装的模块" class="headerlink" title="2.查看nginx已安装的模块"></a>2.查看nginx已安装的模块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -V</span><br></pre></td></tr></table></figure>
-<ul>
-<li>旧版本模块<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx --with-http_ssl_module --with-http_v2_module --with-http_stub_status_module --with-pcre</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="3-选择与nginx版本所符合的模块版本"><a href="#3-选择与nginx版本所符合的模块版本" class="headerlink" title="3.选择与nginx版本所符合的模块版本"></a>3.选择与nginx版本所符合的模块版本</h2><p>echo：<a href="https://github.com/openresty/echo-nginx-module/tags" target="_blank" rel="noopener">https://github.com/openresty/echo-nginx-module/tags</a><br>当前nginx版本为：1.12.2，选择echo版本为0.61</p>
-<h2 id="4-下载模块"><a href="#4-下载模块" class="headerlink" title="4.下载模块"></a>4.下载模块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/openresty/echo-nginx-module/archive/v0.61.tar.gz</span><br></pre></td></tr></table></figure>
-<h2 id="5-解压模块"><a href="#5-解压模块" class="headerlink" title="5.解压模块"></a>5.解压模块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf v0.61.tar.gz -C /usr/local/nginxgz</span><br></pre></td></tr></table></figure>
-<h2 id="6-为nginx添加模块"><a href="#6-为nginx添加模块" class="headerlink" title="6.为nginx添加模块"></a>6.为nginx添加模块</h2><h3 id="6-1-切换到nginx的源码目录-即解压后的目录"><a href="#6-1-切换到nginx的源码目录-即解压后的目录" class="headerlink" title="6.1.切换到nginx的源码目录(即解压后的目录)"></a>6.1.切换到nginx的源码目录(即解压后的目录)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/nginxgz/nginx-1.12.2</span><br></pre></td></tr></table></figure>
-<h3 id="6-2-添加新模块"><a href="#6-2-添加新模块" class="headerlink" title="6.2.添加新模块"></a>6.2.添加新模块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/nginx --add-module=/usr/local/nginxgz/echo-nginx-module-0.61 --with-http_ssl_module --with-http_v2_module --with-http_stub_status_module --with-pcre</span><br></pre></td></tr></table></figure>
-<h2 id="7-重新编译"><a href="#7-重新编译" class="headerlink" title="7.重新编译"></a>7.重新编译</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
-<h2 id="8-测试"><a href="#8-测试" class="headerlink" title="8.测试"></a>8.测试</h2><ul>
-<li>Linux上的测试<h3 id="8-1-修改配置文件"><a href="#8-1-修改配置文件" class="headerlink" title="8.1.修改配置文件"></a>8.1.修改配置文件</h3><h4 id="8-1-1-修改nginx-conf，添加测试域名模块"><a href="#8-1-1-修改nginx-conf，添加测试域名模块" class="headerlink" title="8.1.1.修改nginx.conf，添加测试域名模块"></a>8.1.1.修改nginx.conf，添加测试域名模块</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">        server_name echo.chen.com;</span><br><span class="line">        listen 80;</span><br><span class="line">        location /&#123;</span><br><span class="line">                echo &quot;it is echo module...&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="8-1-2-修改Linux-host文件"><a href="#8-1-2-修改Linux-host文件" class="headerlink" title="8.1.2.修改Linux host文件"></a>8.1.2.修改Linux host文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &apos;192.168.1.111 echo.chen.com&apos; &gt;&gt; /etc/hosts</span><br></pre></td></tr></table></figure>
-<h3 id="8-2-重启nginx"><a href="#8-2-重启nginx" class="headerlink" title="8.2.重启nginx"></a>8.2.重启nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
-<ul>
-<li>注：若是重启nginx之后还没能访问到，直接reboot，重启虚拟机等即可<h3 id="8-3-访问测试"><a href="#8-3-访问测试" class="headerlink" title="8.3.访问测试"></a>8.3.访问测试</h3><img src="https://i.imgur.com/so9aerf.png" alt=""></li>
-</ul>
-<hr>
-<ul>
-<li><p>Windows上浏览器测试</p>
-<h3 id="8-1-修改配置文件-1"><a href="#8-1-修改配置文件-1" class="headerlink" title="8.1.修改配置文件"></a>8.1.修改配置文件</h3><h4 id="8-1-1-修改nginx-conf，添加测试域名模块-1"><a href="#8-1-1-修改nginx-conf，添加测试域名模块-1" class="headerlink" title="8.1.1.修改nginx.conf，添加测试域名模块"></a>8.1.1.修改nginx.conf，添加测试域名模块</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">        server_name echo.chen.com;</span><br><span class="line">        listen 80;</span><br><span class="line">        location /&#123;</span><br><span class="line">		default_type &apos;text/html&apos;;  </span><br><span class="line">                echo &quot;it is echo module...&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>注： 如果没有这个default_type,浏览器访问则会一直下载文件而不是输出在浏览器上</p>
-<h4 id="8-1-2-修改Windows-host文件"><a href="#8-1-2-修改Windows-host文件" class="headerlink" title="8.1.2.修改Windows host文件"></a>8.1.2.修改Windows host文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.111 echo.chen.com</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="8-2-重启nginx-1"><a href="#8-2-重启nginx-1" class="headerlink" title="8.2.重启nginx"></a>8.2.重启nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
-<ul>
-<li>注：若是重启nginx之后还没能访问到，直接reboot，重启虚拟机等即可<h3 id="8-3-测试访问浏览器"><a href="#8-3-测试访问浏览器" class="headerlink" title="8.3.测试访问浏览器"></a>8.3.测试访问浏览器</h3><img src="https://i.imgur.com/5Z5ltto.png" alt=""></li>
-</ul>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/08/22/nginx/Nginx 动态添加模块/" data-id="cjff7y7ib001acgh2e64xr3w7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-nginx/nginx 的ngx_http_core_module模块处理请求" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/08/20/nginx/nginx 的ngx_http_core_module模块处理请求/">Nginx 的ngx_http_core_module模块</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/08/20/nginx/nginx 的ngx_http_core_module模块处理请求/">
-            <time datetime="2017-08-20T02:40:56.000Z" itemprop="datePublished">2017-08-20</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Nginx/">Nginx</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Nginx/">Nginx</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="Nginx-的ngx-http-core-module模块"><a href="#Nginx-的ngx-http-core-module模块" class="headerlink" title="Nginx 的ngx_http_core_module模块"></a>Nginx 的ngx_http_core_module模块</h1><p>ngx_http_core_module模块处理请求时，会有大量的变量，这些变量可以通过访问日志来记录，也可以用于其他nginx模块接收。在对请求做策略入改写等到都会使用到一些变量。以下为ngx_http_core_module模块提供的变量总结：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">$arg_PARAMETER  </span><br><span class="line">```           </span><br><span class="line">- HTTP 请求中某个参数的值，如/get?value=a.chen.com，可以用$arg_site取得a.chen.com这个值.</span><br><span class="line">```      </span><br><span class="line"> $args   </span><br><span class="line">```                    </span><br><span class="line">- HTTP 多个请求参数，请求中的完整参数。例如，在请求/get?a=1&amp;b=2 中，$args表示字符串a=1&amp;b=2.  </span><br><span class="line">```      </span><br><span class="line"> $binary_remote_addr</span><br><span class="line">```      </span><br><span class="line">- 二进制格式的客户端地址。例如：\x0B\xE0C\x0A</span><br><span class="line"></span><br><span class="line">```      </span><br><span class="line">$body_bytes_sent</span><br><span class="line">```      </span><br><span class="line">- 表示在向客户端发送的http响应中，包体部分的字节数  </span><br><span class="line">```  </span><br><span class="line">$content_length</span><br><span class="line">```  </span><br><span class="line">- 表示客户端请求头部中的Content-Length 字段的内容</span><br><span class="line">```  </span><br><span class="line">$content_type</span><br><span class="line">```  </span><br><span class="line">- 表示客户端请求头部中的Content-Type 字段的类型</span><br><span class="line">```  </span><br><span class="line">$cookie_COOKIE</span><br><span class="line">```  </span><br><span class="line">- 表示在客户端请求头部中的cookie 字段的内容  </span><br><span class="line">```  </span><br><span class="line">$document_root </span><br><span class="line">``` </span><br><span class="line">- 表示当前请求所使用的root 配置项的值  </span><br><span class="line">``` </span><br><span class="line">$uri</span><br><span class="line">```  </span><br><span class="line">- 表示当前请求的URI，不带任何参数</span><br></pre></td></tr></table></figure></p>
-<p>$document_uri<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- 与$uri 含义相同</span><br></pre></td></tr></table></figure></p>
-<p>$request_uri<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- 表示客户端发来的原始请求URI，带完整的参数。$uri和$document_uri未必是用户的原始请求，在内部重定向后可能是重定向后的URI，而$request_uri 永远不会改变，始终是客户端的原始URI.  </span><br><span class="line">```   </span><br><span class="line">$http_HEADER</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><p>表示当前 HTTP请求中相应头部的值。HEADER名称全小写。例如，示请求中 Host头部对应的值 用 $http_host表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$host</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表示客户端请求头部中的Host字段。如果Host字段不存在，则以实际处理的server（虚拟主机）名称代替。如果Host字段中带有端口，如IP:PORT，那么$host是去掉端口的，它的值为IP。$host 是全小写的。这些特性与http_HEADER中的http_host不同，http_host只取出Host头部对应的值。   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$hostname</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表示 Nginx所在机器的名称，与 gethostbyname调用返回的值相同   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$sent_http_HEADER</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表示返回客户端的 HTTP响应中相应头部的值。HEADER名称全小写。例如，用 $sent_http_content_type表示响应中 Content-Type头部对应的值   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$is_args</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表示请求中的 URI 是否带参数，如果带参数，$is_args值为 ?，如果不带参数，则是空字符串,可以用于条件判断  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$limit_rate</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表示当前连接的限速是多少，0表示无限速   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$nginx_version</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表示当前 Nginx的版本号   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$query_string</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>请求 URI中的参数，与 $args相同，然而 $query_string是只读的不会改变   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$remote_addr</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表示客户端的地址   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$remote_port</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表示客户端连接使用的端口</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$remote_user</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表示使用 Auth Basic Module时定义的用户名   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$request_filename</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表示用户请求中的 URI 经过 root或 alias转换后的文件路径</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$request_body</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表示 HTTP请求中的包体，该参数只在 proxy_pass 或 fastcgi_pass 中有意义   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$request_body_file</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表示 HTTP请求中的包体存储的临时文件名   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$request_completion</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>当请求已经全部完成时，其值为 “ok”。若没有完成，就要返回客户端，则其值为空字符串；或者在断点续传等情况下使用 HTTP range 访问的并不是文件的最后一块，那么其值也是空字符串。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$request_method</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表示 HTTP 请求的方法名，如 GET、PUT、POST等   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$scheme</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表示 HTTP scheme，如在请求 <a href="https://nginx.com/中表示" target="_blank" rel="noopener">https://nginx.com/中表示</a> https</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$server_addr</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表示服务器地址   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$server_name</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表示服务器名称   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$server_port</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表示服务器端口   </p>
-<pre><code>$server_protocol
-</code></pre></li>
-<li>表示服务器向客户端发送响应的协议，如 HTTP/1.1或 HTTP/1.0  </li>
-</ul>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/08/20/nginx/nginx 的ngx_http_core_module模块处理请求/" data-id="cjff7y7ij001mcgh2voqahfy9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-支付/微信支付/JavaEE 微信境外支付" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/08/05/支付/微信支付/JavaEE 微信境外支付/">JavaEE 微信境外支付</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/08/05/支付/微信支付/JavaEE 微信境外支付/">
-            <time datetime="2017-08-05T02:33:12.000Z" itemprop="datePublished">2017-08-05</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/支付/">支付</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/支付/">支付</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="JavaEE-微信境外支付"><a href="#JavaEE-微信境外支付" class="headerlink" title="JavaEE 微信境外支付"></a>JavaEE 微信境外支付</h1><blockquote>
-<p><a href="https://pay.weixin.qq.com/wiki/doc/api/external/index.html" target="_blank" rel="noopener">API文档</a></p>
-<p>境外分为两种：   </p>
-<ul>
-<li>普通商户版</li>
-<li>服务商版</li>
-</ul>
-<p>普通商户版：   </p>
-<p>1.支付方式:  </p>
-<ul>
-<li>刷卡支付</li>
-<li>公众号支付</li>
-<li>扫码支付</li>
-<li>APP支付</li>
-</ul>
-<p>2.报关接口：<br>用于商户提交海关需要的订单附近信息</p>
-<p>服务商版包括的支付方式有：  </p>
-<ul>
-<li>刷卡支付</li>
-<li>公众号支付</li>
-<li>扫码支付</li>
-</ul>
-</blockquote>
-<h2 id="1-普通商户版"><a href="#1-普通商户版" class="headerlink" title="1. 普通商户版"></a>1. 普通商户版</h2><h3 id="1-1-刷卡支付"><a href="#1-1-刷卡支付" class="headerlink" title="1.1 刷卡支付"></a>1.1 刷卡支付</h3><blockquote>
-<p><a href="https://pay.weixin.qq.com/wiki/doc/api/external/micropay.php?chapter=9_10&amp;index=1" target="_blank" rel="noopener">详情API文档</a>.   </p>
-<p><strong>应用场景:</strong><br>收银员使用扫码设备读取微信用户刷卡授权码以后，二维码或条码信息传送至商户收银台，由商户收银台或者商户后台调用该接口发起支付。    </p>
-</blockquote>
-<blockquote>
-<p><strong>⚠️提醒1：</strong>提交支付请求后微信会同步返回支付结果。当返回结果为“系统错误”时，商户系统等待5秒后调用【查询订单API】，查询支付实际交易结果；当返回结果为“USERPAYING”时，商户系统可设置间隔时间(建议10秒)重新查询支付结果，直到支付成功或超时(建议30秒)；   </p>
-<p><strong>⚠️提醒2：</strong>在调用查询接口返回后，如果交易状况不明晰，请调用【撤销订单API】，此时如果交易失败则关闭订单，该单不能再支付成功；如果交易成功，则将扣款退回到用户账户。当撤销无返回或错误时，请再次调用。注意：请勿扣款后立即调用【撤销订单API】,建议至少15秒后再调用。撤销订单API需要双向证书。</p>
-</blockquote>
-<h4 id="1-1-1-接口url："><a href="#1-1-1-接口url：" class="headerlink" title="1.1.1 接口url："></a>1.1.1 接口url：</h4><ul>
-<li><a href="https://apihk.mch.weixin.qq.com/pay/micropay" target="_blank" rel="noopener">https://apihk.mch.weixin.qq.com/pay/micropay</a>    （建议接入点：东南亚）</li>
-<li><a href="https://apius.mch.weixin.qq.com/pay/micropay" target="_blank" rel="noopener">https://apius.mch.weixin.qq.com/pay/micropay</a>    （建议接入点：其它）</li>
-<li><a href="https://api.mch.weixin.qq.com/pay/micropay" target="_blank" rel="noopener">https://api.mch.weixin.qq.com/pay/micropay</a>        （建议接入点：中国国内）</li>
-</ul>
-<h4 id="1-1-2-与境内对比参数"><a href="#1-1-2-与境内对比参数" class="headerlink" title="1.1.2 与境内对比参数"></a>1.1.2 与境内对比参数</h4><p>除了以下参数，其他都和国内一致。</p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>变量名</th>
-<th>必填</th>
-<th>类型</th>
-<th>示例值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>版本号</td>
-<td>version</td>
-<td>否</td>
-<td>String(32)</td>
-<td>1.0</td>
-<td>固定值 1.0</td>
-</tr>
-<tr>
-<td>商品详情</td>
-<td>detail</td>
-<td>否</td>
-<td>String(6000)</td>
-<td></td>
-<td>商品详细列表，使用Json格式，传输签名前请务必使用CDATA标签将JSON文本串保护起来。</td>
-</tr>
-</tbody>
-</table>
-<ol>
-<li>商品详情类型</li>
-</ol>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">"goods_detail"</span>:[</span><br><span class="line">&#123; </span><br><span class="line"><span class="attr">"goods_name"</span>:<span class="string">"iPhone6s 16G"</span>,</span><br><span class="line"><span class="attr">"quantity"</span>:<span class="number">1</span>, </span><br><span class="line">&#125;,</span><br><span class="line">&#123; </span><br><span class="line"><span class="attr">"goods_name"</span>:<span class="string">"iPhone6s 32G"</span>,</span><br><span class="line"><span class="attr">"quantity"</span>:<span class="number">1</span>, </span><br><span class="line">&#125;</span><br><span class="line">]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>商品详情描述</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">goods_detail</span><br><span class="line">└ goods_name String 必填 256 商品名称</span><br><span class="line">└ quantity Int 必填4 商品数量</span><br></pre></td></tr></table></figure>
-<h4 id="1-1-3-支付方式："><a href="#1-1-3-支付方式：" class="headerlink" title="1.1.3 支付方式："></a>1.1.3 支付方式：</h4><ol>
-<li>免密支付流程  </li>
-<li>验密支付流程   </li>
-</ol>
-<h3 id="1-2-公众号支付"><a href="#1-2-公众号支付" class="headerlink" title="1.2 公众号支付"></a>1.2 公众号支付</h3><blockquote>
-<p><strong>注意：</strong>商户也可以把商品网页的链接生成二维码，用户扫一扫打开后即可完成购买支付。   </p>
-<p>交互细节：   </p>
-<p>以下是支付场景的交互细节，请认真阅读，设计商户页面的逻辑：  </p>
-<ul>
-<li>（1）用户打开商户网页选购商品，发起支付，在网页通过JavaScript调用getBrandWCPayRequest接口，发起微信支付请求，用户进入支付流程。</li>
-<li>（2）用户成功支付点击完成按钮后，商户的前端会收到JavaScript的返回值。商户可直接跳转到支付成功的静态页面进行展示。</li>
-<li>（3）商户后台收到来自微信开放平台的支付成功回调通知，标志该笔订单支付成功。</li>
-</ul>
-<p><strong>注：</strong>（2）和（3）的触发不保证遵循严格的时序。JS API返回值作为触发商户网页跳转的标志，但商户后台应该只在收到微信后台的支付成功回调通知后，才做真正的支付成功的处理。</p>
-</blockquote>
-<h4 id="1-2-1-接口url："><a href="#1-2-1-接口url：" class="headerlink" title="1.2.1 接口url："></a>1.2.1 接口url：</h4><ul>
-<li><a href="https://apihk.mch.weixin.qq.com/pay/unifiedorder" target="_blank" rel="noopener">https://apihk.mch.weixin.qq.com/pay/unifiedorder</a>    （建议接入点：东南亚）</li>
-<li><a href="https://apius.mch.weixin.qq.com/pay/unifiedorder" target="_blank" rel="noopener">https://apius.mch.weixin.qq.com/pay/unifiedorder</a>    （建议接入点：其它）</li>
-<li><a href="https://api.mch.weixin.qq.com/pay/unifiedorder" target="_blank" rel="noopener">https://api.mch.weixin.qq.com/pay/unifiedorder</a>        （建议接入点：中国国内）</li>
-</ul>
-<p><strong>注：</strong>商户可根据实际请求情况选择最优域名进行访问，建议在接入时做好兼容，当访问其中一个域名出现异常时，可自动切换为其他域名。</p>
-<h4 id="1-2-2-与境内对比参数"><a href="#1-2-2-与境内对比参数" class="headerlink" title="1.2.2 与境内对比参数"></a>1.2.2 与境内对比参数</h4><p>和刷卡支付一样的参数区别。</p>
-<h3 id="1-3-扫码支付"><a href="#1-3-扫码支付" class="headerlink" title="1.3 扫码支付"></a>1.3 扫码支付</h3><p>几乎和公众号支付相同</p>
-<h3 id="1-4-APP支付"><a href="#1-4-APP支付" class="headerlink" title="1.4 APP支付"></a>1.4 APP支付</h3><blockquote>
-<p>商户系统先调用该接口在微信支付服务后台生成预支付交易单，返回正确的预支付交易回话标识后再在APP里面调起支付。</p>
-</blockquote>
-<p>除了请求参数“版本号” 和“商品详情” 不一样，其他都和境内一致。</p>
-<h3 id="1-5-报关接口"><a href="#1-5-报关接口" class="headerlink" title="1.5 报关接口"></a>1.5 报关接口</h3><blockquote>
-<p>用于商户提交海关需要的订单附件信息。报关接口只支持一个月内的支付订单进行报关申请。<br>以下为财付通的海关备案信息，一般海关会提供，如果没有请参考下表：<br>财付通海关备案名称：财付通支付科技有限公司<br>财付通10位海关注册编码：440316T004</p>
-</blockquote>
-<h4 id="1-5-1-订单附加信息提交接口"><a href="#1-5-1-订单附加信息提交接口" class="headerlink" title="1.5.1 订单附加信息提交接口"></a>1.5.1 订单附加信息提交接口</h4><blockquote>
-<p><a href="https://pay.weixin.qq.com/wiki/doc/api/external/declarecustom.php?chapter=18_1" target="_blank" rel="noopener">详情API</a></p>
-</blockquote>
-<h5 id="1-5-1-1-url"><a href="#1-5-1-1-url" class="headerlink" title="1.5.1.1 url"></a>1.5.1.1 url</h5><p>URL地址：<a href="https://api.mch.weixin.qq.com/cgi-bin/mch/customs/customdeclareorder" target="_blank" rel="noopener">https://api.mch.weixin.qq.com/cgi-bin/mch/customs/customdeclareorder</a></p>
-<p><strong>重点注意：请求接口前请先在以下页面提交您的海关信息，所有你需要报关的海关信息都需要提交，且信息真实有效：<a href="https://pay.weixin.qq.com/index.php/extend/customs" target="_blank" rel="noopener">https://pay.weixin.qq.com/index.php/extend/customs</a></strong></p>
-<h4 id="1-5-2-订单附加信息查询接口"><a href="#1-5-2-订单附加信息查询接口" class="headerlink" title="1.5.2 订单附加信息查询接口"></a>1.5.2 订单附加信息查询接口</h4><blockquote>
-<p>商户通过订单号查询提交的订单附加信息。如果是微信收集的实名信息，查询接口不返回实名信息内容.   </p>
-<p><a href="https://pay.weixin.qq.com/wiki/doc/api/external/declarecustom.php?chapter=18_2" target="_blank" rel="noopener">详情API</a></p>
-</blockquote>
-<h2 id="2-服务商版"><a href="#2-服务商版" class="headerlink" title="2. 服务商版"></a>2. 服务商版</h2><blockquote>
-<p><a href="https://pay.weixin.qq.com/wiki/doc/api/external/micropay_sl.php?chapter=9_10&amp;index=1" target="_blank" rel="noopener">详情API文档</a></p>
-</blockquote>
-<h3 id="2-1-刷卡支付"><a href="#2-1-刷卡支付" class="headerlink" title="2.1 刷卡支付"></a>2.1 刷卡支付</h3><h4 id="2-1-1-url"><a href="#2-1-1-url" class="headerlink" title="2.1.1 url"></a>2.1.1 url</h4><p><a href="https://api.mch.weixin.qq.com/pay/micropay" target="_blank" rel="noopener">https://api.mch.weixin.qq.com/pay/micropay</a></p>
-<h4 id="2-1-1-参数区别"><a href="#2-1-1-参数区别" class="headerlink" title="2.1.1 参数区别"></a>2.1.1 参数区别</h4><p>和普通商户版刷卡支付一样的参数区别。</p>
-<h3 id="2-2-公众号支付"><a href="#2-2-公众号支付" class="headerlink" title="2.2 公众号支付"></a>2.2 公众号支付</h3><blockquote>
-<p><a href="https://pay.weixin.qq.com/wiki/doc/api/external/jsapi_sl.php?chapter=9_1" target="_blank" rel="noopener">详情API文档</a></p>
-</blockquote>
-<h4 id="2-2-1-url"><a href="#2-2-1-url" class="headerlink" title="2.2.1 url"></a>2.2.1 url</h4><p><a href="https://api.mch.weixin.qq.com/pay/unifiedorder" target="_blank" rel="noopener">https://api.mch.weixin.qq.com/pay/unifiedorder</a></p>
-<h4 id="2-2-2-参数区别："><a href="#2-2-2-参数区别：" class="headerlink" title="2.2.2 参数区别："></a>2.2.2 参数区别：</h4><table>
-<thead>
-<tr>
-<th>名称</th>
-<th>变量名</th>
-<th>必填</th>
-<th>类型</th>
-<th>示例值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>商品ID</td>
-<td>product_id</td>
-<td>否</td>
-<td>String(32)</td>
-<td>12235413214070356458058</td>
-<td>trade_type=NATIVE，此参数必传。此id为二维码中包含的商品ID，商户自行定义。</td>
-</tr>
-<tr>
-<td>用户标识</td>
-<td>openid</td>
-<td>否</td>
-<td>String(128)</td>
-<td>oUpF8uMuAJO_M2pxb1Q9zNjWeS6o</td>
-<td>trade_type=JSAPI，此参数必传，用户在主商户appid下的唯一标识。openid和sub_openid可以选传其中之一，如果选择传sub_openid,则必须传sub_appid。下单前需要调用【网页授权获取用户信息】接口获取到用户的Openid。</td>
-</tr>
-<tr>
-<td>用户子标识</td>
-<td>sub_openid</td>
-<td>否</td>
-<td>String(128)</td>
-<td>oUpF8uMuAJO_M2pxb1Q9zNjWeS6o</td>
-<td>trade_type=JSAPI，此参数必传，用户在子商户appid下的唯一标识。openid和sub_openid可以选传其中之一，如果选择传sub_openid,则必须传sub_appid。下单前需要调用【网页授权获取用户信息】接口获取到用户的Openid。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="2-3-扫码支付"><a href="#2-3-扫码支付" class="headerlink" title="2.3 扫码支付"></a>2.3 扫码支付</h3><blockquote>
-<p><a href="https://pay.weixin.qq.com/wiki/doc/api/external/native_sl.php?chapter=9_1" target="_blank" rel="noopener">详情API文档</a></p>
-</blockquote>
-<p>和公众号支付一致。</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/08/05/支付/微信支付/JavaEE 微信境外支付/" data-id="cjff7y7l30040cgh2zh8jubh0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-支付/微信支付/JavaEE 微信支付" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/08/04/支付/微信支付/JavaEE 微信支付/">JavaEE 微信支付</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/08/04/支付/微信支付/JavaEE 微信支付/">
-            <time datetime="2017-08-04T11:33:12.000Z" itemprop="datePublished">2017-08-04</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/支付/">支付</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/支付/">支付</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="JavaEE-微信支付"><a href="#JavaEE-微信支付" class="headerlink" title="JavaEE 微信支付"></a>JavaEE 微信支付</h1><blockquote>
-<p>微信境内支付包括：  </p>
-<ul>
-<li>App支付</li>
-<li>公众号支付</li>
-<li>小程序支付</li>
-<li>H5 支付</li>
-<li>扫码支付</li>
-<li>刷卡支付</li>
-</ul>
-<p>除刷卡支付场景以外，商户系统先调用该接口在微信支付服务后台生成预支付交易单，返回正确的预支付交易回话标识后再按扫码、JSAPI、APP等不同场景生成交易串调起支付。</p>
-<p><a href="https://pay.weixin.qq.com/wiki/doc/api/index.html" target="_blank" rel="noopener">API 文档</a></p>
-</blockquote>
-<h2 id="1-常用API-列表"><a href="#1-常用API-列表" class="headerlink" title="1. 常用API 列表"></a>1. 常用API 列表</h2><ol>
-<li>统一下单（提交刷卡支付）</li>
-<li>查询订单</li>
-<li>关闭订单</li>
-<li>申请退款</li>
-<li>查询退款</li>
-<li>下载对账账单</li>
-<li>下载资金账单</li>
-<li>支付结果通知</li>
-<li>退款结果通知</li>
-</ol>
-<h2 id="2-微信支付接口请求大致流程"><a href="#2-微信支付接口请求大致流程" class="headerlink" title="2. 微信支付接口请求大致流程"></a>2. 微信支付接口请求大致流程</h2><ol>
-<li>封装请求参数</li>
-<li>将请求参数进行sort()</li>
-<li>对排序好的参数进行trim()</li>
-<li>将参数拼接为正确顺序的uri并加入key（秘钥）到最后</li>
-<li>将uri进行签名得到sign</li>
-<li>将参数以及sign（排除秘钥）按顺序转为xml</li>
-<li>请求对应接口（统一下单等）</li>
-<li>响应时也是xml格式</li>
-<li>转换xml为Map格式</li>
-<li>校验returnCode和resultCode</li>
-</ol>
-<h2 id="3-常用API中的区别点"><a href="#3-常用API中的区别点" class="headerlink" title="3. 常用API中的区别点"></a>3. 常用API中的区别点</h2><h3 id="3-1-刷卡支付"><a href="#3-1-刷卡支付" class="headerlink" title="3.1 刷卡支付"></a>3.1 刷卡支付</h3><p>1.下单非统一下单，而是提交刷卡支付，即请求的url和其他几种都不同。</p>
-<ul>
-<li>刷卡请求url：<a href="https://api.mch.weixin.qq.com/pay/micropay" target="_blank" rel="noopener">https://api.mch.weixin.qq.com/pay/micropay</a></li>
-<li>其他统一下单url：<a href="https://api.mch.weixin.qq.com/pay/unifiedorde" target="_blank" rel="noopener">https://api.mch.weixin.qq.com/pay/unifiedorde</a></li>
-</ul>
-<p>2.提交刷卡支付参数中不能携带参数有以下：（其他类型支付均可）。 </p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>变量名</th>
-<th>必填</th>
-<th>类型</th>
-<th>示例值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>交易类型</td>
-<td>trade_type</td>
-<td>是</td>
-<td>String(16)</td>
-<td>JSAPI</td>
-<td>JSAPI 公众号支付 NATIVE 扫码支付 APP APP支付</td>
-</tr>
-<tr>
-<td>用户标识</td>
-<td>openid</td>
-<td>否</td>
-<td>String(128)</td>
-<td>oUpF8uMuAJO_M2pxb1Q9zNjWeS6o</td>
-<td>trade_type=JSAPI时（即公众号支付），此参数必传，此参数为微信用户在商户对应appid下的唯一标识。openid如何获取，可参考【获取openid】。企业号请使用【企业号OAuth2.0接口】获取企业号内成员userid，再调用【企业号userid转openid接口】进行转换</td>
-</tr>
-<tr>
-<td>通知地址</td>
-<td>notify_url</td>
-<td>是</td>
-<td>String(256)</td>
-<td><a href="http://www.weixin.qq.com/wxpay/pay.php" target="_blank" rel="noopener">http://www.weixin.qq.com/wxpay/pay.php</a></td>
-<td>异步接收微信支付结果通知的回调地址，通知url必须为外网可访问的url，不能携带参数。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="3-2-授权码"><a href="#3-2-授权码" class="headerlink" title="3.2 授权码"></a>3.2 授权码</h3><p>提交刷卡支接口需要：auth_code.   </p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>变量名</th>
-<th>必填</th>
-<th>类型</th>
-<th>示例值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>授权码</td>
-<td>auth_code</td>
-<td>是</td>
-<td>String(128)</td>
-<td>120061098828009406</td>
-<td>扫码支付授权码，设备读取用户微信中的条码或者二维码信息（注：用户刷卡条形码规则：18位纯数字，以10、11、12、13、14、15开头）</td>
-</tr>
-</tbody>
-</table>
-<h3 id="3-3-H5支付"><a href="#3-3-H5支付" class="headerlink" title="3.3 H5支付"></a>3.3 H5支付</h3><p><strong>注⚠️：提醒：H5支付不建议在APP端使用，如需要在APP中使用微信支付，请接APP支付</strong></p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>变量名</th>
-<th>必填</th>
-<th>类型</th>
-<th>示例值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>场景信息</td>
-<td>scene_info</td>
-<td>是</td>
-<td>String(256)</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<ol>
-<li>示例值</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//IOS移动应用</span><br><span class="line">&#123;&quot;h5_info&quot;: &#123;&quot;type&quot;:&quot;IOS&quot;,&quot;app_name&quot;: &quot;王者荣耀&quot;,&quot;bundle_id&quot;: &quot;com.tencent.wzryIOS&quot;&#125;&#125;</span><br><span class="line"></span><br><span class="line">//安卓移动应用</span><br><span class="line">&#123;&quot;h5_info&quot;: &#123;&quot;type&quot;:&quot;Android&quot;,&quot;app_name&quot;: &quot;王者荣耀&quot;,&quot;package_name&quot;: &quot;com.tencent.tmgp.sgame&quot;&#125;&#125;</span><br><span class="line"></span><br><span class="line">//WAP网站应用</span><br><span class="line">&#123;&quot;h5_info&quot;: &#123;&quot;type&quot;:&quot;Wap&quot;,&quot;wap_url&quot;: &quot;https://pay.qq.com&quot;,&quot;wap_name&quot;: &quot;腾讯充值&quot;&#125;&#125;	该字段用于上报支付的场景信息,针对H5支付有以下三种场景,请根据对应场景上报,H5支付不建议在APP端使用，针对场景1，2请接入APP支付，不然可能会出现兼容性问题</span><br></pre></td></tr></table></figure>
-<ol>
-<li>描述.  </li>
-</ol>
-<p>1，IOS移动应用</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"h5_info"</span>: //h5支付固定传<span class="string">"h5_info"</span></span><br><span class="line">    &#123;"type": "",  //场景类型</span><br><span class="line">     "app_name": "",  //应用名</span><br><span class="line">     "bundle_id": ""  //bundle_id</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>2，安卓移动应用</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"h5_info"</span>: //h5支付固定传<span class="string">"h5_info"</span></span><br><span class="line">    &#123;"type": "",  //场景类型</span><br><span class="line">     "app_name": "",  //应用名</span><br><span class="line">     "package_name": ""  //包名</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3，WAP网站应用</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"h5_info"</span>: //h5支付固定传<span class="string">"h5_info"</span></span><br><span class="line">   &#123;"type": "",  //场景类型</span><br><span class="line">    "wap_url": "",//WAP网站URL地址</span><br><span class="line">    "wap_name": ""  //WAP 网站名</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="4-微信境外支付"><a href="#4-微信境外支付" class="headerlink" title="4. 微信境外支付"></a>4. 微信境外支付</h2><p><a href="JavaEE 微信境外支付.md">JavaEE 微信境外支付</a></p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/08/04/支付/微信支付/JavaEE 微信支付/" data-id="cjff7y7l1003xcgh2snnxuz77" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-支付/支付宝支付/JavaEE 支付宝支付" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/08/04/支付/支付宝支付/JavaEE 支付宝支付/">JavaEE 支付宝支付</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/08/04/支付/支付宝支付/JavaEE 支付宝支付/">
-            <time datetime="2017-08-04T11:33:12.000Z" itemprop="datePublished">2017-08-04</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/支付/">支付</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/支付宝支付/">支付宝支付</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="JavaEE-支付宝支付"><a href="#JavaEE-支付宝支付" class="headerlink" title="JavaEE 支付宝支付"></a>JavaEE 支付宝支付</h1><blockquote>
-<p><a href="https://docs.open.alipay.com/api_1/alipay.trade.app.pay/" target="_blank" rel="noopener">开发文档大全</a>   </p>
-<p>支付宝已经更新添封装好的签名方法,可以在自己的项目中直接调用进行签名,减少了自己手动签名产生的问题,主要是在进行方法调用时注意传参的要求,尤其是公钥使用的是支付宝的公钥,而不是APP的公钥。   </p>
-<p>支付宝支付使用SDK进行对接API，会比微信好很多，已经封装好了，不同请求对象对应不同响应对象。</p>
-</blockquote>
-<h2 id="1-支付宝—双对称加密"><a href="#1-支付宝—双对称加密" class="headerlink" title="1. 支付宝—双对称加密"></a>1. 支付宝—双对称加密</h2><p><strong>支付宝与微信的不同之处：</strong>   </p>
-<ol>
-<li>微信是通过xml以及签名进行数据保护</li>
-<li>支付宝是通过双对称加密进行数据保护</li>
-</ol>
-<p><strong>支付宝双对称加密：</strong>   </p>
-<ol>
-<li>用户先使用 <a href="https://docs.open.alipay.com/291/106097" target="_blank" rel="noopener">RSA密钥工具</a>  生成自身一对用户的对称秘钥（公钥和秘钥）</li>
-<li>将公钥上传到支付宝（在创建应用时便会让用户提供）</li>
-<li>支付宝会根据上传到公钥生成一对 支付宝的对称秘钥（公钥和秘钥）</li>
-</ol>
-<p><strong>支付宝双对称加密使用方式：</strong>   </p>
-<ol>
-<li>用户加签 的时候是用 用户的私钥</li>
-<li>用户解密 的时候是用 支付宝的公钥  </li>
-<li>支付宝加签 的时候是用 支付宝的私钥</li>
-<li>支付宝解密 的时候是用 用户的公钥</li>
-</ol>
-<p><strong>详情图解:</strong>  </p>
-<p><img src="img/支付宝双对称加密.png" alt="支付宝双对称加密"></p>
-<h2 id="2-支付宝常用API接口"><a href="#2-支付宝常用API接口" class="headerlink" title="2. 支付宝常用API接口"></a>2. 支付宝常用API接口</h2><p>支付API：   </p>
-<ul>
-<li>app支付接口2.0</li>
-<li>手机网站支付接口2.0</li>
-<li>统一收单交易退款查询</li>
-<li>统一收单交易结算接口</li>
-<li>统一收单交易关闭接口</li>
-<li>统一收单交易撤销接口</li>
-<li>统一收单交易退款接口</li>
-<li>统一收单线下交易预创建</li>
-<li>统一收单交易创建接口</li>
-<li>统一收单交易支付接口</li>
-<li>统一收单线下交易查询</li>
-</ul>
-<h2 id="3-Java-Instance"><a href="#3-Java-Instance" class="headerlink" title="3. Java Instance"></a>3. Java Instance</h2><p><strong>普通调用示例</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实例化客户端</span></span><br><span class="line">AlipayClient alipayClient = <span class="keyword">new</span> DefaultAlipayClient(<span class="string">"https://openapi.alipay.com/gateway.do"</span>, APP_ID, APP_PRIVATE_KEY, <span class="string">"json"</span>, CHARSET, ALIPAY_PUBLIC_KEY, <span class="string">"RSA2"</span>);</span><br><span class="line"><span class="comment">//实例化具体API对应的request类,类名称和接口名称对应,当前调用接口名称：alipay.open.public.template.message.industry.modify </span></span><br><span class="line">AlipayOpenPublicTemplateMessageIndustryModifyRequest request = <span class="keyword">new</span> AlipayOpenPublicTemplateMessageIndustryModifyRequest();</span><br><span class="line"><span class="comment">//SDK已经封装掉了公共参数，这里只需要传入业务参数</span></span><br><span class="line"><span class="comment">//此次只是参数展示，未进行字符串转义，实际情况下请转义</span></span><br><span class="line">request.setBizContent(<span class="string">"  &#123;"</span> +</span><br><span class="line"><span class="string">"    \"primary_industry_name\":\"IT科技/IT软件与服务\","</span> +</span><br><span class="line"><span class="string">"    \"primary_industry_code\":\"10001/20102\","</span> +</span><br><span class="line"><span class="string">"    \"secondary_industry_code\":\"10001/20102\","</span> +</span><br><span class="line"><span class="string">"    \"secondary_industry_name\":\"IT科技/IT软件与服务\""</span> +</span><br><span class="line"><span class="string">" &#125;"</span>);</span><br><span class="line">AlipayOpenPublicTemplateMessageIndustryModifyResponse response = alipayClient.execute(request); </span><br><span class="line"><span class="comment">//调用成功，则处理业务逻辑</span></span><br><span class="line"><span class="keyword">if</span>(response.isSuccess())&#123;</span><br><span class="line">	<span class="comment">//.....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>app支付接口2.0</strong> </p>
-<pre><code class="java">AlipayClient alipayClient = <span class="keyword">new</span> DefaultAlipayClient(<span class="string">"https://openapi.alipay.com/gateway.do"</span>,<span class="string">"app_id"</span>,<span class="string">"your private_key"</span>,<span class="string">"json"</span>,<span class="string">"GBK"</span>,<span class="string">"alipay_public_key"</span>,<span class="string">"RSA2"</span>);
-AlipayTradeAppPayRequest request = <span class="keyword">new</span> AlipayTradeAppPayRequest();
-request.setBizContent(<span class="string">"{"</span> +
-<span class="string">"\"timeout_express\":\"90m\","</span> +
-<span class="string">"\"total_amount\":\"9.00\","</span> +
-<span class="string">"\"seller_id\":\"2088102147948060\","</span> +
-<span class="string">"\"product_code\":\"QUICK_MSECURITY_PAY\","</span> +
-<span class="string">"\"body\":\"Iphone6 16G\","</span> +
-<span class="string">"\"subject\":\"大乐透\","</span> +
-<span class="string">"\"out_trade_no\":\"70501111111S001111119\","</span> +
-<span class="string">"\"time_expire\":\"2016-12-31 10:05\","</span> +
-<span class="string">"\"goods_type\":\"0\","</span> +
-<span class="string">"\"promo_params\":\"{\\\"storeIdType\\\":\\\"1\\\"}\","</span> +
-<span class="string">"\"passback_params\":\"merchantBizType%3d3C%26merchantBizNo%3d2016010101111\","</span> +
-<span class="string">"\"royalty_info\":{"</span> +
-<span class="string">"\"royalty_type\":\"ROYALTY\","</span> +
-<span class="string">"        \"royalty_detail_infos\":[{"</span> +
-<span class="string">"          \"serial_no\":1,"</span> +
-<span class="string">"\"trans_in_type\":\"userId\","</span> +
-<span class="string">"\"batch_no\":\"123\","</span> +
-<span class="string">"\"out_relation_id\":\"20131124001\","</span> +
-<span class="string">"\"trans_out_type\":\"userId\","</span> +
-<span class="string">"\"trans_out\":\"2088101126765726\","</span> +
-<span class="string">"\"trans_in\":\"2088101126708402\","</span> +
-<span class="string">"\"amount\":0.1,"</span> +
-<span class="string">"\"desc\":\"分账测试1\","</span> +
-<span class="string">"\"amount_percentage\":\"100\""</span> +
-<span class="string">"          }]"</span> +
-<span class="string">"    },"</span> +
-<span class="string">"\"extend_params\":{"</span> +
-<span class="string">"\"sys_service_provider_id\":\"2088511833207846\","</span> +
-<span class="string">"\"hb_fq_num\":\"3\","</span> +
-<span class="string">"\"hb_fq_seller_percent\":\"100\","</span> +
-<span class="string">"\"industry_reflux_info\":\"{\\\\\\\"scene_code\\\\\\\":\\\\\\\"metro_tradeorder\\\\\\\",\\\\\\\"channel\\\\\\\":\\\\\\\"xxxx\\\\\\\",\\\\\\\"scene_data\\\\\\\":{\\\\\\\"asset_name\\\\\\\":\\\\\\\"ALIPAY\\\\\\\"}}\","</span> +
-<span class="string">"\"card_type\":\"S0JP0000\""</span> +
-<span class="string">"    },"</span> +
-<span class="string">"\"sub_merchant\":{"</span> +
-<span class="string">"\"merchant_id\":\"19023454\","</span> +
-<span class="string">"\"merchant_type\":\"alipay: 支付宝分配的间连商户编号, merchant: 商户端的间连商户编号\""</span> +
-<span class="string">"    },"</span> +
-<span class="string">"\"enable_pay_channels\":\"pcredit,moneyFund,debitCardExpress\","</span> +
-<span class="string">"\"store_id\":\"NJ_001\","</span> +
-<span class="string">"\"specified_channel\":\"pcredit\","</span> +
-<span class="string">"\"disable_pay_channels\":\"pcredit,moneyFund,debitCardExpress\","</span> +
-<span class="string">"\"settle_info\":{"</span> +
-<span class="string">"        \"settle_detail_infos\":[{"</span> +
-<span class="string">"          \"trans_in_type\":\"cardSerialNo\","</span> +
-<span class="string">"\"trans_in\":\"A0001\","</span> +
-<span class="string">"\"summary_dimension\":\"A0001\","</span> +
-<span class="string">"\"amount\":0.1"</span> +
-<span class="string">"          }]"</span> +
-<span class="string">"    },"</span> +
-<span class="string">"\"invoice_info\":{"</span> +
-<span class="string">"\"key_info\":{"</span> +
-<span class="string">"\"is_support_invoice\":true,"</span> +
-<span class="string">"\"invoice_merchant_name\":\"ABC|003\","</span> +
-<span class="string">"\"tax_num\":\"1464888883494\""</span> +
-<span class="string">"      },"</span> +
-<span class="string">"\"details\":\"[{\\\"code\\\":\\\"100294400\\\",\\\"name\\\":\\\"服饰\\\",\\\"num\\\":\\\"2\\\",\\\"sumPrice\\\":\\\"200.00\\\",\\\"taxRate\\\":\\\"6%\\\"}]\""</span> +
-<span class="string">"    },"</span> +
-<span class="string">"\"ext_user_info\":{"</span> +
-<span class="string">"\"name\":\"李明\","</span> +
-<span class="string">"\"mobile\":\"16587658765\","</span> +
-<span class="string">"\"cert_type\":\"IDENTITY_CARD\","</span> +
-<span class="string">"\"cert_no\":\"362334768769238881\","</span> +
-<span class="string">"\"min_age\":\"18\","</span> +
-<span class="string">"\"fix_buyer\":\"F\","</span> +
-<span class="string">"\"need_check_info\":\"F\""</span> +
-<span class="string">"    },"</span> +
-<span class="string">"\"business_params\":\"{\\\"data\\\":\\\"123\\\"}\""</span> +
-<span class="string">"  }"</span>);
-AlipayTradeAppPayResponse response = alipayClient.pageExecute(request);
-<span class="keyword">if</span>(response.isSuccess()){
-System.out.println(<span class="string">"调用成功"</span>);
-} <span class="keyword">else</span> {
-System.out.println(<span class="string">"调用失败"</span>);
-}
-</code></pre>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/08/04/支付/支付宝支付/JavaEE 支付宝支付/" data-id="cjff7y7l0003wcgh2osqu3979" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-消息队列/消息中间件" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/07/23/消息队列/消息中间件/">分布式之消息中间件</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/07/23/消息队列/消息中间件/">
-            <time datetime="2017-07-23T07:46:12.000Z" itemprop="datePublished">2017-07-23</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/消息队列/">消息队列</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/消息队列/">消息队列</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h1 id="分布式之消息中间件"><a href="#分布式之消息中间件" class="headerlink" title="分布式之消息中间件"></a>分布式之消息中间件</h1><blockquote>
-<p>目录</p>
-<ul>
-<li><a href="#1">1.消息中间件概述</a></li>
-<li><a href="#2">2.消息中间件使用场景</a></li>
-<li><a href="#3">3.消息中间件原理</a></li>
-<li><a href="#4">4.消息中间件传递模式</a><ul>
-<li><a href="#4.1">4.1点对点模式（PTP）</a></li>
-<li><a href="#4.2">4.2发布-订阅模型（Pub/Sub）</a></li>
-</ul>
-</li>
-</ul>
-</blockquote>
-<h3 id="1-消息中间件概述"><a href="#1-消息中间件概述" class="headerlink" title="1.消息中间件概述"></a><h3 id="1">1.消息中间件概述</h3></h3><p>&emsp;&emsp;消息中间件利用高效可靠的消息传递机制进行平台无关的数据交流，并基于数据通信来进行分布式系统的集成。通过提供消息传递和消息排队模型，它可以在分布式环境下扩展进程间的通信。消息中间件就是用在消息队列服务器中用于过滤、区分和根据规则进行转发的程序。<br>&emsp;&emsp;目前在生产环境，使用较多的消息中间件有ActiveMQ，RabbitMQ，ZeroMQ，Kafka，MetaMQ，RocketMQ等<br>&emsp;&emsp;<img src="https://i.imgur.com/KzxkNjO.jpg" alt=""></p>
-<h3 id="2-消息中间件使用场景"><a href="#2-消息中间件使用场景" class="headerlink" title="2.消息中间件使用场景"></a><h3 id="2">2.消息中间件使用场景</h3></h3><p>&emsp;&emsp;消息中间件适用于需要可靠的数据传送的分布式环境。<br>&emsp;&emsp;采用消息中间件机制的系统中，不同的对象之间通过传递消息来激活对方的事件，完成相应的操作。<br>&emsp;&emsp;<img src="https://i.imgur.com/YeIsiIQ.png" alt=""><br>&emsp;&emsp;消息中间件能在不同平台之间通信，它常被用来屏蔽掉各种平台及协议之间的特性，实现应用程序之间的协同，其优点在于能够在客户和服务器之间提供同步和异步的连接，并且在任何时刻都可以将消息进行传送或者存储转发，这也是它比远程过程调用更进一步的原因。</p>
-<h3 id="3-消息中间件原理"><a href="#3-消息中间件原理" class="headerlink" title="3.消息中间件原理"></a><h3 id="3">3.消息中间件原理</h3></h3><p>&emsp;&emsp;要了解消息中间件的原理，先了解MOM（面向消息的中间件）。<br>&emsp;&emsp;面向消息的中间件（MOM），提供了以松散耦合的灵活方式集成应用程序的一种机制。它们提供了基于存储和转发的应用程序之间的异步数据发送，即应用程序彼此不直接通信，而是与作为中介的MOM通信。MOM提供了有保证的消息发送（至少是在尽可能地做到这一点），应用程序开发人员无需了解远程过程调用（PRC）和网络/通信协议的细节。<br>&emsp;&emsp;消息中间件利用高效可靠的消息传递机制进行平台无关的数据交流，并基于数据通信来进行分布式系统的集成。通过提供消息传递和消息排队模型，它可以在分布式环境下扩展进程间的通信。<br>&emsp;&emsp;<img src="https://i.imgur.com/gYBCD4x.png" alt="">  </p>
-<h3 id="4-消息中间件传递模式"><a href="#4-消息中间件传递模式" class="headerlink" title="4.消息中间件传递模式"></a><h3 id="4">4.消息中间件传递模式</h3></h3><h4 id="4-1点对点模式（PTP）"><a href="#4-1点对点模式（PTP）" class="headerlink" title="4.1点对点模式（PTP）"></a><h4 id="4.1">4.1点对点模式（PTP）</h4></h4><p>&emsp;&emsp;PTP模式包含消息队列（Queue），发送者(Sender)。接收者(Receiver),每个消息都被发送到一个特定的队列，接收者从队列中获取消息。队列保留着消息，而且队列可以是持久的，以保证在消息服务出现故障时仍然能够传递消息，直到他们被消费或超时。<br>&emsp;&emsp;<img src="https://i.imgur.com/Qc9g31L.png" alt=""><br>PTP的特点：</p>
-<ul>
-<li>每个消息只有一个消费者（cunsumes）(即一旦被消费，消息就不再在消息队列中)</li>
-<li>发送者和接收者之间在时间上没有依赖性，也就是发送者发送消息后，不管接收者是否接收消息或者接收者服务是否在运行，都不会影响到消息被发送到队列</li>
-<li>接收者在成功接收消息之后需向队列应答成功<h4 id="4-2发布-订阅模型（Pub-Sub）"><a href="#4-2发布-订阅模型（Pub-Sub）" class="headerlink" title="4.2发布-订阅模型（Pub/Sub）"></a><h4 id="4.2">4.2发布-订阅模型（Pub/Sub）</h4></h4>&emsp;&emsp;发布-订阅模型（Pub/Sub）包含三个角色：主题（Topic），发布者（Publisher），订阅者（Subscriber） 。多个发布者将消息发送到Topic,系统将这些消息传递给多个订阅者。<br>&emsp;&emsp;<img src="https://i.imgur.com/YgmRxWr.png" alt=""><br>Pub/Sub的特点</li>
-<li>每个消息可以有多个消费者</li>
-<li>发送者和接收者之间在时间上存在依赖性，针对某个主题（Topic）的订阅者，它必须创建一个订阅者之后，才能消费发布者的消息。</li>
-<li>为了消费消息，订阅者必须保持运行的状态。  </li>
-</ul>
-<p>&emsp;&emsp;为了缓和这样严格的时间相关性，JMS允许订阅者创建一个可持久化的订阅。这样，即使订阅者没有被激活（运行），它也能接收到发布者的消息。<br>&emsp;&emsp;如果希望发送的消息可以不被做任何处理、或者只被一个消息者处理、或者可以被多个消费者处理的话，那么可以采用Pub/Sub模型。</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="https://catalpaflat.github.io/2017/07/23/消息队列/消息中间件/" data-id="cjff7y7i0000qcgh2wer2lj2s" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-    </nav>
-</section>
-            
-                
-<aside id="sidebar">
-   
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">recent</h3>
-        <div class="widget">
-            <ul id="recent-post" class="">
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/02/05/docker/命令/run/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/docker/">docker</a></p>
-                            <p class="item-title"><a href="/2018/02/05/docker/命令/run/" class="title">Docker run 命令</a></p>
-                            <p class="item-date"><time datetime="2018-02-05T14:33:12.000Z" itemprop="datePublished">2018-02-05</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/01/23/java/Java开发规范/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
-                            <p class="item-title"><a href="/2018/01/23/java/Java开发规范/" class="title">Java 编码规范</a></p>
-                            <p class="item-date"><time datetime="2018-01-23T05:20:56.000Z" itemprop="datePublished">2018-01-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/01/05/docker/安装/docker安装/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/docker/">docker</a></p>
-                            <p class="item-title"><a href="/2018/01/05/docker/安装/docker安装/" class="title">CentOS Docker 安装</a></p>
-                            <p class="item-date"><time datetime="2018-01-05T08:33:56.000Z" itemprop="datePublished">2018-01-05</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/12/16/java/Java 实现中文-拼音转换/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
     
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
-                            <p class="item-title"><a href="/2017/12/16/java/Java 实现中文-拼音转换/" class="title">Java 实现中文-拼音转换</a></p>
-                            <p class="item-date"><time datetime="2017-12-16T02:16:56.000Z" itemprop="datePublished">2017-12-16</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2017/11/17/Quartz/自定义Quartz超实用工具类/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Quartz/">Quartz</a></p>
-                            <p class="item-title"><a href="/2017/11/17/Quartz/自定义Quartz超实用工具类/" class="title">自定义Quartz超实用工具类</a></p>
-                            <p class="item-date"><time datetime="2017-11-17T03:09:37.000Z" itemprop="datePublished">2017-11-17</time></p>
-                        </div>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">categories</h3>
-        <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaEE/">JavaEE</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Jenkins/">Jenkins</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Quartz/">Quartz</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/支付/">支付</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/服务器/">服务器</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/消息队列/">消息队列</a><span class="category-list-count">3</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">archives</h3>
-        <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">1</span></li></ul>
-        </div>
-    </div>
-
     
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">tags</h3>
-        <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaEE/">JavaEE</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jenkins/">Jenkins</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quartz/">Quartz</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支付/">支付</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/支付宝支付/">支付宝支付</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/消息队列/">消息队列</a><span class="tag-list-count">3</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title">tag cloud</h3>
-        <div class="widget tagcloud">
-            <a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/JavaEE/" style="font-size: 15px;">JavaEE</a> <a href="/tags/Jenkins/" style="font-size: 12.5px;">Jenkins</a> <a href="/tags/Nginx/" style="font-size: 20px;">Nginx</a> <a href="/tags/Quartz/" style="font-size: 12.5px;">Quartz</a> <a href="/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/tags/支付/" style="font-size: 12.5px;">支付</a> <a href="/tags/支付宝支付/" style="font-size: 10px;">支付宝支付</a> <a href="/tags/服务器/" style="font-size: 12.5px;">服务器</a> <a href="/tags/消息队列/" style="font-size: 15px;">消息队列</a>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">links</h3>
-        <div class="widget">
-            <ul>
-                
-                    <li>
-                        <a href="http://hexo.io">Hexo</a>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-
     
-    <div id="toTop" class="fa fa-angle-up"></div>
-</aside>
-
-            
-        </div>
-        <footer id="footer">
-    <div class="outer">
-        <div id="footer-info" class="inner">
-            &copy; 2018 CatalpaFlat<br>
-            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
-        </div>
-    </div>
-</footer>
         
 
 
-    
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
     
     
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
     
-    
-
 
 
-<!-- Custom Scripts -->
-<script src="/js/main.js"></script>
 
-    </div>
 </body>
 </html>
