@@ -1,65 +1,71 @@
-(function($){
-    var toTop = ($('#sidebar').height() - $(window).height()) + 60;
-    // Caption
-    $('.article-entry').each(function(i) {
-        $(this).find('img').filter(function (element) {
-            return $(this).hasClass('');
-        }).each(function() {
-            // add image caption
-            if (this.alt && !(!!$.prototype.justifiedGallery && $(this).parent('.justified-gallery').length)) {
-                $(this).after('<span class="caption">' + this.alt + '</span>');
-            }
+/*!
+ * Clean Blog v1.0.0 (http://startbootstrap.com)
+ * Copyright 2015 Start Bootstrap
+ * Licensed under Apache 2.0 (https://github.com/IronSummitMedia/startbootstrap/blob/gh-pages/LICENSE)
+ */
 
-            if ($(this).parent().prop("tagName") !== 'A') {
-                $(this).wrap('<a href="' + ($(this).attr("data-imgbig") ? $(this).attr("data-imgbig") : this.src) + '" title="' + this.alt + '" class="gallery-item"></a>');
-            }
-        });
+// Tooltip Init
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+// responsive tables
+$(document).ready(function() {
+    $("table").each(function(){
+      if ($(this).parent().get(0).tagName != 'FIGURE') {
+        $(this).addClass("table table-responsive table-striped table-hover");
+        $(this).find("th").addClass("text-center");
+      }
     });
-    if (typeof lightGallery != 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        $('.article-entry').each(function(i, entry) {
-            lightGallery(entry, options);
-        });
-        lightGallery($('.article-gallery')[0], options);
-    }
-    if (!!$.prototype.justifiedGallery) {  // if justifiedGallery method is defined
-        var options = {
-            rowHeight: 140,
-            margins: 4,
-            lastRow: 'justify'
-        };
-        $('.justified-gallery').justifiedGallery(options);
-    }
+});
 
-    // Profile card
-    $(document).on('click', function () {
-        $('#profile').removeClass('card');
-    }).on('click', '#profile-anchor', function (e) {
-        e.stopPropagation();
-        $('#profile').toggleClass('card');
-    }).on('click', '.profile-inner', function (e) {
-        e.stopPropagation();
-    });
+// responsive embed videos
+$(document).ready(function () {
+    $('iframe[src*="youtube.com"]').wrap('<div class="embed-responsive embed-responsive-16by9"></div>');
+    $('iframe[src*="youtube.com"]').addClass('embed-responsive-item');
+    $('iframe[src*="vimeo.com"]').wrap('<div class="embed-responsive embed-responsive-16by9"></div>');
+    $('iframe[src*="vimeo.com"]').addClass('embed-responsive-item');
+    $('img').addClass('img-responsive-center')
+});
 
-    // To Top
-    if ($('#sidebar').length) {
-        $(document).on('scroll', function () {
-            if ($(document).width() >= 800) {
-                if(($(this).scrollTop() > toTop) && ($(this).scrollTop() > 0)) {
-                    $('#toTop').fadeIn();
-                    $('#toTop').css('left', $('#sidebar').offset().left);
-                } else {
-                    $('#toTop').fadeOut();
-                }
-            } else {
-                $('#toTop').fadeIn();
-                $('#toTop').css('right', 20);
-            }
-        }).on('click', '#toTop', function () {
-            $('body, html').animate({ scrollTop: 0 }, 600);
-        });
+// whether a post
+function isPages(attr){
+    var currentBoolean = document.querySelector('.navbar.header-navbar').getAttribute(attr);
+    if(currentBoolean === 'true'){return true;}
+    return false;
+}
+/*
+    scroll function
+    3 parameters
+        1. a DOM object
+        2 a class for targeted object
+        3 height when acctivated (optional. default: the height of the DOM)
+*/
+function scrollCheck(scrollTarget, toggleClass, scrollHeight){
+    document.addEventListener('scroll',function(){
+    var currentTop = window.pageYOffset;
+        currentTop > (scrollHeight||scrollTarget.clientHeight)
+        ?scrollTarget.classList.add(toggleClass)
+        :scrollTarget.classList.remove(toggleClass)
+    })
+}
+
+
+
+/*
+* Steps
+* 1. get the content of h1
+* 2. scroll and appear fixed navbar
+* 3. the content of h1 is shown center at the top of the page
+* */
+
+(function(){
+    if (isPages('data-ispost')){
+        var navbar = document.querySelector('.navbar-custom');
+        var introHeader = document.querySelector('.intro-header').offsetHeight;
+        var introHeader = introHeader > 597 ? introHeader : 500;
+        var toc = document.querySelector('.toc-wrap');
+        scrollCheck(toc,'toc-fixed',introHeader-60);
+        // scrollCheck(navbar,'is-fixed');
     }
-
-})(jQuery);
+})();
