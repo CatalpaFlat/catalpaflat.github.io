@@ -16,13 +16,6 @@
   </url>
   
   <url>
-    <loc>https://catalpaflat.github.io/tags/index.html</loc>
-    
-    <lastmod>2018-03-31T14:25:30.940Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://catalpaflat.github.io/repository/index.html</loc>
     
     <lastmod>2018-03-31T14:25:30.940Z</lastmod>
@@ -30,7 +23,14 @@
   </url>
   
   <url>
-    <loc>https://catalpaflat.github.io/books/index.html</loc>
+    <loc>https://catalpaflat.github.io/tags/index.html</loc>
+    
+    <lastmod>2018-03-31T14:25:30.940Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://catalpaflat.github.io/about/index.html</loc>
     
     <lastmod>2018-03-31T14:25:30.939Z</lastmod>
     
@@ -44,7 +44,7 @@
   </url>
   
   <url>
-    <loc>https://catalpaflat.github.io/about/index.html</loc>
+    <loc>https://catalpaflat.github.io/books/index.html</loc>
     
     <lastmod>2018-03-31T14:25:30.939Z</lastmod>
     
