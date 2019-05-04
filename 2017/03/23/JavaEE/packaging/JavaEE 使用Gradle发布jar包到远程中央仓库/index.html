@@ -21,22 +21,22 @@
 <meta name="keywords" content="JavaEE">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaEE 使用Gradle发布jar包到远程中央仓库">
-<meta property="og:url" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/index.html">
+<meta property="og:url" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/index.html">
 <meta property="og:site_name" content="CatalpaFlat">
 <meta property="og:description" content="JavaEE 使用Gradle发布jar包到远程中央仓库0. 前提准备GitHub 上 New Repository 项目（若没有则注册）.   1. 创建Bintray账号前往 Bintray ，右上角点击 Sign In 跳转到登录页面，可以选择通过第三方账号登录或者自己注册一个，方便起见我直接用了Github账号。 .    2. Bintray上创建maven仓库登录后点击左侧的 Add">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG4.jpeg">
+<meta property="og:image" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG4.jpeg">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4675459-77f14e1f0192a478.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4675459-b213b5021b9e9e2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4675459-53e8dc28d2686af6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
-<meta property="og:image" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG32.jpeg">
+<meta property="og:image" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG32.jpeg">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4675459-663cb5fb4f34e8cb.png?imageMogr2/auto-orient/">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4675459-03cd07c8394d4eab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
-<meta property="og:image" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG5.jpeg">
-<meta property="og:image" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG7.jpeg">
-<meta property="og:image" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG8.jpeg">
-<meta property="og:image" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG9.jpeg">
-<meta property="og:image" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG16.jpeg">
+<meta property="og:image" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG5.jpeg">
+<meta property="og:image" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG7.jpeg">
+<meta property="og:image" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG8.jpeg">
+<meta property="og:image" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG9.jpeg">
+<meta property="og:image" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG16.jpeg">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4675459-68f2f3ffd84f3338.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4675459-659a224e69c8a44e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4675459-ba18abc6ded76889.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
@@ -44,9 +44,9 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaEE 使用Gradle发布jar包到远程中央仓库">
 <meta name="twitter:description" content="JavaEE 使用Gradle发布jar包到远程中央仓库0. 前提准备GitHub 上 New Repository 项目（若没有则注册）.   1. 创建Bintray账号前往 Bintray ，右上角点击 Sign In 跳转到登录页面，可以选择通过第三方账号登录或者自己注册一个，方便起见我直接用了Github账号。 .    2. Bintray上创建maven仓库登录后点击左侧的 Add">
-<meta name="twitter:image" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG4.jpeg">
+<meta name="twitter:image" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE%20使用Gradle发布jar包到远程中央仓库/img/WechatIMG4.jpeg">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/index.html">
+  <link rel="canonical" href="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/index.html">
   
     <link rel="alternate" href="/atom.xml" title="CatalpaFlat" type="application/atom+xml">
   
@@ -458,7 +458,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/" title="JavaEE 使用Gradle发布jar包到远程中央仓库" target="_blank" rel="external">https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/</a>
+      <a href="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/" title="JavaEE 使用Gradle发布jar包到远程中央仓库" target="_blank" rel="external">https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE 使用Gradle发布jar包到远程中央仓库/</a>
     </li>
     
     <li class="post-copyright-license">

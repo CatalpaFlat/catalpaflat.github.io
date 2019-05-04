@@ -21,27 +21,27 @@
 <meta name="keywords" content="JavaEE">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaEE 使用Maven发布jar包到远程中央仓库">
-<meta property="og:url" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/index.html">
+<meta property="og:url" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/index.html">
 <meta property="og:site_name" content="CatalpaFlat">
 <meta property="og:description" content="JavaEE 使用Maven发布jar包到远程中央仓库0. 前提准备GitHub 上 New Repository 项目（若没有则注册）.   1. Sonatype OSSRH 简介Sonatype OSSRH 使用Nexus 为开源项目提供仓库管理服务，该仓库就是所谓maven的中央仓库，OSSRH允许我们向Maven中央仓库提交二进制文件。使用Sonatype OSSRH可以做以下操作：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG4.jpeg">
-<meta property="og:image" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG32.jpeg">
-<meta property="og:image" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG12.jpeg">
-<meta property="og:image" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG5.jpeg">
-<meta property="og:image" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG7.jpeg">
-<meta property="og:image" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG8.jpeg">
-<meta property="og:image" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG9.jpeg">
-<meta property="og:image" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG13.jpeg">
-<meta property="og:image" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG14.jpeg">
-<meta property="og:image" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG15.jpeg">
+<meta property="og:image" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG4.jpeg">
+<meta property="og:image" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG32.jpeg">
+<meta property="og:image" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG12.jpeg">
+<meta property="og:image" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG5.jpeg">
+<meta property="og:image" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG7.jpeg">
+<meta property="og:image" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG8.jpeg">
+<meta property="og:image" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG9.jpeg">
+<meta property="og:image" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG13.jpeg">
+<meta property="og:image" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG14.jpeg">
+<meta property="og:image" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG15.jpeg">
 <meta property="og:updated_time" content="2018-03-28T13:28:15.418Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaEE 使用Maven发布jar包到远程中央仓库">
 <meta name="twitter:description" content="JavaEE 使用Maven发布jar包到远程中央仓库0. 前提准备GitHub 上 New Repository 项目（若没有则注册）.   1. Sonatype OSSRH 简介Sonatype OSSRH 使用Nexus 为开源项目提供仓库管理服务，该仓库就是所谓maven的中央仓库，OSSRH允许我们向Maven中央仓库提交二进制文件。使用Sonatype OSSRH可以做以下操作：">
-<meta name="twitter:image" content="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG4.jpeg">
+<meta name="twitter:image" content="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE%20使用Maven发布jar包到远程中央仓库/img/WechatIMG4.jpeg">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/index.html">
+  <link rel="canonical" href="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/index.html">
   
     <link rel="alternate" href="/atom.xml" title="CatalpaFlat" type="application/atom+xml">
   
@@ -453,7 +453,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/" title="JavaEE 使用Maven发布jar包到远程中央仓库" target="_blank" rel="external">https://catalpaflat.github.io/2017/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/</a>
+      <a href="https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/" title="JavaEE 使用Maven发布jar包到远程中央仓库" target="_blank" rel="external">https://blog.catalpaflat.cn/2017/03/23/JavaEE/packaging/JavaEE 使用Maven发布jar包到远程中央仓库/</a>
     </li>
     
     <li class="post-copyright-license">
